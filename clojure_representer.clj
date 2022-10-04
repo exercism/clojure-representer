@@ -51,11 +51,20 @@
 (def impl
   (z/of-file (str in-dir (snake-case slug) ".clj")))
 
-(let [var-def (first (:var-definitions analysis))
-      args (mapcat edn/read-string (:arglist-strs var-def))]
-  (-> impl
-      (z/find-value z/next (:name var-def))
-      (z/find-value z/next (first args))
-      (z/replace (symbol "PLACEHOLDER1"))
-      z/root-string
-      println))
+(defn arglists [var-def]
+  (let [lists (map edn/read-string (:arglist-strs var-def))]
+    (into [] (for [list lists]
+               {:var  (:name var-def)
+                :args list}))))
+
+(defn replace-arglist [z arglist]
+    (-> z
+        (z/find-value z/next (:var arglist))
+        (z/find-next-depth-first #(= (:args arglist) (z/sexpr %)))
+        (z/replace (mapv #(symbol (get placeholders (str %)))
+                         (:args arglist)))))
+
+(-> (reduce replace-arglist impl 
+            (mapcat arglists (:var-definitions analysis)))
+    z/root-string
+    println)
