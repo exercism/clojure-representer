@@ -26,8 +26,12 @@
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
 
 (def locals
-  (filter :name (map #(select-keys % [:name :row :col])
-                     (:local-usages analysis))))
+  (let [rows (map last (group-by :row
+                                 (filter :name (map #(select-keys % [:name :row :col])
+                                                    (into (:local-usages analysis)
+                                                          (:locals analysis))))))
+        cols (map #(sort-by :col %) rows)]
+    (flatten (sort-by #(:row (first %)) cols))))
 
 (def placeholders
   (let [args (->> analysis
@@ -36,20 +40,26 @@
                   (mapcat edn/read-string)
                   (map str)
                   set)
+        locals (map str (map :name (:local-usages analysis)))
         placeholders (map #(str "PLACEHOLDER-" %) 
-                          (range 1 (inc (count args))))]
+                          (range 1 (inc (+ (count locals) (count args)))))]
     (spit (str out-dir "mapping.json") 
           (json/generate-string 
            (into (sorted-map-by 
                   (fn [key1 key2]
                     (< (parse-long (last (str/split key1 #"-")))
                        (parse-long (last (str/split key2 #"-"))))))
-                 (zipmap placeholders args))
+                 (zipmap placeholders (into args locals)))
            {:pretty true}))
-    (zipmap args placeholders)))
+    (zipmap (into args locals) placeholders)))
 
 (def impl
-  (z/of-file (str in-dir (snake-case slug) ".clj")))
+  (z/of-file (str in-dir (snake-case slug) ".clj")
+             {:track-position? true}))
+
+(defn replace-local [z {:keys [name row col]}]
+  (z/replace (z/find-last-by-pos z [row col]) 
+             (get placeholders (str name))))
 
 (defn arglists [var-def]
   (let [lists (map edn/read-string (:arglist-strs var-def))]
@@ -64,7 +74,21 @@
         (z/replace (mapv #(symbol (get placeholders (str %)))
                          (:args arglist)))))
 
-(-> (reduce replace-arglist impl 
-            (mapcat arglists (:var-definitions analysis)))
-    z/root-string
-    println)
+(defn replace-locals [zloc]
+  (loop [z zloc idents locals]
+    (if (empty? idents) (println (z/root-string z))
+        (recur (z/of-string (z/root-string (replace-local z (last idents)))
+                            {:track-position? true})
+               (butlast idents)))))
+
+(defn represent [zloc]
+  (spit (str out-dir "representation.txt") 
+        (with-out-str (->
+                       (reduce replace-arglist zloc
+                               (mapcat arglists (:var-definitions analysis)))
+                       (replace-locals)
+                       z/root-string))))
+
+(comment
+  (represent impl)
+  )
