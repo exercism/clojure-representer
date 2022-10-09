@@ -1,0 +1,16 @@
+(ns test-code)
+
+;; function using "name" as a parameter
+;; also containing "name" inside a string
+(defn with-name
+  (["PLACEHOLDER-1"]
+   (with-name "PLACEHOLDER-1" "white"))
+  (["PLACEHOLDER-1" PLACEHOLDER-5]
+   (let ["PLACEHOLDER-4" (fn inline-fn ["PLACEHOLDER-3" "PLACEHOLDER-2"]
+                 (str "PLACEHOLDER-3" " " "PLACEHOLDER-2"))]
+     (str "My name is " "PLACEHOLDER-1"
+          " and my color is " "PLACEHOLDER-5"
+          " and my-fn is " "PLACEHOLDER-4"))))
+
+;; snippet using clojure.core/name
+(map name (keys {:my-key "myval"}))

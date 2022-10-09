@@ -8,13 +8,13 @@
          '[rewrite-clj.zip :as z])
 
 (def slug (first *command-line-args*))
-(def in-dir (second *command-line-args*))
-(def out-dir (last *command-line-args*))
+(def in-dir (str (fs/path (second *command-line-args*))))
+(def out-dir (str (fs/path (last *command-line-args*))))
 
 (comment
   (def slug "test-code")
-  (def in-dir "./resources/")
-  (def out-dir "./resources/")
+  (def in-dir (str (fs/path "solution/")))
+  (def out-dir (str (fs/path "resources/")))
   )
 
 (defn snake-case [kebab-case]
@@ -46,7 +46,8 @@
         locals (map str (map :name (:local-usages analysis)))
         placeholders (map #(str "PLACEHOLDER-" %) 
                           (range 1 (inc (+ (count locals) (count args)))))]
-    (spit (str (fs/file out-dir "mapping.json")) 
+    (println (str out-dir))
+    (spit (str (fs/path out-dir "mapping.json"))
           (json/generate-string 
            (into (sorted-map-by 
                   (fn [key1 key2]
