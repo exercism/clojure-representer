@@ -9,6 +9,7 @@ RUN adduser -D -g '' appuser
 # get the source code
 WORKDIR /clojure-representer
 COPY clojure_representer.clj .
+COPY bin/run.sh bin/run.sh
 
 # Get static analyzer image as build stage
 FROM cljkondo/clj-kondo:2021.01.20-alpine as clj-kondo
@@ -18,6 +19,7 @@ FROM babashka/babashka:0.10.163-alpine
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /clojure-representer/clojure_representer.clj /opt/representer/clojure_representer.clj
+COPY --from=builder /clojure-representer/bin/run.sh /opt/representer/bin/run.sh
 
 # Install clj-kondo
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
