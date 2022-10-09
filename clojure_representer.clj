@@ -1,7 +1,6 @@
 #!/usr/bin/env bb
 
 (require '[rewrite-clj.zip :as z]
-         '[rewrite-clj.node :as n]
          '[clojure.java.shell :as shell]
          '[clojure.string :as str]
          '[clojure.edn :as edn]
@@ -26,10 +25,13 @@
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
 
 (def locals
-  (let [rows (map last (group-by :row
-                                 (filter :name (map #(select-keys % [:name :row :col])
-                                                    (into (:local-usages analysis)
-                                                          (:locals analysis))))))
+  (let [rows (->> analysis
+                  :locals
+                  (into (:local-usages analysis))
+                  (map #(select-keys % [:name :row :col]))
+                  (filter :name)
+                  (group-by :row)
+                  (map last))
         cols (map #(sort-by :col %) rows)]
     (flatten (sort-by #(:row (first %)) cols))))
 
