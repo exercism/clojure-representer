@@ -1,10 +1,11 @@
 #!/usr/bin/env bb
 
-(require '[rewrite-clj.zip :as z]
+(require '[babashka.fs :as fs]
+         '[cheshire.core :as json]
          '[clojure.java.shell :as shell]
          '[clojure.string :as str]
          '[clojure.edn :as edn]
-         '[cheshire.core :as json])
+         '[rewrite-clj.zip :as z])
 
 (def slug (first *command-line-args*))
 (def in-dir (second *command-line-args*))
@@ -16,11 +17,16 @@
   (def out-dir "./resources/")
   )
 
+(defn path-str [& parts]
+  (-> (apply fs/path parts)
+      fs/normalize
+      str))
+
 (defn snake-case [kebab-case]
   (str/replace kebab-case "-" "_"))
 
 (def analysis
-  (let [cmd ["./clj-kondo" "--lint" (str in-dir (snake-case slug) ".clj") "--config"
+  (let [cmd ["./clj-kondo" "--lint" (path-str in-dir (snake-case slug) ".clj") "--config"
              "{:output {:format :edn},:analysis {:locals true :arglists true}}"]]
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
 
@@ -45,7 +51,7 @@
         locals (map str (map :name (:local-usages analysis)))
         placeholders (map #(str "PLACEHOLDER-" %) 
                           (range 1 (inc (+ (count locals) (count args)))))]
-    (spit (str out-dir "mapping.json") 
+    (spit (path-str out-dir "mapping.json") 
           (json/generate-string 
            (into (sorted-map-by 
                   (fn [key1 key2]
@@ -56,7 +62,7 @@
     (zipmap (into args locals) placeholders)))
 
 (def impl
-  (z/of-file (str in-dir (snake-case slug) ".clj")
+  (z/of-file (path-str in-dir (snake-case slug) ".clj")
              {:track-position? true}))
 
 (defn replace-local [z {:keys [name row col]}]
@@ -84,13 +90,13 @@
                (butlast idents)))))
 
 (defn represent [zloc]
-  (spit (str out-dir "representation.txt") 
+  (spit (path-str out-dir "representation.txt") 
         (with-out-str (->
                        (reduce replace-arglist zloc
                                (mapcat arglists (:var-definitions analysis)))
                        (replace-locals)
                        z/root-string))))
 
-(comment
-  (represent impl)
-  )
+(represent impl)
+
+(System/exit 0)
