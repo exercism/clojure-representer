@@ -17,16 +17,11 @@
   (def out-dir "./resources/")
   )
 
-(defn path-str [& parts]
-  (-> (apply fs/path parts)
-      fs/normalize
-      str))
-
 (defn snake-case [kebab-case]
   (str/replace kebab-case "-" "_"))
 
 (def analysis
-  (let [cmd ["./clj-kondo" "--lint" (path-str in-dir (snake-case slug) ".clj") "--config"
+  (let [cmd ["clj-kondo" "--lint" (str (fs/file in-dir (str (snake-case slug) ".clj"))) "--config"
              "{:output {:format :edn},:analysis {:locals true :arglists true}}"]]
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
 
@@ -51,7 +46,7 @@
         locals (map str (map :name (:local-usages analysis)))
         placeholders (map #(str "PLACEHOLDER-" %) 
                           (range 1 (inc (+ (count locals) (count args)))))]
-    (spit (path-str out-dir "mapping.json") 
+    (spit (str (fs/file out-dir "mapping.json")) 
           (json/generate-string 
            (into (sorted-map-by 
                   (fn [key1 key2]
@@ -59,10 +54,11 @@
                        (parse-long (last (str/split key2 #"-"))))))
                  (zipmap placeholders (into args locals)))
            {:pretty true}))
+    (println (str "Placeholders written to " (fs/file out-dir "mapping.json")))
     (zipmap (into args locals) placeholders)))
 
 (def impl
-  (z/of-file (path-str in-dir (snake-case slug) ".clj")
+  (z/of-file (str (fs/file in-dir (str (snake-case slug) ".clj")))
              {:track-position? true}))
 
 (defn replace-local [z {:keys [name row col]}]
@@ -90,12 +86,13 @@
                (butlast idents)))))
 
 (defn represent [zloc]
-  (spit (path-str out-dir "representation.txt") 
+  (spit (str (fs/path out-dir "representation.txt")) 
         (with-out-str (->
                        (reduce replace-arglist zloc
                                (mapcat arglists (:var-definitions analysis)))
                        (replace-locals)
-                       z/root-string))))
+                       z/root-string)))
+  (println (str "Representation written to " (fs/file out-dir "representation.txt"))))
 
 (represent impl)
 

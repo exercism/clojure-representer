@@ -1,8 +1,5 @@
 (ns test-code)
 
-;; snippet using clojure.core/name
-(map name (keys {:my-key "myval"}))
-
 ;; function using "name" as a parameter
 ;; also containing "name" inside a string
 (defn with-name
@@ -15,3 +12,5 @@
           " and my color is " "PLACEHOLDER-5"
           " and my-fn is " "PLACEHOLDER-4"))))
 
+;; snippet using clojure.core/name
+(map name (keys {:my-key "myval"}))
