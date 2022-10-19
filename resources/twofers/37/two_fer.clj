@@ -1,5 +1,5 @@
 (ns two-fer
-  (require [clojure.string :as string]))
+  (:require [clojure.string :as string]))
 
 (defn two-fer ;; <- arglist goes here
   ([]
