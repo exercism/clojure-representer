@@ -18,8 +18,8 @@ FROM cljkondo/clj-kondo:2021.01.20-alpine as clj-kondo
 FROM babashka/babashka:0.10.163-alpine
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /etc/passwd /etc/passwd
-COPY --from=builder /clojure-representer/clojure_representer.clj /opt/representer/clojure_representer.clj
-COPY --from=builder /clojure-representer/bin/run.sh /opt/representer/bin/run.sh
+WORKDIR /opt/test-runner
+COPY --from=build /clojure-representer/ .
 
 # Install clj-kondo
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
