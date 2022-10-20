@@ -15,10 +15,10 @@
         _ (reset! mappings {})
         representation (map e/emit-hygienic-form
                             (ana.jvm/analyze-ns slug))]
-    (spit (str out-dir "mapping.json")
+    (spit (str out-dir "expected-mapping.json")
           (json/generate-string (into {} (map (fn [[k v]] [v k]) @mappings))
                                 {:pretty true}))
-    (spit (str out-dir "representation.txt")
+    (spit (str out-dir "expected-representation.txt")
           (with-out-str (pp/pprint representation)))
     representation))
 

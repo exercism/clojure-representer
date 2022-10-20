@@ -539,3 +539,1242 @@ clj꞉clojure-representer꞉> 
 clj꞉clojure-representer꞉> 
 #'clojure-representer/represent
 clj꞉clojure-representer꞉> 
+; Evaluating file: clojure_representer_test.clj
+#'clojure-representer-test/represent-test
+clj꞉clojure-representer-test꞉> 
+
+Testing clojure-representer-test
+
+FAIL in (represent-test) (clojure_representer_test.clj:7)
+FIXME, I fail.
+expected: (= 0 1)
+  actual: (not (= 0 1))
+
+Ran 1 tests containing 1 assertions.
+1 failures, 0 errors.
+{:test 1, :pass 0, :fail 1, :error 0, :type :summary}
+clj꞉clojure-representer-test꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+((do
+  (clojure.core/in-ns 'two-fer)
+  (.resetMeta
+   (clojure.lang.Namespace/find 'two-fer)
+   {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+    :line 1,
+    :column 5,
+    :end-line 1,
+    :end-column 12})
+  ((fn*
+    PLACEHOLDER-1
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+      (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'two-fer 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+    nil)))
+ (def
+  two-fer
+  (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+clj꞉clojure-representer-test꞉> 
+(((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me."))))))
+clj꞉clojure-representer-test꞉> 
+(((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (require '(clojure.string))
+  (def
+   two-fer
+   (fn*
+    ([] "One for you, one for me.")
+    ([PLACEHOLDER-2]
+     (str "One for " (if (clojure.string/blank? PLACEHOLDER-2) "you" PLACEHOLDER-2) ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def f (fn* ([PLACEHOLDER-2] (format "One for %s, one for me." PLACEHOLDER-2))))
+  (def two-fer (fn* ([] (f "you")) ([PLACEHOLDER-3] (f PLACEHOLDER-3)))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")) ([] (str "One for you, one for me."))))))
+clj꞉clojure-representer-test꞉> 
+(((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (require '(clojure.string))
+  (def
+   two-fer
+   (fn*
+    ([] "One for you, one for me.")
+    ([PLACEHOLDER-2]
+     (str "One for " (if (clojure.string/blank? PLACEHOLDER-2) "you" PLACEHOLDER-2) ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def f (fn* ([PLACEHOLDER-2] (format "One for %s, one for me." PLACEHOLDER-2))))
+  (def two-fer (fn* ([] (f "you")) ([PLACEHOLDER-3] (f PLACEHOLDER-3)))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")) ([] (str "One for you, one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn*
+    ([PLACEHOLDER-2] (do (print "One for" PLACEHOLDER-2) (print ", one for me.")))
+    ([] (print "One for you, one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (format "One for %s, one for me." PLACEHOLDER-2)))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer-name (fn* ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me."))))
+  (def two-fer (fn* ([] (two-fer-name "you")) ([PLACEHOLDER-3] (two-fer-name PLACEHOLDER-3)))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")) ([] (do str "One for you, one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (format "One for %s, one for me." PLACEHOLDER-2)))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (format "One for %s, one for me." PLACEHOLDER-2)))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def
+   two-fer
+   (fn*
+    ([& PLACEHOLDER-2]
+     (let*
+      [PLACEHOLDER-3 PLACEHOLDER-2 PLACEHOLDER-4 (clojure.lang.RT/nth PLACEHOLDER-3 0 nil)]
+      (format "One for %s, one for me." (if (clojure.lang.Util/identical PLACEHOLDER-4 nil) "you" PLACEHOLDER-4)))))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] "One for you, one for me.") ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")) ([] (two-fer "you")))))
+ ((do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+     :line 1,
+     :column 5,
+     :end-line 1,
+     :end-column 12})
+   ((fn*
+     PLACEHOLDER-1
+     ([]
+      (do
+       (clojure.lang.Var/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-1))})
+       (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do
+     (clojure.lang.LockingTransaction/runInTransaction
+      (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+     nil)))
+  (def two-fer (fn* ([] (two-fer "you")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...
+ ...)
+clj꞉clojure-representer-test꞉> 
+; Execution error (ExceptionInfo) at analyzer.passes.jvm.validate/eval9785$fn (validate.clj:28).
+; Could not resolve var: Name
+clj꞉clojure-representer-test꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+#'clojure-representer/represent
+clj꞉clojure-representer꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+#'clojure-representer/represent
+clj꞉clojure-representer꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+One for Bob, one for me.
+One for Alice, one for me.
+One for you, one for me.
+One for bob, one for me.
+One for you, one for me.
+; Execution error (FileNotFoundException) at java.io.FileInputStream/open0 (REPL:-2).
+; resources\twofers\373\two_fer.clj (The system cannot find the file specified)
+clj꞉clojure-representer-test꞉> 
+#'clojure-representer/represent
+clj꞉clojure-representer꞉> 
+#'clojure-representer/represent
+clj꞉clojure-representer꞉> 
+One for Bob, one for me.
+One for Alice, one for me.
+One for you, one for me.
+One for bob, one for me.
+One for you, one for me.
+; Execution error (FileNotFoundException) at java.io.FileInputStream/open0 (REPL:-2).
+; resources\twofers\373\two_fer.clj (The system cannot find the file specified)
+clj꞉clojure-representer-test꞉> 
+One for Bob, one for me.
+One for Alice, one for me.
+One for you, one for me.
+One for bob, one for me.
+One for you, one for me.
+One for you, one for me.
+nil
+clj꞉clojure-representer-test꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+#'clojure-representer-test/as-path
+clj꞉clojure-representer-test꞉> 
+; Syntax error compiling at (c:\Users\porko\Documents\GitHub\exercism\clojure-representer\test\clojure_representer_test.clj:24:26).
+; Unable to resolve symbol: n in this context
+clj꞉clojure-representer-test꞉> 
+#object[java.io.File 0x253cf9d6 "resources\\twofers\\0\\expected.txt"]
+clj꞉clojure-representer-test꞉> 
+; Execution error (ClassCastException) at clojure-representer-test/eval44340 (REPL:24).
+; java.io.File cannot be cast to java.nio.file.Path
+clj꞉clojure-representer-test꞉> 
+; Syntax error compiling at (c:\Users\porko\Documents\GitHub\exercism\clojure-representer\test\clojure_representer_test.clj:24:17).
+; Unable to resolve symbol: n in this context
+clj꞉clojure-representer-test꞉> 
+; Execution error (ClassCastException) at clojure-representer-test/eval44349 (REPL:24).
+; java.lang.String cannot be cast to java.nio.file.Path
+clj꞉clojure-representer-test꞉> 
+nil
+clj꞉clojure-representer-test꞉> 
+#object[java.io.File 0x109e8ad1 "resources\\twofers\\expected.txt"]
+clj꞉clojure-representer-test꞉> 
+; Execution error (NoSuchFileException) at sun.nio.fs.WindowsException/translateToIOException (REPL:-1).
+; resources\twofers\0\expected.txt
+clj꞉clojure-representer-test꞉> 
+; Execution error (NoSuchFileException) at sun.nio.fs.WindowsException/translateToIOException (REPL:-1).
+; resources\twofers\373\expected.txt
+clj꞉clojure-representer-test꞉> 
+; Execution error (NoSuchFileException) at sun.nio.fs.WindowsException/translateToIOException (REPL:-1).
+; resources\twofers\373\expected.txt
+clj꞉clojure-representer-test꞉> 
+; Execution error (NoSuchFileException) at sun.nio.fs.WindowsException/translateToIOException (REPL:-1).
+; resources\twofers\374\expected.txt
+clj꞉clojure-representer-test꞉> 
+One for Bob, one for me.
+One for Alice, one for me.
+One for you, one for me.
+One for bob, one for me.
+One for you, one for me.
+One for you, one for me.
+nil
+clj꞉clojure-representer-test꞉> 

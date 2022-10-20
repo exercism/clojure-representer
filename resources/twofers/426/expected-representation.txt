@@ -1,0 +1,48 @@
+((do
+  (clojure.core/in-ns 'two-fer)
+  (.resetMeta
+   (clojure.lang.Namespace/find 'two-fer)
+   {:file
+    "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+    :line 1,
+    :column 5,
+    :end-line 1,
+    :end-column 12})
+  ((fn*
+    PLACEHOLDER-1
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-1))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'two-fer 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'two-fer))))
+    nil)))
+ (def
+  get-name
+  (fn*
+   ([PLACEHOLDER-2]
+    (if
+     (clojure.lang.Util/identical PLACEHOLDER-2 nil)
+     "you"
+     (first PLACEHOLDER-2)))))
+ (def
+  two-fer
+  (fn*
+   ([& PLACEHOLDER-3]
+    (let*
+     [PLACEHOLDER-4 (get-name PLACEHOLDER-3)]
+     (str "One for " PLACEHOLDER-4 ", one for me."))))))

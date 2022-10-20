@@ -1,8 +1,7 @@
-(ns two-fer
-  (:require [clojure.core.strint :refer [<<]]))
+(ns two-fer)
 
 (defn two-fer
-  ([]
-   (two-fer "you"))
-  ([name]
-   (<< "One for ~{name}, one for me.")))
+  [& coll]
+  (if (zero? (count coll))
+    "One for you, one for me."
+    (str "One for " (first coll) ", one for me.")))

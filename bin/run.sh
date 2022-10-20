@@ -1,16 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-if [ $# -lt 3 ]
-then
-    echo "Usage:"
-    echo "./bin/run.sh two_fer ~/input/ ~/output/"
+# Usage:
+# ./bin/run.sh two-fer ~/folder/to/solution/input ~/folder/to/representer/output
+
+# If any required arguments is missing, print the usage and exit
+if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
+    echo "usage: ./bin/run.sh exercise-slug path/to/solution/folder/ path/to/output/directory/"
     exit 1
 fi
 
-problem_slug="$1"
-input_folder="$2"
-output_folder="$3"
+# Create the output directory if it doesn't exist
+mkdir -p "$(realpath ${3%/})"
 
-echo "Creating representation for "$problem_slug"..."
-clojure -m exercism.clojure-representer $problem_slug $input_folder $output_folder
-echo "Results written to "$output_folder"representation.txt"
+clojure -m clojure-representer $problem_slug $input_folder $output_folder "$@"
