@@ -1,5 +1,6 @@
 (ns clojure-representer-test
   (:require [clojure.test :refer :all]
+            [clojure.string :as str]
             [clojure-representer :refer [represent]]
             [clojure.java.io :as io])
   (:import [java.nio.file Files Path]
@@ -12,17 +13,24 @@
         (java.nio.file.Paths/get ^URI path)
         (.toPath (io/file path)))))
 
-(deftest represent-test
+(defn remove-path [f]
+  (str/replace f #"file:(\w|\\|\/|:|-)+\.clj" "nil"))
+
+(deftest twofers-test
   (testing "500 twofers"
-    (doseq [twofer (range 500)]
-      (is (= (represent "two-fer" "resources/twofers/0/" "resources/") 1)))))
+    (doseq [n (range 500)]
+      (let [_ (represent "two-fer" (str "resources/twofers/" n "/")
+                         (str "resources/twofers/" n "/"))
+            representation (slurp (str "resources/twofers/" n "/representation.txt"))
+            expected (slurp (str "resources/twofers/" n "/expected-representation.txt"))]
+        (is (= (remove-path representation) (remove-path expected))))))
+  (testing "Unique solutions"
+    (is (= 141 (count (set (map #(slurp (str "resources/twofers/" % "/representation.txt"))
+                                (range 500)))))))
+  (run! #(Files/delete (as-path (io/file (str "resources/twofers/" % "/") "representation.txt")))
+        (range 500))
+)
 
-(doseq [n (range 500)]
-  (represent "two-fer" (str "resources/twofers/" n "/") (str "resources/twofers/" n "/")))
-
-(doseq [n (range 374 500)]
-  (Files/delete (as-path (io/file (str "resources/twofers/" n "/") "expected.txt"))))
-
-(io/file (str "resources/twofers/"  "/") "expected.txt")
-
-(run-tests)
+(comment
+  (run-tests)
+  )

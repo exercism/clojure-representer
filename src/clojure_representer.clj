@@ -15,13 +15,13 @@
         _ (reset! mappings {})
         representation (map e/emit-hygienic-form
                             (ana.jvm/analyze-ns slug))]
-    (spit (str out-dir "expected-mapping.json")
+    (spit (str out-dir "mapping.json")
           (json/generate-string (into {} (map (fn [[k v]] [v k]) @mappings))
                                 {:pretty true}))
-    (spit (str out-dir "expected-representation.txt")
+    (spit (str out-dir "representation.txt")
           (with-out-str (pp/pprint representation)))
     representation))
 
 (comment
-  (represent "two-fer" "resources/twofers/0" "resources/")
+  (first (represent "two-fer" "resources/twofers/0" "resources/"))
   )
