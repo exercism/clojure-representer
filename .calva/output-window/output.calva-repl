@@ -11544,3 +11544,3122 @@ Ran 1 tests containing 501 assertions.
 {:test 1, :pass 501, :fail 0, :error 0, :type :summary}
 clj꞉clojure-representer-test꞉> 
 ; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+nil
+clj꞉clojure-representer꞉> 
+"(ns two-fer)\n\n(defn two-fer\n  ([] (str \"One for you, one for me.\"))\n  ([name] (str \"One for \" name \", one for me.\"))\n  )\n"
+clj꞉clojure-representer꞉> 
+nil
+clj꞉clojure-representer꞉> 
+; Execution error (ClassCastException) at analyzer.jvm/macroexpand-1 (jvm.clj:176).
+; class java.lang.Character cannot be cast to class java.lang.String (java.lang.Character and java.lang.String are in module java.base of loader 'bootstrap')
+clj꞉clojure-representer꞉> 
+{:ret
+ {:children [:test :then :else],
+  :else
+  {:op :do,
+   :env
+   {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :form
+   (do (clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)) nil),
+   :statements
+   [{:args
+     [{:children [:methods],
+       :op :fn,
+       :env
+       {:context :ctx/expr,
+        :locals {},
+        :ns two-fer,
+        :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+       :o-tag clojure.lang.AFunction,
+       :variadic? false,
+       :methods
+       [{:children [:params :body],
+         :loop-id loop_12512,
+         :arglist [],
+         :params [],
+         :fixed-arity 0,
+         :op :fn-method,
+         :env
+         {:context :ctx/expr,
+          :locals {},
+          :ns two-fer,
+          :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+          :once false},
+         :o-tag java.lang.Object,
+         :variadic? false,
+         :form ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)),
+         :tag java.lang.Object,
+         :body
+         {:args
+          [{:op :invoke,
+            :form @#'clojure.core/*loaded-libs*,
+            :env
+            {:context :ctx/expr,
+             :locals {},
+             :ns two-fer,
+             :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+             :once false,
+             :loop-id loop_12512,
+             :loop-locals 0},
+            :fn
+            {:op :var,
+             :assignable? false,
+             :var #'clojure.core/deref,
+             :meta
+             {:added "1.0",
+              :ns #namespace[clojure.core],
+              :name deref,
+              :file "clojure/core.clj",
+              :static true,
+              :column 1,
+              :line 2323,
+              :arglists ([ref] [ref timeout-ms timeout-val]),
+              :doc
+              "Also reader macro: @ref/@agent/@var/@atom/@delay/@future/@promise. Within a transaction,\n  returns the in-transaction-value of ref, else returns the\n  most-recently-committed value of ref. When applied to a var, agent\n  or atom, returns its current state. When applied to a delay, forces\n  it if not already forced. When applied to a future, will block if\n  computation not complete. When applied to a promise, will block\n  until a value is delivered.  The variant taking a timeout can be\n  used for blocking references (futures and promises), and will return\n  timeout-val if the timeout (in milliseconds) is reached before a\n  value is available. See also - realized?."},
+             :env
+             {:context :ctx/expr,
+              :locals {},
+              :ns two-fer,
+              :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+              :once false,
+              :loop-id loop_12512,
+              :loop-locals 0},
+             :form clojure.core/deref,
+             :o-tag java.lang.Object,
+             :arglists ([ref] [ref timeout-ms timeout-val])},
+            :args
+            [{:op :the-var,
+              :env
+              {:context :ctx/expr,
+               :locals {},
+               :ns two-fer,
+               :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+               :once false,
+               :loop-id loop_12512,
+               :loop-locals 0},
+              :form #'clojure.core/*loaded-libs*,
+              :var #'clojure.core/*loaded-libs*,
+              :o-tag clojure.lang.Var,
+              :tag clojure.lang.Var}],
+            :children [:fn :args],
+            :o-tag java.lang.Object}
+           {:op :var,
+            :assignable? false,
+            :var #'clojure.core/conj,
+            :meta
+            {:added "1.0",
+             :ns #namespace[clojure.core],
+             :name conj,
+             :file "clojure/core.clj",
+             :static true,
+             :column 1,
+             :line 75,
+             :arglists ([] [coll] [coll x] [coll x & xs]),
+             :doc
+             "conj[oin]. Returns a new collection with the xs\n    'added'. (conj nil item) returns (item).\n    (conj coll) returns coll. (conj) returns [].\n    The 'addition' may happen at different 'places' depending\n    on the concrete type."},
+            :env
+            {:context :ctx/expr,
+             :locals {},
+             :ns two-fer,
+             :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+             :once false,
+             :loop-id loop_12512,
+             :loop-locals 0},
+            :form clojure.core/conj,
+            :o-tag java.lang.Object,
+            :arglists ([] [coll] [coll x] [coll x & xs])}
+           {:op :quote,
+            :expr
+            {:op :const,
+             :env
+             {:context :ctx/expr,
+              :locals {},
+              :ns two-fer,
+              :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+              :once false,
+              :loop-id loop_12512,
+              :loop-locals 0},
+             :type :symbol,
+             :literal? true,
+             :val two-fer,
+             :form two-fer,
+             :o-tag clojure.lang.Symbol,
+             :tag clojure.lang.Symbol},
+            :form 'two-fer,
+            :env
+            {:context :ctx/expr,
+             :locals {},
+             :ns two-fer,
+             :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+             :once false,
+             :loop-id loop_12512,
+             :loop-locals 0},
+            :literal? true,
+            :children [:expr],
+            :tag clojure.lang.Symbol,
+            :o-tag clojure.lang.Symbol}],
+          :children [:fn :args],
+          :body? true,
+          :fn
+          {:op :var,
+           :assignable? false,
+           :var #'clojure.core/commute,
+           :meta
+           {:added "1.0",
+            :ns #namespace[clojure.core],
+            :name commute,
+            :file "clojure/core.clj",
+            :static true,
+            :column 1,
+            :line 2439,
+            :arglists ([ref fun & args]),
+            :doc
+            "Must be called in a transaction. Sets the in-transaction-value of\n  ref to:\n\n  (apply fun in-transaction-value-of-ref args)\n\n  and returns the in-transaction-value of ref.\n\n  At the commit point of the transaction, sets the value of ref to be:\n\n  (apply fun most-recently-committed-value-of-ref args)\n\n  Thus fun should be commutative, or, failing that, you must accept\n  last-one-in-wins behavior.  commute allows for more concurrency than\n  ref-set."},
+           :env
+           {:context :ctx/expr,
+            :locals {},
+            :ns two-fer,
+            :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+            :once false,
+            :loop-id loop_12512,
+            :loop-locals 0},
+           :form clojure.core/commute,
+           :o-tag java.lang.Object,
+           :arglists ([ref fun & args])},
+          :op :invoke,
+          :env
+          {:context :ctx/return,
+           :locals {},
+           :ns two-fer,
+           :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+           :once false,
+           :loop-id loop_12512,
+           :loop-locals 0},
+          :o-tag java.lang.Object,
+          :form (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer),
+          :raw-forms ((do (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))}}],
+       :once false,
+       :max-fixed-arity 0,
+       :form (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))),
+       :tag java.util.concurrent.Callable,
+       :arglists ([]),
+       :raw-forms
+       ((clojure.core/fn [] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))}],
+     :children [:args],
+     :method runInTransaction,
+     :op :static-call,
+     :env
+     {:context :ctx/statement,
+      :locals {},
+      :ns two-fer,
+      :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :o-tag java.lang.Object,
+     :class clojure.lang.LockingTransaction,
+     :form
+     (.
+      clojure.lang.LockingTransaction
+      (clojure.core/runInTransaction
+       (clojure.core/fn [] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))),
+     :tag java.lang.Object,
+     :validated? true,
+     :raw-forms
+     ((clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))
+      (clojure.core/sync nil (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))}],
+   :ret
+   {:op :const,
+    :env
+    {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+    :type :nil,
+    :literal? true,
+    :val nil,
+    :form nil,
+    :o-tag nil,
+    :tag nil},
+   :children [:statements :ret],
+   :tag nil,
+   :o-tag nil},
+  :op :if,
+  :env
+  {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+  :o-tag nil,
+  :result nil,
+  :top-level true,
+  :then
+  {:op :const,
+   :env
+   {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :type :nil,
+   :literal? true,
+   :val nil,
+   :form nil,
+   :o-tag nil,
+   :tag nil},
+  :form
+  (if
+   (.equals 'two-fer 'clojure.core)
+   nil
+   (do (clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)) nil)),
+  :test
+  {:args
+   [{:op :quote,
+     :expr
+     {:op :const,
+      :env
+      {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+      :type :symbol,
+      :literal? true,
+      :val clojure.core,
+      :form clojure.core,
+      :o-tag clojure.lang.Symbol,
+      :tag clojure.lang.Symbol},
+     :form 'clojure.core,
+     :env
+     {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :literal? true,
+     :children [:expr],
+     :tag java.lang.Object,
+     :o-tag clojure.lang.Symbol}],
+   :children [:instance :args],
+   :instance
+   {:op :quote,
+    :expr
+    {:op :const,
+     :env
+     {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :type :symbol,
+     :literal? true,
+     :val two-fer,
+     :form two-fer,
+     :o-tag clojure.lang.Symbol,
+     :tag clojure.lang.Symbol},
+    :form 'two-fer,
+    :env
+    {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+    :literal? true,
+    :children [:expr],
+    :tag clojure.lang.Symbol,
+    :o-tag clojure.lang.Symbol},
+   :method equals,
+   :op :instance-call,
+   :env
+   {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :o-tag boolean,
+   :class clojure.lang.Symbol,
+   :form (. 'two-fer (equals 'clojure.core)),
+   :tag boolean,
+   :validated? true,
+   :raw-forms ((.equals 'two-fer 'clojure.core))},
+  :raw-forms nil},
+ :children [:statements :ret],
+ :op :do,
+ :env
+ {:context :ctx/expr,
+  :locals {},
+  :ns clojure-representer,
+  :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+ :result nil,
+ :top-level true,
+ :form
+ (do
+  (clojure.core/in-ns 'two-fer)
+  (clojure.core/with-loading-context (clojure.core/refer 'clojure.core))
+  (if
+   (.equals 'two-fer 'clojure.core)
+   nil
+   (do (clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)) nil))),
+ :statements
+ [{:args
+   [{:op :quote,
+     :expr
+     {:op :const,
+      :env
+      {:context :ctx/expr,
+       :locals {},
+       :ns clojure-representer,
+       :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+      :type :symbol,
+      :literal? true,
+      :val two-fer,
+      :form two-fer,
+      :o-tag clojure.lang.Symbol,
+      :tag clojure.lang.Symbol},
+     :form 'two-fer,
+     :env
+     {:context :ctx/expr,
+      :locals {},
+      :ns clojure-representer,
+      :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :literal? true,
+     :children [:expr],
+     :tag clojure.lang.Symbol,
+     :o-tag clojure.lang.Symbol}],
+   :children [:fn :args],
+   :fn
+   {:op :var,
+    :assignable? false,
+    :var #'clojure.core/in-ns,
+    :meta
+    {:doc "Sets *ns* to the namespace named by the symbol, creating it if needed.",
+     :arglists ([name]),
+     :name in-ns,
+     :ns #namespace[clojure.core],
+     :added "1.0"},
+    :env
+    {:context :ctx/expr,
+     :locals {},
+     :ns clojure-representer,
+     :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+    :form clojure.core/in-ns,
+    :o-tag java.lang.Object,
+    :arglists ([name])},
+   :op :invoke,
+   :env
+   {:context :ctx/statement,
+    :locals {},
+    :ns clojure-representer,
+    :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :o-tag java.lang.Object,
+   :result #namespace[two-fer],
+   :top-level true,
+   :form (clojure.core/in-ns 'two-fer),
+   :raw-forms nil}
+  {:args [],
+   :children [:fn :args],
+   :fn
+   {:children [:local :methods],
+    :op :fn,
+    :env
+    {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+    :o-tag clojure.lang.AFunction,
+    :variadic? false,
+    :methods
+    [{:children [:params :body],
+      :loop-id loop_12507,
+      :arglist [],
+      :params [],
+      :fixed-arity 0,
+      :op :fn-method,
+      :env
+      {:context :ctx/expr,
+       :locals
+       {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+       :ns two-fer,
+       :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+       :once false},
+      :o-tag java.lang.Object,
+      :variadic? false,
+      :form
+      ([]
+       (.
+        clojure.lang.Var
+        (clojure.core/pushThreadBindings
+         #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+       (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings))))),
+      :tag java.lang.Object,
+      :body
+      {:op :do,
+       :env
+       {:context :ctx/return,
+        :locals
+        {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+        :ns two-fer,
+        :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+        :once false,
+        :loop-id loop_12507,
+        :loop-locals 0},
+       :form
+       (do
+        (.
+         clojure.lang.Var
+         (clojure.core/pushThreadBindings
+          #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+        (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings))))),
+       :statements
+       [{:args
+         [{:op :map,
+           :env
+           {:context :ctx/expr,
+            :locals
+            {loading__6789__auto__
+             {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+            :ns two-fer,
+            :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+            :once false,
+            :loop-id loop_12507,
+            :loop-locals 0},
+           :keys
+           [{:field LOADER,
+             :op :static-field,
+             :env
+             {:context :ctx/expr,
+              :locals
+              {loading__6789__auto__
+               {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+              :ns two-fer,
+              :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+              :once false,
+              :loop-id loop_12507,
+              :loop-locals 0},
+             :o-tag clojure.lang.Var,
+             :class clojure.lang.Compiler,
+             :form (. clojure.lang.Compiler -LOADER),
+             :tag clojure.lang.Var,
+             :assignable? false,
+             :raw-forms (clojure.lang.Compiler/LOADER)}],
+           :vals
+           [{:args [],
+             :children [:instance],
+             :instance
+             {:args [],
+              :children [:instance],
+              :instance
+              {:children [],
+               :name PLACEHOLDER-1,
+               :op :local,
+               :env
+               {:context :ctx/expr,
+                :locals
+                {loading__6789__auto__
+                 {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+                :ns two-fer,
+                :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+                :once false,
+                :loop-id loop_12507,
+                :loop-locals 0},
+               :o-tag clojure.lang.AFunction,
+               :form loading__6789__auto__,
+               :tag java.lang.Object,
+               :atom #<Atom@798aa345: {:tag clojure.lang.AFunction}>,
+               :local :fn,
+               :assignable? false},
+              :method getClass,
+              :op :instance-call,
+              :env
+              {:context :ctx/expr,
+               :locals
+               {loading__6789__auto__
+                {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+               :ns two-fer,
+               :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+               :once false,
+               :loop-id loop_12507,
+               :loop-locals 0},
+              :o-tag java.lang.Class,
+              :m-or-f getClass,
+              :class java.lang.Object,
+              :form (. loading__6789__auto__ getClass),
+              :tag java.lang.Class,
+              :validated? true,
+              :raw-forms ((.getClass loading__6789__auto__))},
+             :method getClassLoader,
+             :op :instance-call,
+             :env
+             {:context :ctx/expr,
+              :locals
+              {loading__6789__auto__
+               {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+              :ns two-fer,
+              :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+              :once false,
+              :loop-id loop_12507,
+              :loop-locals 0},
+             :o-tag java.lang.ClassLoader,
+             :m-or-f getClassLoader,
+             :class java.lang.Class,
+             :form (. (.getClass loading__6789__auto__) getClassLoader),
+             :tag java.lang.ClassLoader,
+             :validated? true,
+             :raw-forms ((.getClassLoader (.getClass loading__6789__auto__)))}],
+           :form #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))},
+           :children [:keys :vals],
+           :o-tag clojure.lang.PersistentHashMap,
+           :tag clojure.lang.Associative}],
+         :children [:args],
+         :method pushThreadBindings,
+         :op :static-call,
+         :env
+         {:context :ctx/statement,
+          :locals
+          {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+          :ns two-fer,
+          :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+          :once false,
+          :loop-id loop_12507,
+          :loop-locals 0},
+         :o-tag void,
+         :class clojure.lang.Var,
+         :form
+         (.
+          clojure.lang.Var
+          (clojure.core/pushThreadBindings
+           #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))})),
+         :tag void,
+         :validated? true}],
+       :ret
+       {:op :try,
+        :env
+        {:context :ctx/return,
+         :locals
+         {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+         :ns two-fer,
+         :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+         :once false,
+         :loop-id loop_12507,
+         :loop-locals 0},
+        :form (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings)))),
+        :body
+        {:args
+         [{:op :quote,
+           :expr
+           {:op :const,
+            :env
+            {:no-recur true,
+             :loop-locals 0,
+             :locals
+             {loading__6789__auto__
+              {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+             :ns two-fer,
+             :loop-id loop_12507,
+             :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+             :in-try true,
+             :once false,
+             :context :ctx/expr},
+            :type :symbol,
+            :literal? true,
+            :val clojure.core,
+            :form clojure.core,
+            :o-tag clojure.lang.Symbol,
+            :tag clojure.lang.Symbol},
+           :form 'clojure.core,
+           :env
+           {:no-recur true,
+            :loop-locals 0,
+            :locals
+            {loading__6789__auto__
+             {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+            :ns two-fer,
+            :loop-id loop_12507,
+            :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+            :in-try true,
+            :once false,
+            :context :ctx/expr},
+           :literal? true,
+           :children [:expr],
+           :tag clojure.lang.Symbol,
+           :o-tag clojure.lang.Symbol}],
+         :children [:fn :args],
+         :body? true,
+         :fn
+         {:op :var,
+          :assignable? false,
+          :var #'clojure.core/refer,
+          :meta
+          {:arglists ([ns-sym & filters]),
+           :doc
+           "refers to all public vars of ns, subject to filters.\n  filters can include at most one each of:\n\n  :exclude list-of-symbols\n  :only list-of-symbols\n  :rename map-of-fromsymbol-tosymbol\n\n  For each public interned var in the namespace named by the symbol,\n  adds a mapping from the name of the var to the var to the current\n  namespace.  Throws an exception if name is already mapped to\n  something else in the current namespace. Filters can be used to\n  select a subset, via inclusion or exclusion, or to provide a mapping\n  to a symbol different from the var's name, in order to prevent\n  clashes. Use :use in the ns macro in preference to calling this directly.",
+           :added "1.0",
+           :line 4218,
+           :column 1,
+           :file "clojure/core.clj",
+           :name refer,
+           :ns #namespace[clojure.core]},
+          :env
+          {:no-recur true,
+           :loop-locals 0,
+           :locals
+           {loading__6789__auto__
+            {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+           :ns two-fer,
+           :loop-id loop_12507,
+           :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+           :in-try true,
+           :once false,
+           :context :ctx/expr},
+          :form clojure.core/refer,
+          :o-tag java.lang.Object,
+          :arglists ([ns-sym & filters])},
+         :op :invoke,
+         :env
+         {:no-recur true,
+          :loop-locals 0,
+          :locals
+          {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+          :ns two-fer,
+          :loop-id loop_12507,
+          :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+          :in-try true,
+          :once false,
+          :context :ctx/return},
+         :o-tag java.lang.Object,
+         :form (clojure.core/refer 'clojure.core),
+         :raw-forms ((do (clojure.core/refer 'clojure.core)))},
+        :catches [],
+        :finally
+        {:args [],
+         :children [:args],
+         :body? true,
+         :method popThreadBindings,
+         :op :static-call,
+         :env
+         {:context :ctx/statement,
+          :locals
+          {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+          :ns two-fer,
+          :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+          :once false,
+          :loop-id loop_12507,
+          :loop-locals 0,
+          :no-recur true},
+         :o-tag void,
+         :class clojure.lang.Var,
+         :form (. clojure.lang.Var (clojure.core/popThreadBindings)),
+         :tag void,
+         :validated? true,
+         :raw-forms ((do (. clojure.lang.Var (clojure.core/popThreadBindings))))},
+        :children [:body :catches :finally],
+        :o-tag nil},
+       :children [:statements :ret],
+       :body? true,
+       :o-tag nil},
+      :local {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}}],
+    :once false,
+    :max-fixed-arity 0,
+    :form
+    (fn*
+     loading__6789__auto__
+     ([]
+      (.
+       clojure.lang.Var
+       (clojure.core/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+      (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings)))))),
+    :tag clojure.lang.AFunction,
+    :arglists ([]),
+    :local
+    {:op :binding,
+     :env
+     {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :form loading__6789__auto__,
+     :local :fn,
+     :name PLACEHOLDER-1,
+     :atom #<Atom@798aa345: {:tag clojure.lang.AFunction}>,
+     :tag clojure.lang.AFunction,
+     :o-tag clojure.lang.AFunction},
+    :raw-forms
+    ((clojure.core/fn
+      loading__6789__auto__
+      []
+      (.
+       clojure.lang.Var
+       (clojure.core/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+      (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings))))))},
+   :op :invoke,
+   :env
+   {:context :ctx/statement,
+    :locals {},
+    :ns two-fer,
+    :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :o-tag java.lang.Object,
+   :result nil,
+   :top-level true,
+   :form
+   ((clojure.core/fn
+     loading__6789__auto__
+     []
+     (.
+      clojure.lang.Var
+      (clojure.core/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+     (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings)))))),
+   :raw-forms ((clojure.core/with-loading-context (clojure.core/refer 'clojure.core)))}],
+ :raw-forms ((ns two-fer))}
+clj꞉two-fer꞉> 
+; Execution error (AssertionError) at analyzer.jvm/analyze-ns (jvm.clj:596).
+; Assert failed: Can't find (ns two-fer) in classpath
+res
+clj꞉clojure-representer꞉> 
+#'two-fer/two-fer
+clj꞉clojure-representer꞉> 
+[{:ret
+  {:children [:test :then :else],
+   :else
+   {:op :do,
+    :env
+    {:context :ctx/expr,
+     :locals {},
+     :ns two-fer,
+     :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+     :end-column 13,
+     :column 1,
+     :line 1,
+     :end-line 1},
+    :form
+    (do (clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)) nil),
+    :statements
+    [{:args
+      [{:children [:methods],
+        :op :fn,
+        :env
+        {:context :ctx/expr,
+         :locals {},
+         :ns two-fer,
+         :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+         :end-column 13,
+         :column 1,
+         :line 1,
+         :end-line 1},
+        :o-tag clojure.lang.AFunction,
+        :variadic? false,
+        :methods
+        [{:children [:params :body],
+          :loop-id loop_12545,
+          :arglist [],
+          :params [],
+          :fixed-arity 0,
+          :op :fn-method,
+          :env
+          {:locals {},
+           :ns two-fer,
+           :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+           :end-column 13,
+           :column 1,
+           :line 1,
+           :once false,
+           :end-line 1,
+           :context :ctx/expr},
+          :o-tag java.lang.Object,
+          :variadic? false,
+          :form ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)),
+          :tag java.lang.Object,
+          :body
+          {:args
+           [{:op :invoke,
+             :form @#'clojure.core/*loaded-libs*,
+             :env
+             {:loop-locals 0,
+              :locals {},
+              :ns two-fer,
+              :loop-id loop_12545,
+              :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+              :end-column 13,
+              :column 1,
+              :line 1,
+              :once false,
+              :end-line 1,
+              :context :ctx/expr},
+             :fn
+             {:op :var,
+              :assignable? false,
+              :var #'clojure.core/deref,
+              :meta
+              {:added "1.0",
+               :ns #namespace[clojure.core],
+               :name deref,
+               :file "clojure/core.clj",
+               :static true,
+               :column 1,
+               :line 2323,
+               :arglists ([ref] [ref timeout-ms timeout-val]),
+               :doc
+               "Also reader macro: @ref/@agent/@var/@atom/@delay/@future/@promise. Within a transaction,\n  returns the in-transaction-value of ref, else returns the\n  most-recently-committed value of ref. When applied to a var, agent\n  or atom, returns its current state. When applied to a delay, forces\n  it if not already forced. When applied to a future, will block if\n  computation not complete. When applied to a promise, will block\n  until a value is delivered.  The variant taking a timeout can be\n  used for blocking references (futures and promises), and will return\n  timeout-val if the timeout (in milliseconds) is reached before a\n  value is available. See also - realized?."},
+              :env
+              {:loop-locals 0,
+               :locals {},
+               :ns two-fer,
+               :loop-id loop_12545,
+               :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+               :end-column 13,
+               :column 1,
+               :line 1,
+               :once false,
+               :end-line 1,
+               :context :ctx/expr},
+              :form clojure.core/deref,
+              :o-tag java.lang.Object,
+              :arglists ([ref] [ref timeout-ms timeout-val])},
+             :args
+             [{:op :the-var,
+               :env
+               {:loop-locals 0,
+                :locals {},
+                :ns two-fer,
+                :loop-id loop_12545,
+                :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+                :end-column 13,
+                :column 1,
+                :line 1,
+                :once false,
+                :end-line 1,
+                :context :ctx/expr},
+               :form #'clojure.core/*loaded-libs*,
+               :var #'clojure.core/*loaded-libs*,
+               :o-tag clojure.lang.Var,
+               :tag clojure.lang.Var}],
+             :children [:fn :args],
+             :o-tag java.lang.Object}
+            {:op :var,
+             :assignable? false,
+             :var #'clojure.core/conj,
+             :meta
+             {:added "1.0",
+              :ns #namespace[clojure.core],
+              :name conj,
+              :file "clojure/core.clj",
+              :static true,
+              :column 1,
+              :line 75,
+              :arglists ([] [coll] [coll x] [coll x & xs]),
+              :doc
+              "conj[oin]. Returns a new collection with the xs\n    'added'. (conj nil item) returns (item).\n    (conj coll) returns coll. (conj) returns [].\n    The 'addition' may happen at different 'places' depending\n    on the concrete type."},
+             :env
+             {:loop-locals 0,
+              :locals {},
+              :ns two-fer,
+              :loop-id loop_12545,
+              :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+              :end-column 13,
+              :column 1,
+              :line 1,
+              :once false,
+              :end-line 1,
+              :context :ctx/expr},
+             :form clojure.core/conj,
+             :o-tag java.lang.Object,
+             :arglists ([] [coll] [coll x] [coll x & xs])}
+            {:op :quote,
+             :expr
+             {:children [:meta],
+              :meta
+              {:op :const,
+               :env
+               {:loop-locals 0,
+                :locals {},
+                :ns two-fer,
+                :loop-id loop_12545,
+                :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+                :end-column 12,
+                :column 5,
+                :line 1,
+                :once false,
+                :end-line 1,
+                :context :ctx/expr},
+               :type :map,
+               :literal? true,
+               :val
+               {:file "file:/home/bob/clojure-representer/src/two_fer.clj",
+                :line 1,
+                :column 5,
+                :end-line 1,
+                :end-column 12},
+               :form
+               {:file "file:/home/bob/clojure-representer/src/two_fer.clj",
+                :line 1,
+                :column 5,
+                :end-line 1,
+                :end-column 12},
+               :o-tag clojure.lang.PersistentArrayMap,
+               :tag clojure.lang.PersistentArrayMap},
+              :val two-fer,
+              :type :symbol,
+              :op :const,
+              :env
+              {:loop-locals 0,
+               :locals {},
+               :ns two-fer,
+               :loop-id loop_12545,
+               :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+               :end-column 12,
+               :column 5,
+               :line 1,
+               :once false,
+               :end-line 1,
+               :context :ctx/expr},
+              :o-tag clojure.lang.Symbol,
+              :literal? true,
+              :form two-fer,
+              :tag clojure.lang.Symbol},
+             :form 'two-fer,
+             :env
+             {:loop-locals 0,
+              :locals {},
+              :ns two-fer,
+              :loop-id loop_12545,
+              :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+              :end-column 13,
+              :column 1,
+              :line 1,
+              :once false,
+              :end-line 1,
+              :context :ctx/expr},
+             :literal? true,
+             :children [:expr],
+             :tag clojure.lang.Symbol,
+             :o-tag clojure.lang.Symbol}],
+           :children [:fn :args],
+           :body? true,
+           :fn
+           {:op :var,
+            :assignable? false,
+            :var #'clojure.core/commute,
+            :meta
+            {:added "1.0",
+             :ns #namespace[clojure.core],
+             :name commute,
+             :file "clojure/core.clj",
+             :static true,
+             :column 1,
+             :line 2439,
+             :arglists ([ref fun & args]),
+             :doc
+             "Must be called in a transaction. Sets the in-transaction-value of\n  ref to:\n\n  (apply fun in-transaction-value-of-ref args)\n\n  and returns the in-transaction-value of ref.\n\n  At the commit point of the transaction, sets the value of ref to be:\n\n  (apply fun most-recently-committed-value-of-ref args)\n\n  Thus fun should be commutative, or, failing that, you must accept\n  last-one-in-wins behavior.  commute allows for more concurrency than\n  ref-set."},
+            :env
+            {:loop-locals 0,
+             :locals {},
+             :ns two-fer,
+             :loop-id loop_12545,
+             :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+             :end-column 13,
+             :column 1,
+             :line 1,
+             :once false,
+             :end-line 1,
+             :context :ctx/expr},
+            :form clojure.core/commute,
+            :o-tag java.lang.Object,
+            :arglists ([ref fun & args])},
+           :op :invoke,
+           :env
+           {:loop-locals 0,
+            :locals {},
+            :ns two-fer,
+            :loop-id loop_12545,
+            :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+            :end-column 13,
+            :column 1,
+            :line 1,
+            :once false,
+            :end-line 1,
+            :context :ctx/return},
+           :o-tag java.lang.Object,
+           :form (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer),
+           :raw-forms ((do (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))}}],
+        :once false,
+        :max-fixed-arity 0,
+        :form (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))),
+        :tag java.util.concurrent.Callable,
+        :arglists ([]),
+        :raw-forms
+        ((clojure.core/fn [] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))}],
+      :children [:args],
+      :method runInTransaction,
+      :op :static-call,
+      :env
+      {:context :ctx/statement,
+       :locals {},
+       :ns two-fer,
+       :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+       :end-column 13,
+       :column 1,
+       :line 1,
+       :end-line 1},
+      :o-tag java.lang.Object,
+      :class clojure.lang.LockingTransaction,
+      :form
+      (.
+       clojure.lang.LockingTransaction
+       (clojure.core/runInTransaction
+        (clojure.core/fn [] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))),
+      :tag java.lang.Object,
+      :validated? true,
+      :raw-forms
+      ((clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))
+       (clojure.core/sync nil (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))}],
+    :ret
+    {:op :const,
+     :env
+     {:context :ctx/expr,
+      :locals {},
+      :ns two-fer,
+      :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+      :end-column 13,
+      :column 1,
+      :line 1,
+      :end-line 1},
+     :type :nil,
+     :literal? true,
+     :val nil,
+     :form nil,
+     :o-tag nil,
+     :tag nil},
+    :children [:statements :ret],
+    :tag nil,
+    :o-tag nil},
+   :op :if,
+   :env
+   {:context :ctx/expr,
+    :locals {},
+    :ns two-fer,
+    :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+    :end-column 13,
+    :column 1,
+    :line 1,
+    :end-line 1},
+   :o-tag nil,
+   :result nil,
+   :top-level true,
+   :then
+   {:op :const,
+    :env
+    {:context :ctx/expr,
+     :locals {},
+     :ns two-fer,
+     :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+     :end-column 13,
+     :column 1,
+     :line 1,
+     :end-line 1},
+    :type :nil,
+    :literal? true,
+    :val nil,
+    :form nil,
+    :o-tag nil,
+    :tag nil},
+   :form
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do (clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)) nil)),
+   :test
+   {:args
+    [{:op :quote,
+      :expr
+      {:op :const,
+       :env
+       {:context :ctx/expr,
+        :locals {},
+        :ns two-fer,
+        :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+        :end-column 13,
+        :column 1,
+        :line 1,
+        :end-line 1},
+       :type :symbol,
+       :literal? true,
+       :val clojure.core,
+       :form clojure.core,
+       :o-tag clojure.lang.Symbol,
+       :tag clojure.lang.Symbol},
+      :form 'clojure.core,
+      :env
+      {:context :ctx/expr,
+       :locals {},
+       :ns two-fer,
+       :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+       :end-column 13,
+       :column 1,
+       :line 1,
+       :end-line 1},
+      :literal? true,
+      :children [:expr],
+      :tag java.lang.Object,
+      :o-tag clojure.lang.Symbol}],
+    :children [:instance :args],
+    :instance
+    {:op :quote,
+     :expr
+     {:children [:meta],
+      :meta
+      {:op :const,
+       :env
+       {:context :ctx/expr,
+        :locals {},
+        :ns two-fer,
+        :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+        :end-column 12,
+        :column 5,
+        :line 1,
+        :end-line 1},
+       :type :map,
+       :literal? true,
+       :val
+       {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12},
+       :form
+       {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12},
+       :o-tag clojure.lang.PersistentArrayMap,
+       :tag clojure.lang.PersistentArrayMap},
+      :val two-fer,
+      :type :symbol,
+      :op :const,
+      :env
+      {:context :ctx/expr,
+       :locals {},
+       :ns two-fer,
+       :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+       :end-column 12,
+       :column 5,
+       :line 1,
+       :end-line 1},
+      :o-tag clojure.lang.Symbol,
+      :literal? true,
+      :form two-fer,
+      :tag clojure.lang.Symbol},
+     :form 'two-fer,
+     :env
+     {:context :ctx/expr,
+      :locals {},
+      :ns two-fer,
+      :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+      :end-column 13,
+      :column 1,
+      :line 1,
+      :end-line 1},
+     :literal? true,
+     :children [:expr],
+     :tag clojure.lang.Symbol,
+     :o-tag clojure.lang.Symbol},
+    :method equals,
+    :op :instance-call,
+    :env
+    {:context :ctx/expr,
+     :locals {},
+     :ns two-fer,
+     :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+     :end-column 13,
+     :column 1,
+     :line 1,
+     :end-line 1},
+    :o-tag boolean,
+    :class clojure.lang.Symbol,
+    :form (. 'two-fer (equals 'clojure.core)),
+    :tag boolean,
+    :validated? true,
+    :raw-forms ((.equals 'two-fer 'clojure.core))},
+   :raw-forms nil},
+  :children [:statements :ret],
+  :op :do,
+  :env
+  {:context :ctx/expr,
+   :locals {},
+   :ns clojure-representer,
+   :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+   :end-column 13,
+   :column 1,
+   :line 1,
+   :end-line 1},
+  :result nil,
+  :top-level true,
+  :form
+  (do
+   (clojure.core/in-ns 'two-fer)
+   (.resetMeta
+    (clojure.lang.Namespace/find 'two-fer)
+    {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12})
+   (clojure.core/with-loading-context (clojure.core/refer 'clojure.core))
+   (if
+    (.equals 'two-fer 'clojure.core)
+    nil
+    (do (clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)) nil))),
+  :statements
+  [{:args
+    [{:op :quote,
+      :expr
+      {:children [:meta],
+       :meta
+       {:op :const,
+        :env
+        {:context :ctx/expr,
+         :locals {},
+         :ns clojure-representer,
+         :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+         :end-column 12,
+         :column 5,
+         :line 1,
+         :end-line 1},
+        :type :map,
+        :literal? true,
+        :val
+        {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12},
+        :form
+        {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12},
+        :o-tag clojure.lang.PersistentArrayMap,
+        :tag clojure.lang.PersistentArrayMap},
+       :val two-fer,
+       :type :symbol,
+       :op :const,
+       :env
+       {:context :ctx/expr,
+        :locals {},
+        :ns clojure-representer,
+        :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+        :end-column 12,
+        :column 5,
+        :line 1,
+        :end-line 1},
+       :o-tag clojure.lang.Symbol,
+       :literal? true,
+       :form two-fer,
+       :tag clojure.lang.Symbol},
+      :form 'two-fer,
+      :env
+      {:context :ctx/expr,
+       :locals {},
+       :ns clojure-representer,
+       :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+       :end-column 13,
+       :column 1,
+       :line 1,
+       :end-line 1},
+      :literal? true,
+      :children [:expr],
+      :tag clojure.lang.Symbol,
+      :o-tag clojure.lang.Symbol}],
+    :children [:fn :args],
+    :fn
+    {:op :var,
+     :assignable? false,
+     :var #'clojure.core/in-ns,
+     :meta
+     {:doc "Sets *ns* to the namespace named by the symbol, creating it if needed.",
+      :arglists ([name]),
+      :name in-ns,
+      :ns #namespace[clojure.core],
+      :added "1.0"},
+     :env
+     {:context :ctx/expr,
+      :locals {},
+      :ns clojure-representer,
+      :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+      :end-column 13,
+      :column 1,
+      :line 1,
+      :end-line 1},
+     :form clojure.core/in-ns,
+     :o-tag java.lang.Object,
+     :arglists ([name])},
+    :op :invoke,
+    :env
+    {:context :ctx/statement,
+     :locals {},
+     :ns clojure-representer,
+     :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+     :end-column 13,
+     :column 1,
+     :line 1,
+     :end-line 1},
+    :o-tag java.lang.Object,
+    :result #namespace[two-fer],
+    :top-level true,
+    :form (clojure.core/in-ns 'two-fer),
+    :raw-forms nil}
+   {:args
+    [{:op :const,
+      :env
+      {:context :ctx/expr,
+       :locals {},
+       :ns two-fer,
+       :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+       :end-column 13,
+       :column 1,
+       :line 1,
+       :end-line 1},
+      :form
+      {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12},
+      :val
+      {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12},
+      :type :map,
+      :literal? true,
+      :o-tag clojure.lang.PersistentArrayMap,
+      :tag clojure.lang.IPersistentMap}],
+    :children [:instance :args],
+    :instance
+    {:args
+     [{:op :quote,
+       :expr
+       {:children [:meta],
+        :meta
+        {:op :const,
+         :env
+         {:context :ctx/expr,
+          :locals {},
+          :ns two-fer,
+          :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+          :end-column 12,
+          :column 5,
+          :line 1,
+          :end-line 1},
+         :type :map,
+         :literal? true,
+         :val
+         {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12},
+         :form
+         {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12},
+         :o-tag clojure.lang.PersistentArrayMap,
+         :tag clojure.lang.PersistentArrayMap},
+        :val two-fer,
+        :type :symbol,
+        :op :const,
+        :env
+        {:context :ctx/expr,
+         :locals {},
+         :ns two-fer,
+         :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+         :end-column 12,
+         :column 5,
+         :line 1,
+         :end-line 1},
+        :o-tag clojure.lang.Symbol,
+        :literal? true,
+        :form two-fer,
+        :tag clojure.lang.Symbol},
+       :form 'two-fer,
+       :env
+       {:context :ctx/expr,
+        :locals {},
+        :ns two-fer,
+        :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+        :end-column 13,
+        :column 1,
+        :line 1,
+        :end-line 1},
+       :literal? true,
+       :children [:expr],
+       :tag clojure.lang.Symbol,
+       :o-tag clojure.lang.Symbol}],
+     :children [:args],
+     :method find,
+     :op :static-call,
+     :env
+     {:context :ctx/expr,
+      :locals {},
+      :ns two-fer,
+      :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+      :end-column 13,
+      :column 1,
+      :line 1,
+      :end-line 1},
+     :o-tag clojure.lang.Namespace,
+     :class clojure.lang.Namespace,
+     :form (. clojure.lang.Namespace (find 'two-fer)),
+     :tag clojure.lang.AReference,
+     :validated? true,
+     :raw-forms ((clojure.lang.Namespace/find 'two-fer))},
+    :method resetMeta,
+    :op :instance-call,
+    :env
+    {:context :ctx/statement,
+     :locals {},
+     :ns two-fer,
+     :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+     :end-column 13,
+     :column 1,
+     :line 1,
+     :end-line 1},
+    :o-tag clojure.lang.IPersistentMap,
+    :result
+    {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12},
+    :class clojure.lang.AReference,
+    :top-level true,
+    :form
+    (.
+     (clojure.lang.Namespace/find 'two-fer)
+     (resetMeta
+      {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12})),
+    :tag clojure.lang.IPersistentMap,
+    :validated? true,
+    :raw-forms
+    ((.resetMeta
+      (clojure.lang.Namespace/find 'two-fer)
+      {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 1, :column 5, :end-line 1, :end-column 12}))}
+   {:args [],
+    :children [:fn :args],
+    :fn
+    {:children [:local :methods],
+     :op :fn,
+     :env
+     {:context :ctx/expr,
+      :locals {},
+      :ns two-fer,
+      :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+      :end-column 13,
+      :column 1,
+      :line 1,
+      :end-line 1},
+     :o-tag clojure.lang.AFunction,
+     :variadic? false,
+     :methods
+     [{:children [:params :body],
+       :loop-id loop_12540,
+       :arglist [],
+       :params [],
+       :fixed-arity 0,
+       :op :fn-method,
+       :env
+       {:locals
+        {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+        :ns two-fer,
+        :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+        :end-column 13,
+        :column 1,
+        :line 1,
+        :once false,
+        :end-line 1,
+        :context :ctx/expr},
+       :o-tag java.lang.Object,
+       :variadic? false,
+       :form
+       ([]
+        (.
+         clojure.lang.Var
+         (clojure.core/pushThreadBindings
+          #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+        (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings))))),
+       :tag java.lang.Object,
+       :body
+       {:op :do,
+        :env
+        {:loop-locals 0,
+         :locals
+         {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+         :ns two-fer,
+         :loop-id loop_12540,
+         :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+         :end-column 13,
+         :column 1,
+         :line 1,
+         :once false,
+         :end-line 1,
+         :context :ctx/return},
+        :form
+        (do
+         (.
+          clojure.lang.Var
+          (clojure.core/pushThreadBindings
+           #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+         (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings))))),
+        :statements
+        [{:args
+          [{:op :map,
+            :env
+            {:loop-locals 0,
+             :locals
+             {loading__6789__auto__
+              {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+             :ns two-fer,
+             :loop-id loop_12540,
+             :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+             :end-column 13,
+             :column 1,
+             :line 1,
+             :once false,
+             :end-line 1,
+             :context :ctx/expr},
+            :keys
+            [{:field LOADER,
+              :op :static-field,
+              :env
+              {:loop-locals 0,
+               :locals
+               {loading__6789__auto__
+                {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+               :ns two-fer,
+               :loop-id loop_12540,
+               :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+               :end-column 13,
+               :column 1,
+               :line 1,
+               :once false,
+               :end-line 1,
+               :context :ctx/expr},
+              :o-tag clojure.lang.Var,
+              :class clojure.lang.Compiler,
+              :form (. clojure.lang.Compiler -LOADER),
+              :tag clojure.lang.Var,
+              :assignable? false,
+              :raw-forms (clojure.lang.Compiler/LOADER)}],
+            :vals
+            [{:args [],
+              :children [:instance],
+              :instance
+              {:args [],
+               :children [:instance],
+               :instance
+               {:children [],
+                :name PLACEHOLDER-2,
+                :op :local,
+                :env
+                {:loop-locals 0,
+                 :locals
+                 {loading__6789__auto__
+                  {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+                 :ns two-fer,
+                 :loop-id loop_12540,
+                 :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+                 :end-column 13,
+                 :column 1,
+                 :line 1,
+                 :once false,
+                 :end-line 1,
+                 :context :ctx/expr},
+                :o-tag clojure.lang.AFunction,
+                :form loading__6789__auto__,
+                :tag java.lang.Object,
+                :atom #<Atom@1d686634: {:tag clojure.lang.AFunction}>,
+                :local :fn,
+                :assignable? false},
+               :method getClass,
+               :op :instance-call,
+               :env
+               {:loop-locals 0,
+                :locals
+                {loading__6789__auto__
+                 {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+                :ns two-fer,
+                :loop-id loop_12540,
+                :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+                :end-column 13,
+                :column 1,
+                :line 1,
+                :once false,
+                :end-line 1,
+                :context :ctx/expr},
+               :o-tag java.lang.Class,
+               :m-or-f getClass,
+               :class java.lang.Object,
+               :form (. loading__6789__auto__ getClass),
+               :tag java.lang.Class,
+               :validated? true,
+               :raw-forms ((.getClass loading__6789__auto__))},
+              :method getClassLoader,
+              :op :instance-call,
+              :env
+              {:loop-locals 0,
+               :locals
+               {loading__6789__auto__
+                {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+               :ns two-fer,
+               :loop-id loop_12540,
+               :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+               :end-column 13,
+               :column 1,
+               :line 1,
+               :once false,
+               :end-line 1,
+               :context :ctx/expr},
+              :o-tag java.lang.ClassLoader,
+              :m-or-f getClassLoader,
+              :class java.lang.Class,
+              :form (. (.getClass loading__6789__auto__) getClassLoader),
+              :tag java.lang.ClassLoader,
+              :validated? true,
+              :raw-forms ((.getClassLoader (.getClass loading__6789__auto__)))}],
+            :form #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))},
+            :children [:keys :vals],
+            :o-tag clojure.lang.PersistentHashMap,
+            :tag clojure.lang.Associative}],
+          :children [:args],
+          :method pushThreadBindings,
+          :op :static-call,
+          :env
+          {:loop-locals 0,
+           :locals
+           {loading__6789__auto__
+            {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+           :ns two-fer,
+           :loop-id loop_12540,
+           :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+           :end-column 13,
+           :column 1,
+           :line 1,
+           :once false,
+           :end-line 1,
+           :context :ctx/statement},
+          :o-tag void,
+          :class clojure.lang.Var,
+          :form
+          (.
+           clojure.lang.Var
+           (clojure.core/pushThreadBindings
+            #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))})),
+          :tag void,
+          :validated? true}],
+        :ret
+        {:op :try,
+         :env
+         {:loop-locals 0,
+          :locals
+          {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+          :ns two-fer,
+          :loop-id loop_12540,
+          :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+          :end-column 13,
+          :column 1,
+          :line 1,
+          :once false,
+          :end-line 1,
+          :context :ctx/return},
+         :form
+         (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings)))),
+         :body
+         {:args
+          [{:op :quote,
+            :expr
+            {:op :const,
+             :env
+             {:no-recur true,
+              :loop-locals 0,
+              :locals
+              {loading__6789__auto__
+               {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+              :ns two-fer,
+              :loop-id loop_12540,
+              :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+              :end-column 13,
+              :column 1,
+              :in-try true,
+              :line 1,
+              :once false,
+              :end-line 1,
+              :context :ctx/expr},
+             :type :symbol,
+             :literal? true,
+             :val clojure.core,
+             :form clojure.core,
+             :o-tag clojure.lang.Symbol,
+             :tag clojure.lang.Symbol},
+            :form 'clojure.core,
+            :env
+            {:no-recur true,
+             :loop-locals 0,
+             :locals
+             {loading__6789__auto__
+              {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+             :ns two-fer,
+             :loop-id loop_12540,
+             :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+             :end-column 13,
+             :column 1,
+             :in-try true,
+             :line 1,
+             :once false,
+             :end-line 1,
+             :context :ctx/expr},
+            :literal? true,
+            :children [:expr],
+            :tag clojure.lang.Symbol,
+            :o-tag clojure.lang.Symbol}],
+          :children [:fn :args],
+          :body? true,
+          :fn
+          {:op :var,
+           :assignable? false,
+           :var #'clojure.core/refer,
+           :meta
+           {:arglists ([ns-sym & filters]),
+            :doc
+            "refers to all public vars of ns, subject to filters.\n  filters can include at most one each of:\n\n  :exclude list-of-symbols\n  :only list-of-symbols\n  :rename map-of-fromsymbol-tosymbol\n\n  For each public interned var in the namespace named by the symbol,\n  adds a mapping from the name of the var to the var to the current\n  namespace.  Throws an exception if name is already mapped to\n  something else in the current namespace. Filters can be used to\n  select a subset, via inclusion or exclusion, or to provide a mapping\n  to a symbol different from the var's name, in order to prevent\n  clashes. Use :use in the ns macro in preference to calling this directly.",
+            :added "1.0",
+            :line 4218,
+            :column 1,
+            :file "clojure/core.clj",
+            :name refer,
+            :ns #namespace[clojure.core]},
+           :env
+           {:no-recur true,
+            :loop-locals 0,
+            :locals
+            {loading__6789__auto__
+             {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+            :ns two-fer,
+            :loop-id loop_12540,
+            :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+            :end-column 13,
+            :column 1,
+            :in-try true,
+            :line 1,
+            :once false,
+            :end-line 1,
+            :context :ctx/expr},
+           :form clojure.core/refer,
+           :o-tag java.lang.Object,
+           :arglists ([ns-sym & filters])},
+          :op :invoke,
+          :env
+          {:no-recur true,
+           :loop-locals 0,
+           :locals
+           {loading__6789__auto__
+            {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+           :ns two-fer,
+           :loop-id loop_12540,
+           :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+           :end-column 13,
+           :column 1,
+           :in-try true,
+           :line 1,
+           :once false,
+           :end-line 1,
+           :context :ctx/return},
+          :o-tag java.lang.Object,
+          :form (clojure.core/refer 'clojure.core),
+          :raw-forms ((do (clojure.core/refer 'clojure.core)))},
+         :catches [],
+         :finally
+         {:args [],
+          :children [:args],
+          :body? true,
+          :method popThreadBindings,
+          :op :static-call,
+          :env
+          {:no-recur true,
+           :loop-locals 0,
+           :locals
+           {loading__6789__auto__
+            {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+           :ns two-fer,
+           :loop-id loop_12540,
+           :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+           :end-column 13,
+           :column 1,
+           :line 1,
+           :once false,
+           :end-line 1,
+           :context :ctx/statement},
+          :o-tag void,
+          :class clojure.lang.Var,
+          :form (. clojure.lang.Var (clojure.core/popThreadBindings)),
+          :tag void,
+          :validated? true,
+          :raw-forms ((do (. clojure.lang.Var (clojure.core/popThreadBindings))))},
+         :children [:body :catches :finally],
+         :o-tag nil},
+        :children [:statements :ret],
+        :body? true,
+        :o-tag nil},
+       :local {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}}],
+     :once false,
+     :max-fixed-arity 0,
+     :form
+     (fn*
+      loading__6789__auto__
+      ([]
+       (.
+        clojure.lang.Var
+        (clojure.core/pushThreadBindings
+         #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+       (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings)))))),
+     :tag clojure.lang.AFunction,
+     :arglists ([]),
+     :local
+     {:op :binding,
+      :env
+      {:context :ctx/expr,
+       :locals {},
+       :ns two-fer,
+       :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+       :end-column 13,
+       :column 1,
+       :line 1,
+       :end-line 1},
+      :form loading__6789__auto__,
+      :local :fn,
+      :name PLACEHOLDER-2,
+      :atom #<Atom@1d686634: {:tag clojure.lang.AFunction}>,
+      :tag clojure.lang.AFunction,
+      :o-tag clojure.lang.AFunction},
+     :raw-forms
+     ((clojure.core/fn
+       loading__6789__auto__
+       []
+       (.
+        clojure.lang.Var
+        (clojure.core/pushThreadBindings
+         #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+       (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings))))))},
+    :op :invoke,
+    :env
+    {:context :ctx/statement,
+     :locals {},
+     :ns two-fer,
+     :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+     :end-column 13,
+     :column 1,
+     :line 1,
+     :end-line 1},
+    :o-tag java.lang.Object,
+    :result nil,
+    :top-level true,
+    :form
+    ((clojure.core/fn
+      loading__6789__auto__
+      []
+      (.
+       clojure.lang.Var
+       (clojure.core/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+      (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings)))))),
+    :raw-forms ((clojure.core/with-loading-context (clojure.core/refer 'clojure.core)))}],
+  :raw-forms ((ns two-fer))}
+ {:children [:meta :init],
+  :meta
+  {:op :const,
+   :env
+   {:context :ctx/expr,
+    :locals {},
+    :ns two-fer,
+    :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+    :end-column 4,
+    :column 1,
+    :line 3,
+    :end-line 6},
+   :form
+   {:file "file:/home/bob/clojure-representer/src/two_fer.clj",
+    :line 3,
+    :column 1,
+    :end-line 6,
+    :end-column 4,
+    :arglists '([] [name])},
+   :val
+   {:file "file:/home/bob/clojure-representer/src/two_fer.clj",
+    :line 3,
+    :column 1,
+    :end-line 6,
+    :end-column 4,
+    :arglists '([] [name])},
+   :type :map,
+   :literal? true,
+   :o-tag clojure.lang.PersistentArrayMap,
+   :tag clojure.lang.PersistentArrayMap},
+  :return-tag java.lang.String,
+  :init
+  {:children [:meta :expr],
+   :meta
+   {:op :const,
+    :env
+    {:context :ctx/expr,
+     :locals {},
+     :ns two-fer,
+     :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+     :end-column 4,
+     :column 1,
+     :line 3,
+     :end-line 6},
+    :form {:rettag nil},
+    :val {:rettag nil},
+    :type :map,
+    :literal? true,
+    :o-tag clojure.lang.PersistentArrayMap,
+    :tag clojure.lang.PersistentArrayMap},
+   :return-tag java.lang.String,
+   :op :with-meta,
+   :env
+   {:context :ctx/expr,
+    :locals {},
+    :ns two-fer,
+    :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+    :end-column 4,
+    :column 1,
+    :line 3,
+    :end-line 6},
+   :o-tag java.lang.Object,
+   :expr
+   {:children [:methods],
+    :return-tag java.lang.String,
+    :op :fn,
+    :env
+    {:context :ctx/expr,
+     :locals {},
+     :ns two-fer,
+     :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+     :end-column 4,
+     :column 1,
+     :line 3,
+     :end-line 6},
+    :o-tag clojure.lang.AFunction,
+    :variadic? false,
+    :methods
+    [{:children [:params :body],
+      :loop-id loop_12550,
+      :arglist [],
+      :params [],
+      :fixed-arity 0,
+      :op :fn-method,
+      :env
+      {:locals {},
+       :ns two-fer,
+       :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+       :end-column 4,
+       :column 1,
+       :line 3,
+       :once false,
+       :end-line 6,
+       :context :ctx/expr},
+      :o-tag java.lang.Object,
+      :variadic? false,
+      :form ([] (str "One for you, one for me.")),
+      :tag java.lang.Object,
+      :body
+      {:args
+       [{:op :const,
+         :env
+         {:loop-locals 0,
+          :locals {},
+          :ns two-fer,
+          :loop-id loop_12550,
+          :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+          :end-column 39,
+          :column 7,
+          :line 4,
+          :once false,
+          :end-line 4,
+          :context :ctx/expr},
+         :type :string,
+         :literal? true,
+         :val "One for you, one for me.",
+         :form "One for you, one for me.",
+         :o-tag java.lang.String,
+         :tag java.lang.String}],
+       :children [:fn :args],
+       :body? true,
+       :fn
+       {:meta
+        {:added "1.0",
+         :ns #namespace[clojure.core],
+         :name str,
+         :file "clojure/core.clj",
+         :static true,
+         :column 1,
+         :line 546,
+         :tag java.lang.String,
+         :arglists ([] [x] [x & ys]),
+         :doc
+         "With no args, returns the empty string. With one arg x, returns\n  x.toString().  (str nil) returns the empty string. With more than\n  one arg, returns the concatenation of the str values of the args."},
+        :return-tag java.lang.String,
+        :op :var,
+        :env
+        {:loop-locals 0,
+         :locals {},
+         :ns two-fer,
+         :loop-id loop_12550,
+         :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+         :end-column 11,
+         :column 8,
+         :line 4,
+         :once false,
+         :end-line 4,
+         :context :ctx/expr},
+        :o-tag java.lang.Object,
+        :var #'clojure.core/str,
+        :form str,
+        :tag clojure.lang.AFunction,
+        :arglists ([] [x] [x & ys]),
+        :assignable? false},
+       :meta
+       {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 4, :column 7, :end-line 4, :end-column 39},
+       :op :invoke,
+       :env
+       {:loop-locals 0,
+        :locals {},
+        :ns two-fer,
+        :loop-id loop_12550,
+        :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+        :end-column 39,
+        :column 7,
+        :line 4,
+        :once false,
+        :end-line 4,
+        :context :ctx/return},
+       :o-tag java.lang.Object,
+       :form (str "One for you, one for me."),
+       :tag java.lang.String,
+       :raw-forms ((do (str "One for you, one for me.")))}}
+     {:children [:params :body],
+      :loop-id loop_12551,
+      :arglist [name],
+      :params
+      [{:name PLACEHOLDER-3,
+        :op :binding,
+        :env
+        {:locals {},
+         :ns two-fer,
+         :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+         :end-column 9,
+         :column 5,
+         :line 5,
+         :once false,
+         :end-line 5,
+         :context :ctx/expr},
+        :o-tag java.lang.Object,
+        :variadic? false,
+        :arg-id 0,
+        :form name,
+        :tag java.lang.Object,
+        :atom #<Atom@2982dab8: {:tag java.lang.Object}>,
+        :local :arg}],
+      :fixed-arity 1,
+      :op :fn-method,
+      :env
+      {:locals {},
+       :ns two-fer,
+       :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+       :end-column 4,
+       :column 1,
+       :line 3,
+       :once false,
+       :end-line 6,
+       :context :ctx/expr},
+      :o-tag java.lang.Object,
+      :variadic? false,
+      :form ([name] (str "One for " name ", one for me.")),
+      :tag java.lang.Object,
+      :body
+      {:args
+       [{:op :const,
+         :env
+         {:loop-locals 1,
+          :locals {name {:form name, :name name, :variadic? false, :op :binding, :arg-id 0, :local :arg}},
+          :ns two-fer,
+          :loop-id loop_12551,
+          :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+          :end-column 48,
+          :column 11,
+          :line 5,
+          :once false,
+          :end-line 5,
+          :context :ctx/expr},
+         :type :string,
+         :literal? true,
+         :val "One for ",
+         :form "One for ",
+         :o-tag java.lang.String,
+         :tag java.lang.String}
+        {:children [],
+         :name PLACEHOLDER-3,
+         :op :local,
+         :env
+         {:loop-locals 1,
+          :locals {name {:form name, :name name, :variadic? false, :op :binding, :arg-id 0, :local :arg}},
+          :ns two-fer,
+          :loop-id loop_12551,
+          :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+          :end-column 31,
+          :column 27,
+          :line 5,
+          :once false,
+          :end-line 5,
+          :context :ctx/expr},
+         :o-tag java.lang.Object,
+         :variadic? false,
+         :arg-id 0,
+         :form name,
+         :tag java.lang.Object,
+         :atom #<Atom@2982dab8: {:tag java.lang.Object}>,
+         :local :arg,
+         :assignable? false}
+        {:op :const,
+         :env
+         {:loop-locals 1,
+          :locals {name {:form name, :name name, :variadic? false, :op :binding, :arg-id 0, :local :arg}},
+          :ns two-fer,
+          :loop-id loop_12551,
+          :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+          :end-column 48,
+          :column 11,
+          :line 5,
+          :once false,
+          :end-line 5,
+          :context :ctx/expr},
+         :type :string,
+         :literal? true,
+         :val ", one for me.",
+         :form ", one for me.",
+         :o-tag java.lang.String,
+         :tag java.lang.String}],
+       :children [:fn :args],
+       :body? true,
+       :fn
+       {:meta
+        {:added "1.0",
+         :ns #namespace[clojure.core],
+         :name str,
+         :file "clojure/core.clj",
+         :static true,
+         :column 1,
+         :line 546,
+         :tag java.lang.String,
+         :arglists ([] [x] [x & ys]),
+         :doc
+         "With no args, returns the empty string. With one arg x, returns\n  x.toString().  (str nil) returns the empty string. With more than\n  one arg, returns the concatenation of the str values of the args."},
+        :return-tag java.lang.String,
+        :op :var,
+        :env
+        {:loop-locals 1,
+         :locals {name {:form name, :name name, :variadic? false, :op :binding, :arg-id 0, :local :arg}},
+         :ns two-fer,
+         :loop-id loop_12551,
+         :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+         :end-column 15,
+         :column 12,
+         :line 5,
+         :once false,
+         :end-line 5,
+         :context :ctx/expr},
+        :o-tag java.lang.Object,
+        :var #'clojure.core/str,
+        :form str,
+        :tag clojure.lang.AFunction,
+        :arglists ([] [x] [x & ys]),
+        :assignable? false},
+       :meta
+       {:file "file:/home/bob/clojure-representer/src/two_fer.clj", :line 5, :column 11, :end-line 5, :end-column 48},
+       :op :invoke,
+       :env
+       {:loop-locals 1,
+        :locals {name {:form name, :name name, :variadic? false, :op :binding, :arg-id 0, :local :arg}},
+        :ns two-fer,
+        :loop-id loop_12551,
+        :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+        :end-column 48,
+        :column 11,
+        :line 5,
+        :once false,
+        :end-line 5,
+        :context :ctx/return},
+       :o-tag java.lang.Object,
+       :form (str "One for " name ", one for me."),
+       :tag java.lang.String,
+       :raw-forms ((do (str "One for " name ", one for me.")))}}],
+    :once false,
+    :max-fixed-arity 1,
+    :form (fn* ([] (str "One for you, one for me.")) ([name] (str "One for " name ", one for me."))),
+    :tag clojure.lang.AFunction,
+    :arglists ([] [name])},
+   :form (fn* ([] (str "One for you, one for me.")) ([name] (str "One for " name ", one for me."))),
+   :tag clojure.lang.AFunction,
+   :arglists ([] [name]),
+   :raw-forms
+   ((clojure.core/fn ([] (str "One for you, one for me.")) ([name] (str "One for " name ", one for me."))))},
+  :name two-fer,
+  :op :def,
+  :env
+  {:context :ctx/expr,
+   :locals {},
+   :ns two-fer,
+   :file "file:/home/bob/clojure-representer/src/two_fer.clj",
+   :end-column 4,
+   :column 1,
+   :line 3,
+   :end-line 6},
+  :o-tag clojure.lang.Var,
+  :var #'two-fer/two-fer,
+  :result #'two-fer/two-fer,
+  :top-level true,
+  :form
+  (def two-fer (clojure.core/fn ([] (str "One for you, one for me.")) ([name] (str "One for " name ", one for me.")))),
+  :tag clojure.lang.Var,
+  :arglists ([] [name]),
+  :raw-forms ((defn two-fer ([] (str "One for you, one for me.")) ([name] (str "One for " name ", one for me."))))}]
+clj꞉clojure-representer꞉> 
+; Execution error (AssertionError) at analyzer.jvm/analyze-ns (jvm.clj:596).
+; Assert failed: Can't find two-fer in classpath
+res
+clj꞉clojure-representer꞉> 
+#'two-fer/two-fer
+clj꞉clojure-representer꞉> 
+; Execution error (AssertionError) at analyzer.jvm/analyze-ns (jvm.clj:596).
+; Assert failed: Can't find two-fer in classpath
+res
+clj꞉clojure-representer꞉> 
+; Error printing return value (ClassCastException) at clojure.edn/read-string (edn.clj:46).
+; class java.lang.Character cannot be cast to class java.lang.String (java.lang.Character and java.lang.String are in module java.base of loader 'bootstrap')
+clj꞉clojure-representer꞉> 
+nil
+clj꞉clojure-representer꞉> 
+; Execution error (ExceptionInfo) at analyzer.passes.jvm.validate/eval8273$fn (validate.clj:198).
+; class rewrite_clj.node.whitespace.NewlineNode is not a function, but it's used as such
+clj꞉clojure-representer꞉> 
+[{:tag :list,
+  :format-string "(%s)",
+  :wrap-length 2,
+  :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+  :children
+  ({:value ns, :string-value "ns", :map-qualifier nil}
+   {:whitespace " "}
+   {:value two-fer, :string-value "two-fer", :map-qualifier nil})}
+ {:l [],
+  :pnodes
+  [{:children
+    ({:tag :list,
+      :format-string "(%s)",
+      :wrap-length 2,
+      :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+      :children
+      ({:value ns, :string-value "ns", :map-qualifier nil}
+       {:whitespace " "}
+       {:value two-fer, :string-value "two-fer", :map-qualifier nil})}
+     {:newlines "\n\n"}
+     {:tag :list,
+      :format-string "(%s)",
+      :wrap-length 2,
+      :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+      :children
+      ({:value defn, :string-value "defn", :map-qualifier nil}
+       {:whitespace " "}
+       {:value two-fer, :string-value "two-fer", :map-qualifier nil}
+       {:newlines "\n"}
+       {:whitespace "  "}
+       {:tag :list,
+        :format-string "(%s)",
+        :wrap-length 2,
+        :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+        :children
+        ({:tag :vector, :format-string "[%s]", :wrap-length 2, :seq-fn #function[clojure.core/vec], :children ()}
+         {:whitespace " "}
+         {:tag :list,
+          :format-string "(%s)",
+          :wrap-length 2,
+          :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+          :children
+          ({:value str, :string-value "str", :map-qualifier nil}
+           {:whitespace " "}
+           {:lines ["One for you, one for me."]})})}
+       {:newlines "\n"}
+       {:whitespace "  "}
+       {:tag :list,
+        :format-string "(%s)",
+        :wrap-length 2,
+        :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+        :children
+        ({:tag :vector,
+          :format-string "[%s]",
+          :wrap-length 2,
+          :seq-fn #function[clojure.core/vec],
+          :children ({:value name, :string-value "name", :map-qualifier nil})}
+         {:whitespace " "}
+         {:tag :list,
+          :format-string "(%s)",
+          :wrap-length 2,
+          :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+          :children
+          ({:value str, :string-value "str", :map-qualifier nil}
+           {:whitespace " "}
+           {:lines ["One for "]}
+           {:whitespace " "}
+           {:value name, :string-value "name", :map-qualifier nil}
+           {:whitespace " "}
+           {:lines [", one for me."]})})}
+       {:newlines "\n"}
+       {:whitespace "  "})}
+     {:newlines "\n"})}],
+  :ppath nil,
+  :r
+  ({:newlines "\n\n"}
+   {:tag :list,
+    :format-string "(%s)",
+    :wrap-length 2,
+    :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+    :children
+    ({:value defn, :string-value "defn", :map-qualifier nil}
+     {:whitespace " "}
+     {:value two-fer, :string-value "two-fer", :map-qualifier nil}
+     {:newlines "\n"}
+     {:whitespace "  "}
+     {:tag :list,
+      :format-string "(%s)",
+      :wrap-length 2,
+      :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+      :children
+      ({:tag :vector, :format-string "[%s]", :wrap-length 2, :seq-fn #function[clojure.core/vec], :children ()}
+       {:whitespace " "}
+       {:tag :list,
+        :format-string "(%s)",
+        :wrap-length 2,
+        :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+        :children
+        ({:value str, :string-value "str", :map-qualifier nil}
+         {:whitespace " "}
+         {:lines ["One for you, one for me."]})})}
+     {:newlines "\n"}
+     {:whitespace "  "}
+     {:tag :list,
+      :format-string "(%s)",
+      :wrap-length 2,
+      :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+      :children
+      ({:tag :vector,
+        :format-string "[%s]",
+        :wrap-length 2,
+        :seq-fn #function[clojure.core/vec],
+        :children ({:value name, :string-value "name", :map-qualifier nil})}
+       {:whitespace " "}
+       {:tag :list,
+        :format-string "(%s)",
+        :wrap-length 2,
+        :seq-fn #function[rewrite-clj.node.seq/list-node/fn--13949],
+        :children
+        ({:value str, :string-value "str", :map-qualifier nil}
+         {:whitespace " "}
+         {:lines ["One for "]}
+         {:whitespace " "}
+         {:value name, :string-value "name", :map-qualifier nil}
+         {:whitespace " "}
+         {:lines [", one for me."]})})}
+     {:newlines "\n"}
+     {:whitespace "  "})}
+   {:newlines "\n"})}]
+clj꞉clojure-representer꞉> 
+{:ret
+ {:children [:test :then :else],
+  :else
+  {:op :do,
+   :env
+   {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :form
+   (do (clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)) nil),
+   :statements
+   [{:args
+     [{:children [:methods],
+       :op :fn,
+       :env
+       {:context :ctx/expr,
+        :locals {},
+        :ns two-fer,
+        :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+       :o-tag clojure.lang.AFunction,
+       :variadic? false,
+       :methods
+       [{:children [:params :body],
+         :loop-id loop_15169,
+         :arglist [],
+         :params [],
+         :fixed-arity 0,
+         :op :fn-method,
+         :env
+         {:context :ctx/expr,
+          :locals {},
+          :ns two-fer,
+          :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+          :once false},
+         :o-tag java.lang.Object,
+         :variadic? false,
+         :form ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)),
+         :tag java.lang.Object,
+         :body
+         {:args
+          [{:op :invoke,
+            :form @#'clojure.core/*loaded-libs*,
+            :env
+            {:context :ctx/expr,
+             :locals {},
+             :ns two-fer,
+             :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+             :once false,
+             :loop-id loop_15169,
+             :loop-locals 0},
+            :fn
+            {:op :var,
+             :assignable? false,
+             :var #'clojure.core/deref,
+             :meta
+             {:added "1.0",
+              :ns #namespace[clojure.core],
+              :name deref,
+              :file "clojure/core.clj",
+              :static true,
+              :column 1,
+              :line 2323,
+              :arglists ([ref] [ref timeout-ms timeout-val]),
+              :doc
+              "Also reader macro: @ref/@agent/@var/@atom/@delay/@future/@promise. Within a transaction,\n  returns the in-transaction-value of ref, else returns the\n  most-recently-committed value of ref. When applied to a var, agent\n  or atom, returns its current state. When applied to a delay, forces\n  it if not already forced. When applied to a future, will block if\n  computation not complete. When applied to a promise, will block\n  until a value is delivered.  The variant taking a timeout can be\n  used for blocking references (futures and promises), and will return\n  timeout-val if the timeout (in milliseconds) is reached before a\n  value is available. See also - realized?."},
+             :env
+             {:context :ctx/expr,
+              :locals {},
+              :ns two-fer,
+              :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+              :once false,
+              :loop-id loop_15169,
+              :loop-locals 0},
+             :form clojure.core/deref,
+             :o-tag java.lang.Object,
+             :arglists ([ref] [ref timeout-ms timeout-val])},
+            :args
+            [{:op :the-var,
+              :env
+              {:context :ctx/expr,
+               :locals {},
+               :ns two-fer,
+               :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+               :once false,
+               :loop-id loop_15169,
+               :loop-locals 0},
+              :form #'clojure.core/*loaded-libs*,
+              :var #'clojure.core/*loaded-libs*,
+              :o-tag clojure.lang.Var,
+              :tag clojure.lang.Var}],
+            :children [:fn :args],
+            :o-tag java.lang.Object}
+           {:op :var,
+            :assignable? false,
+            :var #'clojure.core/conj,
+            :meta
+            {:added "1.0",
+             :ns #namespace[clojure.core],
+             :name conj,
+             :file "clojure/core.clj",
+             :static true,
+             :column 1,
+             :line 75,
+             :arglists ([] [coll] [coll x] [coll x & xs]),
+             :doc
+             "conj[oin]. Returns a new collection with the xs\n    'added'. (conj nil item) returns (item).\n    (conj coll) returns coll. (conj) returns [].\n    The 'addition' may happen at different 'places' depending\n    on the concrete type."},
+            :env
+            {:context :ctx/expr,
+             :locals {},
+             :ns two-fer,
+             :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+             :once false,
+             :loop-id loop_15169,
+             :loop-locals 0},
+            :form clojure.core/conj,
+            :o-tag java.lang.Object,
+            :arglists ([] [coll] [coll x] [coll x & xs])}
+           {:op :quote,
+            :expr
+            {:op :const,
+             :env
+             {:context :ctx/expr,
+              :locals {},
+              :ns two-fer,
+              :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+              :once false,
+              :loop-id loop_15169,
+              :loop-locals 0},
+             :type :symbol,
+             :literal? true,
+             :val two-fer,
+             :form two-fer,
+             :o-tag clojure.lang.Symbol,
+             :tag clojure.lang.Symbol},
+            :form 'two-fer,
+            :env
+            {:context :ctx/expr,
+             :locals {},
+             :ns two-fer,
+             :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+             :once false,
+             :loop-id loop_15169,
+             :loop-locals 0},
+            :literal? true,
+            :children [:expr],
+            :tag clojure.lang.Symbol,
+            :o-tag clojure.lang.Symbol}],
+          :children [:fn :args],
+          :body? true,
+          :fn
+          {:op :var,
+           :assignable? false,
+           :var #'clojure.core/commute,
+           :meta
+           {:added "1.0",
+            :ns #namespace[clojure.core],
+            :name commute,
+            :file "clojure/core.clj",
+            :static true,
+            :column 1,
+            :line 2439,
+            :arglists ([ref fun & args]),
+            :doc
+            "Must be called in a transaction. Sets the in-transaction-value of\n  ref to:\n\n  (apply fun in-transaction-value-of-ref args)\n\n  and returns the in-transaction-value of ref.\n\n  At the commit point of the transaction, sets the value of ref to be:\n\n  (apply fun most-recently-committed-value-of-ref args)\n\n  Thus fun should be commutative, or, failing that, you must accept\n  last-one-in-wins behavior.  commute allows for more concurrency than\n  ref-set."},
+           :env
+           {:context :ctx/expr,
+            :locals {},
+            :ns two-fer,
+            :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+            :once false,
+            :loop-id loop_15169,
+            :loop-locals 0},
+           :form clojure.core/commute,
+           :o-tag java.lang.Object,
+           :arglists ([ref fun & args])},
+          :op :invoke,
+          :env
+          {:context :ctx/return,
+           :locals {},
+           :ns two-fer,
+           :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+           :once false,
+           :loop-id loop_15169,
+           :loop-locals 0},
+          :o-tag java.lang.Object,
+          :form (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer),
+          :raw-forms ((do (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))}}],
+       :once false,
+       :max-fixed-arity 0,
+       :form (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))),
+       :tag java.util.concurrent.Callable,
+       :arglists ([]),
+       :raw-forms
+       ((clojure.core/fn [] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))}],
+     :children [:args],
+     :method runInTransaction,
+     :op :static-call,
+     :env
+     {:context :ctx/statement,
+      :locals {},
+      :ns two-fer,
+      :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :o-tag java.lang.Object,
+     :class clojure.lang.LockingTransaction,
+     :form
+     (.
+      clojure.lang.LockingTransaction
+      (clojure.core/runInTransaction
+       (clojure.core/fn [] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))),
+     :tag java.lang.Object,
+     :validated? true,
+     :raw-forms
+     ((clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))
+      (clojure.core/sync nil (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)))}],
+   :ret
+   {:op :const,
+    :env
+    {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+    :type :nil,
+    :literal? true,
+    :val nil,
+    :form nil,
+    :o-tag nil,
+    :tag nil},
+   :children [:statements :ret],
+   :tag nil,
+   :o-tag nil},
+  :op :if,
+  :env
+  {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+  :o-tag nil,
+  :result nil,
+  :top-level true,
+  :then
+  {:op :const,
+   :env
+   {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :type :nil,
+   :literal? true,
+   :val nil,
+   :form nil,
+   :o-tag nil,
+   :tag nil},
+  :form
+  (if
+   (.equals 'two-fer 'clojure.core)
+   nil
+   (do (clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)) nil)),
+  :test
+  {:args
+   [{:op :quote,
+     :expr
+     {:op :const,
+      :env
+      {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+      :type :symbol,
+      :literal? true,
+      :val clojure.core,
+      :form clojure.core,
+      :o-tag clojure.lang.Symbol,
+      :tag clojure.lang.Symbol},
+     :form 'clojure.core,
+     :env
+     {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :literal? true,
+     :children [:expr],
+     :tag java.lang.Object,
+     :o-tag clojure.lang.Symbol}],
+   :children [:instance :args],
+   :instance
+   {:op :quote,
+    :expr
+    {:op :const,
+     :env
+     {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :type :symbol,
+     :literal? true,
+     :val two-fer,
+     :form two-fer,
+     :o-tag clojure.lang.Symbol,
+     :tag clojure.lang.Symbol},
+    :form 'two-fer,
+    :env
+    {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+    :literal? true,
+    :children [:expr],
+    :tag clojure.lang.Symbol,
+    :o-tag clojure.lang.Symbol},
+   :method equals,
+   :op :instance-call,
+   :env
+   {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :o-tag boolean,
+   :class clojure.lang.Symbol,
+   :form (. 'two-fer (equals 'clojure.core)),
+   :tag boolean,
+   :validated? true,
+   :raw-forms ((.equals 'two-fer 'clojure.core))},
+  :raw-forms nil},
+ :children [:statements :ret],
+ :op :do,
+ :env
+ {:context :ctx/expr,
+  :locals {},
+  :ns clojure-representer,
+  :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+ :result nil,
+ :top-level true,
+ :form
+ (do
+  (clojure.core/in-ns 'two-fer)
+  (clojure.core/with-loading-context (clojure.core/refer 'clojure.core))
+  (if
+   (.equals 'two-fer 'clojure.core)
+   nil
+   (do (clojure.core/dosync (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer)) nil))),
+ :statements
+ [{:args
+   [{:op :quote,
+     :expr
+     {:op :const,
+      :env
+      {:context :ctx/expr,
+       :locals {},
+       :ns clojure-representer,
+       :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+      :type :symbol,
+      :literal? true,
+      :val two-fer,
+      :form two-fer,
+      :o-tag clojure.lang.Symbol,
+      :tag clojure.lang.Symbol},
+     :form 'two-fer,
+     :env
+     {:context :ctx/expr,
+      :locals {},
+      :ns clojure-representer,
+      :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :literal? true,
+     :children [:expr],
+     :tag clojure.lang.Symbol,
+     :o-tag clojure.lang.Symbol}],
+   :children [:fn :args],
+   :fn
+   {:op :var,
+    :assignable? false,
+    :var #'clojure.core/in-ns,
+    :meta
+    {:doc "Sets *ns* to the namespace named by the symbol, creating it if needed.",
+     :arglists ([name]),
+     :name in-ns,
+     :ns #namespace[clojure.core],
+     :added "1.0"},
+    :env
+    {:context :ctx/expr,
+     :locals {},
+     :ns clojure-representer,
+     :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+    :form clojure.core/in-ns,
+    :o-tag java.lang.Object,
+    :arglists ([name])},
+   :op :invoke,
+   :env
+   {:context :ctx/statement,
+    :locals {},
+    :ns clojure-representer,
+    :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :o-tag java.lang.Object,
+   :result #namespace[two-fer],
+   :top-level true,
+   :form (clojure.core/in-ns 'two-fer),
+   :raw-forms nil}
+  {:args [],
+   :children [:fn :args],
+   :fn
+   {:children [:local :methods],
+    :op :fn,
+    :env
+    {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+    :o-tag clojure.lang.AFunction,
+    :variadic? false,
+    :methods
+    [{:children [:params :body],
+      :loop-id loop_15164,
+      :arglist [],
+      :params [],
+      :fixed-arity 0,
+      :op :fn-method,
+      :env
+      {:context :ctx/expr,
+       :locals
+       {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+       :ns two-fer,
+       :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+       :once false},
+      :o-tag java.lang.Object,
+      :variadic? false,
+      :form
+      ([]
+       (.
+        clojure.lang.Var
+        (clojure.core/pushThreadBindings
+         #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+       (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings))))),
+      :tag java.lang.Object,
+      :body
+      {:op :do,
+       :env
+       {:context :ctx/return,
+        :locals
+        {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+        :ns two-fer,
+        :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+        :once false,
+        :loop-id loop_15164,
+        :loop-locals 0},
+       :form
+       (do
+        (.
+         clojure.lang.Var
+         (clojure.core/pushThreadBindings
+          #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+        (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings))))),
+       :statements
+       [{:args
+         [{:op :map,
+           :env
+           {:context :ctx/expr,
+            :locals
+            {loading__6789__auto__
+             {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+            :ns two-fer,
+            :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+            :once false,
+            :loop-id loop_15164,
+            :loop-locals 0},
+           :keys
+           [{:field LOADER,
+             :op :static-field,
+             :env
+             {:context :ctx/expr,
+              :locals
+              {loading__6789__auto__
+               {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+              :ns two-fer,
+              :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+              :once false,
+              :loop-id loop_15164,
+              :loop-locals 0},
+             :o-tag clojure.lang.Var,
+             :class clojure.lang.Compiler,
+             :form (. clojure.lang.Compiler -LOADER),
+             :tag clojure.lang.Var,
+             :assignable? false,
+             :raw-forms (clojure.lang.Compiler/LOADER)}],
+           :vals
+           [{:args [],
+             :children [:instance],
+             :instance
+             {:args [],
+              :children [:instance],
+              :instance
+              {:children [],
+               :name PLACEHOLDER-4,
+               :op :local,
+               :env
+               {:context :ctx/expr,
+                :locals
+                {loading__6789__auto__
+                 {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+                :ns two-fer,
+                :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+                :once false,
+                :loop-id loop_15164,
+                :loop-locals 0},
+               :o-tag clojure.lang.AFunction,
+               :form loading__6789__auto__,
+               :tag java.lang.Object,
+               :atom #<Atom@371b6696: {:tag clojure.lang.AFunction}>,
+               :local :fn,
+               :assignable? false},
+              :method getClass,
+              :op :instance-call,
+              :env
+              {:context :ctx/expr,
+               :locals
+               {loading__6789__auto__
+                {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+               :ns two-fer,
+               :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+               :once false,
+               :loop-id loop_15164,
+               :loop-locals 0},
+              :o-tag java.lang.Class,
+              :m-or-f getClass,
+              :class java.lang.Object,
+              :form (. loading__6789__auto__ getClass),
+              :tag java.lang.Class,
+              :validated? true,
+              :raw-forms ((.getClass loading__6789__auto__))},
+             :method getClassLoader,
+             :op :instance-call,
+             :env
+             {:context :ctx/expr,
+              :locals
+              {loading__6789__auto__
+               {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+              :ns two-fer,
+              :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+              :once false,
+              :loop-id loop_15164,
+              :loop-locals 0},
+             :o-tag java.lang.ClassLoader,
+             :m-or-f getClassLoader,
+             :class java.lang.Class,
+             :form (. (.getClass loading__6789__auto__) getClassLoader),
+             :tag java.lang.ClassLoader,
+             :validated? true,
+             :raw-forms ((.getClassLoader (.getClass loading__6789__auto__)))}],
+           :form #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))},
+           :children [:keys :vals],
+           :o-tag clojure.lang.PersistentHashMap,
+           :tag clojure.lang.Associative}],
+         :children [:args],
+         :method pushThreadBindings,
+         :op :static-call,
+         :env
+         {:context :ctx/statement,
+          :locals
+          {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+          :ns two-fer,
+          :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+          :once false,
+          :loop-id loop_15164,
+          :loop-locals 0},
+         :o-tag void,
+         :class clojure.lang.Var,
+         :form
+         (.
+          clojure.lang.Var
+          (clojure.core/pushThreadBindings
+           #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))})),
+         :tag void,
+         :validated? true}],
+       :ret
+       {:op :try,
+        :env
+        {:context :ctx/return,
+         :locals
+         {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+         :ns two-fer,
+         :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+         :once false,
+         :loop-id loop_15164,
+         :loop-locals 0},
+        :form (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings)))),
+        :body
+        {:args
+         [{:op :quote,
+           :expr
+           {:op :const,
+            :env
+            {:no-recur true,
+             :loop-locals 0,
+             :locals
+             {loading__6789__auto__
+              {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+             :ns two-fer,
+             :loop-id loop_15164,
+             :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+             :in-try true,
+             :once false,
+             :context :ctx/expr},
+            :type :symbol,
+            :literal? true,
+            :val clojure.core,
+            :form clojure.core,
+            :o-tag clojure.lang.Symbol,
+            :tag clojure.lang.Symbol},
+           :form 'clojure.core,
+           :env
+           {:no-recur true,
+            :loop-locals 0,
+            :locals
+            {loading__6789__auto__
+             {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+            :ns two-fer,
+            :loop-id loop_15164,
+            :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+            :in-try true,
+            :once false,
+            :context :ctx/expr},
+           :literal? true,
+           :children [:expr],
+           :tag clojure.lang.Symbol,
+           :o-tag clojure.lang.Symbol}],
+         :children [:fn :args],
+         :body? true,
+         :fn
+         {:op :var,
+          :assignable? false,
+          :var #'clojure.core/refer,
+          :meta
+          {:arglists ([ns-sym & filters]),
+           :doc
+           "refers to all public vars of ns, subject to filters.\n  filters can include at most one each of:\n\n  :exclude list-of-symbols\n  :only list-of-symbols\n  :rename map-of-fromsymbol-tosymbol\n\n  For each public interned var in the namespace named by the symbol,\n  adds a mapping from the name of the var to the var to the current\n  namespace.  Throws an exception if name is already mapped to\n  something else in the current namespace. Filters can be used to\n  select a subset, via inclusion or exclusion, or to provide a mapping\n  to a symbol different from the var's name, in order to prevent\n  clashes. Use :use in the ns macro in preference to calling this directly.",
+           :added "1.0",
+           :line 4218,
+           :column 1,
+           :file "clojure/core.clj",
+           :name refer,
+           :ns #namespace[clojure.core]},
+          :env
+          {:no-recur true,
+           :loop-locals 0,
+           :locals
+           {loading__6789__auto__
+            {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+           :ns two-fer,
+           :loop-id loop_15164,
+           :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+           :in-try true,
+           :once false,
+           :context :ctx/expr},
+          :form clojure.core/refer,
+          :o-tag java.lang.Object,
+          :arglists ([ns-sym & filters])},
+         :op :invoke,
+         :env
+         {:no-recur true,
+          :loop-locals 0,
+          :locals
+          {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+          :ns two-fer,
+          :loop-id loop_15164,
+          :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+          :in-try true,
+          :once false,
+          :context :ctx/return},
+         :o-tag java.lang.Object,
+         :form (clojure.core/refer 'clojure.core),
+         :raw-forms ((do (clojure.core/refer 'clojure.core)))},
+        :catches [],
+        :finally
+        {:args [],
+         :children [:args],
+         :body? true,
+         :method popThreadBindings,
+         :op :static-call,
+         :env
+         {:context :ctx/statement,
+          :locals
+          {loading__6789__auto__ {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}},
+          :ns two-fer,
+          :file "/home/bob/clojure-representer/src/clojure_representer.clj",
+          :once false,
+          :loop-id loop_15164,
+          :loop-locals 0,
+          :no-recur true},
+         :o-tag void,
+         :class clojure.lang.Var,
+         :form (. clojure.lang.Var (clojure.core/popThreadBindings)),
+         :tag void,
+         :validated? true,
+         :raw-forms ((do (. clojure.lang.Var (clojure.core/popThreadBindings))))},
+        :children [:body :catches :finally],
+        :o-tag nil},
+       :children [:statements :ret],
+       :body? true,
+       :o-tag nil},
+      :local {:op :binding, :form loading__6789__auto__, :local :fn, :name loading__6789__auto__}}],
+    :once false,
+    :max-fixed-arity 0,
+    :form
+    (fn*
+     loading__6789__auto__
+     ([]
+      (.
+       clojure.lang.Var
+       (clojure.core/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+      (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings)))))),
+    :tag clojure.lang.AFunction,
+    :arglists ([]),
+    :local
+    {:op :binding,
+     :env
+     {:context :ctx/expr, :locals {}, :ns two-fer, :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+     :form loading__6789__auto__,
+     :local :fn,
+     :name PLACEHOLDER-4,
+     :atom #<Atom@371b6696: {:tag clojure.lang.AFunction}>,
+     :tag clojure.lang.AFunction,
+     :o-tag clojure.lang.AFunction},
+    :raw-forms
+    ((clojure.core/fn
+      loading__6789__auto__
+      []
+      (.
+       clojure.lang.Var
+       (clojure.core/pushThreadBindings
+        #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+      (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings))))))},
+   :op :invoke,
+   :env
+   {:context :ctx/statement,
+    :locals {},
+    :ns two-fer,
+    :file "/home/bob/clojure-representer/src/clojure_representer.clj"},
+   :o-tag java.lang.Object,
+   :result nil,
+   :top-level true,
+   :form
+   ((clojure.core/fn
+     loading__6789__auto__
+     []
+     (.
+      clojure.lang.Var
+      (clojure.core/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass loading__6789__auto__))}))
+     (try (clojure.core/refer 'clojure.core) (finally (. clojure.lang.Var (clojure.core/popThreadBindings)))))),
+   :raw-forms ((clojure.core/with-loading-context (clojure.core/refer 'clojure.core)))}],
+ :raw-forms ((ns two-fer))}
+clj꞉two-fer꞉> 
+(do
+ (clojure.core/in-ns 'two-fer)
+ ((fn*
+   PLACEHOLDER-5
+   ([]
+    (do
+     (clojure.lang.Var/pushThreadBindings #:clojure.lang.Compiler{LOADER (.getClassLoader (.getClass PLACEHOLDER-5))})
+     (try (clojure.core/refer 'clojure.core) (finally (clojure.lang.Var/popThreadBindings)))))))
+ (if
+  (.equals 'two-fer 'clojure.core)
+  nil
+  (do
+   (clojure.lang.LockingTransaction/runInTransaction
+    (fn* ([] (clojure.core/commute @#'clojure.core/*loaded-libs* clojure.core/conj 'two-fer))))
+   nil)))
+clj꞉two-fer꞉> 
+#'clojure-representer/represent
+clj꞉clojure-representer꞉> 
+; nREPL Connection was closed
