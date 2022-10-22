@@ -19,8 +19,8 @@
 (deftest twofers-test
   (testing "500 twofers"
     (doseq [n (range 500)]
-      (let [_ (represent "two-fer" (str "resources/twofers/" n "/")
-                         (str "resources/twofers/" n "/"))
+      (let [_ (represent {:slug "two-fer" :in-dir (str "resources/twofers/" n "/")
+                          :out-dir (str "resources/twofers/" n "/")})
             representation (slurp (str "resources/twofers/" n "/representation.txt"))
             expected (slurp (str "resources/twofers/" n "/expected-representation.txt"))]
         (is (= (remove-path representation) (remove-path expected))))))

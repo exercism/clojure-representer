@@ -7,7 +7,10 @@
             [cheshire.core :as json]
             [clojure.pprint :as pp]))
 
-(defn represent [slug in-dir out-dir]
+#_(defn represent [{:keys [slug in-dir out-dir]}]
+  (println (type slug)))
+
+(defn represent [{:keys [slug in-dir out-dir]}]
   (let [file           (str (str/replace slug "-" "_") ".clj")
         _              (io/copy (io/file in-dir file)
                                 (io/file "src" file))
@@ -23,5 +26,5 @@
     representation))
 
 (comment
-  (first (represent "two-fer" "resources/twofers/0" "resources/"))
+  (first (represent {:slug "two-fer" :in-dir "resources/twofers/0" :out-dir "resources/"}))
   )

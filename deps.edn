@@ -5,14 +5,16 @@
         org.ow2.asm/asm {:mvn/version "9.2"}
         cheshire/cheshire {:mvn/version "5.11.0"}}
  :aliases
- {:test {:extra-paths ["test"]
-         :extra-deps {org.clojure/test.check {:mvn/version "0.10.0"}}}
-  :runner
-  {:extra-deps {com.cognitect/test-runner
-                {:git/url "https://github.com/cognitect-labs/test-runner"
-                 :sha "f7ef16dc3b8332b0d77bc0274578ad5270fbfedd"}}
-   :main-opts ["-m" "cognitect.test-runner"
-               "-d" "test"]}
-  :uberjar {:extra-deps {seancorfield/depstar {:mvn/version "0.5.2"}}
-            :main-opts ["-m" "hf.depstar.uberjar" "clojure-representer.jar"
-                        "-C" "-m" "exercism.clojure-representer"]}}}
+ {:represent {:exec-fn   clojure-representer/represent
+              :exec-args {:slug    "two-fer"
+                          :in-dir  "resources/twofers/0"
+                          :out-dir "resources/"}}
+  :test      {:extra-paths ["test"]
+              :extra-deps  {org.clojure/test.check {:mvn/version "0.10.0"}}}
+  :runner    {:extra-deps {com.cognitect/test-runner {:git/url "https://github.com/cognitect-labs/test-runner"
+                                                      :sha     "f7ef16dc3b8332b0d77bc0274578ad5270fbfedd"}}
+              :main-opts  ["-m" "cognitect.test-runner"
+                           "-d" "test"]}
+  :uberjar   {:extra-deps {seancorfield/depstar {:mvn/version "0.5.2"}}
+              :main-opts  ["-m" "hf.depstar.uberjar" "clojure-representer.jar"
+                           "-C" "-m" "exercism.clojure-representer"]}}}
