@@ -9,6 +9,8 @@
             [clojure.pprint :as pp])
   (:gen-class))
 
+(e/emit-hygienic-form (map ana.jvm/analyze (z/sexpr (z/of-file (str (io/file "resources/twofers/0/" "two_fer.clj"))))))
+
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [file           (str (str/replace slug "-" "_") ".clj")
         _ (reset! placeholder 0)
@@ -19,11 +21,11 @@
                                 {:pretty true}))
     (spit (str (io/file out-dir "representation.txt"))
           (with-out-str (pp/pprint representation)))
-    representation))
+    (println "\nMappings:\n")
+    (println (json/generate-string (into {} (map (fn [[k v]] [v k]) @mappings))
+                                   {:pretty true}))
+    (println "\nRepresentation:\n")
+    (pp/pprint representation)))
 
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug :in-dir in-dir :out-dir out-dir}))
-
-(comment
-  (first (represent {:slug "two-fer" :in-dir "resources/twofers/0" :out-dir "resources/"}))
-  )
