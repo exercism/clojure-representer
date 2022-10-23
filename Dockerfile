@@ -1,11 +1,21 @@
-FROM openjdk:17-alpine3.14
+FROM clojure:tools-deps-alpine as builder
 
-RUN apk update
+# Install SSL ca certificates
+RUN apk update && apk add ca-certificates
 
+# Create appuser
+RUN adduser -D -g '' appuser
+
+# get the source code
+WORKDIR /clojure-representer
+COPY . /clojure-representer
+
+# Build a minimal and secured container
+FROM clojure:tools-deps-alpine
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /etc/passwd /etc/passwd
 WORKDIR /opt/representer
-COPY ./clojure-representer-1.2.40-standalone.jar /opt/representer
-COPY ./bin/run.sh /opt/representer/bin/run.sh
-COPY ./src /opt/representer/src
-COPY ./resources /opt/representer/resources
+COPY --from=builder /clojure-representer/ .
 
-ENTRYPOINT ["sh", "/opt/representer/bin/run.sh"]
+USER appuser
+ENTRYPOINT ["/opt/representer/bin/run.sh"]

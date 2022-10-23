@@ -11,7 +11,7 @@
             [analyzer.env :as env]
             [clojure.reflect :as reflect]
             [clojure.string :as s]
-            [clojure.core.memoize :refer [lru]]
+            [memoize :refer [lru]]
             [clojure.java.io :as io])
   (:import (clojure.lang RT Symbol Var)
            org.objectweb.asm.Type))

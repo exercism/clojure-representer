@@ -10,6 +10,6 @@ if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
 fi
 
 # Create the output directory if it doesn't exist
-mkdir -p "$(realpath ${3%/})"
+mkdir -p "$3"
 
-java -jar clojure-representer-1.2.40-standalone.jar "$1" "$2" "$3" 
+clojure -X:represent :slug \"$1\" :in-dir \"$2\"  :out-dir \"$3\" 

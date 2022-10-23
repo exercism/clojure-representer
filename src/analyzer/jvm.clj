@@ -44,7 +44,7 @@
             [clojure.tools.reader :as reader]
             [clojure.tools.reader.reader-types :as readers]
 
-            [clojure.core.memoize :refer [memo-clear!]])
+            [memoize :refer [memo-clear!]])
   (:import (clojure.lang IObj RT Compiler Var)
            java.net.URL))
 
