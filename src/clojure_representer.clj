@@ -5,7 +5,7 @@
             [clojure.java.io :as io]
             [clojure.string :as str]
             [rewrite-clj.zip :as z]
-            [cheshire.core :as json]
+            [clojure.data.json :as json]
             [clojure.pprint :as pp]))
 
 (defn represent [{:keys [slug in-dir out-dir]}]
@@ -13,14 +13,11 @@
         _ (reset! placeholder 0)
         _ (reset! mappings {})
         representation (e/emit-hygienic-form (ana.jvm/analyze+eval (z/sexpr (z/up (z/of-file (str (io/file in-dir file)))))))]
+    (println "\nMappings:\n")
     (spit (str (io/file out-dir "mapping.json"))
-          (json/generate-string (into {} (map (fn [[k v]] [v k]) @mappings))
-                                {:pretty true}))
+          (json/pprint-json (into {} (map (fn [[k v]] [v k]) @mappings))))
     (spit (str (io/file out-dir "representation.txt"))
           (with-out-str (pp/pprint representation)))
-    (println "\nMappings:\n")
-    (println (json/generate-string (into {} (map (fn [[k v]] [v k]) @mappings))
-                                   {:pretty true}))
     (println "\nRepresentation:\n")
     (pp/pprint representation)))
 

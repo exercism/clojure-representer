@@ -60,3 +60,276 @@ clj꞉clojure-representer꞉> 
   two-fer
   (fn* ([] (str "One for you, one for me.")) ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me.")))))
 clj꞉two-fer꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; org.objectweb.asm.Type
+clj꞉clojure-representer꞉> 
+; Syntax error compiling at (analyzer/passes/jvm/analyze_host_expr.clj:15:40).
+; Unable to resolve symbol: static-field in this context
+clj꞉clojure-representer꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; asm.Type
+clj꞉clojure-representer꞉> 
+; Syntax error compiling at (analyzer/passes/jvm/analyze_host_expr.clj:15:40).
+; Unable to resolve symbol: static-field in this context
+clj꞉clojure-representer꞉> 
+; Execution error at analyzer.jvm/eval7513$loading (jvm.clj:9).
+; No namespace: analyzer.passes.jvm.analyze-host-expr
+clj꞉clojure-representer꞉> 
+; Evaluating file: analyze_host_expr.clj
+; Syntax error compiling at (src/analyzer/passes/jvm/analyze_host_expr.clj:15:40).
+; Unable to resolve symbol: static-field in this context
+; Evaluation of file analyze_host_expr.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉analyzer.passes.jvm.analyze-host-expr꞉> 
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; org.objectweb.asm.Type
+clj꞉analyzer.jvm.utils꞉> 
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; org.objectweb.asm.Type
+clj꞉analyzer.jvm.utils꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; org.objectweb.asm.Type
+clj꞉analyzer.jvm.utils꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Execution error (FileNotFoundException) at analyzer.jvm/eval5881$loading (jvm.clj:9).
+; Could not locate clojure/tools/reader__init.class, clojure/tools/reader.clj or clojure/tools/reader.cljc on classpath.
+clj꞉clojure-representer꞉> 
+; Execution error (FileNotFoundException) at rewrite-clj.reader/eval9808$loading (reader.cljc:1).
+; Could not locate clojure/tools/reader/edn__init.class, clojure/tools/reader/edn.clj or clojure/tools/reader/edn.cljc on classpath.
+clj꞉clojure-representer꞉> 
+; Syntax error compiling at (rewrite_clj/node/whitespace.cljc:98:10).
+; No such var: r/space?
+clj꞉clojure-representer꞉> 
+; Syntax error compiling at (rewrite_clj/node/meta.cljc:74:25).
+; No such var: ws/spaces
+clj꞉clojure-representer꞉> 
+; Evaluating file: whitespace.cljc
+; Syntax error compiling at (src/rewrite_clj/node/whitespace.cljc:98:10).
+; No such var: r/space?
+; Evaluation of file whitespace.cljc failed: class clojure.lang.Compiler$CompilerException
+clj꞉rewrite-clj.node.whitespace꞉> 
+; Evaluating file: reader.cljc
+; Execution error (IllegalAccessError) at clojure.tools.reader.edn/eval10228$loading (edn.clj:9).
+; read-char does not exist
+; Evaluation of file reader.cljc failed: class clojure.lang.Compiler$CompilerException
+clj꞉rewrite-clj.reader꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Execution error at reader.reader-types/eval9072$loading (reader_types.clj:9).
+; No namespace: reader.impl.utils
+clj꞉clojure-representer꞉> 
+; Execution error at reader.reader-types/eval9162$loading (reader_types.clj:9).
+; No namespace: reader.impl.utils
+clj꞉clojure-representer꞉> 
+; Evaluating file: utils.clj
+#'reader.impl.utils/second'
+clj꞉reader.impl.utils꞉> 
+; Syntax error (ClassNotFoundException) compiling at (reader/reader_types.clj:202:1).
+; clojure.tools.reader.reader_types.Reader
+clj꞉clojure-representer꞉> 
+; Execution error (IllegalAccessError) at reader/eval9497$loading (reader.clj:9).
+; read-char does not exist
+clj꞉clojure-representer꞉> 
+; Evaluating file: reader.cljc
+; Execution error (FileNotFoundException) at clojure.tools.reader.edn/eval9538$loading (edn.clj:9).
+; Could not locate clojure/tools/reader/reader_types__init.class, clojure/tools/reader/reader_types.clj or clojure/tools/reader/reader_types.cljc on classpath. Please check that namespaces with dashes use underscores in the Clojure file name.
+; Evaluation of file reader.cljc failed: class clojure.lang.Compiler$CompilerException
+clj꞉rewrite-clj.reader꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Execution error (FileNotFoundException) at clojure.tools.reader.impl.errors/eval9167$loading (errors.clj:9).
+; Could not locate clojure/tools/reader/reader_types__init.class, clojure/tools/reader/reader_types.clj or clojure/tools/reader/reader_types.cljc on classpath. Please check that namespaces with dashes use underscores in the Clojure file name.
+clj꞉clojure-representer꞉> 
+; Execution error (FileNotFoundException) at clojure.tools.reader.impl.commons/eval9460$loading (commons.clj:9).
+; Could not locate clojure/tools/reader/reader_types__init.class, clojure/tools/reader/reader_types.clj or clojure/tools/reader/reader_types.cljc on classpath. Please check that namespaces with dashes use underscores in the Clojure file name.
+clj꞉clojure-representer꞉> 
+; Syntax error compiling at (reader.clj:9:1).
+; namespace 'reader.default-data-readers' not found after loading '/reader/default_data_readers'
+clj꞉clojure-representer꞉> 
+; Syntax error compiling at (reader.clj:56:5).
+; No such var: err/throw-eof-at-start
+clj꞉clojure-representer꞉> 
+; Evaluating file: errors.clj
+; Syntax error compiling at (src/reader/impl/errors.clj:9:1).
+; namespace 'reader.impl.inspect' not found after loading '/reader/impl/inspect'
+; Evaluation of file errors.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉reader.impl.errors꞉> 
+; Syntax error compiling at (analyzer/jvm.clj:611:33).
+; No such var: reader/read
+clj꞉clojure-representer꞉> 
+; Evaluating file: jvm.clj
+; WARNING: macroexpand-1 already refers to: #'clojure.core/macroexpand-1 in namespace: analyzer.jvm, being replaced by: #'analyzer.jvm/macroexpand-1
+; Syntax error compiling at (src/analyzer/jvm.clj:611:33).
+; No such var: reader/read
+; Evaluation of file jvm.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉analyzer.jvm꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Execution error (FileNotFoundException) at clojure.tools.reader.edn/eval10614$loading (edn.clj:9).
+; Could not locate clojure/tools/reader/reader_types__init.class, clojure/tools/reader/reader_types.clj or clojure/tools/reader/reader_types.cljc on classpath. Please check that namespaces with dashes use underscores in the Clojure file name.
+clj꞉clojure-representer꞉> 
+; Syntax error compiling at (rewrite_clj/reader.cljc:112:3).
+; No such var: edn/read-string
+clj꞉clojure-representer꞉> 
+; Evaluating file: edn.clj
+; WARNING: char already refers to: #'clojure.core/char in namespace: reader.edn, being replaced by: #'reader.impl.utils/char
+; WARNING: default-data-readers already refers to: #'clojure.core/default-data-readers in namespace: reader.edn, being replaced by: #'reader/default-data-readers
+; WARNING: read already refers to: #'clojure.core/read in namespace: reader.edn, being replaced by: #'reader.edn/read
+; WARNING: read-string already refers to: #'clojure.core/read-string in namespace: reader.edn, being replaced by: #'reader.edn/read-string
+#'reader.edn/read-string
+clj꞉reader.edn꞉> 
+; Syntax error compiling at (rewrite_clj/node/whitespace.cljc:98:10).
+; No such var: r/space?
+clj꞉clojure-representer꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Execution error (FileNotFoundException) at reader/eval8799$loading (reader.clj:9).
+; Could not locate reader/reader_types__init.class, reader/reader_types.clj or reader/reader_types.cljc on classpath. Please check that namespaces with dashes use underscores in the Clojure file name.
+clj꞉clojure-representer꞉> 
+; Execution error (FileNotFoundException) at analyzer.jvm/eval9078$loading (jvm.clj:9).
+; Could not locate reader/reader_types__init.class, reader/reader_types.clj or reader/reader_types.cljc on classpath. Please check that namespaces with dashes use underscores in the Clojure file name.
+clj꞉clojure-representer꞉> 
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; com.fasterxml.jackson.dataformat.smile.SmileFactory
+clj꞉clojure-representer꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Jacking in...
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; com.fasterxml.jackson.dataformat.smile.SmileFactory
+clj꞉clojure-representer꞉> 
+nil
+clj꞉clojure-representer꞉> 
+nil
+clj꞉clojure-representer꞉> 
+#'clojure-representer/represent
+clj꞉clojure-representer꞉> 
+; nREPL Connection was closed
