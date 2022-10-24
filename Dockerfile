@@ -1,4 +1,4 @@
-FROM clojure:tools-deps-alpine
+FROM clojure:temurin-17-lein-alpine
 
 WORKDIR /opt/representer
 COPY . .
