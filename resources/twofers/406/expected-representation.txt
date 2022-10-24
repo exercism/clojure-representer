@@ -1,0 +1,72 @@
+((do
+  (clojure.core/in-ns 'two-fer)
+  (.resetMeta
+   (clojure.lang.Namespace/find 'two-fer)
+   {:file
+    "file:/C:/Users/porko/Documents/GitHub/exercism/clojure-representer/src/two_fer.clj",
+    :line 1,
+    :column 5,
+    :end-line 1,
+    :end-column 12})
+  ((fn*
+    PLACEHOLDER-1
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-1))})
+      (try
+       (do
+        (clojure.core/refer 'clojure.core)
+        (clojure.core/require '[clojure.string :as string]))
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'two-fer 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'two-fer))))
+    nil)))
+ (def
+  sentence
+  (fn*
+   ([& PLACEHOLDER-2]
+    (let*
+     [PLACEHOLDER-3
+      (string/join ", " PLACEHOLDER-2)
+      PLACEHOLDER-4
+      (clojure.core/seq PLACEHOLDER-3)
+      PLACEHOLDER-5
+      (clojure.core/first PLACEHOLDER-4)
+      PLACEHOLDER-6
+      (clojure.core/next PLACEHOLDER-4)
+      PLACEHOLDER-7
+      PLACEHOLDER-5
+      PLACEHOLDER-8
+      PLACEHOLDER-6]
+     (str
+      (string/upper-case PLACEHOLDER-7)
+      (apply str PLACEHOLDER-8)
+      ".")))))
+ (def
+  one-fer
+  (fn*
+   ([] (one-fer "me"))
+   ([PLACEHOLDER-9] (string/join " " ["one for" PLACEHOLDER-9]))))
+ (def
+  two-fer
+  (fn*
+   ([] (two-fer "you"))
+   ([PLACEHOLDER-10] (sentence (one-fer PLACEHOLDER-10) (one-fer)))))
+ (def
+  two-fer-unflexible
+  (fn*
+   ([] (two-fer-unflexible "you"))
+   ([PLACEHOLDER-11]
+    (str "One for " PLACEHOLDER-11 ", one for me.")))))
