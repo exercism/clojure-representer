@@ -12,4 +12,4 @@
   :main clojure-representer.core/-main
   :pom-location "/tmp"
    :target-path "/tmp/%s/"
-  :repl-options {:init-ns clojure-representer.core})
+  :repl-options {:init-ns clojure-representer.main})
