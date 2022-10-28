@@ -1,17 +1,6 @@
 (do
  (do
   (clojure.core/in-ns 'two-fer)
-  ((fn*
-    PLACEHOLDER-1
-    ([]
-     (do
-      (clojure.lang.Var/pushThreadBindings
-       #:clojure.lang.Compiler{LOADER
-                               (.getClassLoader
-                                (.getClass PLACEHOLDER-1))})
-      (try
-       (clojure.core/refer 'clojure.core)
-       (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
    (.equals 'two-fer 'clojure.core)
    nil
@@ -27,7 +16,7 @@
  (def
   one-for
   (fn*
-   ([PLACEHOLDER-2] (format "One for %s, one for me." PLACEHOLDER-2))))
+   ([PLACEHOLDER-1] (format "One for %s, one for me." PLACEHOLDER-1))))
  (def
   two-fer
-  (fn* ([] (one-for "you")) ([PLACEHOLDER-3] (one-for PLACEHOLDER-3)))))
+  (fn* ([] (one-for "you")) ([PLACEHOLDER-2] (one-for PLACEHOLDER-2)))))

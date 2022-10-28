@@ -1,17 +1,6 @@
 (do
  (do
   (clojure.core/in-ns 'two-fer)
-  ((fn*
-    PLACEHOLDER-1
-    ([]
-     (do
-      (clojure.lang.Var/pushThreadBindings
-       #:clojure.lang.Compiler{LOADER
-                               (.getClassLoader
-                                (.getClass PLACEHOLDER-1))})
-      (try
-       (clojure.core/refer 'clojure.core)
-       (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
    (.equals 'two-fer 'clojure.core)
    nil
@@ -27,22 +16,22 @@
  (def
   two-fer
   (fn*
-   ([& PLACEHOLDER-2]
+   ([& PLACEHOLDER-1]
     (let*
-     [PLACEHOLDER-3
-      PLACEHOLDER-2
-      PLACEHOLDER-4
+     [PLACEHOLDER-2
+      PLACEHOLDER-1
+      PLACEHOLDER-3
       (if
-       (clojure.core/seq? PLACEHOLDER-3)
+       (clojure.core/seq? PLACEHOLDER-2)
        (if
-        (clojure.core/next PLACEHOLDER-3)
+        (clojure.core/next PLACEHOLDER-2)
         (clojure.lang.PersistentArrayMap/createAsIfByAssoc
-         (clojure.core/to-array PLACEHOLDER-3))
+         (clojure.core/to-array PLACEHOLDER-2))
         (if
-         (clojure.core/seq PLACEHOLDER-3)
-         (clojure.core/first PLACEHOLDER-3)
+         (clojure.core/seq PLACEHOLDER-2)
+         (clojure.core/first PLACEHOLDER-2)
          clojure.lang.PersistentArrayMap/EMPTY))
-       PLACEHOLDER-3)
-      PLACEHOLDER-5
-      (clojure.lang.RT/get PLACEHOLDER-4 :name "you")]
-     (str "One for " PLACEHOLDER-5 ", one for me."))))))
+       PLACEHOLDER-2)
+      PLACEHOLDER-4
+      (clojure.lang.RT/get PLACEHOLDER-3 :name "you")]
+     (str "One for " PLACEHOLDER-4 ", one for me."))))))

@@ -23,9 +23,9 @@
 
 (defn uniquify [name]
   (swap! *locals-counter* #(update-in % [name] (fnil inc -1)))
-  (swap! placeholder inc)
   (swap! *locals-frame* #(assoc-in % [name] (symbol (str "PLACEHOLDER-" @placeholder))))
-  (swap! mappings assoc (str name) (str "PLACEHOLDER-" @placeholder)))
+  (swap! mappings assoc (str name) (str "PLACEHOLDER-" @placeholder))
+  (swap! placeholder inc))
 
 (defmulti -uniquify-locals :op)
 

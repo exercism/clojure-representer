@@ -1,17 +1,6 @@
 (do
  (do
   (clojure.core/in-ns 'two-fer)
-  ((fn*
-    PLACEHOLDER-1
-    ([]
-     (do
-      (clojure.lang.Var/pushThreadBindings
-       #:clojure.lang.Compiler{LOADER
-                               (.getClassLoader
-                                (.getClass PLACEHOLDER-1))})
-      (try
-       (clojure.core/refer 'clojure.core)
-       (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
    (.equals 'two-fer 'clojure.core)
    nil
@@ -28,38 +17,38 @@
   two-fer
   (fn*
    ([] (two-fer "you"))
-   ([PLACEHOLDER-2] (str "One for " PLACEHOLDER-2 ", one for me."))))
+   ([PLACEHOLDER-1] (str "One for " PLACEHOLDER-1 ", one for me."))))
  (two-fer)
  (two-fer "Zaphod")
  (def
   two-fer-var-arg
   (fn*
-   ([& PLACEHOLDER-3]
+   ([& PLACEHOLDER-2]
     (if
-     (empty? PLACEHOLDER-3)
+     (empty? PLACEHOLDER-2)
      "One for you, one for me."
-     (str "One for " (first PLACEHOLDER-3) ", one for me.")))))
+     (str "One for " (first PLACEHOLDER-2) ", one for me.")))))
  (two-fer-var-arg)
  (two-fer-var-arg "Ford")
  (def
   two-fer-var-arg-apply
   (fn*
-   ([& PLACEHOLDER-4]
+   ([& PLACEHOLDER-3]
     (if
-     (empty? PLACEHOLDER-4)
+     (empty? PLACEHOLDER-3)
      "One for you, one for me."
-     (str "One for " (apply str PLACEHOLDER-4) ", one for me.")))))
+     (str "One for " (apply str PLACEHOLDER-3) ", one for me.")))))
  (two-fer-var-arg-apply)
  (two-fer-var-arg-apply "Ford")
  (def
   two-fer-var-arg-apply-when-let
   (fn*
-   ([& PLACEHOLDER-5]
+   ([& PLACEHOLDER-4]
     (let*
-     [PLACEHOLDER-7
+     [PLACEHOLDER-6
       (let*
-       [PLACEHOLDER-6 (first PLACEHOLDER-5)]
-       (if PLACEHOLDER-6 PLACEHOLDER-6 "you"))]
-     (str "One for " PLACEHOLDER-7 ", one for me.")))))
+       [PLACEHOLDER-5 (first PLACEHOLDER-4)]
+       (if PLACEHOLDER-5 PLACEHOLDER-5 "you"))]
+     (str "One for " PLACEHOLDER-6 ", one for me.")))))
  (two-fer-var-arg-apply-when-let)
  (two-fer-var-arg-apply-when-let "Arthur"))

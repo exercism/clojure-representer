@@ -6,7 +6,7 @@
 # Stop executing when a command returns a non-zero return code
 set -e
 # Build the Docker image
-docker build --rm -t exercism/clojure-test-runner .
+docker build --rm -t exercism/clojure-representer .
 
 # Run the Docker image using the settings mimicking the production environment
 # TODO: --read-only
