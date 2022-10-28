@@ -1,4 +1,0 @@
-((def
-  two-fer
-  (fn*
-   ([PLACEHOLDER-1] (format "One for %s, one for me" PLACEHOLDER-1)))))
