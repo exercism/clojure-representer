@@ -18,8 +18,8 @@
     (doseq [n (range 500)]
       (let [_ (represent {:slug "two-fer" :in-dir (str "resources/twofers/" n "/")
                           :out-dir (str "resources/twofers/" n "/")})
-            representation (str "resources/twofers/" n "/representation.txt")
-            expected (str "resources/twofers/" n "/expected-representation.txt")]
+            representation (slurp (str "resources/twofers/" n "/representation.txt"))
+            expected (slurp (str "resources/twofers/" n "/expected-representation.txt"))]
         (is (= representation expected)))))
   (testing "Unique solutions"
     (is (= 141 (count (set (map #(slurp (str "resources/twofers/" % "/representation.txt"))

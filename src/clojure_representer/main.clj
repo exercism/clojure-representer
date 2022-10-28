@@ -8,26 +8,6 @@
             [clojure.data.json :as json]
             [clojure.pprint :as pp]))
 
-(defn remove-path [s]
-  (-> s
-      z/of-string
-      (z/find-value z/next :file)
-      z/right
-      (z/replace "")
-      z/root-string))
-
-(-> 
-    (io/file "resources/twofers/0/" "two_fer.clj")
-    z/of-file
-    z/up
-    z/sexpr
-    ana.jvm/analyze+eval
-    e/emit-hygienic-form
-    ;str
-    ;z/of-string
-    ;z/sexpr
-    )
-
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [file           (str (str/replace slug "-" "_") ".clj")
         _ (reset! placeholder 0)
