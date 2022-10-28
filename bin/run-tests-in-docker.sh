@@ -3,6 +3,8 @@
 # Example:
 # ./bin/run-tests-in-docker.sh
 
+# Stop executing when a command returns a non-zero return code
+set -e
 # Build the Docker image
 docker build --rm -t exercism/clojure-test-runner .
 
