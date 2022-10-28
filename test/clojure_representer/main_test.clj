@@ -13,14 +13,6 @@
         (java.nio.file.Paths/get ^URI path)
         (.toPath (io/file path)))))
 
-(defn remove-path [f]
-  (-> f
-      z/of-file
-      (z/find-value z/next :file)
-      z/right
-      (z/replace "")
-      z/sexpr))
-
 (deftest twofers-test
   (testing "500 twofers"
     (doseq [n (range 500)]
@@ -28,7 +20,7 @@
                           :out-dir (str "resources/twofers/" n "/")})
             representation (str "resources/twofers/" n "/representation.txt")
             expected (str "resources/twofers/" n "/expected-representation.txt")]
-        (is (= (remove-path representation) (remove-path expected))))))
+        (is (= representation expected)))))
   (testing "Unique solutions"
     (is (= 141 (count (set (map #(slurp (str "resources/twofers/" % "/representation.txt"))
                                 (range 500)))))))
