@@ -1,0 +1,42 @@
+(do
+ (do
+  (clojure.core/in-ns 'two-fer)
+  ((fn*
+    PLACEHOLDER-1
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-1))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'two-fer 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'two-fer))))
+    nil)))
+ (def
+  two-fer
+  (fn*
+   ([] (two-fer nil))
+   ([PLACEHOLDER-2]
+    (let*
+     [PLACEHOLDER-3
+      "One for you, one for me."
+      PLACEHOLDER-4
+      "One for %s, one for me."]
+     (if
+      (let*
+       [PLACEHOLDER-5 (clojure.lang.Util/identical PLACEHOLDER-2 nil)]
+       (if PLACEHOLDER-5 PLACEHOLDER-5 (empty? PLACEHOLDER-2)))
+      PLACEHOLDER-3
+      (format PLACEHOLDER-4 PLACEHOLDER-2)))))))
