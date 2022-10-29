@@ -1,0 +1,56 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  tokenize-int
+  (fn*
+   ([PLACEHOLDER-1]
+    (map
+     (fn*
+      ([PLACEHOLDER-2] (java.lang.Character/digit PLACEHOLDER-2 10)))
+     (str PLACEHOLDER-1)))))
+ (def
+  pow-n
+  (fn*
+   ([PLACEHOLDER-3 PLACEHOLDER-4]
+    (apply * (repeat PLACEHOLDER-3 PLACEHOLDER-4)))))
+ (def
+  armstrong?
+  (fn*
+   ([PLACEHOLDER-5]
+    (let*
+     [PLACEHOLDER-6
+      (tokenize-int PLACEHOLDER-5)
+      PLACEHOLDER-7
+      (partial pow-n (clojure.lang.RT/count PLACEHOLDER-6))]
+     (let*
+      [PLACEHOLDER-8 (clojure.lang.Numbers/lt PLACEHOLDER-5 10)]
+      (if
+       PLACEHOLDER-8
+       PLACEHOLDER-8
+       (clojure.lang.Util/equiv
+        PLACEHOLDER-5
+        (apply + (map PLACEHOLDER-7 PLACEHOLDER-6))))))))))
