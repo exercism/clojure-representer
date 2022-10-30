@@ -13,7 +13,7 @@ To generate a normalized representation of a solution:
 ## Testing the representer locally
 
 ``` sh
-lein test
+clj -X:test
 ```
 
 ## Testing the representer in Docker

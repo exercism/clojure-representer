@@ -1,4 +1,5 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math]))
 
 (defn int-pow [a b]
   (reduce (fn [p _] (*' p a)) 1N (range b)))

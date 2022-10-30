@@ -1,6 +1,4 @@
-(ns armstrong-numbers
-  require 
-  require [clojure.math.numeric-tower :as math :refer [expt]])
+(ns armstrong-numbers)
 
 (defn get-armstrong-exponent [num]
   (count (str num)))

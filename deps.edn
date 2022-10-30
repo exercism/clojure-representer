@@ -6,4 +6,10 @@
         org.clojure/data.json        {:mvn/version "2.4.0"}
         rewrite-clj/rewrite-clj      {:mvn/version "1.1.45"}
         org.clojure/tools.deps.alpha {:git/url "https://github.com/clojure/tools.deps.alpha"
-                                      :sha     "8f8fc2571e721301b6d52e191129248355cb8c5a"}}}
+                                      :sha     "8f8fc2571e721301b6d52e191129248355cb8c5a"}}
+ :aliases {:test {:extra-paths ["test"]
+                  :extra-deps {io.github.cognitect-labs/test-runner
+                               {:git/url "https://github.com/cognitect-labs/test-runner.git"
+                                :sha "705ad25bbf0228b1c38d0244a36001c2987d7337"}}
+                  :main-opts ["-m" "cognitect.test-runner"]
+                  :exec-fn cognitect.test-runner.api/test}}}

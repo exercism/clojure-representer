@@ -1,6 +1,19 @@
 (do
  (do
   (clojure.core/in-ns 'two-fer)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (do
+        (clojure.core/refer 'clojure.core)
+        (clojure.core/require 'clojure.string))
+       (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
    (.equals 'two-fer 'clojure.core)
    nil

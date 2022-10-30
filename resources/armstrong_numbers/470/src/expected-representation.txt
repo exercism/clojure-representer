@@ -1,0 +1,109 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  exp
+  (fn*
+   ([PLACEHOLDER-1 PLACEHOLDER-2]
+    (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
+ (def
+  quot-mod
+  (fn*
+   ([PLACEHOLDER-3]
+    (let*
+     [PLACEHOLDER-4
+      PLACEHOLDER-3
+      PLACEHOLDER-5
+      (clojure.lang.RT/nth PLACEHOLDER-4 0 nil)
+      PLACEHOLDER-6
+      (clojure.lang.RT/nth PLACEHOLDER-4 1 nil)]
+     [(clojure.lang.Numbers/quotient PLACEHOLDER-5 10)
+      (mod PLACEHOLDER-5 10)]))))
+ (def
+  digits
+  (fn*
+   ([PLACEHOLDER-7]
+    (clojure.lang.RT/intCast
+     (clojure.lang.Numbers/inc
+      (java.lang.Math/log10 PLACEHOLDER-7))))))
+ (def
+  armstrong-sum
+  (fn*
+   ([PLACEHOLDER-8]
+    (let*
+     [PLACEHOLDER-9
+      PLACEHOLDER-8
+      PLACEHOLDER-10
+      (clojure.lang.RT/nth PLACEHOLDER-9 0 nil)
+      PLACEHOLDER-11
+      (clojure.lang.RT/nth PLACEHOLDER-9 1 nil)
+      PLACEHOLDER-12
+      (clojure.lang.RT/nth PLACEHOLDER-9 2 nil)
+      PLACEHOLDER-13
+      (clojure.lang.RT/nth PLACEHOLDER-9 3 nil)]
+     (let*
+      [PLACEHOLDER-14 (mod PLACEHOLDER-11 10)]
+      [PLACEHOLDER-10
+       (clojure.lang.Numbers/quotient PLACEHOLDER-11 10)
+       PLACEHOLDER-14
+       (clojure.lang.Numbers/add
+        PLACEHOLDER-13
+        (exp PLACEHOLDER-14 PLACEHOLDER-10))])))))
+ (def
+  armstrong?
+  (fn*
+   ([PLACEHOLDER-15]
+    (if
+     (clojure.lang.Numbers/isZero PLACEHOLDER-15)
+     true
+     (clojure.lang.Util/equiv
+      PLACEHOLDER-15
+      (last
+       (last
+        (take-while
+         (fn*
+          ([PLACEHOLDER-16]
+           (let*
+            [PLACEHOLDER-17
+             PLACEHOLDER-16
+             PLACEHOLDER-18
+             (clojure.lang.RT/nth PLACEHOLDER-17 0 nil)
+             PLACEHOLDER-19
+             (clojure.lang.RT/nth PLACEHOLDER-17 1 nil)
+             PLACEHOLDER-20
+             (clojure.lang.RT/nth PLACEHOLDER-17 2 nil)
+             PLACEHOLDER-21
+             (clojure.lang.RT/nth PLACEHOLDER-17 3 nil)]
+            (let*
+             [PLACEHOLDER-22
+              (clojure.lang.Numbers/isPos PLACEHOLDER-19)]
+             (if
+              PLACEHOLDER-22
+              PLACEHOLDER-22
+              (clojure.lang.Numbers/isPos PLACEHOLDER-20))))))
+         (iterate
+          armstrong-sum
+          [(digits PLACEHOLDER-15) PLACEHOLDER-15 0 0]))))))))))

@@ -1,0 +1,60 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  exp
+  (fn*
+   ([PLACEHOLDER-1 PLACEHOLDER-2]
+    (if
+     (clojure.lang.Numbers/gt PLACEHOLDER-2 0)
+     (clojure.lang.Numbers/multiply
+      PLACEHOLDER-1
+      (exp PLACEHOLDER-1 (clojure.lang.Numbers/minus PLACEHOLDER-2 1)))
+     1))))
+ (def
+  armstrong_sum
+  (fn*
+   ([PLACEHOLDER-3 PLACEHOLDER-4]
+    (if
+     (clojure.lang.Numbers/gt PLACEHOLDER-3 9)
+     (let*
+      [PLACEHOLDER-5
+       (mod PLACEHOLDER-3 10)
+       PLACEHOLDER-6
+       (bigint (clojure.lang.Numbers/divide PLACEHOLDER-3 10))]
+      (clojure.lang.Numbers/add
+       (exp PLACEHOLDER-5 PLACEHOLDER-4)
+       (armstrong_sum PLACEHOLDER-6 PLACEHOLDER-4)))
+     (exp PLACEHOLDER-3 PLACEHOLDER-4)))))
+ (def
+  armstrong?
+  (fn*
+   ([PLACEHOLDER-7]
+    (let*
+     [PLACEHOLDER-8 (clojure.lang.RT/count (str PLACEHOLDER-7))]
+     (clojure.lang.Util/equiv
+      PLACEHOLDER-7
+      (armstrong_sum PLACEHOLDER-7 PLACEHOLDER-8)))))))

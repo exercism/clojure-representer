@@ -7,7 +7,34 @@
             [clojure.string :as str]
             [rewrite-clj.zip :as z]
             [clojure.data.json :as json]
-            [clojure.pprint :as pp]))
+            [clojure.pprint :as pp])
+  (:import [java.nio.file Files  LinkOption Path]
+           [java.net URI]))
+
+(defn- as-path
+  ^Path [path]
+  (if (instance? Path path) path
+      (if (instance? URI path)
+        (java.nio.file.Paths/get ^URI path)
+        (.toPath (io/file path)))))
+
+(defn- ->link-opts ^"[Ljava.nio.file.LinkOption;"
+  [nofollow-links]
+  (into-array LinkOption
+              (cond-> []
+                nofollow-links
+                (conj LinkOption/NOFOLLOW_LINKS))))
+
+(defn exists?
+  "Returns true if f exists."
+  ([f] (exists? f nil))
+  ([f {:keys [:nofollow-links]}]
+   (try
+     (Files/exists
+      (as-path f)
+      (->link-opts nofollow-links))
+     (catch Exception _e
+       false))))
 
 (defn deps [path]
   (-> path
@@ -39,7 +66,7 @@
 
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [file           (str (str/replace slug "-" "_") ".clj")
-        _ (hot-load-deps (str (io/file in-dir ".." "project.clj")))
+        lein-config    (io/file in-dir ".." "project.clj")
         _              (reset! placeholder 0)
         _              (reset! mappings {})
         representation (-> (io/file in-dir file)
@@ -51,20 +78,13 @@
                            ;z/up z/up z/up z/up
                            z/sexpr
                            )]
+    (when (exists? lein-config)
+      (hot-load-deps (str lein-config)))
     (spit (str (io/file out-dir "mapping.json"))
           (json/write-str (into {} (map (fn [[k v]] [v k]) 
                                         @mappings))))
-    (spit (str (io/file out-dir "expected-representation.txt"))
+    (spit (str (io/file out-dir "representation.txt"))
           (with-out-str (pp/pprint representation)))))
-
-  (represent {:slug    "armstrong-numbers"
-              :in-dir  (str "resources/armstrong_numbers/6/src/")
-              :out-dir (str "resources/armstrong_numbers/6/src/")})
-
-  (doseq [n (range 100 102)]
-    (represent {:slug    "armstrong-numbers"
-                :in-dir  (str "resources/armstrong_numbers/" n "/src/")
-                :out-dir (str "resources/armstrong_numbers/" n "/src/")}))
 
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug :in-dir in-dir :out-dir out-dir}))

@@ -1,5 +1,4 @@
-(ns armstrong-numbers
-  (:require [clojure.]))
+(ns armstrong-numbers)
 
 (defn num->digits
   [n] (if (zero? n)
