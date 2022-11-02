@@ -5,7 +5,9 @@
          '[clojure.java.shell :as shell]
          '[clojure.string :as str]
          '[clojure.edn :as edn]
-         '[rewrite-clj.zip :as z])
+         '[rewrite-clj.zip :as z]
+         '[rewrite-clj.parser :as p]
+         '[rewrite-clj.node :as n])
 
 (def slug (first *command-line-args*))
 (def in-dir (str (fs/path (second *command-line-args*))))
@@ -58,9 +60,17 @@
     (println (str "Placeholders written to " (fs/file out-dir "mapping.json")))
     (zipmap (into args locals) placeholders)))
 
-(def impl
-  (z/of-file (str (fs/file in-dir (str (snake-case slug) ".clj")))
-             {:track-position? true}))
+(def test-file
+  (str (fs/file in-dir (str (snake-case slug) ".clj"))))
+
+(def impl-zip
+  (z/of-file test-file {:track-position? true}))
+
+(def parsed-test-file
+  (p/parse-file-all test-file))
+
+(map n/tag (n/children parsed-test-file))
+
 
 (defn replace-local [z {:keys [name row col]}]
   (z/replace (z/find-last-by-pos z [row col]) 
