@@ -1,0 +1,55 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  get-vector-of-numbers
+  (fn*
+   ([PLACEHOLDER-1]
+    (if
+     (clojure.lang.Numbers/isPos PLACEHOLDER-1)
+     (conj
+      (get-vector-of-numbers
+       (clojure.lang.Numbers/quotient PLACEHOLDER-1 10))
+      (mod PLACEHOLDER-1 10))
+     []))))
+ (def
+  exp
+  (fn*
+   ([PLACEHOLDER-2 PLACEHOLDER-3]
+    (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-3)))))
+ (def
+  armstrong?
+  (fn*
+   ([PLACEHOLDER-4]
+    (do
+     (def numbers (get-vector-of-numbers PLACEHOLDER-4))
+     (clojure.lang.Util/equiv
+      PLACEHOLDER-4
+      (reduce
+       +
+       (map
+        (partial exp (clojure.lang.RT/count numbers))
+        numbers))))))))

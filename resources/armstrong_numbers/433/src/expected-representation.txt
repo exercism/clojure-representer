@@ -1,0 +1,92 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  pow
+  (fn*
+   ([PLACEHOLDER-1 PLACEHOLDER-2]
+    (java.lang.Math/pow PLACEHOLDER-1 PLACEHOLDER-2))))
+ (def
+  pow-big-decimal
+  (fn*
+   ([PLACEHOLDER-3 PLACEHOLDER-4]
+    (.pow
+     (java.math.BigDecimal/valueOf
+      (clojure.lang.RT/doubleCast PLACEHOLDER-3))
+     PLACEHOLDER-4))))
+ (def
+  str-to-int-vec
+  (fn*
+   ([PLACEHOLDER-5]
+    (if
+     (clojure.lang.Util/equiv (clojure.lang.RT/count PLACEHOLDER-5) 0)
+     []
+     (conj
+      (str-to-int-vec (subvec PLACEHOLDER-5 1))
+      (java.lang.Integer/parseInt
+       (clojure.lang.RT/get PLACEHOLDER-5 0)))))))
+ (def
+  vec-pow-sum
+  (fn*
+   ([PLACEHOLDER-6 PLACEHOLDER-7]
+    (if
+     (clojure.lang.Util/equiv (clojure.lang.RT/count PLACEHOLDER-6) 1)
+     (pow (clojure.lang.RT/get PLACEHOLDER-6 0) PLACEHOLDER-7)
+     (clojure.lang.Numbers/add
+      (pow (clojure.lang.RT/get PLACEHOLDER-6 0) PLACEHOLDER-7)
+      (vec-pow-sum (subvec PLACEHOLDER-6 1) PLACEHOLDER-7))))))
+ (def
+  vec-pow-sum-big-decimal
+  (fn*
+   ([PLACEHOLDER-8 PLACEHOLDER-9]
+    (if
+     (clojure.lang.Util/equiv (clojure.lang.RT/count PLACEHOLDER-8) 1)
+     (pow-big-decimal
+      (clojure.lang.RT/get PLACEHOLDER-8 0)
+      PLACEHOLDER-9)
+     (.add
+      (pow-big-decimal
+       (clojure.lang.RT/get PLACEHOLDER-8 0)
+       PLACEHOLDER-9)
+      (vec-pow-sum-big-decimal
+       (subvec PLACEHOLDER-8 1)
+       PLACEHOLDER-9))))))
+ (def
+  armstrong?
+  (fn*
+   ([PLACEHOLDER-10]
+    (do
+     (def numStr (str "" PLACEHOLDER-10))
+     (def numDigits (clojure.lang.RT/count numStr))
+     (def
+      digits
+      (subvec (clojure.string/split numStr (re-pattern "")) 0))
+     (def
+      calc
+      (vec-pow-sum-big-decimal (str-to-int-vec digits) numDigits))
+     (clojure.lang.Util/equiv
+      (java.math.BigDecimal/valueOf PLACEHOLDER-10)
+      calc))))))
