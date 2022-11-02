@@ -2,6 +2,8 @@
 
 ;; function using "name" as a parameter
 ;; also containing "name" inside a string
+;; we want these to be left alone, along with
+;; the usages inside these comments 
 (defn with-name
   ([name]
    (with-name name "white"))

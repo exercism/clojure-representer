@@ -11,3 +11,4 @@
 .hg/
 *.cache/
 .calva/
+*mapping.json
