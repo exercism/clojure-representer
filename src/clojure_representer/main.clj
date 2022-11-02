@@ -49,7 +49,8 @@
 
 (defn hot-load-deps [path]
   (doseq [dep (deps path)]
-    (add-libs (edn-dep dep))))
+    (add-libs (edn-dep dep))
+    (println (str "Added " dep))))
 
 (defn normalize 
   "Takes a Java.io.File containing Clojure code
@@ -69,20 +70,14 @@
         lein-config    (io/file in-dir ".." "project.clj")
         _              (reset! placeholder 0)
         _              (reset! mappings {})
+        _ (when (exists? lein-config)
+            (hot-load-deps (str lein-config)))
         representation (-> (io/file in-dir file)
                            normalize
                            z/of-string
-                           ;(z/find-value z/next (symbol "PLACEHOLDER-0"))
-                           ;z/up
-                           ;z/remove
-                           ;z/up z/up z/up z/up
-                           z/sexpr
-                           )]
-    (when (exists? lein-config)
-      (hot-load-deps (str lein-config)))
+                           z/sexpr)]
     (spit (str (io/file out-dir "mapping.json"))
-          (json/write-str (into {} (map (fn [[k v]] [v k]) 
-                                        @mappings))))
+          (json/write-str (into {} (map (fn [[k v]] [v k]) @mappings))))
     (spit (str (io/file out-dir "representation.txt"))
           (with-out-str (pp/pprint representation)))))
 
