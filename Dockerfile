@@ -19,7 +19,7 @@ FROM babashka/babashka:0.10.163-alpine
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /etc/passwd /etc/passwd
 WORKDIR /opt/test-runner
-COPY --from=build /clojure-representer/ .
+COPY --from=builder /clojure-representer/ .
 
 # Install clj-kondo
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
