@@ -1,0 +1,24 @@
+(do
+ (do
+  (clojure.core/in-ns 'two-fer)
+  (if
+   (.equals 'two-fer 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'two-fer))))
+    nil)))
+ (def
+  two-fer
+  (fn*
+   ([] (println "One for you, one for me."))
+   ([PLACEHOLDER-1]
+    (do (print "One for" PLACEHOLDER-1) (print ", one for me.\n")))))
+ (two-fer "Bob")
+ (two-fer "Alice")
+ (two-fer))
