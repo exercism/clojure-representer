@@ -8,8 +8,8 @@ RUN adduser -D -g '' appuser
 
 # get the source code
 WORKDIR /clojure-representer
-COPY clojure_representer.clj .
 COPY bin/run.sh bin/run.sh
+COPY clojure_representer.clj .
 
 # Get static analyzer image as build stage
 FROM cljkondo/clj-kondo:2021.01.20-alpine as clj-kondo
