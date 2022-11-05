@@ -46,12 +46,7 @@
   [slug n]
   (let [dir (str/replace slug "-" "_")
         file (str dir ".clj")]
-    (str (fs/path "resources" dir (str n) file))))
-
-(solution-src "two-fer" 0)
-
-
-
+    (str (fs/path "resources" dir (str n) "src" file))))
 
 (def analysis
   (let [cmd ["clj-kondo" "--lint" (str (fs/file in-dir (str (str/replace slug "-" "_") ".clj"))) "--config"
