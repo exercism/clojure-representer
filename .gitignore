@@ -16,3 +16,4 @@ pom.xml.asc
 .calva
 */representation.txt
 *mapping.json
+*.meta

@@ -13,17 +13,48 @@
 (def in-dir (str (fs/path (second *command-line-args*))))
 (def out-dir (str (fs/path (last *command-line-args*))))
 
-(comment
-  (def slug "test-code")
-  (def in-dir (str (fs/path "solution/")))
-  (def out-dir (str (fs/path "resources/")))
-  )
+(defn solution-nodes 
+  "Parses a solution and converts it to
+   a depth-first sequence of nodes.
+   Removes whitespace, newlines and comments."
+  [slug in-dir]
+  (let [file (str (str/replace slug "-" "_") ".clj")
+        parsed (p/parse-file-all (str (fs/path in-dir file)))]
+  (remove #(or (n/whitespace-or-comment? %)
+               (n/inner? %)) 
+          (tree-seq n/inner? n/children parsed))))
 
-(defn snake-case [kebab-case]
-  (str/replace kebab-case "-" "_"))
+
+(for [node (solution-nodes "two-fer" "resources/twofers/0/")]
+  (if (n/sexpr-able? node)
+    (n/sexpr node)
+    (n/tag node)))
+
+(n/tag (nth 
+        (solution-nodes "two-fer" "resources/twofers/0/")
+        3))
+
+;; for testing
+
+(defn solution-src
+  "Given a solution `slug` and a number from 0 to 500,
+   returns a string representing the file path of the 
+   solution to be tested.
+
+   Example:
+  `(solution-src \"two-fer\" 0)`"
+  [slug n]
+  (let [dir (str/replace slug "-" "_")
+        file (str dir ".clj")]
+    (str (fs/path "resources" dir (str n) file))))
+
+(solution-src "two-fer" 0)
+
+
+
 
 (def analysis
-  (let [cmd ["clj-kondo" "--lint" (str (fs/file in-dir (str (snake-case slug) ".clj"))) "--config"
+  (let [cmd ["clj-kondo" "--lint" (str (fs/file in-dir (str (str/replace slug "-" "_") ".clj"))) "--config"
              "{:output {:format :edn},:analysis {:locals true :arglists true}}"]]
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
 
@@ -61,15 +92,13 @@
     (zipmap (into args locals) placeholders)))
 
 (def test-file
-  (str (fs/file in-dir (str (snake-case slug) ".clj"))))
+  (str (fs/file in-dir (str (str/replace "-" "_" slug) ".clj"))))
 
 (def impl-zip
   (z/of-file test-file {:track-position? true}))
 
 (def parsed-test-file
   (p/parse-file-all test-file))
-
-(map n/tag (n/children parsed-test-file))
 
 
 (defn replace-local [z {:keys [name row col]}]
