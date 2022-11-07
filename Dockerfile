@@ -1,6 +1,6 @@
 FROM clojure:tools-deps-alpine
 
-RUN apk add --no-cache rlwrap
+RUN apk add --no-cache bash rlwrap
 
 WORKDIR /opt/representer
 COPY . .
