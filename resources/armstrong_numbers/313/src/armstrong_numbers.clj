@@ -6,8 +6,8 @@
         (if (< num 10) (list num)
             (cons (rem num 10) (num->digits (quot num 10)))))
 
-(defn expt [b e] (apply * (repeat e b)))
+(defn exp [b e] (apply * (repeat e b)))
 
 (defn armstrong? [num]
   (let [digits (num->digits num)]
-    (= num (apply + (map #(expt % (count digits)) digits)))))
+    (= num (apply + (map #(exp % (count digits)) digits)))))

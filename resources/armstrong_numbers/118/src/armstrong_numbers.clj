@@ -5,13 +5,13 @@
    #(read-string (str %))
    (seq (char-array (str num)))))
 
-(defn expt [pow base]
+(defn exp [pow base]
   (reduce * (repeat pow base)))
 
 (defn armstrong? [num] ;; <- arglist goes here
   (let [digits (num->digits num)
         pow (count digits)
-        armstrong (reduce + (map (partial expt pow) digits))]
+        armstrong (reduce + (map (partial exp pow) digits))]
     (= num armstrong)))
 
 (armstrong? 9926314)

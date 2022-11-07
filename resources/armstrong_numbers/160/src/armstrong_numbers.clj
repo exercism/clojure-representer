@@ -10,7 +10,7 @@
   [num]
   (map read-string (map str (seq (str num)))))
 
-(defn expt
+(defn exp
   "Raise x to the nth power"
   [x n]
   (loop [n n acc 1]
@@ -25,7 +25,7 @@
   (= num 
      (apply + 
             (for [i (range (count-digits num))] 
-              (expt 
+              (exp 
                (int (nth (separate-digits num) i)) 
                (count-digits num))))))
 

@@ -32,7 +32,7 @@
      (fn* ([PLACEHOLDER-2] (read-string (str PLACEHOLDER-2))))
      (seq (clojure.lang.Numbers/char_array (str PLACEHOLDER-1)))))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-4)))))
@@ -46,6 +46,6 @@
       PLACEHOLDER-7
       (clojure.lang.RT/count PLACEHOLDER-6)
       PLACEHOLDER-8
-      (reduce + (map (partial expt PLACEHOLDER-7) PLACEHOLDER-6))]
+      (reduce + (map (partial exp PLACEHOLDER-7) PLACEHOLDER-6))]
      (clojure.lang.Util/equiv PLACEHOLDER-5 PLACEHOLDER-8)))))
  (armstrong? 9926314))

@@ -36,7 +36,7 @@
    ([PLACEHOLDER-2]
     (map read-string (map str (seq (str PLACEHOLDER-2)))))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (loop*
@@ -97,7 +97,7 @@
                        (do
                         (clojure.core/chunk-append
                          PLACEHOLDER-15
-                         (expt
+                         (exp
                           (clojure.lang.RT/intCast
                            (clojure.lang.RT/nth
                             (separate-digits PLACEHOLDER-7)
@@ -117,7 +117,7 @@
                   (let*
                    [PLACEHOLDER-18 (clojure.core/first PLACEHOLDER-12)]
                    (clojure.core/cons
-                    (expt
+                    (exp
                      (clojure.lang.RT/intCast
                       (clojure.lang.RT/nth
                        (separate-digits PLACEHOLDER-7)

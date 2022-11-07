@@ -25,27 +25,22 @@
         'armstrong-numbers))))
     nil)))
  (def
-  exp
-  (fn*
-   ([PLACEHOLDER-1 PLACEHOLDER-2]
-    (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
- (def
   armstrong?
   (fn*
-   ([PLACEHOLDER-3]
+   ([PLACEHOLDER-1]
     (let*
-     [PLACEHOLDER-5
-      (map
-       (fn*
-        ([PLACEHOLDER-4]
-         (java.lang.Character/getNumericValue PLACEHOLDER-4)))
-       (str PLACEHOLDER-3))
-      PLACEHOLDER-6
-      (clojure.lang.RT/count PLACEHOLDER-5)
-      PLACEHOLDER-8
-      (reduce
+     [PLACEHOLDER-2
+      (str PLACEHOLDER-1)
+      PLACEHOLDER-3
+      (clojure.lang.RT/count PLACEHOLDER-2)]
+     (clojure.lang.Numbers/equiv
+      PLACEHOLDER-1
+      (apply
        +
        (map
-        (fn* ([PLACEHOLDER-7] (exp PLACEHOLDER-7 PLACEHOLDER-6)))
-        PLACEHOLDER-5))]
-     (clojure.lang.Util/equiv PLACEHOLDER-3 PLACEHOLDER-8))))))
+        (fn*
+         ([PLACEHOLDER-4]
+          (.pow
+           (bigdec (java.lang.Character/digit PLACEHOLDER-4 10))
+           PLACEHOLDER-3)))
+        PLACEHOLDER-2))))))))

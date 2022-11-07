@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  split
+  split-num
   (fn*
    ([PLACEHOLDER-1] (map (comp read-string str) (str PLACEHOLDER-1)))))
  (def
@@ -33,7 +33,7 @@
   (fn*
    ([PLACEHOLDER-2]
     (let*
-     [PLACEHOLDER-3 (split PLACEHOLDER-2)]
+     [PLACEHOLDER-3 (split-num PLACEHOLDER-2)]
      (clojure.lang.Numbers/equiv
       PLACEHOLDER-2
       (apply

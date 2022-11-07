@@ -11,7 +11,7 @@
              r (quot n 10)]
          (recur r (cons d out))))))
 
-(defn expt [b p]
+(defn exp [b p]
   (reduce * (repeat p b)))
 
 (defn armstrong? [num] ;; <- arglist goes here
@@ -20,5 +20,5 @@
         num-digits (count digits)]
   (cond 
     (= 1 num-digits) true ;; All 1 digit numbers are Armstrong number
-    :else (= num (reduce + (map #(expt % num-digits) digits)))))
+    :else (= num (reduce + (map #(exp % num-digits) digits)))))
 )

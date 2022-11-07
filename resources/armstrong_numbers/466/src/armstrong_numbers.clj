@@ -11,13 +11,13 @@
 ;; or roll my own.
 ;; I tried Java interop (Math/pow),
 ;; but it overflowed in one of the tests.
-(defn expt [x y]
+(defn exp [x y]
   (apply * (repeat y x)))
 
 (defn armstrong? [num]
   (let [digits (get-digits num)
         len (count digits)]
     (->> digits
-         (map #(expt % len))
+         (map #(exp % len))
          (reduce +)
          (= num))))

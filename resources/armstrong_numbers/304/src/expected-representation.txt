@@ -39,7 +39,7 @@
           (clojure.lang.Numbers/quotient PLACEHOLDER-3 10)))
         PLACEHOLDER-1)))))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (apply * (repeat PLACEHOLDER-5 PLACEHOLDER-4)))))
@@ -57,5 +57,5 @@
       (apply
        +
        (map
-        (fn* ([PLACEHOLDER-9] (expt PLACEHOLDER-9 PLACEHOLDER-8)))
+        (fn* ([PLACEHOLDER-9] (exp PLACEHOLDER-9 PLACEHOLDER-8)))
         PLACEHOLDER-7))))))))

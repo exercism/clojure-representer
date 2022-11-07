@@ -12,7 +12,7 @@
       (try
        (do
         (clojure.core/refer 'clojure.core)
-        (clojure.core/require '[clojure.math :as math]))
+        (clojure.core/require '[clojure.math :as ma]))
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
    (.equals 'armstrong-numbers 'clojure.core)

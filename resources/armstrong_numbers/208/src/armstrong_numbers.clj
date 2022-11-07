@@ -5,11 +5,11 @@
   (count (str num))
 )
 
-(defn expt
+(defn exp
   [x n]
   (reduce * (repeat n x))
 )
 
 (defn armstrong? [num] ;; <- arglist goes here
-    (= num (reduce + (map #(expt (read-string (str %)) (numdigits num)) (str num))))
+    (= num (reduce + (map #(exp (read-string (str %)) (numdigits num)) (str num))))
 )

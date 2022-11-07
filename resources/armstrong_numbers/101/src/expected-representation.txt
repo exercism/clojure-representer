@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  split
+  split-num
   (fn*
    ([PLACEHOLDER-1]
     (loop*
@@ -47,7 +47,7 @@
    ([PLACEHOLDER-6]
     (let*
      [PLACEHOLDER-7
-      (split PLACEHOLDER-6)
+      (split-num PLACEHOLDER-6)
       PLACEHOLDER-8
       (clojure.lang.RT/count PLACEHOLDER-7)]
      (clojure.lang.Util/equiv

@@ -30,7 +30,6 @@
 (deftest armstrong-numbers-test
   (testing "500 armstrong-numbers"
     (doseq [n (range 500)]
-      (println (str "testing armstrong-numbers # " n))
       (let [_              (represent {:slug    "armstrong-numbers"
                                        :in-dir  (str "resources/armstrong_numbers/" n "/src/")
                                        :out-dir (str "resources/armstrong_numbers/" n "/src/")})

@@ -30,7 +30,7 @@
   (fn*
    ([PLACEHOLDER-2] (java.lang.Integer/parseInt (str PLACEHOLDER-2)))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (loop*
@@ -56,5 +56,5 @@
        (map
         (fn*
          ([PLACEHOLDER-10]
-          (expt (char->num PLACEHOLDER-10) PLACEHOLDER-9)))
+          (exp (char->num PLACEHOLDER-10) PLACEHOLDER-9)))
         PLACEHOLDER-8))))))))

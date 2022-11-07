@@ -43,7 +43,7 @@
        (digits PLACEHOLDER-3)
        (clojure.lang.RT/intCast PLACEHOLDER-2)))))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (reduce * (repeat PLACEHOLDER-4 PLACEHOLDER-5)))))
@@ -55,7 +55,7 @@
      [PLACEHOLDER-7
       (digits PLACEHOLDER-6)
       PLACEHOLDER-8
-      (partial expt (clojure.lang.RT/count PLACEHOLDER-7))]
+      (partial exp (clojure.lang.RT/count PLACEHOLDER-7))]
      (clojure.lang.Numbers/equiv
       PLACEHOLDER-6
       (reduce + (map PLACEHOLDER-8 PLACEHOLDER-7))))))))

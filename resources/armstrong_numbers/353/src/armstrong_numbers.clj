@@ -1,13 +1,13 @@
 (ns armstrong-numbers)
 
-(defn- split [num]
+(defn- split-num [num]
   (->>
    num
    str
    (map (comp read-string str))))
 
 (defn armstrong? [num]
-  (let [digits (split num)]
+  (let [digits (split-num num)]
     (->>
      digits
      (map #(reduce * (repeat (count digits) %)))

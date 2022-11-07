@@ -1,6 +1,6 @@
 (ns armstrong-numbers)
 
-(defn split [num]
+(defn split-num [num]
   (loop [num num
          digits ()]
     (if (zero? num)
@@ -11,6 +11,6 @@
   (reduce * (repeat power num)))
 
 (defn armstrong? [num]
-  (let [digits (split num)
+  (let [digits (split-num num)
         power (count digits)]
     (= num (reduce #(+ %1 (exp %2 power)) 0 digits))))

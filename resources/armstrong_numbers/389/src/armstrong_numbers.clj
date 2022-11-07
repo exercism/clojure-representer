@@ -1,6 +1,6 @@
 (ns armstrong-numbers)
 
-(defn- expt [a b]
+(defn- exp [a b]
   (apply * (repeat b a)))
 
 (defn armstrong?
@@ -11,5 +11,5 @@
                 (take-while pos?))
         p (count xs)]
     (= num (->> xs
-                (map #(expt (mod % 10) p))
+                (map #(exp (mod % 10) p))
                 (apply +)))))

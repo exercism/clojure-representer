@@ -2,7 +2,6 @@
   (:require [clojure-representer.analyzer.jvm :as ana.jvm]
             [clojure-representer.analyzer.passes.jvm.emit-form :as e]
             [clojure-representer.analyzer.passes.uniquify :refer [mappings placeholder]]
-            [clojure.tools.deps.alpha.repl :refer [add-libs]]
             [clojure.java.io :as io]
             [clojure.string :as str]
             [rewrite-clj.zip :as z]
@@ -25,33 +24,6 @@
                 nofollow-links
                 (conj LinkOption/NOFOLLOW_LINKS))))
 
-(defn exists?
-  "Returns true if f exists."
-  ([f] (exists? f nil))
-  ([f {:keys [:nofollow-links]}]
-   (try
-     (Files/exists
-      (as-path f)
-      (->link-opts nofollow-links))
-     (catch Exception _e
-       false))))
-
-(defn deps [path]
-  (-> path
-      z/of-file
-      (z/find-value z/next :dependencies)
-      z/right
-      z/sexpr))
-
-(defn edn-dep [lein-dep]
-  (let [[id version] lein-dep]
-    {id {:mvn/version version}}))
-
-(defn hot-load-deps [path]
-  (doseq [dep (deps path)]
-    (add-libs (edn-dep dep))
-    (println (str "Added " dep))))
-
 (defn normalize 
   "Takes a Java.io.File containing Clojure code
    and outputs a string representing a normalized, 
@@ -67,11 +39,8 @@
 
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [file           (str (str/replace slug "-" "_") ".clj")
-        lein-config    (io/file in-dir ".." "project.clj")
         _              (reset! placeholder 0)
         _              (reset! mappings {})
-        _ (when (exists? lein-config)
-            (hot-load-deps (str lein-config)))
         representation (-> (io/file in-dir file)
                            normalize
                            z/of-string

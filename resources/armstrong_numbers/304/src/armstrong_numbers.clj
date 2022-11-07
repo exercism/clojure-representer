@@ -7,9 +7,9 @@
        (mapv #(mod % 10))
        rseq))
 
-(defn expt [x pow] (apply * (repeat pow x)))
+(defn exp [x pow] (apply * (repeat pow x)))
 
 (defn armstrong? [num] 
   (let 
     [nums (digits num) expo (count nums)]
-    (= num (apply + (map #(expt % expo) nums)))))
+    (= num (apply + (map #(exp % expo) nums)))))

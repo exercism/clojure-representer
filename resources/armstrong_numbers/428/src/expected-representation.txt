@@ -35,7 +35,7 @@
       (mod PLACEHOLDER-1 10))
      []))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (if
@@ -58,7 +58,7 @@
      (apply
       +
       (map
-       (fn* ([PLACEHOLDER-7] (expt PLACEHOLDER-7 PLACEHOLDER-6)))
+       (fn* ([PLACEHOLDER-7] (exp PLACEHOLDER-7 PLACEHOLDER-6)))
        PLACEHOLDER-5))))))
  (def
   armstrong?

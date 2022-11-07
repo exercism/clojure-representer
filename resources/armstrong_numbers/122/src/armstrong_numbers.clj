@@ -6,7 +6,7 @@
   [chr]
   (Integer/parseInt (str chr)))
 ;; SImply avoided the use of numeric tower library
-(defn expt
+(defn exp
   [x n]
   (loop [prd 1 i n]
     (if (> i 0)
@@ -17,4 +17,4 @@
   (= num
      (let [digits (seq (str num))
            num-of-digits (count digits)]
-       (sum (map #(expt (char->num %) num-of-digits) digits)))))
+       (sum (map #(exp (char->num %) num-of-digits) digits)))))

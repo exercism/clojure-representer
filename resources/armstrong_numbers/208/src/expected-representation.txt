@@ -28,7 +28,7 @@
   numdigits
   (fn* ([PLACEHOLDER-1] (clojure.lang.RT/count (str PLACEHOLDER-1)))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-2)))))
@@ -43,7 +43,7 @@
       (map
        (fn*
         ([PLACEHOLDER-5]
-         (expt
+         (exp
           (read-string (str PLACEHOLDER-5))
           (numdigits PLACEHOLDER-4))))
        (str PLACEHOLDER-4))))))))

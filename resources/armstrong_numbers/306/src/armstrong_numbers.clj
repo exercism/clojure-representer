@@ -1,6 +1,6 @@
 (ns armstrong-numbers)
 
-(defn split [num]
+(defn split-num [num]
   (-> num
       str
       (clojure.string/split #"")
@@ -14,7 +14,7 @@
 
 (defn armstrong [num]
   (def numbers
-    (split num)
+    (split-num num)
     )
   (def exponential
     (count numbers)

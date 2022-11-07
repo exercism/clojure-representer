@@ -1,7 +1,7 @@
-(ns armstrong-numbers (:require [clojure.math :as math]))
+(ns armstrong-numbers (:require [clojure.math :as ma]))
 
 (defn digit-length [number]
-    (int (inc (math/log10 number))))
+    (int (inc (ma/log10 number))))
 
 (defn pow [number exp]
     (loop [num (bigint number) exp exp pow-total 1]

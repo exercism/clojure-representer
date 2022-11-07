@@ -10,7 +10,9 @@
                                (.getClassLoader
                                 (.getClass PLACEHOLDER-0))})
       (try
-       (clojure.core/refer 'clojure.core)
+       (do
+        (clojure.core/refer 'clojure.core)
+        (clojure.core/require '[clojure.math]))
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
    (.equals 'armstrong-numbers 'clojure.core)

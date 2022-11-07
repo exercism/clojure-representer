@@ -5,10 +5,10 @@
    #(Integer/parseInt %)
     (clojure.string/split (str num) #"")))
 
-(defn expt [base exponent]
+(defn exp [base exponent]
   (if (= 0 exponent)
     1
-    (* base (expt base (dec exponent)))))
+    (* base (exp base (dec exponent)))))
 
 (defn armstrong? [num]
-  (= num (reduce + (map #(expt % (count (into-seq num))) (into-seq num)))))
+  (= num (reduce + (map #(exp % (count (into-seq num))) (into-seq num)))))

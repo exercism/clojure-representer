@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (loop*
@@ -47,7 +47,7 @@
       (map
        (fn*
         ([PLACEHOLDER-6]
-         (expt
+         (exp
           (java.lang.Long/parseLong (str PLACEHOLDER-6))
           (clojure.lang.RT/count (str PLACEHOLDER-5)))))
        (str PLACEHOLDER-5))))))))

@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (loop*
@@ -54,7 +54,7 @@
        (clojure.lang.RT/intCast
         (clojure.lang.Numbers/divide
          PLACEHOLDER-7
-         (expt 10 (clojure.lang.Numbers/minus PLACEHOLDER-9 1))))]
+         (exp 10 (clojure.lang.Numbers/minus PLACEHOLDER-9 1))))]
       (if
        (let*
         [PLACEHOLDER-11 (clojure.lang.Util/equiv PLACEHOLDER-7 0)]
@@ -75,12 +75,12 @@
          :else
          (recur
           (clojure.lang.Numbers/add
-           (expt PLACEHOLDER-10 PLACEHOLDER-8)
+           (exp PLACEHOLDER-10 PLACEHOLDER-8)
            PLACEHOLDER-6)
           (clojure.lang.Numbers/minus
            PLACEHOLDER-7
            (clojure.lang.Numbers/multiply
             PLACEHOLDER-10
-            (expt 10 (clojure.lang.Numbers/minus PLACEHOLDER-9 1))))
+            (exp 10 (clojure.lang.Numbers/minus PLACEHOLDER-9 1))))
           PLACEHOLDER-8
           (clojure.lang.RT/count (str PLACEHOLDER-7))))))))))))

@@ -32,7 +32,7 @@
      (fn* ([PLACEHOLDER-2] (java.lang.Integer/parseInt PLACEHOLDER-2)))
      (clojure.string/split (str PLACEHOLDER-1) (re-pattern ""))))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (if
@@ -40,9 +40,7 @@
      1
      (clojure.lang.Numbers/multiply
       PLACEHOLDER-3
-      (expt
-       PLACEHOLDER-3
-       (clojure.lang.Numbers/dec PLACEHOLDER-4)))))))
+      (exp PLACEHOLDER-3 (clojure.lang.Numbers/dec PLACEHOLDER-4)))))))
  (def
   armstrong?
   (fn*
@@ -54,7 +52,7 @@
       (map
        (fn*
         ([PLACEHOLDER-6]
-         (expt
+         (exp
           PLACEHOLDER-6
           (clojure.lang.RT/count (into-seq PLACEHOLDER-5)))))
        (into-seq PLACEHOLDER-5))))))))

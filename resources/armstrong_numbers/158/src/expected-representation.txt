@@ -43,7 +43,7 @@
        (clojure.lang.Numbers/quotient PLACEHOLDER-2 10)]
       (recur PLACEHOLDER-5 (cons PLACEHOLDER-4 PLACEHOLDER-3)))))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-6 PLACEHOLDER-7]
     (reduce * (repeat PLACEHOLDER-7 PLACEHOLDER-6)))))
@@ -66,5 +66,5 @@
         (reduce
          +
          (map
-          (fn* ([PLACEHOLDER-11] (expt PLACEHOLDER-11 PLACEHOLDER-10)))
+          (fn* ([PLACEHOLDER-11] (exp PLACEHOLDER-11 PLACEHOLDER-10)))
           PLACEHOLDER-9))))))))))

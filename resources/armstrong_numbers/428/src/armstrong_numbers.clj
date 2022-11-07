@@ -10,7 +10,7 @@
     (conj (digits (quot n 10)) (mod n 10))
     []))
 
-(defn expt [x y]
+(defn exp [x y]
   (if (zero? y)
     1
     (* x (expt x (dec y)))))
@@ -18,7 +18,7 @@
 (defn sum-of-digits [n]
   (let [ds (digits n)
         num-of-digs (count ds)]
-    (apply + (map #(expt % num-of-digs) ds))))
+    (apply + (map #(exp % num-of-digs) ds))))
 
 (defn armstrong? [n]
   (= n (sum-of-digits n)))

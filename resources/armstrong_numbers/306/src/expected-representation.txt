@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  split
+  split-num
   (fn*
    ([PLACEHOLDER-1]
     (clojure.string/split (str PLACEHOLDER-1) (re-pattern "")))))
@@ -39,7 +39,7 @@
   (fn*
    ([PLACEHOLDER-4]
     (do
-     (def numbers (split PLACEHOLDER-4))
+     (def numbers (split-num PLACEHOLDER-4))
      (def exponential (clojure.lang.RT/count numbers))
      (reduce
       (fn*

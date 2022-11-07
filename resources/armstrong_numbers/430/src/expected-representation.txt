@@ -39,7 +39,7 @@
         PLACEHOLDER-3
         (clojure.lang.Numbers/remainder PLACEHOLDER-2 10))))))))
  (def
-  expt
+  exp
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (apply * (repeat PLACEHOLDER-5 PLACEHOLDER-4)))))
@@ -58,7 +58,7 @@
         ([PLACEHOLDER-9 PLACEHOLDER-10]
          (clojure.lang.Numbers/add
           PLACEHOLDER-9
-          (expt PLACEHOLDER-10 PLACEHOLDER-8))))
+          (exp PLACEHOLDER-10 PLACEHOLDER-8))))
        0
        PLACEHOLDER-7)
       PLACEHOLDER-6))))))
