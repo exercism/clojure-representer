@@ -6,7 +6,23 @@
             [clojure.string :as str]
             [rewrite-clj.zip :as z]
             [clojure.data.json :as json]
-            [clojure.pprint :as pp]))
+            [clojure.pprint :as pp])
+  (:import [java.nio.file Files  LinkOption Path]
+           [java.net URI]))
+
+(defn- as-path
+  ^Path [path]
+  (if (instance? Path path) path
+      (if (instance? URI path)
+        (java.nio.file.Paths/get ^URI path)
+        (.toPath (io/file path)))))
+
+(defn- ->link-opts ^"[Ljava.nio.file.LinkOption;"
+  [nofollow-links]
+  (into-array LinkOption
+              (cond-> []
+                nofollow-links
+                (conj LinkOption/NOFOLLOW_LINKS))))
 
 (defn normalize 
   "Takes a Java.io.File containing Clojure code
@@ -28,27 +44,11 @@
         representation (-> (io/file in-dir file)
                            normalize
                            z/of-string
-                           (z/find-value z/next (symbol "PLACEHOLDER-0"))
-                           z/up z/up
-                           z/remove
-                           z/up z/up z/up z/up
                            z/sexpr)]
     (spit (str (io/file out-dir "mapping.json"))
-          (json/write-str (into {} (map (fn [[k v]] [v k]) 
-                                        (dissoc @mappings "loading__6789__auto__")))))
+          (json/write-str (into {} (map (fn [[k v]] [v k]) @mappings))))
     (spit (str (io/file out-dir "representation.txt"))
           (with-out-str (pp/pprint representation)))))
-
-(comment
-  (spit "unique-representations.clj"
-        (with-out-str (pp/pprint (set (map #(read-string (slurp (str "resources/twofers/" % "/representation.txt")))
-                                           (range 500))))))
-
-  (doseq [n (range 500)]
-    (represent {:slug    "two-fer"
-                :in-dir  (str "resources/twofers/" n "/")
-                :out-dir (str "resources/twofers/" n "/")}))
-  )
 
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug :in-dir in-dir :out-dir out-dir}))

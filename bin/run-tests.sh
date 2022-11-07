@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-lein test
+clj -X:test

@@ -1,1 +1,4 @@
-nil
+(def
+ two-fer
+ (fn*
+  ([PLACEHOLDER-0] (format "One for %s, one for me" PLACEHOLDER-0))))

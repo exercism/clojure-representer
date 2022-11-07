@@ -1,0 +1,74 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (do
+        (clojure.core/refer 'clojure.core)
+        (clojure.core/import* "java.math.BigDecimal"))
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  exp
+  (fn*
+   ([PLACEHOLDER-1 PLACEHOLDER-2]
+    (let*
+     [PLACEHOLDER-3 (new BigDecimal PLACEHOLDER-1)]
+     (.pow PLACEHOLDER-3 PLACEHOLDER-2)))))
+ (def
+  to-list
+  (fn*
+   ([PLACEHOLDER-4]
+    (let*
+     [PLACEHOLDER-7
+      (fn*
+       ([PLACEHOLDER-5 PLACEHOLDER-6]
+        (if
+         (clojure.lang.Numbers/isZero PLACEHOLDER-5)
+         PLACEHOLDER-6
+         (recur
+          (clojure.lang.Numbers/quotient PLACEHOLDER-5 10)
+          (cons (mod PLACEHOLDER-5 10) PLACEHOLDER-6)))))]
+     (if
+      (clojure.lang.Numbers/isZero PLACEHOLDER-4)
+      '(0)
+      (PLACEHOLDER-7 PLACEHOLDER-4 '()))))))
+ (def
+  armstrong?
+  (fn*
+   ([PLACEHOLDER-8]
+    (let*
+     [PLACEHOLDER-9
+      (new BigDecimal PLACEHOLDER-8)
+      PLACEHOLDER-10
+      (to-list PLACEHOLDER-8)
+      PLACEHOLDER-11
+      (clojure.lang.RT/count PLACEHOLDER-10)
+      PLACEHOLDER-14
+      (reduce
+       (fn*
+        ([PLACEHOLDER-12 PLACEHOLDER-13]
+         (clojure.lang.Numbers/add
+          PLACEHOLDER-12
+          (exp PLACEHOLDER-13 PLACEHOLDER-11))))
+       0
+       PLACEHOLDER-10)]
+     (clojure.lang.Util/equiv PLACEHOLDER-9 PLACEHOLDER-14))))))

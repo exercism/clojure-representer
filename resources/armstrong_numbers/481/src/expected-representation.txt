@@ -1,0 +1,114 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  pow
+  (fn*
+   ([PLACEHOLDER-1 PLACEHOLDER-2]
+    (.pow
+     (java.math.BigInteger/valueOf PLACEHOLDER-1)
+     PLACEHOLDER-2))))
+ (def
+  armstrong-value
+  (fn*
+   ([PLACEHOLDER-3 PLACEHOLDER-4]
+    (reduce
+     +
+     (let*
+      [PLACEHOLDER-16
+       (fn*
+        PLACEHOLDER-5
+        ([PLACEHOLDER-6]
+         (new
+          clojure.lang.LazySeq
+          (fn*
+           ([]
+            (loop*
+             [PLACEHOLDER-7 PLACEHOLDER-6]
+             (let*
+              [PLACEHOLDER-8 (clojure.core/seq PLACEHOLDER-7)]
+              (if
+               PLACEHOLDER-8
+               (let*
+                [PLACEHOLDER-9 PLACEHOLDER-8]
+                (if
+                 (clojure.core/chunked-seq? PLACEHOLDER-9)
+                 (let*
+                  [PLACEHOLDER-10
+                   (clojure.core/chunk-first PLACEHOLDER-9)
+                   PLACEHOLDER-11
+                   (clojure.lang.RT/intCast
+                    (clojure.lang.RT/count PLACEHOLDER-10))
+                   PLACEHOLDER-12
+                   (clojure.core/chunk-buffer PLACEHOLDER-11)]
+                  (if
+                   (loop*
+                    [PLACEHOLDER-13 (clojure.lang.RT/intCast 0)]
+                    (if
+                     (clojure.lang.Numbers/lt
+                      PLACEHOLDER-13
+                      PLACEHOLDER-11)
+                     (let*
+                      [PLACEHOLDER-14
+                       (.nth PLACEHOLDER-10 PLACEHOLDER-13)]
+                      (do
+                       (clojure.core/chunk-append
+                        PLACEHOLDER-12
+                        (pow
+                         (java.lang.Character/getNumericValue
+                          PLACEHOLDER-14)
+                         PLACEHOLDER-4))
+                       (recur
+                        (clojure.lang.Numbers/unchecked_inc
+                         PLACEHOLDER-13))))
+                     true))
+                   (clojure.core/chunk-cons
+                    (clojure.core/chunk PLACEHOLDER-12)
+                    (PLACEHOLDER-5
+                     (clojure.core/chunk-rest PLACEHOLDER-9)))
+                   (clojure.core/chunk-cons
+                    (clojure.core/chunk PLACEHOLDER-12)
+                    nil)))
+                 (let*
+                  [PLACEHOLDER-15 (clojure.core/first PLACEHOLDER-9)]
+                  (clojure.core/cons
+                   (pow
+                    (java.lang.Character/getNumericValue
+                     PLACEHOLDER-15)
+                    PLACEHOLDER-4)
+                   (PLACEHOLDER-5
+                    (clojure.core/rest PLACEHOLDER-9))))))))))))))]
+      (PLACEHOLDER-16 (str PLACEHOLDER-3)))))))
+ (def
+  armstrong?
+  (fn*
+   ([PLACEHOLDER-17]
+    (clojure.lang.Util/equiv
+     PLACEHOLDER-17
+     (bigint
+      (armstrong-value
+       PLACEHOLDER-17
+       (clojure.lang.RT/count (str PLACEHOLDER-17)))))))))

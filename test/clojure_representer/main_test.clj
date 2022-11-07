@@ -26,3 +26,18 @@
         (range 500))
   (run! #(Files/delete (as-path (io/file (str "resources/twofers/" % "/") "mapping.json")))
         (range 500)))
+
+(deftest armstrong-numbers-test
+  (testing "500 armstrong-numbers"
+    (doseq [n (range 500)]
+      (let [_              (represent {:slug    "armstrong-numbers"
+                                       :in-dir  (str "resources/armstrong_numbers/" n "/src/")
+                                       :out-dir (str "resources/armstrong_numbers/" n "/src/")})
+            representation (slurp (str "resources/armstrong_numbers/" n "/src/representation.txt"))
+            expected       (slurp (str "resources/armstrong_numbers/" n "/src/expected-representation.txt"))]
+        (is (= representation expected)))))
+  ;; clean up files
+  (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/src/") "representation.txt")))
+        (range 500))
+  (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/src/") "mapping.json")))
+        (range 500)))
