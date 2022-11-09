@@ -1,4 +1,4 @@
-(ns clojure-representer.main
+(ns main2
   (:require [clojure-representer.analyzer.jvm :as ana.jvm]
             [clojure-representer.analyzer.passes.jvm.emit-form :as e]
             [clojure-representer.analyzer.passes.uniquify :refer [mappings placeholder]]
@@ -6,10 +6,9 @@
             [clojure.string :as str]
             [rewrite-clj.zip :as z]
             [clojure.data.json :as json]
-            [clojure.pprint :as pp]
-            [clojure.pprint :as pprint]))
+            [clojure.pprint :as pp]))
 
-(defn normalize 
+(defn normalize
   "Takes a Java.io.File containing Clojure code
    and outputs a string representing a normalized, 
    fully macroexpanded version of itself."
@@ -32,31 +31,8 @@
                            z/sexpr)]
     (spit (str (io/file out-dir "mapping.json"))
           (json/write-str (into {} (map (fn [[k v]] [v k]) @mappings))))
-    (spit (str (io/file out-dir "expected-representation.txt"))
+    (spit (str (io/file out-dir "representation.txt"))
           (with-out-str (pp/pprint representation)))))
 
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug :in-dir in-dir :out-dir out-dir}))
-
-#_(try
-  (-> (io/file (str "resources/run-length-encoding/" 148 "/src/") "run_length_encoding.clj")
-      normalize
-      z/of-string
-      z/sexpr)
-  (catch Exception e (str "caught exception: " (.getMessage e))))
-
-(spit "unique_run_length_encoding.clj"
-      (with-out-str
-        (clojure.pprint/pprint
-        (set
-         (map
-          (fn [n] 
-            (let [dir (str "resources/run-length-encoding/" n "/src/")
-                  file-name "run_length_encoding.clj"]
-              (try
-                (-> (io/file dir file-name)
-                    normalize
-                    z/of-string
-                    z/sexpr)
-                (catch Exception e (str "Exception in" dir file-name (.getMessage e))))))
-          (range 500))))))
