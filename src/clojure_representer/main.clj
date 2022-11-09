@@ -24,7 +24,7 @@
                 nofollow-links
                 (conj LinkOption/NOFOLLOW_LINKS))))
 
-(defn normalize 
+(defn normalize
   "Takes a Java.io.File containing Clojure code
    and outputs a string representing a normalized, 
    fully macroexpanded version of itself."
@@ -41,10 +41,14 @@
   (let [file           (str (str/replace slug "-" "_") ".clj")
         _              (reset! placeholder 0)
         _              (reset! mappings {})
-        representation (-> (io/file in-dir file)
-                           normalize
-                           z/of-string
-                           z/sexpr)]
+        representation (try
+                         (-> (io/file in-dir file)
+                             normalize
+                             z/of-string
+                             z/sexpr)
+                         (catch Exception e
+                           (str "Exception in file "
+                                in-dir file ": " (.getMessage e))))]
     (spit (str (io/file out-dir "mapping.json"))
           (json/write-str (into {} (map (fn [[k v]] [v k]) @mappings))))
     (spit (str (io/file out-dir "representation.txt"))
