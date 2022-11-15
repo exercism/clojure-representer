@@ -39,8 +39,9 @@
 
 (defn replace-def
   "Takes a zipper representing normalized code,
-   and replaces the first top-level var definition
-   via a depth-first walk. Outputs a new zipper.
+   and locates the first top-level var definition
+   via a depth-first walk. Replaces all occurances
+   of the var name in the code and outputs a new zipper.
    If all var-names have been replaced,
    Outputs the zipper as-is."
   [z]
