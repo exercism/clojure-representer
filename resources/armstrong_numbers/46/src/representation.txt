@@ -1,0 +1,87 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  PLACEHOLDER-14
+  (fn*
+   ([PLACEHOLDER-1]
+    (if
+     (clojure.lang.Util/equiv PLACEHOLDER-1 0)
+     1
+     (clojure.lang.Numbers/inc
+      (clojure.lang.RT/intCast
+       (java.lang.Math/log10 PLACEHOLDER-1)))))))
+ (def
+  PLACEHOLDER-15
+  (fn*
+   ([PLACEHOLDER-2 PLACEHOLDER-3]
+    (java.lang.Character/digit
+     (clojure.lang.RT/nth (seq (str PLACEHOLDER-2)) PLACEHOLDER-3)
+     10))))
+ (def
+  PLACEHOLDER-16
+  (fn*
+   ([PLACEHOLDER-4 PLACEHOLDER-5]
+    (loop*
+     [PLACEHOLDER-6 1 PLACEHOLDER-7 PLACEHOLDER-5]
+     (if
+      (clojure.lang.Numbers/isZero PLACEHOLDER-7)
+      PLACEHOLDER-6
+      (recur
+       (clojure.lang.Numbers/multiply PLACEHOLDER-4 PLACEHOLDER-6)
+       (clojure.lang.Numbers/dec PLACEHOLDER-7)))))))
+ (def
+  PLACEHOLDER-17
+  (fn*
+   ([PLACEHOLDER-8 PLACEHOLDER-9]
+    (PLACEHOLDER-16
+     (PLACEHOLDER-15 PLACEHOLDER-8 PLACEHOLDER-9)
+     (PLACEHOLDER-14 PLACEHOLDER-8)))))
+ (def
+  PLACEHOLDER-18
+  (fn*
+   ([PLACEHOLDER-10]
+    (loop*
+     [PLACEHOLDER-11 0 PLACEHOLDER-12 0]
+     (if
+      (clojure.lang.Numbers/lt
+       PLACEHOLDER-11
+       (clojure.lang.Numbers/dec (PLACEHOLDER-14 PLACEHOLDER-10)))
+      (recur
+       (clojure.lang.Numbers/inc PLACEHOLDER-11)
+       (clojure.lang.Numbers/add
+        PLACEHOLDER-12
+        (PLACEHOLDER-17 PLACEHOLDER-10 PLACEHOLDER-11)))
+      (clojure.lang.Numbers/add
+       PLACEHOLDER-12
+       (PLACEHOLDER-17 PLACEHOLDER-10 PLACEHOLDER-11)))))))
+ (def
+  PLACEHOLDER-19
+  (fn*
+   ([PLACEHOLDER-13]
+    (clojure.lang.Util/equiv
+     (PLACEHOLDER-18 PLACEHOLDER-13)
+     PLACEHOLDER-13)))))

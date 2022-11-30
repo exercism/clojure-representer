@@ -37,6 +37,8 @@
                                      (not= "PLACEHOLDER-"
                                            (subs (str (z/sexpr (z/right %))) 0 12))))))
 
+
+
 (defn replace-def
   "Takes a zipper representing normalized code,
    and locates the first top-level var definition
@@ -46,38 +48,44 @@
    Outputs the zipper as-is."
   [z]
   (if-not (unreplaced-def? z) z
-          (let [var
-                (-> z
-                    (z/find-next-depth-first
-                     #(and (= 'def (z/sexpr %))
-           ;; can't take a substring if not enough chars,
-           ;; so just short-circuit bc we already know
-                           (or (< (count (str (z/sexpr (z/right %)))) 12)
-                               (not= "PLACEHOLDER-"
-                                     (subs (str (z/sexpr (z/right %))) 0 12)))))
-                    z/right)]
-            (let [z
-                  (z/of-string (-> var
-                                   z/root-string
-                                   (str/replace
-                                    (str (z/sexpr var))
-                                    (str "PLACEHOLDER-" @placeholder))))]
-              (reset! code z)
+          (let [var (-> z (z/find-next-depth-first
+                           #(and (= 'def (z/sexpr %))
+                                 (or (< (count (str (z/sexpr (z/right %)))) 12)
+                                     (not= "PLACEHOLDER-"
+                                           (subs (str (z/sexpr (z/right %))) 0 12)))))
+                        z/right
+                        z/sexpr)
+                z2 
+                    (z/prewalk z (fn select [zloc]
+                                   (= var (z/sexpr zloc)))
+                               (fn visit [zloc]
+                                 (z/replace zloc (symbol (str "PLACEHOLDER-" @placeholder)))))]
+            
+              (reset! code (z/of-string (-> z2 z/root-string)))
               (swap! mappings assoc (str (z/sexpr var)) (str "PLACEHOLDER-" @placeholder))
               (swap! placeholder inc)
-              z))))
+              z2)))
+
+(comment  
+  (replace-def (-> (io/file (str "resources/armstrong_numbers/" 432 "/src/")
+                            "armstrong_numbers.clj")
+                   normalize
+                   z/of-string))
+  )
 
 (defn replace-defs [z]
-  (if-not (unreplaced-def? z) 
+  (if-not (unreplaced-def? z)
     (z/sexpr z)
       (replace-defs (replace-def z))))
 
 (comment
-  (replace-defs
-   (-> (io/file (str "resources/armstrong_numbers/" 1 "/src/")
-                "armstrong_numbers.clj")
-       normalize
-       z/of-string))
+  (map
+   #(replace-defs
+    (-> (io/file (str "resources/armstrong_numbers/" % "/src/")
+                 "armstrong_numbers.clj")
+        normalize
+        z/of-string))
+   (range 10))
   )
   
 (defn represent [{:keys [slug in-dir out-dir]}]
@@ -88,14 +96,8 @@
                            replace-defs)]
     (spit (str (io/file out-dir "mapping.json"))
           (json/write-str (into {} (map (fn [[k v]] [v k]) @mappings))))
-    (spit (str (io/file out-dir "representation.txt"))
+    (spit (str (io/file out-dir "expected-representation.txt"))
           (with-out-str (pp/pprint representation)))))
   
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug :in-dir in-dir :out-dir out-dir}))
-
-(comment
-  (-main "armstrong-numbers" 
-         (str "resources/armstrong_numbers/" 1 "/src/")
-         "solution/")
-  )

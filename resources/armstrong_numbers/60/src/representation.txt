@@ -1,0 +1,54 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (do
+        (clojure.core/refer 'clojure.core)
+        (clojure.core/use '[clojure.string :only [split]]))
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  PLACEHOLDER-6
+  (fn*
+   ([PLACEHOLDER-1 PLACEHOLDER-2]
+    (if
+     (clojure.lang.Util/equiv PLACEHOLDER-2 0)
+     1
+     (reduce * 1 (repeat PLACEHOLDER-2 PLACEHOLDER-1))))))
+ (def
+  PLACEHOLDER-7
+  (fn*
+   ([PLACEHOLDER-3]
+    (let*
+     [PLACEHOLDER-4
+      (map read-string (split (str PLACEHOLDER-3) (re-pattern "")))]
+     (clojure.lang.Util/equiv
+      (reduce
+       +
+       (map
+        (fn*
+         ([PLACEHOLDER-5]
+          (PLACEHOLDER-6
+           PLACEHOLDER-5
+           (clojure.lang.RT/count PLACEHOLDER-4))))
+        PLACEHOLDER-4))
+      PLACEHOLDER-3))))))

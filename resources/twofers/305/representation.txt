@@ -1,0 +1,42 @@
+(do
+ (do
+  (clojure.core/in-ns 'PLACEHOLDER-5)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'PLACEHOLDER-5 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'PLACEHOLDER-5))))
+    nil)))
+ (def
+  PLACEHOLDER-5
+  (fn*
+   ([] (PLACEHOLDER-5 nil))
+   ([PLACEHOLDER-1]
+    (let*
+     [PLACEHOLDER-2
+      "One for you, one for me."
+      PLACEHOLDER-3
+      "One for %s, one for me."]
+     (if
+      (let*
+       [PLACEHOLDER-4 (clojure.lang.Util/identical PLACEHOLDER-1 nil)]
+       (if PLACEHOLDER-4 PLACEHOLDER-4 (empty? PLACEHOLDER-1)))
+      PLACEHOLDER-2
+      (format PLACEHOLDER-3 PLACEHOLDER-1)))))))

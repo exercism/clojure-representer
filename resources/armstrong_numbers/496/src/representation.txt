@@ -1,0 +1,87 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  PLACEHOLDER-14
+  (fn*
+   ([PLACEHOLDER-1]
+    (let*
+     [PLACEHOLDER-2
+      PLACEHOLDER-1
+      PLACEHOLDER-3
+      (if
+       (clojure.core/seq? PLACEHOLDER-2)
+       (if
+        (clojure.core/next PLACEHOLDER-2)
+        (clojure.lang.PersistentArrayMap/createAsIfByAssoc
+         (clojure.core/to-array PLACEHOLDER-2))
+        (if
+         (clojure.core/seq PLACEHOLDER-2)
+         (clojure.core/first PLACEHOLDER-2)
+         clojure.lang.PersistentArrayMap/EMPTY))
+       PLACEHOLDER-2)
+      PLACEHOLDER-4
+      PLACEHOLDER-3
+      PLACEHOLDER-5
+      (clojure.lang.RT/get PLACEHOLDER-3 :num)
+      PLACEHOLDER-6
+      (clojure.lang.RT/get PLACEHOLDER-3 :digits)
+      PLACEHOLDER-7
+      (clojure.lang.RT/get PLACEHOLDER-3 :numDigits)]
+     (if
+      (clojure.lang.Numbers/lte PLACEHOLDER-5 0)
+      PLACEHOLDER-4
+      (recur
+       {:num (clojure.lang.Numbers/quotient PLACEHOLDER-5 10),
+        :digits
+        (conj
+         PLACEHOLDER-6
+         (clojure.lang.Numbers/remainder PLACEHOLDER-5 10)),
+        :numDigits (clojure.lang.Numbers/inc PLACEHOLDER-7)}))))))
+ (def
+  PLACEHOLDER-15
+  (fn*
+   ([PLACEHOLDER-8 PLACEHOLDER-9]
+    (reduce * (repeat PLACEHOLDER-9 PLACEHOLDER-8)))))
+ (def
+  PLACEHOLDER-16
+  (fn*
+   ([PLACEHOLDER-10]
+    (let*
+     [PLACEHOLDER-11
+      (PLACEHOLDER-14 {:num PLACEHOLDER-10, :digits [], :numDigits 0})]
+     (clojure.lang.Util/equiv
+      PLACEHOLDER-10
+      (reduce
+       (fn*
+        ([PLACEHOLDER-12 PLACEHOLDER-13]
+         (clojure.lang.Numbers/add
+          PLACEHOLDER-12
+          (PLACEHOLDER-15
+           PLACEHOLDER-13
+           (clojure.lang.RT/get PLACEHOLDER-11 :numDigits)))))
+       0
+       (clojure.lang.RT/get PLACEHOLDER-11 :digits))))))))

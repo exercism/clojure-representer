@@ -1,0 +1,93 @@
+(do
+ (do
+  (clojure.core/in-ns 'armstrong-numbers)
+  ((fn*
+    PLACEHOLDER-0
+    ([]
+     (do
+      (clojure.lang.Var/pushThreadBindings
+       #:clojure.lang.Compiler{LOADER
+                               (.getClassLoader
+                                (.getClass PLACEHOLDER-0))})
+      (try
+       (clojure.core/refer 'clojure.core)
+       (finally (clojure.lang.Var/popThreadBindings)))))))
+  (if
+   (.equals 'armstrong-numbers 'clojure.core)
+   nil
+   (do
+    (clojure.lang.LockingTransaction/runInTransaction
+     (fn*
+      ([]
+       (clojure.core/commute
+        @#'clojure.core/*loaded-libs*
+        clojure.core/conj
+        'armstrong-numbers))))
+    nil)))
+ (def
+  PLACEHOLDER-8
+  (fn*
+   ([PLACEHOLDER-1]
+    (let*
+     [PLACEHOLDER-2 (clojure.lang.RT/count (str PLACEHOLDER-1))]
+     (vec (take PLACEHOLDER-2 (str PLACEHOLDER-1)))))))
+ (def
+  PLACEHOLDER-9
+  (fn*
+   ([PLACEHOLDER-3 PLACEHOLDER-4]
+    (if
+     (clojure.lang.Util/equiv PLACEHOLDER-4 0)
+     1
+     (if
+      (clojure.lang.Util/equiv PLACEHOLDER-4 1)
+      PLACEHOLDER-3
+      (if
+       :else
+       (clojure.lang.Numbers/multiply
+        PLACEHOLDER-3
+        (PLACEHOLDER-9
+         PLACEHOLDER-3
+         (clojure.lang.Numbers/minus PLACEHOLDER-4 1)))))))))
+ (def
+  PLACEHOLDER-10
+  (fn*
+   ([PLACEHOLDER-5]
+    (reduce
+     +
+     (map
+      (fn*
+       ([PLACEHOLDER-6]
+        (PLACEHOLDER-9
+         (clojure.lang.RT/intCast PLACEHOLDER-6)
+         (clojure.lang.RT/count PLACEHOLDER-5))))
+      PLACEHOLDER-5)))))
+ (def
+  PLACEHOLDER-11
+  (fn*
+   ([PLACEHOLDER-7]
+    (if
+     (clojure.lang.Util/equiv PLACEHOLDER-7 0)
+     true
+     (if
+      (clojure.lang.Util/equiv PLACEHOLDER-7 5)
+      true
+      (if
+       (clojure.lang.Util/equiv PLACEHOLDER-7 153)
+       true
+       (if
+        (clojure.lang.Util/equiv PLACEHOLDER-7 9474)
+        true
+        (if
+         (clojure.lang.Util/equiv PLACEHOLDER-7 9926315)
+         true
+         (if
+          (clojure.lang.Util/equiv PLACEHOLDER-7 21897142587612075)
+          true
+          (if
+           :else
+           (if
+            (clojure.lang.Util/equiv
+             PLACEHOLDER-7
+             (PLACEHOLDER-10 (PLACEHOLDER-8 PLACEHOLDER-7)))
+            true
+            false))))))))))))
