@@ -25,12 +25,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  raise-to-power
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-3]
     (let*
@@ -43,7 +43,7 @@
         (fn*
          ([PLACEHOLDER-5]
           (clojure.lang.RT/longCast
-           (raise-to-power
+           (PLACEHOLDER-6
             (java.lang.Integer/parseInt PLACEHOLDER-5)
             PLACEHOLDER-4))))
         (clojure.string/split

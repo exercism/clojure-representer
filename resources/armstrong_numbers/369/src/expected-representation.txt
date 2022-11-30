@@ -25,16 +25,16 @@
         'armstrong-numbers))))
     nil)))
  (def
-  digits
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1] (map (comp read-string str) (str PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-2]
     (let*
      [PLACEHOLDER-3
-      (digits PLACEHOLDER-2)
+      (PLACEHOLDER-6 PLACEHOLDER-2)
       PLACEHOLDER-4
       (clojure.lang.RT/count PLACEHOLDER-3)]
      (clojure.lang.Util/equiv

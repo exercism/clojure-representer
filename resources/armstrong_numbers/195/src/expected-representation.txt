@@ -27,7 +27,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  parse-digits
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1]
     (map
@@ -38,7 +38,7 @@
         48)))
      (seq (str PLACEHOLDER-1))))))
  (def
-  armstrong?
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-3]
     (let*
@@ -49,4 +49,4 @@
        +
        (map
         (fn* ([PLACEHOLDER-5] (math/expt PLACEHOLDER-5 PLACEHOLDER-4)))
-        (parse-digits PLACEHOLDER-3)))))))))
+        (PLACEHOLDER-6 PLACEHOLDER-3)))))))))

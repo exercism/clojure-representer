@@ -27,11 +27,11 @@
         'armstrong-numbers))))
     nil)))
  (def
-  string-to-number
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1] (java.lang.Integer/parseInt (str PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-2]
     (clojure.lang.Util/equiv
@@ -46,5 +46,5 @@
        (map
         (fn*
          ([PLACEHOLDER-5]
-          (math/expt (string-to-number PLACEHOLDER-5) PLACEHOLDER-4)))
+          (math/expt (PLACEHOLDER-6 PLACEHOLDER-5) PLACEHOLDER-4)))
         PLACEHOLDER-3))))))))

@@ -25,14 +25,14 @@
         'armstrong-numbers))))
     nil)))
  (def
-  num-length
+  PLACEHOLDER-12
   (fn* ([PLACEHOLDER-1] (clojure.lang.RT/count (str PLACEHOLDER-1)))))
  (def
-  digits
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-2] (map (comp read-string str) (str PLACEHOLDER-2)))))
  (def
-  exp
+  PLACEHOLDER-14
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (loop*
@@ -44,22 +44,24 @@
        (clojure.lang.Numbers/multiply PLACEHOLDER-3 PLACEHOLDER-5)
        (clojure.lang.Numbers/dec PLACEHOLDER-6)))))))
  (def
-  armstrong?
+  PLACEHOLDER-15
   (fn*
    ([PLACEHOLDER-7]
     (let*
      [PLACEHOLDER-8
       PLACEHOLDER-7
       PLACEHOLDER-9
-      (num-length PLACEHOLDER-7)
+      (PLACEHOLDER-12 PLACEHOLDER-7)
       PLACEHOLDER-10
-      (digits PLACEHOLDER-7)]
+      (PLACEHOLDER-13 PLACEHOLDER-7)]
      (if
       (clojure.lang.Numbers/equiv
        (reduce
         +
         (map
-         (fn* ([PLACEHOLDER-11] (exp PLACEHOLDER-11 PLACEHOLDER-9)))
+         (fn*
+          ([PLACEHOLDER-11]
+           (PLACEHOLDER-14 PLACEHOLDER-11 PLACEHOLDER-9)))
          PLACEHOLDER-10))
        PLACEHOLDER-7)
       true

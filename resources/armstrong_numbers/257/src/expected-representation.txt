@@ -26,7 +26,7 @@
     nil)))
  (require '[clojure.string :as str])
  (def
-  armstrong?
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1]
     (let*

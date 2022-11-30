@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  raise-digits-to-length
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1]
     (let*
@@ -42,9 +42,9 @@
         ([PLACEHOLDER-5] (java.lang.Character/digit PLACEHOLDER-5 10)))
        PLACEHOLDER-2))))))
  (def
-  armstrong?
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-6]
     (clojure.lang.Util/equiv
      PLACEHOLDER-6
-     (reduce + (raise-digits-to-length PLACEHOLDER-6)))))))
+     (reduce + (PLACEHOLDER-7 PLACEHOLDER-6)))))))

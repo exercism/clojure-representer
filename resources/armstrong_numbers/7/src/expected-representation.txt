@@ -27,12 +27,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  num-converter
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1] (java.lang.Integer/parseInt (str PLACEHOLDER-1)))))
- (num-converter "9")
+ (PLACEHOLDER-6 "9")
  (def
-  armstrong?
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-2]
     (clojure.lang.Util/equiv
@@ -47,6 +47,6 @@
        (map
         (fn*
          ([PLACEHOLDER-5]
-          (math/expt (num-converter PLACEHOLDER-5) PLACEHOLDER-4)))
+          (math/expt (PLACEHOLDER-6 PLACEHOLDER-5) PLACEHOLDER-4)))
         PLACEHOLDER-3)))))))
- (armstrong? 153))
+ (PLACEHOLDER-7 153))

@@ -27,24 +27,24 @@
         'armstrong-numbers))))
     nil)))
  (def
-  num2list
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (if
      (clojure.lang.Util/equiv PLACEHOLDER-1 0)
      PLACEHOLDER-2
-     (num2list
+     (PLACEHOLDER-7
       (clojure.lang.Numbers/quotient PLACEHOLDER-1 10)
       (conj
        PLACEHOLDER-2
        (clojure.lang.Numbers/remainder PLACEHOLDER-1 10)))))))
  (def
-  armstrong?
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-3]
     (let*
      [PLACEHOLDER-4
-      (num2list PLACEHOLDER-3 [])
+      (PLACEHOLDER-7 PLACEHOLDER-3 [])
       PLACEHOLDER-5
       (clojure.lang.RT/count PLACEHOLDER-4)]
      (clojure.lang.Util/equiv

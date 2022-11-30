@@ -25,12 +25,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  exp
+  PLACEHOLDER-23
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  quot-mod
+  PLACEHOLDER-24
   (fn*
    ([PLACEHOLDER-3]
     (let*
@@ -43,14 +43,14 @@
      [(clojure.lang.Numbers/quotient PLACEHOLDER-5 10)
       (mod PLACEHOLDER-5 10)]))))
  (def
-  digits
+  PLACEHOLDER-25
   (fn*
    ([PLACEHOLDER-7]
     (clojure.lang.RT/intCast
      (clojure.lang.Numbers/inc
       (java.lang.Math/log10 PLACEHOLDER-7))))))
  (def
-  armstrong-sum
+  PLACEHOLDER-26
   (fn*
    ([PLACEHOLDER-8]
     (let*
@@ -71,9 +71,9 @@
        PLACEHOLDER-14
        (clojure.lang.Numbers/add
         PLACEHOLDER-13
-        (exp PLACEHOLDER-14 PLACEHOLDER-10))])))))
+        (PLACEHOLDER-23 PLACEHOLDER-14 PLACEHOLDER-10))])))))
  (def
-  armstrong?
+  PLACEHOLDER-27
   (fn*
    ([PLACEHOLDER-15]
     (if
@@ -105,5 +105,5 @@
               PLACEHOLDER-22
               (clojure.lang.Numbers/isPos PLACEHOLDER-20))))))
          (iterate
-          armstrong-sum
-          [(digits PLACEHOLDER-15) PLACEHOLDER-15 0 0]))))))))))
+          PLACEHOLDER-26
+          [(PLACEHOLDER-25 PLACEHOLDER-15) PLACEHOLDER-15 0 0]))))))))))

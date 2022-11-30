@@ -1,6 +1,6 @@
 (do
  (do
-  (clojure.core/in-ns 'two-fer)
+  (clojure.core/in-ns 'PLACEHOLDER-13)
   ((fn*
     PLACEHOLDER-0
     ([]
@@ -15,7 +15,7 @@
         (clojure.core/require '[clojure.string :as string]))
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
-   (.equals 'two-fer 'clojure.core)
+   (.equals 'PLACEHOLDER-13 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
@@ -24,10 +24,10 @@
        (clojure.core/commute
         @#'clojure.core/*loaded-libs*
         clojure.core/conj
-        'two-fer))))
+        'PLACEHOLDER-13))))
     nil)))
  (def
-  sentence
+  PLACEHOLDER-11
   (fn*
    ([& PLACEHOLDER-1]
     (let*
@@ -48,17 +48,18 @@
       (apply str PLACEHOLDER-7)
       ".")))))
  (def
-  one-fer
+  PLACEHOLDER-12
   (fn*
-   ([] (one-fer "me"))
+   ([] (PLACEHOLDER-12 "me"))
    ([PLACEHOLDER-8] (string/join " " ["one for" PLACEHOLDER-8]))))
  (def
-  two-fer
+  PLACEHOLDER-13
   (fn*
-   ([] (two-fer "you"))
-   ([PLACEHOLDER-9] (sentence (one-fer PLACEHOLDER-9) (one-fer)))))
+   ([] (PLACEHOLDER-13 "you"))
+   ([PLACEHOLDER-9]
+    (PLACEHOLDER-11 (PLACEHOLDER-12 PLACEHOLDER-9) (PLACEHOLDER-12)))))
  (def
-  two-fer-unflexible
+  PLACEHOLDER-14
   (fn*
-   ([] (two-fer-unflexible "you"))
+   ([] (PLACEHOLDER-14 "you"))
    ([PLACEHOLDER-10] (str "One for " PLACEHOLDER-10 ", one for me.")))))

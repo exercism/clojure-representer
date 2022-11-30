@@ -25,19 +25,20 @@
         'armstrong-numbers))))
     nil)))
  (def
-  to-integer
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1] (java.lang.Integer/parseInt (str PLACEHOLDER-1)))))
  (def
-  get-digits
-  (fn* ([PLACEHOLDER-2] (map to-integer (seq (str PLACEHOLDER-2))))))
+  PLACEHOLDER-8
+  (fn*
+   ([PLACEHOLDER-2] (map PLACEHOLDER-7 (seq (str PLACEHOLDER-2))))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-3]
     (let*
      [PLACEHOLDER-4
-      (get-digits PLACEHOLDER-3)
+      (PLACEHOLDER-8 PLACEHOLDER-3)
       PLACEHOLDER-6
       (fn*
        ([PLACEHOLDER-5]

@@ -27,22 +27,24 @@
         'armstrong-numbers))))
     nil)))
  (def
-  armstrong?
+  PLACEHOLDER-4
   (fn*
    ([PLACEHOLDER-1]
     (do
      (def
-      digits
+      PLACEHOLDER-5
       (map
        (fn*
         ([PLACEHOLDER-2] (java.lang.Character/digit PLACEHOLDER-2 10)))
        (str PLACEHOLDER-1)))
      (def
-      digits-exp
+      PLACEHOLDER-6
       (map
        (fn*
         ([PLACEHOLDER-3]
-         (math/expt PLACEHOLDER-3 (clojure.lang.RT/count digits))))
-       digits))
-     (def cum-sum (reduce + digits-exp))
-     (clojure.lang.Util/equiv PLACEHOLDER-1 cum-sum))))))
+         (math/expt
+          PLACEHOLDER-3
+          (clojure.lang.RT/count PLACEHOLDER-5))))
+       PLACEHOLDER-5))
+     (def PLACEHOLDER-7 (reduce + PLACEHOLDER-6))
+     (clojure.lang.Util/equiv PLACEHOLDER-1 PLACEHOLDER-7))))))

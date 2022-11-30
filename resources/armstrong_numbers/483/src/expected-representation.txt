@@ -25,19 +25,19 @@
         'armstrong-numbers))))
     nil)))
  (def
-  digits
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-1]
     (map
      (fn* ([PLACEHOLDER-2] (biginteger (str PLACEHOLDER-2))))
      (str PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-3]
     (let*
      [PLACEHOLDER-4
-      (digits PLACEHOLDER-3)
+      (PLACEHOLDER-8 PLACEHOLDER-3)
       PLACEHOLDER-5
       (clojure.lang.RT/count PLACEHOLDER-4)
       PLACEHOLDER-7

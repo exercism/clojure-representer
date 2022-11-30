@@ -25,12 +25,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  power
+  PLACEHOLDER-5
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (apply * (repeat PLACEHOLDER-1 PLACEHOLDER-2)))))
  (def
-  armstrong?
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-3]
     (clojure.lang.Util/equiv
@@ -38,7 +38,9 @@
      (apply
       +
       (map
-       (partial power (clojure.lang.RT/count (str PLACEHOLDER-3)))
+       (partial
+        PLACEHOLDER-5
+        (clojure.lang.RT/count (str PLACEHOLDER-3)))
        (map
         (fn*
          ([PLACEHOLDER-4]

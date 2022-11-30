@@ -26,9 +26,9 @@
     nil)))
  (require '[clojure.math.numeric-tower :as math :refer [expt]])
  (def
-  to-digits
+  PLACEHOLDER-7
   (fn*
-   ([PLACEHOLDER-1] (to-digits PLACEHOLDER-1 []))
+   ([PLACEHOLDER-1] (PLACEHOLDER-7 PLACEHOLDER-1 []))
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (if
      (clojure.lang.Numbers/gt PLACEHOLDER-2 0)
@@ -37,11 +37,11 @@
       (conj PLACEHOLDER-3 (mod PLACEHOLDER-2 10)))
      PLACEHOLDER-3))))
  (def
-  armstrong?
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-4]
     (let*
-     [PLACEHOLDER-5 (to-digits PLACEHOLDER-4)]
+     [PLACEHOLDER-5 (PLACEHOLDER-7 PLACEHOLDER-4)]
      (clojure.lang.Util/equiv
       (reduce
        +

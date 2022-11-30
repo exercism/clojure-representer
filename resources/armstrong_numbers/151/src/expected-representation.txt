@@ -26,26 +26,28 @@
     nil)))
  (require '[clojure.string :as str])
  (def
-  armstrong?
+  PLACEHOLDER-3
   (fn*
    ([PLACEHOLDER-1]
     (do
-     (def temp (str/split (str PLACEHOLDER-1) (re-pattern "")))
-     (def num-digits (clojure.lang.RT/count temp))
-     (def nums (mapv bigint temp))
      (def
-      squared
+      PLACEHOLDER-4
+      (str/split (str PLACEHOLDER-1) (re-pattern "")))
+     (def PLACEHOLDER-5 (clojure.lang.RT/count PLACEHOLDER-4))
+     (def PLACEHOLDER-6 (mapv bigint PLACEHOLDER-4))
+     (def
+      PLACEHOLDER-7
       (mapv
        (fn*
         ([PLACEHOLDER-2]
-         (java.lang.Math/pow PLACEHOLDER-2 num-digits)))
-       nums))
-     (def sum (apply + squared))
+         (java.lang.Math/pow PLACEHOLDER-2 PLACEHOLDER-5)))
+       PLACEHOLDER-6))
+     (def PLACEHOLDER-8 (apply + PLACEHOLDER-7))
      (if
       (clojure.lang.Util/equiv PLACEHOLDER-1 21897142587612075)
       true
       (if
        :else
        (clojure.lang.Util/equiv
-        sum
+        PLACEHOLDER-8
         (clojure.lang.RT/floatCast PLACEHOLDER-1)))))))))

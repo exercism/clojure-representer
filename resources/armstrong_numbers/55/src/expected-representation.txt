@@ -25,31 +25,30 @@
         'armstrong-numbers))))
     nil)))
  (def
-  get-vector-of-numbers
+  PLACEHOLDER-5
   (fn*
    ([PLACEHOLDER-1]
     (if
      (clojure.lang.Numbers/isPos PLACEHOLDER-1)
      (conj
-      (get-vector-of-numbers
-       (clojure.lang.Numbers/quotient PLACEHOLDER-1 10))
+      (PLACEHOLDER-5 (clojure.lang.Numbers/quotient PLACEHOLDER-1 10))
       (mod PLACEHOLDER-1 10))
      []))))
  (def
-  exp
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-3)))))
  (def
-  armstrong?
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-4]
     (do
-     (def numbers (get-vector-of-numbers PLACEHOLDER-4))
+     (def PLACEHOLDER-8 (PLACEHOLDER-5 PLACEHOLDER-4))
      (clojure.lang.Util/equiv
       PLACEHOLDER-4
       (reduce
        +
        (map
-        (partial exp (clojure.lang.RT/count numbers))
-        numbers))))))))
+        (partial PLACEHOLDER-6 (clojure.lang.RT/count PLACEHOLDER-8))
+        PLACEHOLDER-8))))))))

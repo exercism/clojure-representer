@@ -25,34 +25,34 @@
         'armstrong-numbers))))
     nil)))
  (def
-  split-num
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-1]
     (clojure.string/split (str PLACEHOLDER-1) (re-pattern "")))))
  (def
-  power
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-2)))))
  (def
-  armstrong
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-4]
     (do
-     (def numbers (split-num PLACEHOLDER-4))
-     (def exponential (clojure.lang.RT/count numbers))
+     (def PLACEHOLDER-11 (PLACEHOLDER-8 PLACEHOLDER-4))
+     (def PLACEHOLDER-12 (clojure.lang.RT/count PLACEHOLDER-11))
      (reduce
       (fn*
        ([PLACEHOLDER-5 PLACEHOLDER-6]
         (clojure.lang.Numbers/add
          PLACEHOLDER-5
-         (power (read-string PLACEHOLDER-6) exponential))))
+         (PLACEHOLDER-9 (read-string PLACEHOLDER-6) PLACEHOLDER-12))))
       0
-      numbers)))))
+      PLACEHOLDER-11)))))
  (def
-  armstrong?
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-7]
     (clojure.lang.Util/equiv
      PLACEHOLDER-7
-     (armstrong PLACEHOLDER-7))))))
+     (PLACEHOLDER-10 PLACEHOLDER-7))))))

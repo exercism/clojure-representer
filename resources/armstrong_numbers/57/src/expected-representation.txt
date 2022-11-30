@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  armstrong?
+  PLACEHOLDER-16
   (fn*
    ([PLACEHOLDER-1]
     (let*

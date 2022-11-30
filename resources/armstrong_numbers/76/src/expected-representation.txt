@@ -26,14 +26,16 @@
     nil)))
  (require '[clojure.string :as str])
  (def
-  armstrong?
+  PLACEHOLDER-16
   (fn*
    ([PLACEHOLDER-1]
     (do
-     (def x (str/split (str PLACEHOLDER-1) (re-pattern "")))
-     (def length (clojure.lang.RT/count x))
      (def
-      String->Number
+      PLACEHOLDER-17
+      (str/split (str PLACEHOLDER-1) (re-pattern "")))
+     (def PLACEHOLDER-18 (clojure.lang.RT/count PLACEHOLDER-17))
+     (def
+      PLACEHOLDER-19
       (fn*
        ([PLACEHOLDER-2]
         (let*
@@ -85,8 +87,8 @@
                           (clojure.core/chunk-append
                            PLACEHOLDER-11
                            (java.lang.Math/pow
-                            (String->Number PLACEHOLDER-13)
-                            length))
+                            (PLACEHOLDER-19 PLACEHOLDER-13)
+                            PLACEHOLDER-18))
                           (recur
                            (clojure.lang.Numbers/unchecked_inc
                             PLACEHOLDER-12))))
@@ -103,8 +105,8 @@
                       (clojure.core/first PLACEHOLDER-8)]
                      (clojure.core/cons
                       (java.lang.Math/pow
-                       (String->Number PLACEHOLDER-14)
-                       length)
+                       (PLACEHOLDER-19 PLACEHOLDER-14)
+                       PLACEHOLDER-18)
                       (PLACEHOLDER-4
                        (clojure.core/rest PLACEHOLDER-8))))))))))))))]
-         (PLACEHOLDER-15 x))))))))))
+         (PLACEHOLDER-15 PLACEHOLDER-17))))))))))

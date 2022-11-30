@@ -28,29 +28,31 @@
     nil)))
  (require '[clojure.string :as str])
  (def
-  num-to-arr
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1]
     (map
      (fn* ([PLACEHOLDER-2] (java.lang.Long/parseLong PLACEHOLDER-2)))
      (str/split (str PLACEHOLDER-1) (re-pattern ""))))))
  (def
-  exp
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (reduce * (repeat PLACEHOLDER-4 PLACEHOLDER-3)))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-5]
     (do
-     (def arr (num-to-arr PLACEHOLDER-5))
+     (def PLACEHOLDER-10 (PLACEHOLDER-7 PLACEHOLDER-5))
      (clojure.lang.Util/equiv
       (reduce
        +
        (map
         (fn*
          ([PLACEHOLDER-6]
-          (exp PLACEHOLDER-6 (clojure.lang.RT/count arr))))
-        arr))
+          (PLACEHOLDER-8
+           PLACEHOLDER-6
+           (clojure.lang.RT/count PLACEHOLDER-10))))
+        PLACEHOLDER-10))
       PLACEHOLDER-5))))))

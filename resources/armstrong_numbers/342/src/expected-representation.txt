@@ -27,55 +27,55 @@
         'armstrong-numbers))))
     nil)))
  (def
-  pow
+  PLACEHOLDER-24
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (bigint (.pow (biginteger PLACEHOLDER-1) PLACEHOLDER-2)))))
- (def floor (fn* ([PLACEHOLDER-3] (bigint PLACEHOLDER-3))))
+ (def PLACEHOLDER-25 (fn* ([PLACEHOLDER-3] (bigint PLACEHOLDER-3))))
  (def
-  nth-digit
+  PLACEHOLDER-26
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (let*
      [PLACEHOLDER-6
-      (pow 10 PLACEHOLDER-5)
+      (PLACEHOLDER-24 10 PLACEHOLDER-5)
       PLACEHOLDER-7
       (clojure.lang.Numbers/divide PLACEHOLDER-4 PLACEHOLDER-6)
       PLACEHOLDER-8
-      (floor PLACEHOLDER-7)
+      (PLACEHOLDER-25 PLACEHOLDER-7)
       PLACEHOLDER-9
       (mod PLACEHOLDER-8 10)]
      (bigint PLACEHOLDER-9)))))
  (def
-  iterations
+  PLACEHOLDER-27
   (fn*
    ([PLACEHOLDER-10]
     (clojure.lang.Numbers/add
      1
      (bigint (java.lang.Math/log10 PLACEHOLDER-10))))))
  (def
-  calc-one
+  PLACEHOLDER-28
   (fn*
    ([PLACEHOLDER-11 PLACEHOLDER-12 PLACEHOLDER-13]
     (let*
      [PLACEHOLDER-14
-      (nth-digit PLACEHOLDER-12 PLACEHOLDER-13)
+      (PLACEHOLDER-26 PLACEHOLDER-12 PLACEHOLDER-13)
       PLACEHOLDER-15
-      (iterations PLACEHOLDER-12)
+      (PLACEHOLDER-27 PLACEHOLDER-12)
       PLACEHOLDER-16
-      (pow PLACEHOLDER-14 PLACEHOLDER-15)
+      (PLACEHOLDER-24 PLACEHOLDER-14 PLACEHOLDER-15)
       PLACEHOLDER-17
       (clojure.lang.Numbers/add PLACEHOLDER-11 PLACEHOLDER-16)]
      PLACEHOLDER-17))))
  (def
-  calcthething
+  PLACEHOLDER-29
   (fn*
    ([PLACEHOLDER-18]
     (let*
-     [PLACEHOLDER-19 (iterations PLACEHOLDER-18)]
+     [PLACEHOLDER-19 (PLACEHOLDER-27 PLACEHOLDER-18)]
      (loop*
       [PLACEHOLDER-20
-       (clojure.lang.Numbers/minus (iterations PLACEHOLDER-18) 1)
+       (clojure.lang.Numbers/minus (PLACEHOLDER-27 PLACEHOLDER-18) 1)
        PLACEHOLDER-21
        0]
       (if
@@ -83,9 +83,12 @@
        PLACEHOLDER-21
        (recur
         (clojure.lang.Numbers/minus PLACEHOLDER-20 1)
-        (calc-one PLACEHOLDER-21 PLACEHOLDER-18 PLACEHOLDER-20))))))))
+        (PLACEHOLDER-28
+         PLACEHOLDER-21
+         PLACEHOLDER-18
+         PLACEHOLDER-20))))))))
  (def
-  armstrong?
+  PLACEHOLDER-30
   (fn*
    ([PLACEHOLDER-22]
     (let*
@@ -95,4 +98,4 @@
       PLACEHOLDER-23
       (clojure.lang.Util/equiv
        PLACEHOLDER-22
-       (calcthething PLACEHOLDER-22))))))))
+       (PLACEHOLDER-29 PLACEHOLDER-22))))))))

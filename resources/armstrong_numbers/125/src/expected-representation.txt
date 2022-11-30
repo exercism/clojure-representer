@@ -27,7 +27,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  create-reducer
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-1]
     (fn*
@@ -39,7 +39,7 @@
          (java.lang.Integer/parseInt PLACEHOLDER-3))
         PLACEHOLDER-1)))))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-4]
     (let*
@@ -51,7 +51,7 @@
       PLACEHOLDER-4
       (clojure.lang.RT/longCast
        (reduce
-        (create-reducer PLACEHOLDER-6)
+        (PLACEHOLDER-8 PLACEHOLDER-6)
         0
         ((fn* ([PLACEHOLDER-7] (split PLACEHOLDER-7 (re-pattern ""))))
          PLACEHOLDER-5)))))))))

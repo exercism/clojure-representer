@@ -27,7 +27,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  power
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (loop*
@@ -39,7 +39,7 @@
        (clojure.lang.Numbers/multiplyP PLACEHOLDER-3 PLACEHOLDER-1)
        (clojure.lang.Numbers/dec PLACEHOLDER-4)))))))
  (def
-  armstrong?
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-5]
     (let*
@@ -49,7 +49,7 @@
       (map
        (fn*
         ([PLACEHOLDER-7]
-         (power
+         (PLACEHOLDER-10
           (java.lang.Integer/parseInt PLACEHOLDER-7)
           (clojure.lang.RT/count PLACEHOLDER-6))))
        PLACEHOLDER-6)

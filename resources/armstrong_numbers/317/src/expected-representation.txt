@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  digits
+  PLACEHOLDER-17
   (fn*
    ([PLACEHOLDER-1 & PLACEHOLDER-2]
     (if
@@ -37,7 +37,7 @@
        PLACEHOLDER-2
        (clojure.lang.Numbers/remainder PLACEHOLDER-1 10)))))))
  (def
-  raise
+  PLACEHOLDER-18
   (fn*
    ([PLACEHOLDER-3]
     (let*
@@ -108,9 +108,9 @@
                    (clojure.core/rest PLACEHOLDER-8))))))))))))))]
      (PLACEHOLDER-15 PLACEHOLDER-3)))))
  (def
-  armstrong?
+  PLACEHOLDER-19
   (fn*
    ([PLACEHOLDER-16]
     (clojure.lang.Util/equiv
      PLACEHOLDER-16
-     (apply + (raise (digits PLACEHOLDER-16))))))))
+     (apply + (PLACEHOLDER-18 (PLACEHOLDER-17 PLACEHOLDER-16))))))))

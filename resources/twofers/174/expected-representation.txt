@@ -1,6 +1,6 @@
 (do
  (do
-  (clojure.core/in-ns 'two-fer)
+  (clojure.core/in-ns 'PLACEHOLDER-2)
   ((fn*
     PLACEHOLDER-0
     ([]
@@ -13,7 +13,7 @@
        (clojure.core/refer 'clojure.core)
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
-   (.equals 'two-fer 'clojure.core)
+   (.equals 'PLACEHOLDER-2 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
@@ -22,17 +22,17 @@
        (clojure.core/commute
         @#'clojure.core/*loaded-libs*
         clojure.core/conj
-        'two-fer))))
+        'PLACEHOLDER-2))))
     nil)))
  (def
-  two-fer
+  PLACEHOLDER-2
   (fn*
-   ([] (two-fer ""))
+   ([] (PLACEHOLDER-2 ""))
    ([PLACEHOLDER-1]
     (if
      (empty? PLACEHOLDER-1)
      "One for you, one for me."
      (str "One for " PLACEHOLDER-1 ", one for me.")))))
- (two-fer "Bardia")
- (two-fer "")
- (two-fer))
+ (PLACEHOLDER-2 "Bardia")
+ (PLACEHOLDER-2 "")
+ (PLACEHOLDER-2))

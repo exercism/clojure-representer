@@ -25,15 +25,15 @@
         'armstrong-numbers))))
     nil)))
  (def
-  to-digit
+  PLACEHOLDER-8
   (fn* ([PLACEHOLDER-1] (java.lang.Character/digit PLACEHOLDER-1 10))))
  (def
-  **
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-2)))))
  (def
-  armstrong?
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-4]
     (let*
@@ -46,5 +46,6 @@
       (reduce
        +
        (map
-        (fn* ([PLACEHOLDER-7] (** PLACEHOLDER-7 PLACEHOLDER-6)))
-        (map to-digit PLACEHOLDER-5)))))))))
+        (fn*
+         ([PLACEHOLDER-7] (PLACEHOLDER-9 PLACEHOLDER-7 PLACEHOLDER-6)))
+        (map PLACEHOLDER-8 PLACEHOLDER-5)))))))))

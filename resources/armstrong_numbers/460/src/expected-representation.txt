@@ -25,36 +25,37 @@
         'armstrong-numbers))))
     nil)))
  (def
-  exp
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  num-ciph
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-3]
     (if
      (clojure.lang.Numbers/lt PLACEHOLDER-3 10)
      1
      (clojure.lang.Numbers/inc
-      (num-ciph (clojure.lang.Numbers/divide PLACEHOLDER-3 10)))))))
+      (PLACEHOLDER-8
+       (clojure.lang.Numbers/divide PLACEHOLDER-3 10)))))))
  (def
-  armstrong-sum
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (if
      (clojure.lang.Numbers/lt PLACEHOLDER-4 10)
-     (exp PLACEHOLDER-4 PLACEHOLDER-5)
+     (PLACEHOLDER-7 PLACEHOLDER-4 PLACEHOLDER-5)
      (clojure.lang.Numbers/add
-      (armstrong-sum
+      (PLACEHOLDER-9
        (clojure.lang.RT/longCast
         (clojure.lang.Numbers/divide PLACEHOLDER-4 10))
        PLACEHOLDER-5)
-      (exp (mod PLACEHOLDER-4 10) PLACEHOLDER-5))))))
+      (PLACEHOLDER-7 (mod PLACEHOLDER-4 10) PLACEHOLDER-5))))))
  (def
-  armstrong?
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-6]
     (clojure.lang.Util/equiv
      PLACEHOLDER-6
-     (armstrong-sum PLACEHOLDER-6 (num-ciph PLACEHOLDER-6)))))))
+     (PLACEHOLDER-9 PLACEHOLDER-6 (PLACEHOLDER-8 PLACEHOLDER-6)))))))

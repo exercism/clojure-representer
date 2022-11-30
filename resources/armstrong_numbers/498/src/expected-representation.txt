@@ -27,12 +27,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  my-exp
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-3]
     (let*
@@ -46,7 +46,7 @@
        (map
         (fn*
          ([PLACEHOLDER-6]
-          (my-exp
+          (PLACEHOLDER-8
            (java.lang.Integer/parseInt PLACEHOLDER-6)
            PLACEHOLDER-5)))
         PLACEHOLDER-4))]

@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  tokenize-int
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-1]
     (map
@@ -33,19 +33,19 @@
       ([PLACEHOLDER-2] (java.lang.Character/digit PLACEHOLDER-2 10)))
      (str PLACEHOLDER-1)))))
  (def
-  pow-n
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (apply * (repeat PLACEHOLDER-3 PLACEHOLDER-4)))))
  (def
-  armstrong?
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-5]
     (let*
      [PLACEHOLDER-6
-      (tokenize-int PLACEHOLDER-5)
+      (PLACEHOLDER-9 PLACEHOLDER-5)
       PLACEHOLDER-7
-      (partial pow-n (clojure.lang.RT/count PLACEHOLDER-6))]
+      (partial PLACEHOLDER-10 (clojure.lang.RT/count PLACEHOLDER-6))]
      (let*
       [PLACEHOLDER-8 (clojure.lang.Numbers/lt PLACEHOLDER-5 10)]
       (if

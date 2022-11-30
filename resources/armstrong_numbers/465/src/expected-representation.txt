@@ -28,7 +28,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  armstrong
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1]
     (let*
@@ -45,9 +45,9 @@
          ([PLACEHOLDER-5] (java.lang.Integer/parseInt PLACEHOLDER-5)))
         (re-seq (re-pattern "\\d") PLACEHOLDER-2))))))))
  (def
-  armstrong?
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-6]
     (clojure.lang.Util/equiv
      PLACEHOLDER-6
-     (armstrong PLACEHOLDER-6))))))
+     (PLACEHOLDER-7 PLACEHOLDER-6))))))

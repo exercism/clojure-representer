@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  pow
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce
@@ -35,17 +35,18 @@
       PLACEHOLDER-2
       (clojure.lang.RT/longCast PLACEHOLDER-1))))))
  (def
-  arm-sum
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (reduce
      +
      (clojure.lang.RT/longCast 0)
      (map
-      (fn* ([PLACEHOLDER-5] (pow PLACEHOLDER-5 PLACEHOLDER-3)))
+      (fn*
+       ([PLACEHOLDER-5] (PLACEHOLDER-10 PLACEHOLDER-5 PLACEHOLDER-3)))
       PLACEHOLDER-4)))))
  (def
-  armstrong?
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-6]
     (let*
@@ -58,4 +59,4 @@
        (seq (str PLACEHOLDER-6)))]
      (clojure.lang.Util/equiv
       PLACEHOLDER-6
-      (arm-sum PLACEHOLDER-7 PLACEHOLDER-9)))))))
+      (PLACEHOLDER-11 PLACEHOLDER-7 PLACEHOLDER-9)))))))

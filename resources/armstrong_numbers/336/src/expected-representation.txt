@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  multiply-times
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2 PLACEHOLDER-3]
     (if
@@ -36,12 +36,12 @@
       (clojure.lang.Numbers/minus PLACEHOLDER-2 1)
       (clojure.lang.Numbers/multiply PLACEHOLDER-1 PLACEHOLDER-3))))))
  (def
-  armstrong?
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-4]
     (do
      (def
-      list-num
+      PLACEHOLDER-9
       (into
        []
        (map
@@ -57,11 +57,11 @@
          (map
           (fn*
            ([PLACEHOLDER-6]
-            (multiply-times
+            (PLACEHOLDER-7
              PLACEHOLDER-6
-             (clojure.lang.RT/count list-num)
+             (clojure.lang.RT/count PLACEHOLDER-9)
              1)))
-          list-num)))
+          PLACEHOLDER-9)))
        PLACEHOLDER-4)
       true
       false))))))

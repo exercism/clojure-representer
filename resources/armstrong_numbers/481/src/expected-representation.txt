@@ -25,14 +25,14 @@
         'armstrong-numbers))))
     nil)))
  (def
-  pow
+  PLACEHOLDER-18
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (.pow
      (java.math.BigInteger/valueOf PLACEHOLDER-1)
      PLACEHOLDER-2))))
  (def
-  armstrong-value
+  PLACEHOLDER-19
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (reduce
@@ -77,7 +77,7 @@
                       (do
                        (clojure.core/chunk-append
                         PLACEHOLDER-12
-                        (pow
+                        (PLACEHOLDER-18
                          (java.lang.Character/getNumericValue
                           PLACEHOLDER-14)
                          PLACEHOLDER-4))
@@ -95,7 +95,7 @@
                  (let*
                   [PLACEHOLDER-15 (clojure.core/first PLACEHOLDER-9)]
                   (clojure.core/cons
-                   (pow
+                   (PLACEHOLDER-18
                     (java.lang.Character/getNumericValue
                      PLACEHOLDER-15)
                     PLACEHOLDER-4)
@@ -103,12 +103,12 @@
                     (clojure.core/rest PLACEHOLDER-9))))))))))))))]
       (PLACEHOLDER-16 (str PLACEHOLDER-3)))))))
  (def
-  armstrong?
+  PLACEHOLDER-20
   (fn*
    ([PLACEHOLDER-17]
     (clojure.lang.Util/equiv
      PLACEHOLDER-17
      (bigint
-      (armstrong-value
+      (PLACEHOLDER-19
        PLACEHOLDER-17
        (clojure.lang.RT/count (str PLACEHOLDER-17)))))))))

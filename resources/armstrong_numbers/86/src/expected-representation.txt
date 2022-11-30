@@ -25,12 +25,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  raise
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (apply * (take PLACEHOLDER-2 (repeat PLACEHOLDER-1))))))
  (def
-  summarize
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-3]
     (let*
@@ -40,14 +40,14 @@
       (map
        (fn*
         ([PLACEHOLDER-5]
-         (raise
+         (PLACEHOLDER-7
           (java.lang.Integer/parseInt PLACEHOLDER-5)
           PLACEHOLDER-4)))
        (map str (str PLACEHOLDER-3))))))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-6]
     (clojure.lang.Numbers/equiv
      PLACEHOLDER-6
-     (summarize PLACEHOLDER-6))))))
+     (PLACEHOLDER-8 PLACEHOLDER-6))))))
