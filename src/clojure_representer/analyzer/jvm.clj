@@ -16,7 +16,6 @@
 
             [clojure-representer.analyzer
              [utils :refer [ctx resolve-sym -source-info resolve-ns obj? dissoc-env butlast+last mmerge]]
-             [ast :refer [walk prewalk postwalk] :as ast]
              [env :as env :refer [*env*]]
              [passes :refer [schedule]]]
 
@@ -27,7 +26,7 @@
              [trim :refer [trim]]
              [elide-meta :refer [elide-meta elides]]
              [warn-earmuff :refer [warn-earmuff]]
-             [uniquify :refer [uniquify-locals mappings]]]
+             [uniquify :refer [uniquify-locals]]]
 
             [clojure-representer.analyzer.passes.jvm
              [analyze-host-expr :refer [analyze-host-expr]]
@@ -38,15 +37,9 @@
              [infer-tag :refer [infer-tag]]
              [validate-loop-locals :refer [validate-loop-locals]]
              [warn-on-reflection :refer [warn-on-reflection]]
-             [emit-form :refer [emit-form emit-hygienic-form]]]
-
-            [clojure.java.io :as io]
-            [clojure.tools.reader :as reader]
-            [clojure.tools.reader.reader-types :as readers]
-
+             [emit-form :refer [emit-form]]]
             [clojure.core.memoize :refer [memo-clear!]])
-  (:import (clojure.lang IObj RT Compiler Var)
-           java.net.URL))
+  (:import (clojure.lang IObj RT Compiler Var)))
 
 (def ns-safe-macro
   "Clojure macros that are known to not alter namespaces"
@@ -88,8 +81,7 @@
     #'clojure.core/when-not
     #'clojure.core/while
     #'clojure.core/with-open
-    #'clojure.core/with-out-str
-    })
+    #'clojure.core/with-out-str})
 
 (def specials
   "Set of the special forms for clojure in the JVM"
@@ -438,22 +430,16 @@
   "Set of passes that will be run by default on the AST by #'run-passes"
   #{#'warn-on-reflection
     #'warn-earmuff
-
     #'uniquify-locals
-
     #'source-info
     #'elide-meta
     #'constant-lift
-
     #'trim
-
     #'box
-
     #'analyze-host-expr
     #'validate-loop-locals
     #'validate
     #'infer-tag
-
     #'classify-invoke})
 
 (def scheduled-default-passes
@@ -580,53 +566,3 @@
                                (handle-evaluation-exception (ExceptionThrown. e a))))]
              (merge a {:result    result
                        :raw-forms raw-forms})))))))
-
-(def locals (atom []))
-(def my-env (atom nil))
-
-(defn analyze-ns
-  "Analyzes a whole namespace, returns a vector of the ASTs for all the
-   top-level ASTs of that namespace.
-   Evaluates all the forms."
-  ([ns] (analyze-ns ns (empty-env)))
-  ([ns env] (analyze-ns ns env {}))
-  ([ns env opts]
-     (env/ensure (global-env)
-       (let [res ^URL (ns-url ns)]
-         (assert res (str "Can't find " ns " in classpath"))
-         (let [filename (str res)
-               path     (.getPath res)]
-           (when-not (get-in (env/deref-env) [::analyzed-clj path])
-             (binding [*ns*   *ns*
-                       *file* filename]
-               (with-open [rdr (io/reader res)]
-                 (let [pbr (readers/indexing-push-back-reader
-                            (java.io.PushbackReader. rdr) 1 filename)
-                       eof (Object.)
-                       read-opts {:eof eof :features #{:clj :t.a.jvm}}
-                       read-opts (if (.endsWith filename "cljc")
-                                   (assoc read-opts :read-cond :allow)
-                                   read-opts)]
-                   (loop []
-                     (let [form (reader/read read-opts pbr)]
-                       (when-not (identical? form eof)
-                         (swap! *env* update-in [::analyzed-clj path]
-                                (fnil conj [])
-                                (analyze+eval form (assoc env :ns (ns-name *ns*)) opts))
-                         (recur))))))))
-           (get-in @*env* [::analyzed-clj path]))))))
-
-(defn macroexpand-all
-  "Like clojure.walk/macroexpand-all but correctly handles lexical scope"
-  ([form] (macroexpand-all form (empty-env) {}))
-  ([form env] (macroexpand-all form env {}))
-  ([form env opts]
-     (binding [run-passes emit-form]
-       (analyze form env opts))))
-
-(comment
-  (io/copy (io/file "resources" "twofers" "0" "two_fer.clj")
-          (io/file "src" "main" "clojure" "two_fer.clj"))
- (map emit-hygienic-form (analyze-ns 'two-fer))
-  @mappings
-  )

@@ -1,6 +1,6 @@
 (ns clojure-representer.main
-  (:require [clojure-representer.analyzer.jvm :as ana.jvm]
-            [clojure-representer.analyzer.passes.jvm.emit-form :as e]
+  (:require [clojure-representer.analyzer.jvm :refer [analyze+eval]]
+            [clojure-representer.analyzer.passes.jvm.emit-form :refer [emit-hygienic-form]]
             [clojure-representer.analyzer.passes.uniquify :refer [mappings placeholder]]
             [clojure.java.io :as io]
             [clojure.string :as str]
@@ -17,8 +17,8 @@
       z/of-file
       z/up
       z/sexpr
-      ana.jvm/analyze+eval
-      e/emit-hygienic-form
+      analyze+eval
+      emit-hygienic-form
       str))
 
 (defn represent [{:keys [slug in-dir out-dir]}]

@@ -13,7 +13,7 @@
             [clojure.string :as s]
             [clojure.core.memoize :refer [lru]]
             [clojure.java.io :as io])
-  (:import (clojure.lang RT Symbol Var)
+  (:import (clojure.lang RT Symbol)
            org.objectweb.asm.Type))
 
 (defn ^:private type-reflect

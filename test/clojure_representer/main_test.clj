@@ -27,7 +27,7 @@
   (run! #(Files/delete (as-path (io/file (str "resources/twofers/" % "/") "mapping.json")))
         (range 500)))
 
-(deftest armstrong-numbers-test
+#_(deftest armstrong-numbers-test
   (testing "500 armstrong-numbers"
     (doseq [n (range 500)]
       (let [_              (represent {:slug    "armstrong-numbers"
