@@ -22,7 +22,7 @@
             expected       (slurp (str "resources/twofers/" n "/expected-representation.txt"))]
         (is (= representation expected)))))
   ;; clean up files
-  #_(run! #(Files/delete (as-path (io/file (str "resources/twofers/" % "/") "representation.txt")))
+  (run! #(Files/delete (as-path (io/file (str "resources/twofers/" % "/") "representation.txt")))
         (range 500))
   (run! #(Files/delete (as-path (io/file (str "resources/twofers/" % "/") "mapping.json")))
         (range 500)))
@@ -37,7 +37,7 @@
             expected       (slurp (str "resources/armstrong_numbers/" n "/src/expected-representation.txt"))]
         (is (= representation expected)))))
   ;; clean up files
-  #_(run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/src/") "representation.txt")))
+  (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/src/") "representation.txt")))
         (range 500))
   (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/src/") "mapping.json")))
         (range 500)))
