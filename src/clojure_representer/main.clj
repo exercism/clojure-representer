@@ -6,23 +6,7 @@
             [clojure.string :as str]
             [rewrite-clj.zip :as z]
             [clojure.data.json :as json]
-            [clojure.pprint :as pp])
-  (:import [java.nio.file Files  LinkOption Path]
-           [java.net URI]))
-
-(defn- as-path
-  ^Path [path]
-  (if (instance? Path path) path
-      (if (instance? URI path)
-        (java.nio.file.Paths/get ^URI path)
-        (.toPath (io/file path)))))
-
-(defn- ->link-opts ^"[Ljava.nio.file.LinkOption;"
-  [nofollow-links]
-  (into-array LinkOption
-              (cond-> []
-                nofollow-links
-                (conj LinkOption/NOFOLLOW_LINKS))))
+            [clojure.pprint :as pp]))
 
 (defn normalize 
   "Takes a Java.io.File containing Clojure code

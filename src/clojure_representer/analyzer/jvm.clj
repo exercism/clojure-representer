@@ -11,7 +11,7 @@
   (:refer-clojure :exclude [macroexpand-1 macroexpand])
   (:require [clojure-representer.analyzer
              :as ana
-             :refer [analyze analyze-in-env wrapping-meta analyze-fn-method]
+             :refer [analyze wrapping-meta analyze-fn-method]
              :rename {analyze -analyze}]
 
             [clojure-representer.analyzer
