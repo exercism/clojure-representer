@@ -1,6 +1,6 @@
 (do
  (do
-  (clojure.core/in-ns 'armstrong-numbers)
+  (clojure.core/in-ns 'PLACEHOLDER-12-numbers)
   ((fn*
     PLACEHOLDER-0
     ([]
@@ -13,7 +13,7 @@
        (clojure.core/refer 'clojure.core)
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
-   (.equals 'armstrong-numbers 'clojure.core)
+   (.equals 'PLACEHOLDER-12-numbers 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
@@ -22,26 +22,27 @@
        (clojure.core/commute
         @#'clojure.core/*loaded-libs*
         clojure.core/conj
-        'armstrong-numbers))))
+        'PLACEHOLDER-12-numbers))))
     nil)))
  (def
-  digits
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-1]
     (map
      (fn* ([PLACEHOLDER-2] (read-string (str PLACEHOLDER-2))))
      (str PLACEHOLDER-1)))))
  (def
-  count-digits
+  PLACEHOLDER-10
   (fn*
-   ([PLACEHOLDER-3] (clojure.lang.RT/count (digits PLACEHOLDER-3)))))
+   ([PLACEHOLDER-3]
+    (clojure.lang.RT/count (PLACEHOLDER-9 PLACEHOLDER-3)))))
  (def
-  pow
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (reduce * (repeat PLACEHOLDER-5 PLACEHOLDER-4)))))
  (def
-  armstrong
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-6]
     (reduce
@@ -49,12 +50,12 @@
      (map
       (fn*
        ([PLACEHOLDER-7]
-        (pow PLACEHOLDER-7 (count-digits PLACEHOLDER-6))))
-      (digits PLACEHOLDER-6))))))
+        (PLACEHOLDER-11 PLACEHOLDER-7 (PLACEHOLDER-10 PLACEHOLDER-6))))
+      (PLACEHOLDER-9 PLACEHOLDER-6))))))
  (def
-  armstrong?
+  PLACEHOLDER-12?
   (fn*
    ([PLACEHOLDER-8]
     (clojure.lang.Util/equiv
      PLACEHOLDER-8
-     (armstrong PLACEHOLDER-8))))))
+     (PLACEHOLDER-12 PLACEHOLDER-8))))))

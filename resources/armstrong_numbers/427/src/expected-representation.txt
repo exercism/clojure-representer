@@ -26,14 +26,14 @@
     nil)))
  (require '[clojure.math.numeric-tower :as math :refer [expt]])
  (def
-  int-digit
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Numbers/minus
      (clojure.lang.RT/intCast PLACEHOLDER-1)
      48))))
  (def
-  armstrong?
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-2]
     (let*
@@ -48,7 +48,7 @@
         ([PLACEHOLDER-5 PLACEHOLDER-6]
          (clojure.lang.Numbers/add
           PLACEHOLDER-5
-          (expt (int-digit PLACEHOLDER-6) PLACEHOLDER-4))))
+          (expt (PLACEHOLDER-7 PLACEHOLDER-6) PLACEHOLDER-4))))
        0
        PLACEHOLDER-3))))))
- (armstrong? 10))
+ (PLACEHOLDER-8 10))

@@ -25,15 +25,15 @@
         'armstrong-numbers))))
     nil)))
  (def
-  x-to-yth-power
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  digits
+  PLACEHOLDER-8
   (fn* ([PLACEHOLDER-3] (clojure.lang.RT/count (str PLACEHOLDER-3)))))
  (def
-  armstrong-sum
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-4]
     (reduce
@@ -41,12 +41,12 @@
      (map
       (fn*
        ([PLACEHOLDER-5]
-        (x-to-yth-power PLACEHOLDER-5 (digits PLACEHOLDER-4))))
+        (PLACEHOLDER-7 PLACEHOLDER-5 (PLACEHOLDER-8 PLACEHOLDER-4))))
       (map read-string (map str (str PLACEHOLDER-4))))))))
  (def
-  armstrong?
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-6]
     (clojure.lang.Util/equiv
      PLACEHOLDER-6
-     (armstrong-sum PLACEHOLDER-6))))))
+     (PLACEHOLDER-9 PLACEHOLDER-6))))))

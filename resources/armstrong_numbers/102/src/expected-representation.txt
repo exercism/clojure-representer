@@ -27,12 +27,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  exp
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-3]
     (clojure.lang.Util/equiv
@@ -44,7 +44,7 @@
        (map
         (fn*
          ([PLACEHOLDER-5]
-          (exp
+          (PLACEHOLDER-6
            (java.lang.Integer/parseInt PLACEHOLDER-5)
            PLACEHOLDER-4)))
         (s/split (str PLACEHOLDER-3) (re-pattern ""))))))))))

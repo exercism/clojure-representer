@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  to-int-arr
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-1]
     (map
@@ -33,35 +33,35 @@
       ([PLACEHOLDER-2] (java.lang.Character/digit PLACEHOLDER-2 10)))
      (seq (str PLACEHOLDER-1))))))
  (def
-  n-digits
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-3]
-    (clojure.lang.RT/count (to-int-arr PLACEHOLDER-3)))))
+    (clojure.lang.RT/count (PLACEHOLDER-12 PLACEHOLDER-3)))))
  (def
-  pow
+  PLACEHOLDER-14
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (map
      (fn*
       ([PLACEHOLDER-6]
-       (. (.pow PLACEHOLDER-6 PLACEHOLDER-5) longValue)))
+       (. (.PLACEHOLDER-14 PLACEHOLDER-6 PLACEHOLDER-5) longValue)))
      (map bigdec PLACEHOLDER-4)))))
  (def
-  armstrong-sum
+  PLACEHOLDER-15
   (fn*
    ([PLACEHOLDER-7]
     (let*
      [PLACEHOLDER-8
-      (to-int-arr PLACEHOLDER-7)
+      (PLACEHOLDER-12 PLACEHOLDER-7)
       PLACEHOLDER-9
-      (n-digits PLACEHOLDER-7)
+      (PLACEHOLDER-13 PLACEHOLDER-7)
       PLACEHOLDER-10
-      (pow PLACEHOLDER-8 PLACEHOLDER-9)]
+      (PLACEHOLDER-14 PLACEHOLDER-8 PLACEHOLDER-9)]
      (reduce + PLACEHOLDER-10)))))
  (def
-  armstrong?
+  PLACEHOLDER-16
   (fn*
    ([PLACEHOLDER-11]
     (clojure.lang.Util/equiv
-     (armstrong-sum PLACEHOLDER-11)
+     (PLACEHOLDER-15 PLACEHOLDER-11)
      PLACEHOLDER-11)))))

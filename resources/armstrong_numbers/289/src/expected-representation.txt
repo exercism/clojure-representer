@@ -25,27 +25,27 @@
         'armstrong-numbers))))
     nil)))
  (def
-  parse-int
+  PLACEHOLDER-21
   (fn* ([PLACEHOLDER-1] (java.lang.Integer/parseInt PLACEHOLDER-1))))
  (def
-  big-int-value
+  PLACEHOLDER-22
   (fn* ([PLACEHOLDER-2] (java.math.BigInteger/valueOf PLACEHOLDER-2))))
  (def
-  big-pow
+  PLACEHOLDER-23
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
-    (.pow (big-int-value PLACEHOLDER-3) PLACEHOLDER-4))))
+    (.pow (PLACEHOLDER-22 PLACEHOLDER-3) PLACEHOLDER-4))))
  (def
-  calc_digit_list
+  PLACEHOLDER-24
   (fn*
    ([PLACEHOLDER-5]
-    (map parse-int (map str (seq (str PLACEHOLDER-5)))))))
+    (map PLACEHOLDER-21 (map str (seq (str PLACEHOLDER-5)))))))
  (def
-  num_digits_summed_raised
+  PLACEHOLDER-25
   (fn*
    ([PLACEHOLDER-6]
     (let*
-     [PLACEHOLDER-7 (calc_digit_list PLACEHOLDER-6)]
+     [PLACEHOLDER-7 (PLACEHOLDER-24 PLACEHOLDER-6)]
      (reduce
       +
       (let*
@@ -88,7 +88,7 @@
                        (do
                         (clojure.core/chunk-append
                          PLACEHOLDER-15
-                         (big-pow
+                         (PLACEHOLDER-23
                           PLACEHOLDER-17
                           (clojure.lang.RT/count PLACEHOLDER-7)))
                         (recur
@@ -105,16 +105,16 @@
                   (let*
                    [PLACEHOLDER-18 (clojure.core/first PLACEHOLDER-12)]
                    (clojure.core/cons
-                    (big-pow
+                    (PLACEHOLDER-23
                      PLACEHOLDER-18
                      (clojure.lang.RT/count PLACEHOLDER-7))
                     (PLACEHOLDER-8
                      (clojure.core/rest PLACEHOLDER-12))))))))))))))]
        (PLACEHOLDER-19 PLACEHOLDER-7)))))))
  (def
-  armstrong?
+  PLACEHOLDER-26
   (fn*
    ([PLACEHOLDER-20]
     (clojure.lang.Util/equiv
      PLACEHOLDER-20
-     (num_digits_summed_raised PLACEHOLDER-20))))))
+     (PLACEHOLDER-25 PLACEHOLDER-20))))))

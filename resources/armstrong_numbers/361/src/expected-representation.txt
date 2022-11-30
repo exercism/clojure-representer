@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  magic
+  PLACEHOLDER-5
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (clojure.lang.Util/equiv
@@ -41,10 +41,10 @@
            (clojure.lang.RT/count PLACEHOLDER-2))))
         PLACEHOLDER-2)))))))
  (def
-  armstrong?
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-4]
-    (magic
+    (PLACEHOLDER-5
      PLACEHOLDER-4
      (map read-string (map str (seq (str PLACEHOLDER-4))))))))
  nil)

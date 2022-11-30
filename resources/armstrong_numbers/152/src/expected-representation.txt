@@ -25,19 +25,19 @@
         'armstrong-numbers))))
     nil)))
  (def
-  exp
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  exp-char-by-seq-count
+  PLACEHOLDER-8-char-by-seq-count
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
-    (exp
+    (PLACEHOLDER-8
      (java.lang.Integer/parseInt (str PLACEHOLDER-3))
      (clojure.lang.RT/count PLACEHOLDER-4)))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-5]
     (let*
@@ -49,5 +49,7 @@
        (map
         (fn*
          ([PLACEHOLDER-7]
-          (exp-char-by-seq-count PLACEHOLDER-7 PLACEHOLDER-6)))
+          (PLACEHOLDER-8-char-by-seq-count
+           PLACEHOLDER-7
+           PLACEHOLDER-6)))
         PLACEHOLDER-6))))))))

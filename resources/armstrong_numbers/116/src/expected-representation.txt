@@ -25,9 +25,9 @@
         'armstrong-numbers))))
     nil)))
  (def
-  split-number
+  PLACEHOLDER-9
   (fn*
-   ([PLACEHOLDER-1] (split-number PLACEHOLDER-1 []))
+   ([PLACEHOLDER-1] (PLACEHOLDER-9 PLACEHOLDER-1 []))
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (if
      (clojure.lang.Numbers/gt PLACEHOLDER-2 0)
@@ -36,12 +36,12 @@
       (cons (mod PLACEHOLDER-2 10) PLACEHOLDER-3))
      PLACEHOLDER-3))))
  (def
-  armstrong-value
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-4]
     (let*
      [PLACEHOLDER-5
-      (split-number PLACEHOLDER-4)
+      (PLACEHOLDER-9 PLACEHOLDER-4)
       PLACEHOLDER-6
       (clojure.lang.RT/count PLACEHOLDER-5)]
      (reduce
@@ -52,9 +52,9 @@
          (reduce * (repeat PLACEHOLDER-6 PLACEHOLDER-7))))
        PLACEHOLDER-5))))))
  (def
-  armstrong?
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-8]
     (clojure.lang.Util/equiv
      PLACEHOLDER-8
-     (armstrong-value PLACEHOLDER-8))))))
+     (PLACEHOLDER-10 PLACEHOLDER-8))))))

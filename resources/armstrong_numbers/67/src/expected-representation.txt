@@ -26,10 +26,12 @@
         clojure.core/conj
         'armstrong-numbers))))
     nil)))
- (def to-string (fn* ([PLACEHOLDER-1] (str "" PLACEHOLDER-1))))
- (def len (fn* ([PLACEHOLDER-2] (. PLACEHOLDER-2 length))))
+ (def PLACEHOLDER-9 (fn* ([PLACEHOLDER-1] (str "" PLACEHOLDER-1))))
  (def
-  to-num-seq
+  PLACEHOLDER-10
+  (fn* ([PLACEHOLDER-2] (. PLACEHOLDER-2 PLACEHOLDER-10gth))))
+ (def
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-3]
     (map
@@ -38,7 +40,7 @@
        (java.lang.Integer/parseInt (str PLACEHOLDER-4))))
      PLACEHOLDER-3))))
  (def
-  to-armstrong
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-5]
     (reduce
@@ -52,9 +54,10 @@
      0
      PLACEHOLDER-5))))
  (def
-  armstrong?
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-8]
     (clojure.lang.Util/equiv
      PLACEHOLDER-8
-     (to-armstrong (to-num-seq (to-string PLACEHOLDER-8))))))))
+     (PLACEHOLDER-12
+      (PLACEHOLDER-11 (PLACEHOLDER-9 PLACEHOLDER-8))))))))

@@ -25,11 +25,11 @@
         'armstrong-numbers))))
     nil)))
  (def
-  split-to-digits
+  PLACEHOLDER-5
   (fn*
    ([PLACEHOLDER-1] (map (comp read-string str) (str PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-2]
     (let*
@@ -44,4 +44,4 @@
          (fn*
           ([PLACEHOLDER-4]
            (.pow (bigdec PLACEHOLDER-4) PLACEHOLDER-3)))
-         (split-to-digits PLACEHOLDER-2))))))))))
+         (PLACEHOLDER-5 PLACEHOLDER-2))))))))))

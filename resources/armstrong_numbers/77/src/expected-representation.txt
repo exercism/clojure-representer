@@ -25,6 +25,6 @@
         'armstrong-numbers))))
     nil)))
  (def
-  armstrong?
+  PLACEHOLDER-2
   (fn*
    ([PLACEHOLDER-1] (map (comp read-string str) (str PLACEHOLDER-1))))))

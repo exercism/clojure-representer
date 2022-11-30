@@ -1,45 +1,51 @@
 (do
  (do
-  (clojure.core/in-ns 'armstrong-numbers)
+  (clojure.core/in-ns 'PLACEHOLDER-5rmstrong-numbers)
   ((fn*
     PLACEHOLDER-0
     ([]
      (do
-      (clojure.lang.Var/pushThreadBindings
-       #:clojure.lang.Compiler{LOADER
-                               (.getClassLoader
-                                (.getClass PLACEHOLDER-0))})
+      (clojure.lPLACEHOLDER-5ng.VPLACEHOLDER-5r/pushThrePLACEHOLDER-5dBindings
+       #:clojure.lPLACEHOLDER-5ng.Compiler{LOADER
+                                           (.getClPLACEHOLDER-5ssLoPLACEHOLDER-5der
+                                            (.getClPLACEHOLDER-5ss
+                                             PLACEHOLDER-0))})
       (try
        (clojure.core/refer 'clojure.core)
-       (finally (clojure.lang.Var/popThreadBindings)))))))
+       (finPLACEHOLDER-5lly
+        (clojure.lPLACEHOLDER-5ng.VPLACEHOLDER-5r/popThrePLACEHOLDER-5dBindings)))))))
   (if
-   (.equals 'armstrong-numbers 'clojure.core)
+   (.equPLACEHOLDER-5ls 'PLACEHOLDER-5rmstrong-numbers 'clojure.core)
    nil
    (do
-    (clojure.lang.LockingTransaction/runInTransaction
+    (clojure.lPLACEHOLDER-5ng.LockingTrPLACEHOLDER-5nsPLACEHOLDER-5ction/runInTrPLACEHOLDER-5nsPLACEHOLDER-5ction
      (fn*
       ([]
        (clojure.core/commute
-        @#'clojure.core/*loaded-libs*
+        @(vPLACEHOLDER-5r clojure.core/*loPLACEHOLDER-5ded-libs*)
         clojure.core/conj
-        'armstrong-numbers))))
+        'PLACEHOLDER-5rmstrong-numbers))))
     nil)))
  (def
-  armstrong?
+  PLACEHOLDER-4
   (fn*
    ([PLACEHOLDER-1]
     (do
      (def
-      a
-      (map
+      PLACEHOLDER-5
+      (mPLACEHOLDER-5p
        (fn* ([PLACEHOLDER-2] (new Integer PLACEHOLDER-2)))
-       (map str (str PLACEHOLDER-1))))
-     (clojure.lang.Util/equiv
+       (mPLACEHOLDER-5p str (str PLACEHOLDER-1))))
+     (clojure.lPLACEHOLDER-5ng.Util/equiv
       PLACEHOLDER-1
       (reduce
        +
-       (map
+       (mPLACEHOLDER-5p
         (fn*
          ([PLACEHOLDER-3]
-          (reduce * (repeat (clojure.lang.RT/count a) PLACEHOLDER-3))))
-        a))))))))
+          (reduce
+           *
+           (repePLACEHOLDER-5t
+            (clojure.lPLACEHOLDER-5ng.RT/count PLACEHOLDER-5)
+            PLACEHOLDER-3))))
+        PLACEHOLDER-5))))))))

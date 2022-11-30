@@ -25,34 +25,36 @@
         'armstrong-numbers))))
     nil)))
  (def
-  power
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1]
     (fn*
      ([PLACEHOLDER-2]
       (do
        (def
-        result
+        PLACEHOLDER-7
         (bigdec (java.lang.Math/pow PLACEHOLDER-2 PLACEHOLDER-1)))
-       (println result)
-       result))))))
+       (println PLACEHOLDER-7)
+       PLACEHOLDER-7))))))
  (def
-  to_int
+  PLACEHOLDER-8
   (fn* ([PLACEHOLDER-3] (java.lang.Integer/parseInt PLACEHOLDER-3))))
  (def
-  int_list
-  (fn* ([PLACEHOLDER-4] (map to_int (map str PLACEHOLDER-4)))))
+  PLACEHOLDER-9
+  (fn* ([PLACEHOLDER-4] (map PLACEHOLDER-8 (map str PLACEHOLDER-4)))))
  (def
-  armstrong?
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-5]
     (do
-     (def number_string (str PLACEHOLDER-5))
-     (def number_size (clojure.lang.RT/count number_string))
-     (println "number size:" number_size)
-     (def string_digits_list (seq number_string))
-     (def digit_list (int_list string_digits_list))
-     (def powered_list (map (power number_size) digit_list))
-     (def sum_of_powers (reduce + powered_list))
-     (println "sum_of_powers: " sum_of_powers)
-     (clojure.lang.Util/equiv PLACEHOLDER-5 sum_of_powers))))))
+     (def PLACEHOLDER-11 (str PLACEHOLDER-5))
+     (def PLACEHOLDER-12 (clojure.lang.RT/count PLACEHOLDER-11))
+     (println "number size:" PLACEHOLDER-12)
+     (def PLACEHOLDER-13 (seq PLACEHOLDER-11))
+     (def PLACEHOLDER-14 (PLACEHOLDER-9 PLACEHOLDER-13))
+     (def
+      PLACEHOLDER-6ed_list
+      (map (PLACEHOLDER-6 PLACEHOLDER-12) PLACEHOLDER-14))
+     (def PLACEHOLDER-15 (reduce + PLACEHOLDER-6ed_list))
+     (println "PLACEHOLDER-15: " PLACEHOLDER-15)
+     (clojure.lang.Util/equiv PLACEHOLDER-5 PLACEHOLDER-15))))))

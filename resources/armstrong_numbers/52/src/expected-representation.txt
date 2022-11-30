@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  create-character-list
+  PLACEHOLDER-20
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (let*
@@ -88,29 +88,29 @@
                    (clojure.core/rest PLACEHOLDER-7))))))))))))))]
      (PLACEHOLDER-14 PLACEHOLDER-1)))))
  (def
-  multiply-by-length
+  PLACEHOLDER-21
   (fn*
    ([PLACEHOLDER-15 PLACEHOLDER-16]
     (reduce
      *
-     (create-character-list (range PLACEHOLDER-16) PLACEHOLDER-15)))))
+     (PLACEHOLDER-20 (range PLACEHOLDER-16) PLACEHOLDER-15)))))
  (def
-  armstrong?
+  PLACEHOLDER-22
   (fn*
    ([PLACEHOLDER-17]
     (do
-     (def num-string (str PLACEHOLDER-17))
-     (def num-string-length (clojure.lang.RT/count num-string))
+     (def PLACEHOLDER-23 (str PLACEHOLDER-17))
+     (def PLACEHOLDER-23-length (clojure.lang.RT/count PLACEHOLDER-23))
      (def
-      result
+      PLACEHOLDER-24
       (reduce
        (fn*
         ([PLACEHOLDER-18 PLACEHOLDER-19]
          (clojure.lang.Numbers/add
           PLACEHOLDER-18
-          (multiply-by-length
+          (PLACEHOLDER-21
            (java.lang.Character/digit PLACEHOLDER-19 10)
-           num-string-length))))
+           PLACEHOLDER-23-length))))
        0
-       num-string))
-     (clojure.lang.Numbers/equiv PLACEHOLDER-17 result))))))
+       PLACEHOLDER-23))
+     (clojure.lang.Numbers/equiv PLACEHOLDER-17 PLACEHOLDER-24))))))

@@ -25,21 +25,21 @@
         'armstrong-numbers))))
     nil)))
  (def
-  calculate-number
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (java.lang.Math/pow
      (java.lang.Integer/parseInt PLACEHOLDER-2)
      PLACEHOLDER-1))))
  (def
-  armstrong?
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-3]
     (let*
      [PLACEHOLDER-4
       (clojure.lang.RT/count (str PLACEHOLDER-3))
       PLACEHOLDER-5
-      (partial calculate-number PLACEHOLDER-4)]
+      (partial PLACEHOLDER-7 PLACEHOLDER-4)]
      (clojure.lang.Numbers/equiv
       PLACEHOLDER-3
       (reduce

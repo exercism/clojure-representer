@@ -26,35 +26,36 @@
     nil)))
  (require '[clojure.string :as str])
  (def
-  number-to-list
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-1]
     (map
      read-string
      (str/split (str PLACEHOLDER-1) (re-pattern ""))))))
  (def
-  exp
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-2)))))
  (def
-  count-digits
+  PLACEHOLDER-11
   (fn* ([PLACEHOLDER-4] (clojure.lang.RT/count (str PLACEHOLDER-4)))))
  (def
-  exp-every-number
+  PLACEHOLDER-10-every-number
   (fn*
    ([PLACEHOLDER-5 PLACEHOLDER-6]
     (map
-     (fn* ([PLACEHOLDER-7] (exp PLACEHOLDER-7 PLACEHOLDER-6)))
+     (fn*
+      ([PLACEHOLDER-7] (PLACEHOLDER-10 PLACEHOLDER-7 PLACEHOLDER-6)))
      PLACEHOLDER-5))))
  (def
-  armstrong?
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-8]
     (clojure.lang.Util/equiv
      PLACEHOLDER-8
      (reduce
       +
-      (exp-every-number
-       (number-to-list PLACEHOLDER-8)
-       (count-digits PLACEHOLDER-8))))))))
+      (PLACEHOLDER-10-every-number
+       (PLACEHOLDER-9 PLACEHOLDER-8)
+       (PLACEHOLDER-11 PLACEHOLDER-8))))))))

@@ -25,24 +25,24 @@
         'armstrong-numbers))))
     nil)))
  (def
-  to-list
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (if
      (clojure.lang.Util/equiv PLACEHOLDER-1 0)
      PLACEHOLDER-2
-     (to-list
+     (PLACEHOLDER-9
       (clojure.lang.Numbers/quotient PLACEHOLDER-1 10)
       (cons
        (clojure.lang.Numbers/remainder PLACEHOLDER-1 10)
        PLACEHOLDER-2))))))
  (def
-  calc-armstrong
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-3]
     (let*
      [PLACEHOLDER-4
-      (to-list PLACEHOLDER-3 '())
+      (PLACEHOLDER-9 PLACEHOLDER-3 '())
       PLACEHOLDER-5
       (clojure.lang.RT/count PLACEHOLDER-4)]
      (clojure.lang.RT/longCast
@@ -55,9 +55,9 @@
        0
        PLACEHOLDER-4))))))
  (def
-  armstrong?
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-8]
     (clojure.lang.Util/equiv
-     (calc-armstrong PLACEHOLDER-8)
+     (PLACEHOLDER-10 PLACEHOLDER-8)
      PLACEHOLDER-8)))))

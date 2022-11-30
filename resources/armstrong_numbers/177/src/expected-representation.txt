@@ -25,33 +25,33 @@
         'armstrong-numbers))))
     nil)))
  (def
-  split-to-parts
+  PLACEHOLDER-11
   (fn*
-   ([PLACEHOLDER-1] (split-to-parts PLACEHOLDER-1 []))
+   ([PLACEHOLDER-1] (PLACEHOLDER-11 PLACEHOLDER-1 []))
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (if
      (clojure.lang.Numbers/lt PLACEHOLDER-2 1)
      PLACEHOLDER-3
      (if
       :else
-      (split-to-parts
+      (PLACEHOLDER-11
        (clojure.lang.Numbers/divide PLACEHOLDER-2 10)
        (conj
         PLACEHOLDER-3
         (clojure.lang.RT/intCast
          (clojure.lang.Numbers/remainder PLACEHOLDER-2 10)))))))))
  (def
-  exp
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (reduce * (repeat PLACEHOLDER-5 PLACEHOLDER-4)))))
  (def
-  armstrong?
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-6]
     (let*
      [PLACEHOLDER-7
-      (split-to-parts PLACEHOLDER-6)
+      (PLACEHOLDER-11 PLACEHOLDER-6)
       PLACEHOLDER-8
       (clojure.lang.RT/count PLACEHOLDER-7)]
      (clojure.lang.Util/equiv
@@ -61,6 +61,6 @@
         ([PLACEHOLDER-9 PLACEHOLDER-10]
          (clojure.lang.Numbers/add
           PLACEHOLDER-9
-          (exp PLACEHOLDER-10 PLACEHOLDER-8))))
+          (PLACEHOLDER-12 PLACEHOLDER-10 PLACEHOLDER-8))))
        0
        PLACEHOLDER-7)))))))

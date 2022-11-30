@@ -25,29 +25,29 @@
         'armstrong-numbers))))
     nil)))
  (def
-  pow-pow
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-1 PLACEHOLDER-2)))))
  (def
-  add-up
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-3]
     (let*
      [PLACEHOLDER-4
       (clojure.lang.RT/count PLACEHOLDER-3)
       PLACEHOLDER-5
-      (partial pow-pow PLACEHOLDER-4)]
+      (partial PLACEHOLDER-9 PLACEHOLDER-4)]
      (reduce + (map PLACEHOLDER-5 PLACEHOLDER-3))))))
  (def
-  armstrong?
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-6]
     (let*
      [PLACEHOLDER-7
       (map (comp read-string str) (str PLACEHOLDER-6))
       PLACEHOLDER-8
-      (add-up PLACEHOLDER-7)]
+      (PLACEHOLDER-10 PLACEHOLDER-7)]
      (clojure.lang.Util/equiv
       (clojure.lang.RT/intCast PLACEHOLDER-8)
       PLACEHOLDER-6))))))

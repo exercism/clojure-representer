@@ -27,7 +27,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  int-pow
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce
@@ -37,14 +37,14 @@
      1N
      (range PLACEHOLDER-2)))))
  (def
-  order-of-magnitude
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-5]
     (clojure.lang.RT/intCast
      (java.lang.Math/log10
       (clojure.lang.RT/doubleCast PLACEHOLDER-5))))))
  (def
-  armstrong?
+  PLACEHOLDER-14
   (fn*
    ([PLACEHOLDER-6]
     (let*
@@ -56,7 +56,7 @@
        [PLACEHOLDER-8
         (bigint PLACEHOLDER-6)
         PLACEHOLDER-9
-        (clojure.lang.Numbers/inc (order-of-magnitude PLACEHOLDER-6))]
+        (clojure.lang.Numbers/inc (PLACEHOLDER-13 PLACEHOLDER-6))]
        (loop*
         [PLACEHOLDER-10 PLACEHOLDER-8 PLACEHOLDER-11 PLACEHOLDER-8]
         (if
@@ -65,7 +65,7 @@
          (recur
           (clojure.lang.Numbers/minusP
            PLACEHOLDER-10
-           (int-pow
+           (PLACEHOLDER-12
             (clojure.lang.Numbers/remainder PLACEHOLDER-11 10)
             PLACEHOLDER-9))
           (clojure.lang.Numbers/quotient PLACEHOLDER-11 10)))))))))))

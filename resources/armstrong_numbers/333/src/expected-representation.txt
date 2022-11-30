@@ -25,10 +25,10 @@
         'armstrong-numbers))))
     nil)))
  (def
-  number-as-list
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-1]
-    (number-as-list
+    (PLACEHOLDER-12
      PLACEHOLDER-1
      (if (clojure.lang.Util/equiv PLACEHOLDER-1 0) '(0) '())))
    ([PLACEHOLDER-2 PLACEHOLDER-3]
@@ -41,14 +41,14 @@
        (clojure.lang.Numbers/divide PLACEHOLDER-4 10)
        (cons (mod PLACEHOLDER-4 10) PLACEHOLDER-3)))))))
  (def
-  armstrong?
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-5]
     (let*
      [PLACEHOLDER-6 (bigint PLACEHOLDER-5)]
      (let*
       [PLACEHOLDER-7
-       (number-as-list PLACEHOLDER-6)
+       (PLACEHOLDER-12 PLACEHOLDER-6)
        PLACEHOLDER-10
        (reduce
         (fn*

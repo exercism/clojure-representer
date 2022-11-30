@@ -27,12 +27,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  power
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  string-to-vec-digits
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-3]
     (let*
@@ -44,7 +44,7 @@
       (string/split PLACEHOLDER-5 (re-pattern ""))]
      (map read-string PLACEHOLDER-6)))))
  (def
-  armstrong-pow
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-7]
     (let*
@@ -52,12 +52,13 @@
      (reduce
       +
       (map
-       (fn* ([PLACEHOLDER-9] (power PLACEHOLDER-9 PLACEHOLDER-8)))
-       (string-to-vec-digits PLACEHOLDER-7)))))))
+       (fn*
+        ([PLACEHOLDER-9] (PLACEHOLDER-11 PLACEHOLDER-9 PLACEHOLDER-8)))
+       (PLACEHOLDER-12 PLACEHOLDER-7)))))))
  (def
-  armstrong?
+  PLACEHOLDER-14
   (fn*
    ([PLACEHOLDER-10]
     (clojure.lang.Util/equiv
-     (armstrong-pow PLACEHOLDER-10)
+     (PLACEHOLDER-13 PLACEHOLDER-10)
      PLACEHOLDER-10)))))

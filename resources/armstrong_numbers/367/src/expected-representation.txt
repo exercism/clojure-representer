@@ -27,12 +27,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  num-to-digits
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1]
     (map bigint (str/split (str PLACEHOLDER-1) (re-pattern ""))))))
  (def
-  pow-digits
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-2]
     (map
@@ -44,12 +44,12 @@
          (clojure.lang.RT/count PLACEHOLDER-2)))))
      PLACEHOLDER-2))))
  (def
-  sum-pow-digits
-  (fn* ([PLACEHOLDER-4] (reduce + (pow-digits PLACEHOLDER-4)))))
+  PLACEHOLDER-8
+  (fn* ([PLACEHOLDER-4] (reduce + (PLACEHOLDER-7 PLACEHOLDER-4)))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-5]
     (clojure.lang.Util/equiv
      (bigdec PLACEHOLDER-5)
-     (sum-pow-digits (num-to-digits PLACEHOLDER-5)))))))
+     (PLACEHOLDER-8 (PLACEHOLDER-6 PLACEHOLDER-5)))))))

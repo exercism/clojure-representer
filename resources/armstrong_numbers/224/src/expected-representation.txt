@@ -26,7 +26,7 @@
     nil)))
  (require '[clojure.string :as str])
  (def
-  exp
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (loop*
@@ -37,29 +37,35 @@
       (recur
        (clojure.lang.Numbers/multiply PLACEHOLDER-1 PLACEHOLDER-3)
        (clojure.lang.Numbers/dec PLACEHOLDER-4)))))))
- (def n2s (fn* ([PLACEHOLDER-5] (format "%d" PLACEHOLDER-5))))
  (def
-  s2n
+  PLACEHOLDER-13
+  (fn* ([PLACEHOLDER-5] (format "%d" PLACEHOLDER-5))))
+ (def
+  PLACEHOLDER-14
   (fn* ([PLACEHOLDER-6] (java.lang.Integer/parseInt PLACEHOLDER-6))))
  (def
-  _n2v
+  PLACEHOLDER-15
   (fn*
    ([PLACEHOLDER-7]
-    (map s2n (str/split (n2s PLACEHOLDER-7) (re-pattern ""))))))
- (def n2v (memoize _n2v))
+    (map
+     PLACEHOLDER-14
+     (str/split (PLACEHOLDER-13 PLACEHOLDER-7) (re-pattern ""))))))
+ (def PLACEHOLDER-16 (memoize PLACEHOLDER-15))
  (def
-  armstrong?
+  PLACEHOLDER-17
   (fn*
    ([PLACEHOLDER-8]
     (clojure.lang.Util/equiv
      (let*
       [PLACEHOLDER-9
-       (n2v PLACEHOLDER-8)
+       (PLACEHOLDER-16 PLACEHOLDER-8)
        PLACEHOLDER-10
        (clojure.lang.RT/count PLACEHOLDER-9)]
       (reduce
        +
        (map
-        (fn* ([PLACEHOLDER-11] (exp PLACEHOLDER-11 PLACEHOLDER-10)))
+        (fn*
+         ([PLACEHOLDER-11]
+          (PLACEHOLDER-12 PLACEHOLDER-11 PLACEHOLDER-10)))
         PLACEHOLDER-9)))
      PLACEHOLDER-8)))))

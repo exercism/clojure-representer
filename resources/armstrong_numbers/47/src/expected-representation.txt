@@ -1,6 +1,6 @@
 (do
  (do
-  (clojure.core/in-ns 'armstrong-numbers)
+  (clojure.core/in-ns 'PLACEHOLDER-24s)
   ((fn*
     PLACEHOLDER-0
     ([]
@@ -13,7 +13,7 @@
        (clojure.core/refer 'clojure.core)
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
-   (.equals 'armstrong-numbers 'clojure.core)
+   (.equals 'PLACEHOLDER-24s 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
@@ -22,10 +22,10 @@
        (clojure.core/commute
         @#'clojure.core/*loaded-libs*
         clojure.core/conj
-        'armstrong-numbers))))
+        'PLACEHOLDER-24s))))
     nil)))
  (def
-  get-digits
+  PLACEHOLDER-21
   (fn*
    ([PLACEHOLDER-1]
     (loop*
@@ -37,17 +37,17 @@
        (clojure.lang.Numbers/quotient PLACEHOLDER-2 10)
        (conj PLACEHOLDER-3 (mod PLACEHOLDER-2 10))))))))
  (def
-  count-digits
+  PLACEHOLDER-22
   (fn*
    ([PLACEHOLDER-4]
-    (clojure.lang.RT/count (get-digits PLACEHOLDER-4)))))
+    (clojure.lang.RT/count (PLACEHOLDER-21 PLACEHOLDER-4)))))
  (def
-  exp
+  PLACEHOLDER-23
   (fn*
    ([PLACEHOLDER-5 PLACEHOLDER-6]
     (reduce * (repeat PLACEHOLDER-6 PLACEHOLDER-5)))))
  (def
-  armstrong-number
+  PLACEHOLDER-24
   (fn*
    ([PLACEHOLDER-7]
     (reduce
@@ -92,9 +92,9 @@
                       (do
                        (clojure.core/chunk-append
                         PLACEHOLDER-15
-                        (exp
+                        (PLACEHOLDER-23
                          PLACEHOLDER-17
-                         (count-digits PLACEHOLDER-7)))
+                         (PLACEHOLDER-22 PLACEHOLDER-7)))
                        (recur
                         (clojure.lang.Numbers/unchecked_inc
                          PLACEHOLDER-16))))
@@ -109,14 +109,16 @@
                  (let*
                   [PLACEHOLDER-18 (clojure.core/first PLACEHOLDER-12)]
                   (clojure.core/cons
-                   (exp PLACEHOLDER-18 (count-digits PLACEHOLDER-7))
+                   (PLACEHOLDER-23
+                    PLACEHOLDER-18
+                    (PLACEHOLDER-22 PLACEHOLDER-7))
                    (PLACEHOLDER-8
                     (clojure.core/rest PLACEHOLDER-12))))))))))))))]
-      (PLACEHOLDER-19 (get-digits PLACEHOLDER-7)))))))
+      (PLACEHOLDER-19 (PLACEHOLDER-21 PLACEHOLDER-7)))))))
  (def
-  armstrong?
+  PLACEHOLDER-25
   (fn*
    ([PLACEHOLDER-20]
     (clojure.lang.Util/equiv
      PLACEHOLDER-20
-     (armstrong-number PLACEHOLDER-20))))))
+     (PLACEHOLDER-24 PLACEHOLDER-20))))))

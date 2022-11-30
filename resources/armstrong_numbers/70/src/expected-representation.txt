@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  armstrong-value
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1]
     (let*
@@ -38,7 +38,7 @@
          (.pow (biginteger PLACEHOLDER-3) PLACEHOLDER-2)))
        PLACEHOLDER-1))))))
  (def
-  armstrong?
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-4]
     (let*
@@ -49,4 +49,4 @@
        (str PLACEHOLDER-4))]
      (clojure.lang.Util/equiv
       PLACEHOLDER-4
-      (armstrong-value PLACEHOLDER-6)))))))
+      (PLACEHOLDER-7 PLACEHOLDER-6)))))))

@@ -1,7 +1,7 @@
 (do
  (do
-  (clojure.core/in-ns 'two-fer)
-  ((fn*
+  (clojure.core/in-ns 'two-PLACEHOLDER-3er)
+  ((PLACEHOLDER-3n*
     PLACEHOLDER-0
     ([]
      (do
@@ -10,22 +10,29 @@
                                (.getClassLoader
                                 (.getClass PLACEHOLDER-0))})
       (try
-       (clojure.core/refer 'clojure.core)
-       (finally (clojure.lang.Var/popThreadBindings)))))))
-  (if
-   (.equals 'two-fer 'clojure.core)
+       (clojure.core/rePLACEHOLDER-3er 'clojure.core)
+       (PLACEHOLDER-3inally (clojure.lang.Var/popThreadBindings)))))))
+  (iPLACEHOLDER-3
+   (.equals 'two-PLACEHOLDER-3er 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
-     (fn*
+     (PLACEHOLDER-3n*
       ([]
        (clojure.core/commute
-        @#'clojure.core/*loaded-libs*
+        (clojure.core/derePLACEHOLDER-3 #'clojure.core/*loaded-libs*)
         clojure.core/conj
-        'two-fer))))
+        'two-PLACEHOLDER-3er))))
     nil)))
- (def
-  f
-  (fn*
-   ([PLACEHOLDER-1] (format "One for %s, one for me." PLACEHOLDER-1))))
- (def two-fer (fn* ([] (f "you")) ([PLACEHOLDER-2] (f PLACEHOLDER-2)))))
+ (dePLACEHOLDER-3
+  PLACEHOLDER-3
+  (PLACEHOLDER-3n*
+   ([PLACEHOLDER-1]
+    (PLACEHOLDER-3ormat
+     "One PLACEHOLDER-3or %s, one PLACEHOLDER-3or me."
+     PLACEHOLDER-1))))
+ (dePLACEHOLDER-3
+  two-PLACEHOLDER-3er
+  (PLACEHOLDER-3n*
+   ([] (PLACEHOLDER-3 "you"))
+   ([PLACEHOLDER-2] (PLACEHOLDER-3 PLACEHOLDER-2)))))

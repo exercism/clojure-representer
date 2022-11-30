@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  armstrong?
+  PLACEHOLDER-5
   (fn*
    ([PLACEHOLDER-1]
     (loop*
@@ -49,4 +49,4 @@
               1
               (clojure.lang.RT/count PLACEHOLDER-3)))))
           (conj PLACEHOLDER-3 PLACEHOLDER-2))))))))))
- (armstrong? 21897142587612075))
+ (PLACEHOLDER-5 21897142587612075))

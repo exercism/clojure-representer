@@ -25,24 +25,26 @@
         'armstrong-numbers))))
     nil)))
  (def
-  pow
+  PLACEHOLDER-16
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
- (def div10 (fn* ([PLACEHOLDER-3] ((comp long /) PLACEHOLDER-3 10))))
  (def
-  num-len
+  PLACEHOLDER-17
+  (fn* ([PLACEHOLDER-3] ((comp long /) PLACEHOLDER-3 10))))
+ (def
+  PLACEHOLDER-18
   (fn*
    ([PLACEHOLDER-4]
     ((comp inc long) (java.lang.Math/log10 PLACEHOLDER-4)))))
  (def
-  num-digits
+  PLACEHOLDER-19
   (fn*
-   ([PLACEHOLDER-5] (num-digits PLACEHOLDER-5 ()))
+   ([PLACEHOLDER-5] (PLACEHOLDER-19 PLACEHOLDER-5 ()))
    ([PLACEHOLDER-6 PLACEHOLDER-7]
     (let*
      [PLACEHOLDER-8
-      (div10 PLACEHOLDER-6)
+      (PLACEHOLDER-17 PLACEHOLDER-6)
       PLACEHOLDER-9
       (conj PLACEHOLDER-7 (mod PLACEHOLDER-6 10))]
      (if
@@ -50,7 +52,7 @@
       PLACEHOLDER-9
       (recur PLACEHOLDER-8 PLACEHOLDER-9))))))
  (def
-  armstrong?
+  PLACEHOLDER-20
   (fn*
    ([PLACEHOLDER-10]
     (let*
@@ -60,14 +62,16 @@
       PLACEHOLDER-11
       (let*
        [PLACEHOLDER-12
-        (num-len PLACEHOLDER-10)
+        (PLACEHOLDER-18 PLACEHOLDER-10)
         PLACEHOLDER-13
         (partial reduce +)
         PLACEHOLDER-15
         (partial
          map
-         (fn* ([PLACEHOLDER-14] (pow PLACEHOLDER-14 PLACEHOLDER-12))))]
+         (fn*
+          ([PLACEHOLDER-14]
+           (PLACEHOLDER-16 PLACEHOLDER-14 PLACEHOLDER-12))))]
        (clojure.lang.Util/equiv
         PLACEHOLDER-10
-        ((comp PLACEHOLDER-13 PLACEHOLDER-15 num-digits)
+        ((comp PLACEHOLDER-13 PLACEHOLDER-15 PLACEHOLDER-19)
          PLACEHOLDER-10)))))))))

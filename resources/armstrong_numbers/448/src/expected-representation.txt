@@ -25,21 +25,21 @@
         'armstrong-numbers))))
     nil)))
  (def
-  digits
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-1]
     (map
      (fn* ([PLACEHOLDER-2] (read-string (str PLACEHOLDER-2))))
      (str PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-3]
     (let*
      [PLACEHOLDER-4
       (clojure.lang.RT/count (str PLACEHOLDER-3))
       PLACEHOLDER-5
-      (digits PLACEHOLDER-3)
+      (PLACEHOLDER-8 PLACEHOLDER-3)
       PLACEHOLDER-7
       (clojure.lang.RT/uncheckedIntCast
        (reduce

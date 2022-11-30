@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  armstrong?
+  PLACEHOLDER-3
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Util/equiv
@@ -39,4 +39,4 @@
           (java.lang.Integer/parseInt PLACEHOLDER-2)
           (clojure.lang.RT/count (str PLACEHOLDER-1)))))
        (clojure.string/split (str PLACEHOLDER-1) (re-pattern ""))))))))
- (armstrong? 153))
+ (PLACEHOLDER-3 153))

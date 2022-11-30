@@ -25,15 +25,15 @@
         'armstrong-numbers))))
     nil)))
  (def
-  number-of-digits
+  PLACEHOLDER-8
   (fn* ([PLACEHOLDER-1] (clojure.lang.RT/count (str PLACEHOLDER-1)))))
  (def
-  raise-to-power
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-2)))))
  (def
-  get-number-as-list
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-4]
     (map
@@ -42,7 +42,7 @@
        (java.lang.Character/getNumericValue PLACEHOLDER-5)))
      (str PLACEHOLDER-4)))))
  (def
-  armstrong?
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-6]
     (clojure.lang.Util/equiv
@@ -53,7 +53,7 @@
        (fn*
         ([PLACEHOLDER-7]
          (bigint
-          (raise-to-power
+          (PLACEHOLDER-9
            PLACEHOLDER-7
-           (number-of-digits PLACEHOLDER-6)))))
-       (get-number-as-list PLACEHOLDER-6))))))))
+           (PLACEHOLDER-8 PLACEHOLDER-6)))))
+       (PLACEHOLDER-10 PLACEHOLDER-6))))))))

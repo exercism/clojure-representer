@@ -25,12 +25,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  exp
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (apply * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-3]
     (let*
@@ -50,5 +50,6 @@
        +
        (map
         (fn*
-         ([PLACEHOLDER-7] (exp (mod PLACEHOLDER-7 10) PLACEHOLDER-6)))
+         ([PLACEHOLDER-7]
+          (PLACEHOLDER-8 (mod PLACEHOLDER-7 10) PLACEHOLDER-6)))
         PLACEHOLDER-5))))))))

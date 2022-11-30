@@ -25,19 +25,19 @@
         'armstrong-numbers))))
     nil)))
  (def
-  char-to-int
+  PLACEHOLDER-19
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Numbers/minus
      (clojure.lang.RT/intCast PLACEHOLDER-1)
      48))))
  (def
-  exp
+  PLACEHOLDER-20
   (fn*
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-2)))))
  (def
-  convert
+  PLACEHOLDER-21
   (fn*
    ([PLACEHOLDER-4]
     (let*
@@ -84,8 +84,8 @@
                        (do
                         (clojure.core/chunk-append
                          PLACEHOLDER-13
-                         (exp
-                          (char-to-int PLACEHOLDER-15)
+                         (PLACEHOLDER-20
+                          (PLACEHOLDER-19 PLACEHOLDER-15)
                           (clojure.lang.RT/count PLACEHOLDER-5)))
                         (recur
                          (clojure.lang.Numbers/unchecked_inc
@@ -101,16 +101,16 @@
                   (let*
                    [PLACEHOLDER-16 (clojure.core/first PLACEHOLDER-10)]
                    (clojure.core/cons
-                    (exp
-                     (char-to-int PLACEHOLDER-16)
+                    (PLACEHOLDER-20
+                     (PLACEHOLDER-19 PLACEHOLDER-16)
                      (clojure.lang.RT/count PLACEHOLDER-5))
                     (PLACEHOLDER-6
                      (clojure.core/rest PLACEHOLDER-10))))))))))))))]
        (PLACEHOLDER-17 PLACEHOLDER-5)))))))
  (def
-  armstrong?
+  PLACEHOLDER-22
   (fn*
    ([PLACEHOLDER-18]
     (clojure.lang.Util/equiv
-     (convert PLACEHOLDER-18)
+     (PLACEHOLDER-21 PLACEHOLDER-18)
      PLACEHOLDER-18)))))

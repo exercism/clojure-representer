@@ -1,6 +1,6 @@
 (do
  (do
-  (clojure.core/in-ns 'armstrong-numbers)
+  (clojure.core/in-ns 'PLACEHOLDER-14-numbers)
   ((fn*
     PLACEHOLDER-0
     ([]
@@ -13,7 +13,7 @@
        (clojure.core/refer 'clojure.core)
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
-   (.equals 'armstrong-numbers 'clojure.core)
+   (.equals 'PLACEHOLDER-14-numbers 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
@@ -22,53 +22,54 @@
        (clojure.core/commute
         @#'clojure.core/*loaded-libs*
         clojure.core/conj
-        'armstrong-numbers))))
+        'PLACEHOLDER-14-numbers))))
     nil)))
  (def
-  num-of-digits
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Numbers/add
      (clojure.lang.RT/intCast (java.lang.Math/log10 PLACEHOLDER-1))
      1))))
  (def
-  digits
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-2]
     (if
      (clojure.lang.Numbers/lt PLACEHOLDER-2 10)
      [PLACEHOLDER-2]
      (conj
-      (digits (clojure.lang.Numbers/quotient PLACEHOLDER-2 10))
+      (PLACEHOLDER-11 (clojure.lang.Numbers/quotient PLACEHOLDER-2 10))
       (mod PLACEHOLDER-2 10))))))
  (def
-  big-exp
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (bigint (.pow (bigdec PLACEHOLDER-3) PLACEHOLDER-4)))))
  (def
-  raise-digits-to-pow
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-5 PLACEHOLDER-6]
     (map
-     (fn* ([PLACEHOLDER-7] (big-exp PLACEHOLDER-7 PLACEHOLDER-6)))
+     (fn*
+      ([PLACEHOLDER-7] (PLACEHOLDER-12 PLACEHOLDER-7 PLACEHOLDER-6)))
      PLACEHOLDER-5))))
  (def
-  armstrong
+  PLACEHOLDER-14
   (fn*
    ([PLACEHOLDER-8]
     (apply
      +
-     (raise-digits-to-pow
-      (digits PLACEHOLDER-8)
-      (num-of-digits PLACEHOLDER-8))))))
+     (PLACEHOLDER-13
+      (PLACEHOLDER-11 PLACEHOLDER-8)
+      (PLACEHOLDER-10 PLACEHOLDER-8))))))
  (def
-  armstrong?
+  PLACEHOLDER-14?
   (fn*
    ([PLACEHOLDER-9]
     (if
      (clojure.lang.Util/equiv PLACEHOLDER-9 0)
      true
      (clojure.lang.Util/equiv
-      (armstrong PLACEHOLDER-9)
+      (PLACEHOLDER-14 PLACEHOLDER-9)
       PLACEHOLDER-9))))))

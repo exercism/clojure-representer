@@ -25,12 +25,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  pow
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce *' (take PLACEHOLDER-2 (repeat PLACEHOLDER-1))))))
  (def
-  armstrong?
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-3]
     (let*
@@ -45,7 +45,7 @@
          (bigint
           (clojure.lang.Numbers/add
            PLACEHOLDER-6
-           (pow
+           (PLACEHOLDER-9
             (java.lang.Character/digit PLACEHOLDER-7 10)
             PLACEHOLDER-5)))))
        0

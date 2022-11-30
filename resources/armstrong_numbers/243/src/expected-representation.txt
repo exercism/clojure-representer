@@ -25,12 +25,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  exp
+  PLACEHOLDER-16
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-17
   (fn*
    ([PLACEHOLDER-3]
     (clojure.lang.Numbers/equiv
@@ -78,7 +78,7 @@
                         (clojure.core/chunk-append
                          PLACEHOLDER-11
                          (clojure.lang.RT/longCast
-                          (exp
+                          (PLACEHOLDER-16
                            (clojure.lang.RT/longCast
                             (clojure.lang.Numbers/minus
                              (clojure.lang.RT/byteCast PLACEHOLDER-13)
@@ -100,7 +100,7 @@
                    [PLACEHOLDER-14 (clojure.core/first PLACEHOLDER-8)]
                    (clojure.core/cons
                     (clojure.lang.RT/longCast
-                     (exp
+                     (PLACEHOLDER-16
                       (clojure.lang.RT/longCast
                        (clojure.lang.Numbers/minus
                         (clojure.lang.RT/byteCast PLACEHOLDER-14)

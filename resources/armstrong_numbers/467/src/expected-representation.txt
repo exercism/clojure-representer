@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  num_seq
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-1]
     (map
@@ -36,7 +36,7 @@
         48)))
      (seq (str PLACEHOLDER-1))))))
  (def
-  power
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-3 PLACEHOLDER-4]
     (if
@@ -44,16 +44,16 @@
      1
      (clojure.lang.Numbers/multiply
       PLACEHOLDER-3
-      (power
+      (PLACEHOLDER-12
        PLACEHOLDER-3
        (clojure.lang.Numbers/dec PLACEHOLDER-4)))))))
  (def
-  armstrong_num
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-5]
     (let*
      [PLACEHOLDER-6
-      (num_seq PLACEHOLDER-5)
+      (PLACEHOLDER-11 PLACEHOLDER-5)
       PLACEHOLDER-7
       (clojure.lang.RT/count PLACEHOLDER-6)]
      (reduce
@@ -61,13 +61,13 @@
        ([PLACEHOLDER-8 PLACEHOLDER-9]
         (clojure.lang.Numbers/add
          PLACEHOLDER-8
-         (power PLACEHOLDER-9 PLACEHOLDER-7))))
+         (PLACEHOLDER-12 PLACEHOLDER-9 PLACEHOLDER-7))))
       (clojure.lang.RT/longCast 0)
       PLACEHOLDER-6)))))
  (def
-  armstrong?
+  PLACEHOLDER-14
   (fn*
    ([PLACEHOLDER-10]
     (clojure.lang.Util/equiv
      PLACEHOLDER-10
-     (armstrong_num PLACEHOLDER-10))))))
+     (PLACEHOLDER-13 PLACEHOLDER-10))))))

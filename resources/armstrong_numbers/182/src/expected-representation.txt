@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  exp
+  PLACEHOLDER-12
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (loop*
@@ -37,7 +37,7 @@
        (clojure.lang.Numbers/multiply PLACEHOLDER-1 PLACEHOLDER-3)
        (clojure.lang.Numbers/dec PLACEHOLDER-4)))))))
  (def
-  dig
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-5]
     (loop*
@@ -49,12 +49,12 @@
        (conj PLACEHOLDER-6 (mod PLACEHOLDER-7 10))
        (clojure.lang.Numbers/quotient PLACEHOLDER-7 10)))))))
  (def
-  armstrong?
+  PLACEHOLDER-14
   (fn*
    ([PLACEHOLDER-8]
     (let*
      [PLACEHOLDER-9
-      (dig PLACEHOLDER-8)
+      (PLACEHOLDER-13 PLACEHOLDER-8)
       PLACEHOLDER-10
       (clojure.lang.RT/count PLACEHOLDER-9)]
      (clojure.lang.Util/equiv
@@ -62,5 +62,7 @@
       (reduce
        +
        (map
-        (fn* ([PLACEHOLDER-11] (exp PLACEHOLDER-11 PLACEHOLDER-10)))
+        (fn*
+         ([PLACEHOLDER-11]
+          (PLACEHOLDER-12 PLACEHOLDER-11 PLACEHOLDER-10)))
         PLACEHOLDER-9))))))))

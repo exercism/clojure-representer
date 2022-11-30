@@ -25,14 +25,14 @@
         'armstrong-numbers))))
     nil)))
  (def
-  digits
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-1]
     (map
      (fn* ([PLACEHOLDER-2] (new BigInteger PLACEHOLDER-2)))
      (map str (str PLACEHOLDER-1))))))
  (def
-  powers
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-3]
     (clojure.lang.RT/longCast
@@ -43,10 +43,12 @@
         ([PLACEHOLDER-4]
          (.pow
           PLACEHOLDER-4
-          (clojure.lang.RT/count (digits PLACEHOLDER-3)))))
-       (digits PLACEHOLDER-3)))))))
+          (clojure.lang.RT/count (PLACEHOLDER-6 PLACEHOLDER-3)))))
+       (PLACEHOLDER-6 PLACEHOLDER-3)))))))
  (def
-  armstrong?
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-5]
-    (clojure.lang.Util/equiv PLACEHOLDER-5 (powers PLACEHOLDER-5))))))
+    (clojure.lang.Util/equiv
+     PLACEHOLDER-5
+     (PLACEHOLDER-7 PLACEHOLDER-5))))))

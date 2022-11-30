@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  armstrong?
+  PLACEHOLDER-5
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Util/equiv

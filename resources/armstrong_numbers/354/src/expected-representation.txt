@@ -1,6 +1,6 @@
 (do
  (do
-  (clojure.core/in-ns 'armstrong-numbers)
+  (clojure.core/in-ns 'PLACEHOLDER-15-numbers)
   ((fn*
     PLACEHOLDER-0
     ([]
@@ -13,7 +13,7 @@
        (clojure.core/refer 'clojure.core)
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
-   (.equals 'armstrong-numbers 'clojure.core)
+   (.equals 'PLACEHOLDER-15-numbers 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
@@ -22,10 +22,10 @@
        (clojure.core/commute
         @#'clojure.core/*loaded-libs*
         clojure.core/conj
-        'armstrong-numbers))))
+        'PLACEHOLDER-15-numbers))))
     nil)))
  (def
-  number-to-vector
+  PLACEHOLDER-13
   (fn*
    ([PLACEHOLDER-1]
     (loop*
@@ -39,14 +39,16 @@
         PLACEHOLDER-3
         (clojure.lang.Numbers/remainder PLACEHOLDER-2 10))))))))
  (def
-  exp
+  PLACEHOLDER-14
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (if
      (clojure.lang.Numbers/lt PLACEHOLDER-5 0)
      (clojure.lang.Numbers/divide
       1
-      (exp PLACEHOLDER-4 (clojure.lang.Numbers/minus PLACEHOLDER-5)))
+      (PLACEHOLDER-14
+       PLACEHOLDER-4
+       (clojure.lang.Numbers/minus PLACEHOLDER-5)))
      (loop*
       [PLACEHOLDER-6
        1
@@ -68,25 +70,25 @@
          PLACEHOLDER-7
          (clojure.lang.Numbers/dec PLACEHOLDER-8)))))))))
  (def
-  armstrong
+  PLACEHOLDER-15
   (fn*
    ([PLACEHOLDER-9]
     (loop*
-     [PLACEHOLDER-10 (number-to-vector PLACEHOLDER-9) PLACEHOLDER-11 0]
+     [PLACEHOLDER-10 (PLACEHOLDER-13 PLACEHOLDER-9) PLACEHOLDER-11 0]
      (if
       (empty? PLACEHOLDER-10)
       PLACEHOLDER-11
       (recur
        (rest PLACEHOLDER-10)
        (clojure.lang.Numbers/add
-        (exp
+        (PLACEHOLDER-14
          (first PLACEHOLDER-10)
-         (clojure.lang.RT/count (number-to-vector PLACEHOLDER-9)))
+         (clojure.lang.RT/count (PLACEHOLDER-13 PLACEHOLDER-9)))
         PLACEHOLDER-11)))))))
  (def
-  armstrong?
+  PLACEHOLDER-15?
   (fn*
    ([PLACEHOLDER-12]
     (clojure.lang.Util/equiv
      PLACEHOLDER-12
-     (armstrong PLACEHOLDER-12))))))
+     (PLACEHOLDER-15 PLACEHOLDER-12))))))

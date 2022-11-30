@@ -25,18 +25,17 @@
         'armstrong-numbers))))
     nil)))
  (def
-  number-of-digits
+  PLACEHOLDER-7
   (fn*
    ([PLACEHOLDER-1]
     (if
      (clojure.lang.Numbers/lt PLACEHOLDER-1 10)
      1
      (clojure.lang.Numbers/add
-      (number-of-digits
-       (clojure.lang.Numbers/quotient PLACEHOLDER-1 10))
+      (PLACEHOLDER-7 (clojure.lang.Numbers/quotient PLACEHOLDER-1 10))
       1)))))
  (def
-  pow
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (if
@@ -44,29 +43,31 @@
      1
      (clojure.lang.Numbers/multiply
       PLACEHOLDER-2
-      (pow
+      (PLACEHOLDER-8
        PLACEHOLDER-2
        (clojure.lang.Numbers/minus PLACEHOLDER-3 1)))))))
  (def
-  armstrong-sum
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-4 PLACEHOLDER-5]
     (do
-     (def value (pow (mod PLACEHOLDER-4 10) PLACEHOLDER-5))
+     (def
+      PLACEHOLDER-10
+      (PLACEHOLDER-8 (mod PLACEHOLDER-4 10) PLACEHOLDER-5))
      (if
       (clojure.lang.Numbers/lt PLACEHOLDER-4 10)
-      value
+      PLACEHOLDER-10
       (clojure.lang.Numbers/add
-       value
-       (armstrong-sum
+       PLACEHOLDER-10
+       (PLACEHOLDER-9
         (clojure.lang.Numbers/quotient PLACEHOLDER-4 10)
         PLACEHOLDER-5)))))))
  (def
-  armstrong?
+  PLACEHOLDER-11
   (fn*
    ([PLACEHOLDER-6]
     (do
-     (def digits (number-of-digits PLACEHOLDER-6))
+     (def PLACEHOLDER-12 (PLACEHOLDER-7 PLACEHOLDER-6))
      (clojure.lang.Util/equiv
-      (armstrong-sum PLACEHOLDER-6 digits)
+      (PLACEHOLDER-9 PLACEHOLDER-6 PLACEHOLDER-12)
       PLACEHOLDER-6))))))

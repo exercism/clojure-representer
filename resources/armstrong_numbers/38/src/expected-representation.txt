@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  digits
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-1]
     (map
@@ -36,12 +36,12 @@
         (clojure.lang.RT/intCast \0))))
      (str PLACEHOLDER-1)))))
  (def
-  armstrong?
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-3]
     (let*
      [PLACEHOLDER-4
-      (digits PLACEHOLDER-3)
+      (PLACEHOLDER-8 PLACEHOLDER-3)
       PLACEHOLDER-5
       (clojure.lang.RT/count PLACEHOLDER-4)]
      (clojure.lang.Util/equiv

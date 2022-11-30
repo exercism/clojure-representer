@@ -25,17 +25,17 @@
         'armstrong-numbers))))
     nil)))
  (def
-  get-armstrong-exponent
+  PLACEHOLDER-7
   (fn* ([PLACEHOLDER-1] (clojure.lang.RT/count (str PLACEHOLDER-1)))))
  (def
-  get-digits
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-2]
     (map
      (fn* ([PLACEHOLDER-3] ((comp read-string str) PLACEHOLDER-3)))
      (str PLACEHOLDER-2)))))
  (def
-  calc-armstrong-number
+  PLACEHOLDER-9
   (fn*
    ([PLACEHOLDER-4]
     (reduce
@@ -45,17 +45,16 @@
        ([PLACEHOLDER-5]
         (java.lang.Math/pow
          PLACEHOLDER-5
-         (get-armstrong-exponent PLACEHOLDER-4))))
-      (get-digits PLACEHOLDER-4))))))
+         (PLACEHOLDER-7 PLACEHOLDER-4))))
+      (PLACEHOLDER-8 PLACEHOLDER-4))))))
  (def
-  armstrong?
+  PLACEHOLDER-10
   (fn*
    ([PLACEHOLDER-6]
     (clojure.lang.Util/equiv
      PLACEHOLDER-6
-     (clojure.lang.RT/longCast
-      (calc-armstrong-number PLACEHOLDER-6))))))
- (calc-armstrong-number 21897142587612075)
- (armstrong? 9926315)
- (armstrong? 21897142587612075)
- (clojure.lang.RT/longCast (calc-armstrong-number 21897142587612075)))
+     (clojure.lang.RT/longCast (PLACEHOLDER-9 PLACEHOLDER-6))))))
+ (PLACEHOLDER-9 21897142587612075)
+ (PLACEHOLDER-10 9926315)
+ (PLACEHOLDER-10 21897142587612075)
+ (clojure.lang.RT/longCast (PLACEHOLDER-9 21897142587612075)))
