@@ -8,7 +8,7 @@
 
 (ns clojure-representer.analyzer.passes.jvm.analyze-host-expr
   (:require [clojure-representer.analyzer :as ana]
-            [clojure-representer.analyzer.utils :refer [ctx source-info merge']]
+            [clojure-representer.analyzer.utils :refer [source-info merge']]
             [clojure-representer.analyzer.jvm.utils :refer :all]))
 
 (defn maybe-static-field [[_ class sym]]

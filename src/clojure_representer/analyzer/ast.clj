@@ -11,18 +11,6 @@
   (:refer-clojure :exclude [unreduced])
   (:require [clojure-representer.analyzer.utils :refer [into! rseqv mapv']]))
 
-(defn cycling
-  "Combine the given passes in a single pass that will be applied repeatedly
-   to the AST until applying it another time will have no effect"
-  [& fns*]
-  (let [fns (cycle fns*)]
-    (fn [ast]
-      (loop [[f & fns] fns ast ast res (zipmap fns* (repeat nil))]
-        (let [ast* (f ast)]
-          (if (= ast* (res f))
-            ast
-            (recur fns ast* (assoc res f ast*))))))))
-
 (defn children*
   "Return a vector of vectors of the children node key and the children expression
    of the AST node, if it has any.
@@ -113,21 +101,3 @@
      (postwalk ast f false))
   ([ast f reversed?]
      (walk ast identity f reversed?)))
-
-(defn nodes
-  "Returns a lazy-seq of all the nodes in the given AST, in depth-first pre-order."
-  [ast]
-  (lazy-seq
-   (cons ast (mapcat nodes (children ast)))))
-
-(defn ast->eav
-  "Returns an EAV representation of the current AST that can be used by
-   Datomic's Datalog."
-  [ast]
-  (let [children (set (:children ast))]
-    (mapcat (fn [[k v]]
-              (if (children k)
-                (if (map? v)
-                  (into [[ast k v]] (ast->eav v))
-                  (mapcat (fn [v] (into [[ast k v]] (ast->eav v))) v))
-                [[ast k v]])) ast)))

@@ -48,16 +48,6 @@
   [m f]
   (reduce-kv (fn [m k v] (assoc m k (f v))) {} (or m {})))
 
-(defn update-keys
-  "Applies f to all the keys in the map"
-  [m f]
-  (reduce-kv (fn [m k v] (assoc m (f k) v)) {} (or m {})))
-
-(defn update-kv
-  "Applies f to all the keys and vals in the map"
-  [m f]
-  (reduce-kv (fn [m k v] (assoc m (f k) (f v))) {} (or m {})))
-
 (defn record?
   "Returns true if x is a record"
   [x]
@@ -72,11 +62,6 @@
   "Returns true if x implements IObj"
   [x]
   (instance? IObj x))
-
-(defn reference?
-  "Returns true if x implements IReference"
-  [x]
-  (instance? IReference x))
 
 (defmacro compile-if
   [exp then & else]
@@ -119,12 +104,6 @@
    (class? form)   :class
    (var? form)     :var
    :else           :unknown))
-
-(defn private?
-  "Returns true if the var is private"
-  ([var] (private? var nil))
-  ([var m]
-     (:private (or m (meta var)))))
 
 (defn macro?
   "Returns true if the var maps to a macro"

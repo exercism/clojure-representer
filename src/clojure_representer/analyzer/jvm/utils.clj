@@ -11,8 +11,7 @@
             [clojure-representer.analyzer.env :as env]
             [clojure.reflect :as reflect]
             [clojure.string :as s]
-            [clojure.core.memoize :refer [lru]]
-            [clojure.java.io :as io])
+            [clojure.core.memoize :refer [lru]])
   (:import (clojure.lang RT Symbol)
            org.objectweb.asm.Type))
 
@@ -372,11 +371,3 @@
                    :else
                    (conj p next)))) [] methods)
       methods)))
-
-(defn ns->relpath [s]
-  (-> s str (s/replace \. \/) (s/replace \- \_) (str ".clj")))
-
-(defn ns-url [ns]
-  (let [f (ns->relpath ns)]
-    (or (io/resource f)
-        (io/resource (str f "c")))))

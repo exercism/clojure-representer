@@ -8,7 +8,6 @@
 
 (ns clojure-representer.analyzer.passes.jvm.box
   (:require [clojure-representer.analyzer.jvm.utils :as u]
-            [clojure-representer.analyzer.utils :refer [protocol-node? arglist-for-arity]]
             [clojure-representer.analyzer.passes.jvm
              [validate :refer [validate]]
              [infer-tag :refer [infer-tag]]]))
