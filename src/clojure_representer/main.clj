@@ -119,7 +119,7 @@
                            replace-defs)))]
     (spit (str (io/file out-dir "mapping.json"))
           (json/write-str (into {} (map (fn [[k v]] [v k]) @mappings))))
-    (spit (str (io/file out-dir "expected-representation.txt"))
+    (spit (str (io/file out-dir "representation.txt"))
           (with-out-str (pp/pprint representation)))))
   
 (defn -main [slug in-dir out-dir]
