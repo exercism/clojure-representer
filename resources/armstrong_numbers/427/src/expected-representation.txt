@@ -26,29 +26,29 @@
     nil)))
  (require '[clojure.math.numeric-tower :as math :refer [expt]])
  (def
-  PLACEHOLDER-7
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Numbers/minus
      (clojure.lang.RT/intCast PLACEHOLDER-1)
      48))))
  (def
-  PLACEHOLDER-8
+  PLACEHOLDER-2
   (fn*
    ([PLACEHOLDER-2]
     (let*
      [PLACEHOLDER-3
       (str PLACEHOLDER-2)
-      PLACEHOLDER-4
+      PLACEHOLDER-3
       (clojure.lang.RT/count PLACEHOLDER-3)]
      (clojure.lang.Util/equiv
       PLACEHOLDER-2
       (reduce
        (fn*
-        ([PLACEHOLDER-5 PLACEHOLDER-6]
+        ([PLACEHOLDER-5 PLACEHOLDER-5]
          (clojure.lang.Numbers/add
           PLACEHOLDER-5
-          (expt (PLACEHOLDER-7 PLACEHOLDER-6) PLACEHOLDER-4))))
+          (expt (PLACEHOLDER-1 PLACEHOLDER-5) PLACEHOLDER-3))))
        0
        PLACEHOLDER-3))))))
- (PLACEHOLDER-8 10))
+ (PLACEHOLDER-2 10))

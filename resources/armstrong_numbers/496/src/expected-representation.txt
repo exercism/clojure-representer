@@ -25,13 +25,13 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-14
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (let*
      [PLACEHOLDER-2
       PLACEHOLDER-1
-      PLACEHOLDER-3
+      PLACEHOLDER-2
       (if
        (clojure.core/seq? PLACEHOLDER-2)
        (if
@@ -43,44 +43,44 @@
          (clojure.core/first PLACEHOLDER-2)
          clojure.lang.PersistentArrayMap/EMPTY))
        PLACEHOLDER-2)
-      PLACEHOLDER-4
       PLACEHOLDER-3
-      PLACEHOLDER-5
-      (clojure.lang.RT/get PLACEHOLDER-3 :num)
-      PLACEHOLDER-6
-      (clojure.lang.RT/get PLACEHOLDER-3 :digits)
-      PLACEHOLDER-7
-      (clojure.lang.RT/get PLACEHOLDER-3 :numDigits)]
-     (if
-      (clojure.lang.Numbers/lte PLACEHOLDER-5 0)
+      PLACEHOLDER-2
+      PLACEHOLDER-3
+      (clojure.lang.RT/get PLACEHOLDER-2 :num)
       PLACEHOLDER-4
+      (clojure.lang.RT/get PLACEHOLDER-2 :digits)
+      PLACEHOLDER-5
+      (clojure.lang.RT/get PLACEHOLDER-2 :numDigits)]
+     (if
+      (clojure.lang.Numbers/lte PLACEHOLDER-3 0)
+      PLACEHOLDER-3
       (recur
-       {:num (clojure.lang.Numbers/quotient PLACEHOLDER-5 10),
+       {:num (clojure.lang.Numbers/quotient PLACEHOLDER-3 10),
         :digits
         (conj
-         PLACEHOLDER-6
-         (clojure.lang.Numbers/remainder PLACEHOLDER-5 10)),
-        :numDigits (clojure.lang.Numbers/inc PLACEHOLDER-7)}))))))
+         PLACEHOLDER-4
+         (clojure.lang.Numbers/remainder PLACEHOLDER-3 10)),
+        :numDigits (clojure.lang.Numbers/inc PLACEHOLDER-5)}))))))
  (def
-  PLACEHOLDER-15
+  PLACEHOLDER-8
   (fn*
-   ([PLACEHOLDER-8 PLACEHOLDER-9]
-    (reduce * (repeat PLACEHOLDER-9 PLACEHOLDER-8)))))
+   ([PLACEHOLDER-9 PLACEHOLDER-9]
+    (reduce * (repeat PLACEHOLDER-9 PLACEHOLDER-9)))))
  (def
-  PLACEHOLDER-16
+  PLACEHOLDER-10
   (fn*
-   ([PLACEHOLDER-10]
+   ([PLACEHOLDER-11]
     (let*
      [PLACEHOLDER-11
-      (PLACEHOLDER-14 {:num PLACEHOLDER-10, :digits [], :numDigits 0})]
+      (PLACEHOLDER-1 {:num PLACEHOLDER-11, :digits [], :numDigits 0})]
      (clojure.lang.Util/equiv
-      PLACEHOLDER-10
+      PLACEHOLDER-11
       (reduce
        (fn*
-        ([PLACEHOLDER-12 PLACEHOLDER-13]
+        ([PLACEHOLDER-13 PLACEHOLDER-13]
          (clojure.lang.Numbers/add
-          PLACEHOLDER-12
-          (PLACEHOLDER-15
+          PLACEHOLDER-13
+          (PLACEHOLDER-8
            PLACEHOLDER-13
            (clojure.lang.RT/get PLACEHOLDER-11 :numDigits)))))
        0

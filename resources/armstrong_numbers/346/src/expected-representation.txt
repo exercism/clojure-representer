@@ -27,7 +27,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-3
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Util/equiv
@@ -36,8 +36,8 @@
       +
       (map
        (fn*
-        ([PLACEHOLDER-2]
+        ([PLACEHOLDER-1]
          (.pow
-          (new BigInteger PLACEHOLDER-2)
+          (new BigInteger PLACEHOLDER-1)
           (clojure.lang.RT/count (str PLACEHOLDER-1)))))
        (str/split (str PLACEHOLDER-1) (re-pattern "")))))))))

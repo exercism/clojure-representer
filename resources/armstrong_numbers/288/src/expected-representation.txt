@@ -25,185 +25,185 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-24
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  PLACEHOLDER-25
+  PLACEHOLDER-3
   (fn*
-   ([PLACEHOLDER-3]
+   ([PLACEHOLDER-4]
     (let*
      [PLACEHOLDER-4
-      PLACEHOLDER-3
-      PLACEHOLDER-5
+      PLACEHOLDER-4
+      PLACEHOLDER-4
       (clojure.lang.RT/nth PLACEHOLDER-4 0 nil)
-      PLACEHOLDER-6
+      PLACEHOLDER-4
       (clojure.lang.RT/nth PLACEHOLDER-4 1 nil)
-      PLACEHOLDER-7
+      PLACEHOLDER-4
       (clojure.lang.RT/nth PLACEHOLDER-4 2 nil)
-      PLACEHOLDER-8
+      PLACEHOLDER-5
       (clojure.lang.RT/nth PLACEHOLDER-4 3 nil)
-      PLACEHOLDER-9
+      PLACEHOLDER-5
       (clojure.lang.RT/nth PLACEHOLDER-4 4 nil)
-      PLACEHOLDER-10
+      PLACEHOLDER-5
       (clojure.lang.RT/nth PLACEHOLDER-4 5 nil)
-      PLACEHOLDER-11
+      PLACEHOLDER-5
       (clojure.lang.RT/nth PLACEHOLDER-4 6 nil)
-      PLACEHOLDER-12
+      PLACEHOLDER-6
       PLACEHOLDER-4]
      (let*
-      [PLACEHOLDER-13 (clojure.lang.RT/count PLACEHOLDER-12)]
+      [PLACEHOLDER-6 (clojure.lang.RT/count PLACEHOLDER-6)]
       (if
-       (clojure.lang.Util/equiv PLACEHOLDER-13 2)
+       (clojure.lang.Util/equiv PLACEHOLDER-6 2)
        (clojure.lang.Numbers/add
-        (PLACEHOLDER-24 PLACEHOLDER-5 2)
-        (PLACEHOLDER-24 PLACEHOLDER-6 2))
+        (PLACEHOLDER-1 PLACEHOLDER-4 2)
+        (PLACEHOLDER-1 PLACEHOLDER-4 2))
        (if
-        (clojure.lang.Util/equiv PLACEHOLDER-13 3)
+        (clojure.lang.Util/equiv PLACEHOLDER-6 3)
         (clojure.lang.Numbers/add
          (clojure.lang.Numbers/add
-          (PLACEHOLDER-24 PLACEHOLDER-5 3)
-          (PLACEHOLDER-24 PLACEHOLDER-6 3))
-         (PLACEHOLDER-24 PLACEHOLDER-7 3))
+          (PLACEHOLDER-1 PLACEHOLDER-4 3)
+          (PLACEHOLDER-1 PLACEHOLDER-4 3))
+         (PLACEHOLDER-1 PLACEHOLDER-4 3))
         (if
-         (clojure.lang.Util/equiv PLACEHOLDER-13 4)
+         (clojure.lang.Util/equiv PLACEHOLDER-6 4)
          (clojure.lang.Numbers/add
           (clojure.lang.Numbers/add
            (clojure.lang.Numbers/add
-            (PLACEHOLDER-24 PLACEHOLDER-5 4)
-            (PLACEHOLDER-24 PLACEHOLDER-6 4))
-           (PLACEHOLDER-24 PLACEHOLDER-7 4))
-          (PLACEHOLDER-24 PLACEHOLDER-8 4))
+            (PLACEHOLDER-1 PLACEHOLDER-4 4)
+            (PLACEHOLDER-1 PLACEHOLDER-4 4))
+           (PLACEHOLDER-1 PLACEHOLDER-4 4))
+          (PLACEHOLDER-1 PLACEHOLDER-5 4))
          (if
-          (clojure.lang.Util/equiv PLACEHOLDER-13 5)
+          (clojure.lang.Util/equiv PLACEHOLDER-6 5)
           (clojure.lang.Numbers/add
            (clojure.lang.Numbers/add
             (clojure.lang.Numbers/add
              (clojure.lang.Numbers/add
-              (PLACEHOLDER-24 PLACEHOLDER-5 5)
-              (PLACEHOLDER-24 PLACEHOLDER-6 5))
-             (PLACEHOLDER-24 PLACEHOLDER-7 5))
-            (PLACEHOLDER-24 PLACEHOLDER-8 5))
-           (PLACEHOLDER-24 PLACEHOLDER-9 5))
+              (PLACEHOLDER-1 PLACEHOLDER-4 5)
+              (PLACEHOLDER-1 PLACEHOLDER-4 5))
+             (PLACEHOLDER-1 PLACEHOLDER-4 5))
+            (PLACEHOLDER-1 PLACEHOLDER-5 5))
+           (PLACEHOLDER-1 PLACEHOLDER-5 5))
           (if
-           (clojure.lang.Util/equiv PLACEHOLDER-13 6)
+           (clojure.lang.Util/equiv PLACEHOLDER-6 6)
            (clojure.lang.Numbers/add
             (clojure.lang.Numbers/add
              (clojure.lang.Numbers/add
               (clojure.lang.Numbers/add
                (clojure.lang.Numbers/add
-                (PLACEHOLDER-24 PLACEHOLDER-5 6)
-                (PLACEHOLDER-24 PLACEHOLDER-6 6))
-               (PLACEHOLDER-24 PLACEHOLDER-7 6))
-              (PLACEHOLDER-24 PLACEHOLDER-8 6))
-             (PLACEHOLDER-24 PLACEHOLDER-9 6))
-            (PLACEHOLDER-24 PLACEHOLDER-10 6))
+                (PLACEHOLDER-1 PLACEHOLDER-4 6)
+                (PLACEHOLDER-1 PLACEHOLDER-4 6))
+               (PLACEHOLDER-1 PLACEHOLDER-4 6))
+              (PLACEHOLDER-1 PLACEHOLDER-5 6))
+             (PLACEHOLDER-1 PLACEHOLDER-5 6))
+            (PLACEHOLDER-1 PLACEHOLDER-5 6))
            (if
-            (clojure.lang.Util/equiv PLACEHOLDER-13 7)
+            (clojure.lang.Util/equiv PLACEHOLDER-6 7)
             (clojure.lang.Numbers/add
              (clojure.lang.Numbers/add
               (clojure.lang.Numbers/add
                (clojure.lang.Numbers/add
                 (clojure.lang.Numbers/add
                  (clojure.lang.Numbers/add
-                  (PLACEHOLDER-24 PLACEHOLDER-5 7)
-                  (PLACEHOLDER-24 PLACEHOLDER-6 7))
-                 (PLACEHOLDER-24 PLACEHOLDER-7 7))
-                (PLACEHOLDER-24 PLACEHOLDER-8 7))
-               (PLACEHOLDER-24 PLACEHOLDER-9 7))
-              (PLACEHOLDER-24 PLACEHOLDER-10 7))
-             (PLACEHOLDER-24 PLACEHOLDER-11 7)))))))))))))
+                  (PLACEHOLDER-1 PLACEHOLDER-4 7)
+                  (PLACEHOLDER-1 PLACEHOLDER-4 7))
+                 (PLACEHOLDER-1 PLACEHOLDER-4 7))
+                (PLACEHOLDER-1 PLACEHOLDER-5 7))
+               (PLACEHOLDER-1 PLACEHOLDER-5 7))
+              (PLACEHOLDER-1 PLACEHOLDER-5 7))
+             (PLACEHOLDER-1 PLACEHOLDER-5 7)))))))))))))
  (def
-  PLACEHOLDER-26
+  PLACEHOLDER-17
   (fn*
-   ([PLACEHOLDER-14 PLACEHOLDER-15]
+   ([PLACEHOLDER-17 PLACEHOLDER-17]
     (mod
      (clojure.lang.Numbers/quotient
-      PLACEHOLDER-14
-      (PLACEHOLDER-24 10 (clojure.lang.Numbers/dec PLACEHOLDER-15)))
+      PLACEHOLDER-17
+      (PLACEHOLDER-1 10 (clojure.lang.Numbers/dec PLACEHOLDER-17)))
      10))))
  (def
-  PLACEHOLDER-27
+  PLACEHOLDER-18
   (fn*
-   ([PLACEHOLDER-16]
+   ([PLACEHOLDER-18]
     (let*
-     [PLACEHOLDER-17
-      (PLACEHOLDER-26 PLACEHOLDER-16 1)
+     [PLACEHOLDER-18
+      (PLACEHOLDER-17 PLACEHOLDER-18 1)
       PLACEHOLDER-18
-      (PLACEHOLDER-26 PLACEHOLDER-16 2)
+      (PLACEHOLDER-17 PLACEHOLDER-18 2)
       PLACEHOLDER-19
-      (PLACEHOLDER-26 PLACEHOLDER-16 3)
+      (PLACEHOLDER-17 PLACEHOLDER-18 3)
+      PLACEHOLDER-19
+      (PLACEHOLDER-17 PLACEHOLDER-18 4)
       PLACEHOLDER-20
-      (PLACEHOLDER-26 PLACEHOLDER-16 4)
+      (PLACEHOLDER-17 PLACEHOLDER-18 5)
       PLACEHOLDER-21
-      (PLACEHOLDER-26 PLACEHOLDER-16 5)
-      PLACEHOLDER-22
-      (PLACEHOLDER-26 PLACEHOLDER-16 6)
-      PLACEHOLDER-23
-      (PLACEHOLDER-26 PLACEHOLDER-16 7)]
+      (PLACEHOLDER-17 PLACEHOLDER-18 6)
+      PLACEHOLDER-21
+      (PLACEHOLDER-17 PLACEHOLDER-18 7)]
      (if
-      (clojure.lang.Numbers/lt PLACEHOLDER-16 0)
+      (clojure.lang.Numbers/lt PLACEHOLDER-18 0)
       false
       (if
-       (clojure.lang.Numbers/lt PLACEHOLDER-16 10)
+       (clojure.lang.Numbers/lt PLACEHOLDER-18 10)
        true
        (if
-        (clojure.lang.Numbers/lt PLACEHOLDER-16 100)
+        (clojure.lang.Numbers/lt PLACEHOLDER-18 100)
         (clojure.lang.Util/equiv
-         (PLACEHOLDER-25 [PLACEHOLDER-17 PLACEHOLDER-18])
-         PLACEHOLDER-16)
+         (PLACEHOLDER-3 [PLACEHOLDER-18 PLACEHOLDER-18])
+         PLACEHOLDER-18)
         (if
-         (clojure.lang.Numbers/lt PLACEHOLDER-16 1000)
+         (clojure.lang.Numbers/lt PLACEHOLDER-18 1000)
          (clojure.lang.Util/equiv
-          (PLACEHOLDER-25
-           [PLACEHOLDER-17 PLACEHOLDER-18 PLACEHOLDER-19])
-          PLACEHOLDER-16)
+          (PLACEHOLDER-3
+           [PLACEHOLDER-18 PLACEHOLDER-18 PLACEHOLDER-19])
+          PLACEHOLDER-18)
          (if
-          (clojure.lang.Numbers/lt PLACEHOLDER-16 10000)
+          (clojure.lang.Numbers/lt PLACEHOLDER-18 10000)
           (clojure.lang.Util/equiv
-           (PLACEHOLDER-25
-            [PLACEHOLDER-17
+           (PLACEHOLDER-3
+            [PLACEHOLDER-18
              PLACEHOLDER-18
              PLACEHOLDER-19
-             PLACEHOLDER-20])
-           PLACEHOLDER-16)
+             PLACEHOLDER-19])
+           PLACEHOLDER-18)
           (if
-           (clojure.lang.Numbers/lt PLACEHOLDER-16 100000)
+           (clojure.lang.Numbers/lt PLACEHOLDER-18 100000)
            (clojure.lang.Util/equiv
-            (PLACEHOLDER-25
-             [PLACEHOLDER-17
+            (PLACEHOLDER-3
+             [PLACEHOLDER-18
               PLACEHOLDER-18
               PLACEHOLDER-19
-              PLACEHOLDER-20
-              PLACEHOLDER-21])
-            PLACEHOLDER-16)
+              PLACEHOLDER-19
+              PLACEHOLDER-20])
+            PLACEHOLDER-18)
            (if
-            (clojure.lang.Numbers/lt PLACEHOLDER-16 1000000)
+            (clojure.lang.Numbers/lt PLACEHOLDER-18 1000000)
             (clojure.lang.Util/equiv
-             (PLACEHOLDER-25
-              [PLACEHOLDER-17
+             (PLACEHOLDER-3
+              [PLACEHOLDER-18
                PLACEHOLDER-18
                PLACEHOLDER-19
+               PLACEHOLDER-19
                PLACEHOLDER-20
-               PLACEHOLDER-21
-               PLACEHOLDER-22])
-             PLACEHOLDER-16)
+               PLACEHOLDER-21])
+             PLACEHOLDER-18)
             (if
-             (clojure.lang.Numbers/lt PLACEHOLDER-16 10000000)
+             (clojure.lang.Numbers/lt PLACEHOLDER-18 10000000)
              (clojure.lang.Util/equiv
-              (PLACEHOLDER-25
-               [PLACEHOLDER-17
+              (PLACEHOLDER-3
+               [PLACEHOLDER-18
                 PLACEHOLDER-18
+                PLACEHOLDER-19
                 PLACEHOLDER-19
                 PLACEHOLDER-20
                 PLACEHOLDER-21
-                PLACEHOLDER-22
-                PLACEHOLDER-23])
-              PLACEHOLDER-16)
+                PLACEHOLDER-21])
+              PLACEHOLDER-18)
              (if
               (clojure.lang.Util/equiv
-               PLACEHOLDER-16
+               PLACEHOLDER-18
                21897142587612075)
               true
               (if :else false)))))))))))))))

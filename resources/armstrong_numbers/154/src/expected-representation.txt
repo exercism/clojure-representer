@@ -1,6 +1,6 @@
 (do
  (do
-  (clojure.core/in-ns 'PLACEHOLDER-10)
+  (clojure.core/in-ns 'PLACEHOLDER-0)
   ((fn*
     PLACEHOLDER-0
     ([]
@@ -13,7 +13,7 @@
        (clojure.core/refer 'clojure.core)
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
-   (.equals 'PLACEHOLDER-10 'clojure.core)
+   (.equals 'PLACEHOLDER-0 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
@@ -22,36 +22,36 @@
        (clojure.core/commute
         @#'clojure.core/*loaded-libs*
         clojure.core/conj
-        'PLACEHOLDER-10))))
+        'PLACEHOLDER-0))))
     nil)))
+ (def
+  PLACEHOLDER-2
+  (fn*
+   ([PLACEHOLDER-3 PLACEHOLDER-3]
+    (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-3)))))
+ (def
+  PLACEHOLDER-0
+  (fn*
+   ([PLACEHOLDER-4]
+    (let*
+     [PLACEHOLDER-5 (clojure.lang.RT/count (str PLACEHOLDER-4))]
+     (map
+      (fn*
+       ([PLACEHOLDER-6]
+        (PLACEHOLDER-2 (mod PLACEHOLDER-6 10) PLACEHOLDER-5)))
+      (take
+       PLACEHOLDER-5
+       (iterate
+        (fn*
+         ([PLACEHOLDER-7]
+          (clojure.lang.Numbers/quotient PLACEHOLDER-7 10)))
+        PLACEHOLDER-4)))))))
  (def
   PLACEHOLDER-9
   (fn*
-   ([PLACEHOLDER-1 PLACEHOLDER-2]
-    (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
- (def
-  PLACEHOLDER-10
-  (fn*
-   ([PLACEHOLDER-3]
+   ([PLACEHOLDER-10]
     (let*
-     [PLACEHOLDER-4 (clojure.lang.RT/count (str PLACEHOLDER-3))]
-     (map
-      (fn*
-       ([PLACEHOLDER-5]
-        (PLACEHOLDER-9 (mod PLACEHOLDER-5 10) PLACEHOLDER-4)))
-      (take
-       PLACEHOLDER-4
-       (iterate
-        (fn*
-         ([PLACEHOLDER-6]
-          (clojure.lang.Numbers/quotient PLACEHOLDER-6 10)))
-        PLACEHOLDER-3)))))))
- (def
-  PLACEHOLDER-11
-  (fn*
-   ([PLACEHOLDER-7]
-    (let*
-     [PLACEHOLDER-8 (clojure.lang.RT/count (str PLACEHOLDER-7))]
+     [PLACEHOLDER-10 (clojure.lang.RT/count (str PLACEHOLDER-10))]
      (clojure.lang.Numbers/equiv
-      PLACEHOLDER-7
-      (reduce + (PLACEHOLDER-10 PLACEHOLDER-7))))))))
+      PLACEHOLDER-10
+      (reduce + (PLACEHOLDER-0 PLACEHOLDER-10))))))))

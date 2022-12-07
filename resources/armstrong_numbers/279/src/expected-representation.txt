@@ -27,55 +27,55 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-10
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (map
      (fn* ([PLACEHOLDER-2] (bigint PLACEHOLDER-2)))
      (str/split (str PLACEHOLDER-1) (re-pattern ""))))))
  (def
-  PLACEHOLDER-11
+  PLACEHOLDER-3
   (fn*
    ([PLACEHOLDER-3]
     (clojure.lang.Numbers/multiply PLACEHOLDER-3 PLACEHOLDER-3))))
  (def
-  PLACEHOLDER-12
+  PLACEHOLDER-4
   (fn*
-   ([PLACEHOLDER-4 PLACEHOLDER-5]
+   ([PLACEHOLDER-4 PLACEHOLDER-4]
     (if
-     (clojure.lang.Util/equiv PLACEHOLDER-5 0)
+     (clojure.lang.Util/equiv PLACEHOLDER-4 0)
      1N
      (if
-      (clojure.lang.Util/equiv PLACEHOLDER-5 1N)
+      (clojure.lang.Util/equiv PLACEHOLDER-4 1N)
       (bigint PLACEHOLDER-4)
       (if
-       (even? PLACEHOLDER-5)
-       (PLACEHOLDER-11
-        (PLACEHOLDER-12
+       (even? PLACEHOLDER-4)
+       (PLACEHOLDER-3
+        (PLACEHOLDER-4
          PLACEHOLDER-4
-         (clojure.lang.Numbers/divide PLACEHOLDER-5 2)))
+         (clojure.lang.Numbers/divide PLACEHOLDER-4 2)))
        (if
         :else
         (clojure.lang.Numbers/multiply
          PLACEHOLDER-4
-         (PLACEHOLDER-12
+         (PLACEHOLDER-4
           PLACEHOLDER-4
-          (clojure.lang.Numbers/dec PLACEHOLDER-5))))))))))
+          (clojure.lang.Numbers/dec PLACEHOLDER-4))))))))))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-8
   (fn*
-   ([PLACEHOLDER-6]
+   ([PLACEHOLDER-8]
     (let*
-     [PLACEHOLDER-7
-      (PLACEHOLDER-10 PLACEHOLDER-6)
-      PLACEHOLDER-9
+     [PLACEHOLDER-9
+      (PLACEHOLDER-1 PLACEHOLDER-8)
+      PLACEHOLDER-10
       (apply
        +
        (map
         (fn*
-         ([PLACEHOLDER-8]
-          (PLACEHOLDER-12
-           PLACEHOLDER-8
-           (clojure.lang.RT/count PLACEHOLDER-7))))
-        PLACEHOLDER-7))]
-     (clojure.lang.Util/equiv PLACEHOLDER-6 PLACEHOLDER-9))))))
+         ([PLACEHOLDER-11]
+          (PLACEHOLDER-4
+           PLACEHOLDER-11
+           (clojure.lang.RT/count PLACEHOLDER-9))))
+        PLACEHOLDER-9))]
+     (clojure.lang.Util/equiv PLACEHOLDER-8 PLACEHOLDER-10))))))

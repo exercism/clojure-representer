@@ -25,12 +25,12 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-8
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * 1 (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  PLACEHOLDER-9
+  PLACEHOLDER-3
   (fn*
    ([PLACEHOLDER-3]
     (clojure.lang.Util/equiv
@@ -41,17 +41,17 @@
         ([PLACEHOLDER-4]
          (map
           (fn*
-           ([PLACEHOLDER-5]
-            (PLACEHOLDER-8
-             PLACEHOLDER-5
+           ([PLACEHOLDER-4]
+            (PLACEHOLDER-1
+             PLACEHOLDER-4
              (clojure.lang.RT/count PLACEHOLDER-4))))
           PLACEHOLDER-4)))
        (map
-        (fn* ([PLACEHOLDER-6] (mod PLACEHOLDER-6 10)))
+        (fn* ([PLACEHOLDER-7] (mod PLACEHOLDER-7 10)))
         (take-while
          pos?
          (iterate
           (fn*
-           ([PLACEHOLDER-7]
-            (clojure.lang.Numbers/quotient PLACEHOLDER-7 10)))
+           ([PLACEHOLDER-8]
+            (clojure.lang.Numbers/quotient PLACEHOLDER-8 10)))
           PLACEHOLDER-3))))))))))

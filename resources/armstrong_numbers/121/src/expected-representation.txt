@@ -25,36 +25,36 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-10
+  PLACEHOLDER-1
   (fn* ([PLACEHOLDER-1] (clojure.lang.RT/count (str PLACEHOLDER-1)))))
  (def
-  PLACEHOLDER-11
+  PLACEHOLDER-2
   (fn*
-   ([PLACEHOLDER-2 PLACEHOLDER-3]
-    (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-2)))))
+   ([PLACEHOLDER-3 PLACEHOLDER-3]
+    (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-3)))))
  (def
-  PLACEHOLDER-12
+  PLACEHOLDER-5
   (fn*
-   ([PLACEHOLDER-4]
+   ([PLACEHOLDER-5]
     (map
      (fn*
-      ([PLACEHOLDER-5] (java.lang.Character/digit PLACEHOLDER-5 10)))
-     (str PLACEHOLDER-4)))))
+      ([PLACEHOLDER-6] (java.lang.Character/digit PLACEHOLDER-6 10)))
+     (str PLACEHOLDER-5)))))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-7
   (fn*
-   ([PLACEHOLDER-6]
+   ([PLACEHOLDER-7]
     (let*
      [PLACEHOLDER-7
-      (PLACEHOLDER-12 PLACEHOLDER-6)
-      PLACEHOLDER-8
+      (PLACEHOLDER-5 PLACEHOLDER-7)
+      PLACEHOLDER-9
       (clojure.lang.RT/count PLACEHOLDER-7)]
      (clojure.lang.Util/equiv
       (reduce
        +
        (map
         (fn*
-         ([PLACEHOLDER-9]
-          (PLACEHOLDER-11 PLACEHOLDER-9 PLACEHOLDER-8)))
+         ([PLACEHOLDER-10]
+          (PLACEHOLDER-2 PLACEHOLDER-10 PLACEHOLDER-9)))
         (vec PLACEHOLDER-7)))
-      PLACEHOLDER-6))))))
+      PLACEHOLDER-7))))))

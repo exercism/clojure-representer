@@ -25,20 +25,20 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-8
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (.pow (biginteger PLACEHOLDER-1) PLACEHOLDER-2))))
  (def
-  PLACEHOLDER-9
+  PLACEHOLDER-3
   (fn*
-   ([PLACEHOLDER-3]
+   ([PLACEHOLDER-4]
     (map
      (fn*
       ([PLACEHOLDER-4] (java.lang.Character/digit PLACEHOLDER-4 10)))
-     (str PLACEHOLDER-3)))))
+     (str PLACEHOLDER-4)))))
  (def
-  PLACEHOLDER-10
+  PLACEHOLDER-5
   (fn*
    ([PLACEHOLDER-5]
     (let*
@@ -49,5 +49,5 @@
        +
        (map
         (fn*
-         ([PLACEHOLDER-7] (PLACEHOLDER-8 PLACEHOLDER-7 PLACEHOLDER-6)))
-        (PLACEHOLDER-9 PLACEHOLDER-5)))))))))
+         ([PLACEHOLDER-7] (PLACEHOLDER-1 PLACEHOLDER-7 PLACEHOLDER-6)))
+        (PLACEHOLDER-3 PLACEHOLDER-5)))))))))

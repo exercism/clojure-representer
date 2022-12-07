@@ -27,24 +27,24 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-12
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce
      (fn*
-      ([PLACEHOLDER-3 PLACEHOLDER-4]
-       (clojure.lang.Numbers/multiplyP PLACEHOLDER-3 PLACEHOLDER-1)))
+      ([PLACEHOLDER-2 PLACEHOLDER-3]
+       (clojure.lang.Numbers/multiplyP PLACEHOLDER-2 PLACEHOLDER-1)))
      1N
      (range PLACEHOLDER-2)))))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-5
   (fn*
-   ([PLACEHOLDER-5]
+   ([PLACEHOLDER-6]
     (clojure.lang.RT/intCast
      (java.lang.Math/log10
-      (clojure.lang.RT/doubleCast PLACEHOLDER-5))))))
+      (clojure.lang.RT/doubleCast PLACEHOLDER-6))))))
  (def
-  PLACEHOLDER-14
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-6]
     (let*
@@ -56,7 +56,7 @@
        [PLACEHOLDER-8
         (bigint PLACEHOLDER-6)
         PLACEHOLDER-9
-        (clojure.lang.Numbers/inc (PLACEHOLDER-13 PLACEHOLDER-6))]
+        (clojure.lang.Numbers/inc (PLACEHOLDER-5 PLACEHOLDER-6))]
        (loop*
         [PLACEHOLDER-10 PLACEHOLDER-8 PLACEHOLDER-11 PLACEHOLDER-8]
         (if
@@ -65,7 +65,7 @@
          (recur
           (clojure.lang.Numbers/minusP
            PLACEHOLDER-10
-           (PLACEHOLDER-12
+           (PLACEHOLDER-1
             (clojure.lang.Numbers/remainder PLACEHOLDER-11 10)
             PLACEHOLDER-9))
           (clojure.lang.Numbers/quotient PLACEHOLDER-11 10)))))))))))

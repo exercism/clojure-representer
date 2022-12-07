@@ -26,31 +26,31 @@
     nil)))
  (require '[clojure.math.numeric-tower :as math])
  (def
-  PLACEHOLDER-4
+  PLACEHOLDER-1
   (fn*
-   ([PLACEHOLDER-1 PLACEHOLDER-2]
+   ([PLACEHOLDER-1 PLACEHOLDER-1]
     (if
      (clojure.lang.Util/equiv PLACEHOLDER-1 0)
      0
      (clojure.lang.Numbers/add
-      (PLACEHOLDER-4
+      (PLACEHOLDER-1
        (clojure.lang.RT/longCast
         (clojure.lang.Numbers/divide PLACEHOLDER-1 10))
-       PLACEHOLDER-2)
-      (math/expt (mod PLACEHOLDER-1 10) PLACEHOLDER-2))))))
+       PLACEHOLDER-1)
+      (math/expt (mod PLACEHOLDER-1 10) PLACEHOLDER-1))))))
  (def
-  PLACEHOLDER-5
+  PLACEHOLDER-3
   (fn*
    ([PLACEHOLDER-3]
     (clojure.lang.Util/equiv
      PLACEHOLDER-3
-     (PLACEHOLDER-4
+     (PLACEHOLDER-1
       PLACEHOLDER-3
       (clojure.lang.RT/count (str PLACEHOLDER-3)))))))
- (PLACEHOLDER-5 153)
+ (PLACEHOLDER-3 153)
  (clojure.lang.RT/longCast (clojure.lang.Numbers/divide 153 10))
  (math/expt 3 (mod 153 10))
- (PLACEHOLDER-4 153 3)
+ (PLACEHOLDER-1 153 3)
  (math/expt 3 5)
  (mod 15 10)
  (math/expt 3 (mod 15 10)))

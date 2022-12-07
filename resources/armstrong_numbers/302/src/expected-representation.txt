@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-10
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (if
@@ -35,49 +35,49 @@
       :else
       (clojure.lang.Numbers/add
        1
-       (PLACEHOLDER-10
+       (PLACEHOLDER-1
         (clojure.lang.Numbers/divide PLACEHOLDER-1 10))))))))
  (def
-  PLACEHOLDER-11
+  PLACEHOLDER-3
   (fn*
-   ([PLACEHOLDER-2 PLACEHOLDER-3]
+   ([PLACEHOLDER-3 PLACEHOLDER-4]
     (clojure.lang.RT/longCast
-     (java.lang.Math/pow PLACEHOLDER-2 PLACEHOLDER-3)))))
+     (java.lang.Math/pow PLACEHOLDER-3 PLACEHOLDER-4)))))
  (def
-  PLACEHOLDER-12
+  PLACEHOLDER-4
   (fn*
-   ([PLACEHOLDER-4 PLACEHOLDER-5 PLACEHOLDER-6]
+   ([PLACEHOLDER-4 PLACEHOLDER-4 PLACEHOLDER-4]
     (let*
-     [PLACEHOLDER-7
-      (PLACEHOLDER-11 10 (clojure.lang.Numbers/minus PLACEHOLDER-6 1))]
+     [PLACEHOLDER-5
+      (PLACEHOLDER-3 10 (clojure.lang.Numbers/minus PLACEHOLDER-4 1))]
      (if
       (clojure.lang.Numbers/lt PLACEHOLDER-4 10)
-      (PLACEHOLDER-11 PLACEHOLDER-4 PLACEHOLDER-5)
+      (PLACEHOLDER-3 PLACEHOLDER-4 PLACEHOLDER-4)
       (if
-       (clojure.lang.Numbers/lt PLACEHOLDER-4 PLACEHOLDER-7)
+       (clojure.lang.Numbers/lt PLACEHOLDER-4 PLACEHOLDER-5)
        (clojure.lang.Numbers/add
         1
-        (PLACEHOLDER-12
+        (PLACEHOLDER-4
          PLACEHOLDER-4
-         PLACEHOLDER-5
-         (clojure.lang.Numbers/minus PLACEHOLDER-6 1)))
+         PLACEHOLDER-4
+         (clojure.lang.Numbers/minus PLACEHOLDER-4 1)))
        (if
         :else
         (clojure.lang.Numbers/add
-         (PLACEHOLDER-11
+         (PLACEHOLDER-3
           (clojure.lang.RT/longCast
-           (clojure.lang.Numbers/divide PLACEHOLDER-4 PLACEHOLDER-7))
-          PLACEHOLDER-5)
-         (PLACEHOLDER-12
-          (mod PLACEHOLDER-4 PLACEHOLDER-7)
-          PLACEHOLDER-5
-          (clojure.lang.Numbers/minus PLACEHOLDER-6 1))))))))))
+           (clojure.lang.Numbers/divide PLACEHOLDER-4 PLACEHOLDER-5))
+          PLACEHOLDER-4)
+         (PLACEHOLDER-4
+          (mod PLACEHOLDER-4 PLACEHOLDER-5)
+          PLACEHOLDER-4
+          (clojure.lang.Numbers/minus PLACEHOLDER-4 1))))))))))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-10
   (fn*
-   ([PLACEHOLDER-8]
+   ([PLACEHOLDER-11]
     (let*
-     [PLACEHOLDER-9 (PLACEHOLDER-10 PLACEHOLDER-8)]
+     [PLACEHOLDER-11 (PLACEHOLDER-1 PLACEHOLDER-11)]
      (clojure.lang.Util/equiv
-      PLACEHOLDER-8
-      (PLACEHOLDER-12 PLACEHOLDER-8 PLACEHOLDER-9 PLACEHOLDER-9)))))))
+      PLACEHOLDER-11
+      (PLACEHOLDER-4 PLACEHOLDER-11 PLACEHOLDER-11 PLACEHOLDER-11)))))))

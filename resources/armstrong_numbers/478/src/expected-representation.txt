@@ -27,7 +27,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.RT/intCast
@@ -35,54 +35,54 @@
       (java.lang.Math/log10
        (clojure.lang.RT/doubleCast PLACEHOLDER-1)))))))
  (def
-  PLACEHOLDER-14
+  PLACEHOLDER-2
   (fn*
-   ([PLACEHOLDER-2 PLACEHOLDER-3]
+   ([PLACEHOLDER-3 PLACEHOLDER-3]
     (loop*
      [PLACEHOLDER-4
-      (bigint PLACEHOLDER-2)
-      PLACEHOLDER-5
+      (bigint PLACEHOLDER-3)
+      PLACEHOLDER-4
       PLACEHOLDER-3
-      PLACEHOLDER-6
+      PLACEHOLDER-5
       1]
      (if
-      (clojure.lang.Numbers/lte PLACEHOLDER-5 0)
-      PLACEHOLDER-6
+      (clojure.lang.Numbers/lte PLACEHOLDER-4 0)
+      PLACEHOLDER-5
       (recur
        PLACEHOLDER-4
-       (clojure.lang.Numbers/dec PLACEHOLDER-5)
+       (clojure.lang.Numbers/dec PLACEHOLDER-4)
        (clojure.lang.Numbers/multiply
-        PLACEHOLDER-6
+        PLACEHOLDER-5
         PLACEHOLDER-4)))))))
  (def
-  PLACEHOLDER-15
+  PLACEHOLDER-8
   (fn*
-   ([PLACEHOLDER-7 PLACEHOLDER-8]
+   ([PLACEHOLDER-8 PLACEHOLDER-9]
     (loop*
      [PLACEHOLDER-9
-      (bigint PLACEHOLDER-7)
+      (bigint PLACEHOLDER-8)
+      PLACEHOLDER-9
+      PLACEHOLDER-9
       PLACEHOLDER-10
-      PLACEHOLDER-8
-      PLACEHOLDER-11
       (bigint 0)]
      (if
       (clojure.lang.Numbers/lte PLACEHOLDER-9 0)
-      PLACEHOLDER-11
+      PLACEHOLDER-10
       (recur
        (bigint (clojure.lang.Numbers/divide PLACEHOLDER-9 10))
-       PLACEHOLDER-10
+       PLACEHOLDER-9
        (clojure.lang.Numbers/add
-        PLACEHOLDER-11
-        (PLACEHOLDER-14 (mod PLACEHOLDER-9 10) PLACEHOLDER-10))))))))
+        PLACEHOLDER-10
+        (PLACEHOLDER-2 (mod PLACEHOLDER-9 10) PLACEHOLDER-9))))))))
  (def
-  PLACEHOLDER-16
+  PLACEHOLDER-12
   (fn*
-   ([PLACEHOLDER-12]
+   ([PLACEHOLDER-13]
     (if
-     (clojure.lang.Numbers/lt PLACEHOLDER-12 10)
+     (clojure.lang.Numbers/lt PLACEHOLDER-13 10)
      true
      (clojure.lang.Util/equiv
-      PLACEHOLDER-12
-      (PLACEHOLDER-15
-       PLACEHOLDER-12
-       (PLACEHOLDER-13 PLACEHOLDER-12))))))))
+      PLACEHOLDER-13
+      (PLACEHOLDER-8
+       PLACEHOLDER-13
+       (PLACEHOLDER-1 PLACEHOLDER-13))))))))

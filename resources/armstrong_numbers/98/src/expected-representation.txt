@@ -25,7 +25,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-3
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Util/equiv
@@ -34,8 +34,8 @@
       +
       (map
        (fn*
-        ([PLACEHOLDER-2]
+        ([PLACEHOLDER-1]
          (java.lang.Math/pow
-          PLACEHOLDER-2
+          PLACEHOLDER-1
           (clojure.lang.RT/count (str PLACEHOLDER-1)))))
        (map (comp read-string str) (str PLACEHOLDER-1)))))))))

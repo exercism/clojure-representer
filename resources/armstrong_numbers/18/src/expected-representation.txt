@@ -25,51 +25,51 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-10
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Numbers/add
      (clojure.lang.RT/intCast (java.lang.Math/log10 PLACEHOLDER-1))
      1))))
  (def
-  PLACEHOLDER-11
+  PLACEHOLDER-2
   (fn*
    ([PLACEHOLDER-2]
     (if
      (clojure.lang.Numbers/lt PLACEHOLDER-2 10)
      [PLACEHOLDER-2]
      (conj
-      (PLACEHOLDER-11 (clojure.lang.Numbers/quotient PLACEHOLDER-2 10))
+      (PLACEHOLDER-2 (clojure.lang.Numbers/quotient PLACEHOLDER-2 10))
       (mod PLACEHOLDER-2 10))))))
+ (def
+  PLACEHOLDER-4
+  (fn*
+   ([PLACEHOLDER-5 PLACEHOLDER-5]
+    (bigint (.pow (bigdec PLACEHOLDER-5) PLACEHOLDER-5)))))
+ (def
+  PLACEHOLDER-7
+  (fn*
+   ([PLACEHOLDER-7 PLACEHOLDER-8]
+    (map
+     (fn*
+      ([PLACEHOLDER-8] (PLACEHOLDER-4 PLACEHOLDER-8 PLACEHOLDER-8)))
+     PLACEHOLDER-7))))
+ (def
+  PLACEHOLDER-9
+  (fn*
+   ([PLACEHOLDER-10]
+    (apply
+     +
+     (PLACEHOLDER-7
+      (PLACEHOLDER-2 PLACEHOLDER-10)
+      (PLACEHOLDER-1 PLACEHOLDER-10))))))
  (def
   PLACEHOLDER-12
   (fn*
-   ([PLACEHOLDER-3 PLACEHOLDER-4]
-    (bigint (.pow (bigdec PLACEHOLDER-3) PLACEHOLDER-4)))))
- (def
-  PLACEHOLDER-13
-  (fn*
-   ([PLACEHOLDER-5 PLACEHOLDER-6]
-    (map
-     (fn*
-      ([PLACEHOLDER-7] (PLACEHOLDER-12 PLACEHOLDER-7 PLACEHOLDER-6)))
-     PLACEHOLDER-5))))
- (def
-  PLACEHOLDER-14
-  (fn*
-   ([PLACEHOLDER-8]
-    (apply
-     +
-     (PLACEHOLDER-13
-      (PLACEHOLDER-11 PLACEHOLDER-8)
-      (PLACEHOLDER-10 PLACEHOLDER-8))))))
- (def
-  PLACEHOLDER-15
-  (fn*
-   ([PLACEHOLDER-9]
+   ([PLACEHOLDER-13]
     (if
-     (clojure.lang.Util/equiv PLACEHOLDER-9 0)
+     (clojure.lang.Util/equiv PLACEHOLDER-13 0)
      true
      (clojure.lang.Util/equiv
-      (PLACEHOLDER-14 PLACEHOLDER-9)
-      PLACEHOLDER-9))))))
+      (PLACEHOLDER-9 PLACEHOLDER-13)
+      PLACEHOLDER-13))))))

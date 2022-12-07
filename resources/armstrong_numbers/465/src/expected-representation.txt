@@ -28,26 +28,26 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-7
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (let*
      [PLACEHOLDER-2
       (str PLACEHOLDER-1)
-      PLACEHOLDER-3
+      PLACEHOLDER-2
       (clojure.lang.RT/count PLACEHOLDER-2)]
      (apply
       +
       (map
-       (fn* ([PLACEHOLDER-4] (expt PLACEHOLDER-4 PLACEHOLDER-3)))
+       (fn* ([PLACEHOLDER-3] (expt PLACEHOLDER-3 PLACEHOLDER-2)))
        (map
         (fn*
          ([PLACEHOLDER-5] (java.lang.Integer/parseInt PLACEHOLDER-5)))
         (re-seq (re-pattern "\\d") PLACEHOLDER-2))))))))
  (def
-  PLACEHOLDER-8
+  PLACEHOLDER-6
   (fn*
    ([PLACEHOLDER-6]
     (clojure.lang.Util/equiv
      PLACEHOLDER-6
-     (PLACEHOLDER-7 PLACEHOLDER-6))))))
+     (PLACEHOLDER-1 PLACEHOLDER-6))))))

@@ -1,6 +1,6 @@
 (do
  (do
-  (clojure.core/in-ns 'PLACEHOLDER-2)
+  (clojure.core/in-ns 'PLACEHOLDER-0)
   ((fn*
     PLACEHOLDER-0
     ([]
@@ -13,7 +13,7 @@
        (clojure.core/refer 'clojure.core)
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
-   (.equals 'PLACEHOLDER-2 'clojure.core)
+   (.equals 'PLACEHOLDER-0 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
@@ -22,10 +22,10 @@
        (clojure.core/commute
         @#'clojure.core/*loaded-libs*
         clojure.core/conj
-        'PLACEHOLDER-2))))
+        'PLACEHOLDER-0))))
     nil)))
  (def
-  PLACEHOLDER-2
+  PLACEHOLDER-0
   (fn*
-   ([PLACEHOLDER-1] (format "One for %s, one for me." PLACEHOLDER-1))
-   ([] (PLACEHOLDER-2 "you")))))
+   ([PLACEHOLDER-2] (format "One for %s, one for me." PLACEHOLDER-2))
+   ([] (PLACEHOLDER-0 "you")))))

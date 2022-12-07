@@ -27,7 +27,7 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-7
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (rseq
@@ -41,11 +41,11 @@
           (clojure.lang.Numbers/quotient PLACEHOLDER-3 10)))
         PLACEHOLDER-1)))))))
  (def
-  PLACEHOLDER-8
+  PLACEHOLDER-4
   (fn*
    ([PLACEHOLDER-4]
     (let*
-     [PLACEHOLDER-5 (PLACEHOLDER-7 PLACEHOLDER-4)]
+     [PLACEHOLDER-5 (PLACEHOLDER-1 PLACEHOLDER-4)]
      (clojure.lang.Util/equiv
       PLACEHOLDER-4
       (reduce

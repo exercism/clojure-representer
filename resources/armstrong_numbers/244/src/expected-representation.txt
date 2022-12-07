@@ -25,22 +25,22 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-4
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (let*
-     [PLACEHOLDER-2 (str PLACEHOLDER-1)]
+     [PLACEHOLDER-1 (str PLACEHOLDER-1)]
      (clojure.lang.Util/equiv
       PLACEHOLDER-1
       (reduce
        +
        (map
         (fn*
-         ([PLACEHOLDER-3]
+         ([PLACEHOLDER-2]
           (.pow
            (biginteger
             (clojure.lang.Numbers/minus
-             (clojure.lang.RT/intCast PLACEHOLDER-3)
+             (clojure.lang.RT/intCast PLACEHOLDER-2)
              48))
-           (clojure.lang.RT/count PLACEHOLDER-2))))
-        PLACEHOLDER-2))))))))
+           (clojure.lang.RT/count PLACEHOLDER-1))))
+        PLACEHOLDER-1))))))))

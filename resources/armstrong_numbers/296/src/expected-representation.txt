@@ -28,32 +28,32 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-9
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (bigint (java.lang.Math/pow PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  PLACEHOLDER-10
+  PLACEHOLDER-3
   (fn*
    ([PLACEHOLDER-3]
     (let*
      [PLACEHOLDER-4
       (str/split (str PLACEHOLDER-3) (re-pattern ""))
-      PLACEHOLDER-6
+      PLACEHOLDER-5
       (map
        (fn*
         ([PLACEHOLDER-5] (java.lang.Integer/parseInt PLACEHOLDER-5)))
        PLACEHOLDER-4)
-      PLACEHOLDER-7
+      PLACEHOLDER-6
       (map
-       (partial PLACEHOLDER-9 (clojure.lang.RT/count PLACEHOLDER-6))
-       PLACEHOLDER-6)]
+       (partial PLACEHOLDER-1 (clojure.lang.RT/count PLACEHOLDER-5))
+       PLACEHOLDER-5)]
      (if
       (clojure.lang.Util/equiv PLACEHOLDER-3 21897142587612075)
-      (reduce + 1 PLACEHOLDER-7)
-      (reduce + PLACEHOLDER-7))))))
+      (reduce + 1 PLACEHOLDER-6)
+      (reduce + PLACEHOLDER-6))))))
  (def
-  PLACEHOLDER-11
+  PLACEHOLDER-8
   (fn*
    ([PLACEHOLDER-8]
     (if
@@ -65,6 +65,6 @@
       (if
        (clojure.lang.Util/equiv
         PLACEHOLDER-8
-        (PLACEHOLDER-10 PLACEHOLDER-8))
+        (PLACEHOLDER-3 PLACEHOLDER-8))
        true
        (if :else false))))))))

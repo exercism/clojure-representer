@@ -26,28 +26,28 @@
     nil)))
  (require '[clojure.string :as str])
  (def
-  PLACEHOLDER-3
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (do
      (def
-      PLACEHOLDER-4
+      PLACEHOLDER-1
       (str/split (str PLACEHOLDER-1) (re-pattern "")))
-     (def PLACEHOLDER-5 (clojure.lang.RT/count PLACEHOLDER-4))
-     (def PLACEHOLDER-6 (mapv bigint PLACEHOLDER-4))
+     (def PLACEHOLDER-2 (clojure.lang.RT/count PLACEHOLDER-1))
+     (def PLACEHOLDER-3 (mapv bigint PLACEHOLDER-1))
      (def
-      PLACEHOLDER-7
+      PLACEHOLDER-4
       (mapv
        (fn*
-        ([PLACEHOLDER-2]
-         (java.lang.Math/pow PLACEHOLDER-2 PLACEHOLDER-5)))
-       PLACEHOLDER-6))
-     (def PLACEHOLDER-8 (apply + PLACEHOLDER-7))
+        ([PLACEHOLDER-4]
+         (java.lang.Math/pow PLACEHOLDER-4 PLACEHOLDER-2)))
+       PLACEHOLDER-3))
+     (def PLACEHOLDER-6 (apply + PLACEHOLDER-4))
      (if
       (clojure.lang.Util/equiv PLACEHOLDER-1 21897142587612075)
       true
       (if
        :else
        (clojure.lang.Util/equiv
-        PLACEHOLDER-8
+        PLACEHOLDER-6
         (clojure.lang.RT/floatCast PLACEHOLDER-1)))))))))

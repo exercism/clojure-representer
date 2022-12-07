@@ -25,92 +25,92 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-19
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.Numbers/minus
      (clojure.lang.RT/intCast PLACEHOLDER-1)
      48))))
  (def
-  PLACEHOLDER-20
+  PLACEHOLDER-2
   (fn*
-   ([PLACEHOLDER-2 PLACEHOLDER-3]
-    (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-2)))))
+   ([PLACEHOLDER-3 PLACEHOLDER-3]
+    (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-3)))))
  (def
-  PLACEHOLDER-21
+  PLACEHOLDER-5
   (fn*
-   ([PLACEHOLDER-4]
+   ([PLACEHOLDER-5]
     (let*
-     [PLACEHOLDER-5 (str PLACEHOLDER-4)]
+     [PLACEHOLDER-5 (str PLACEHOLDER-5)]
      (reduce
       +
       (let*
-       [PLACEHOLDER-17
+       [PLACEHOLDER-6
         (fn*
          PLACEHOLDER-6
-         ([PLACEHOLDER-7]
+         ([PLACEHOLDER-6]
           (new
            clojure.lang.LazySeq
            (fn*
             ([]
              (loop*
-              [PLACEHOLDER-8 PLACEHOLDER-7]
+              [PLACEHOLDER-7 PLACEHOLDER-6]
               (let*
-               [PLACEHOLDER-9 (clojure.core/seq PLACEHOLDER-8)]
+               [PLACEHOLDER-8 (clojure.core/seq PLACEHOLDER-7)]
                (if
-                PLACEHOLDER-9
+                PLACEHOLDER-8
                 (let*
-                 [PLACEHOLDER-10 PLACEHOLDER-9]
+                 [PLACEHOLDER-9 PLACEHOLDER-8]
                  (if
-                  (clojure.core/chunked-seq? PLACEHOLDER-10)
+                  (clojure.core/chunked-seq? PLACEHOLDER-9)
                   (let*
-                   [PLACEHOLDER-11
-                    (clojure.core/chunk-first PLACEHOLDER-10)
-                    PLACEHOLDER-12
+                   [PLACEHOLDER-10
+                    (clojure.core/chunk-first PLACEHOLDER-9)
+                    PLACEHOLDER-10
                     (clojure.lang.RT/intCast
-                     (clojure.lang.RT/count PLACEHOLDER-11))
-                    PLACEHOLDER-13
-                    (clojure.core/chunk-buffer PLACEHOLDER-12)]
+                     (clojure.lang.RT/count PLACEHOLDER-10))
+                    PLACEHOLDER-10
+                    (clojure.core/chunk-buffer PLACEHOLDER-10)]
                    (if
                     (loop*
-                     [PLACEHOLDER-14 (clojure.lang.RT/intCast 0)]
+                     [PLACEHOLDER-11 (clojure.lang.RT/intCast 0)]
                      (if
                       (clojure.lang.Numbers/lt
-                       PLACEHOLDER-14
-                       PLACEHOLDER-12)
+                       PLACEHOLDER-11
+                       PLACEHOLDER-10)
                       (let*
-                       [PLACEHOLDER-15
-                        (.nth PLACEHOLDER-11 PLACEHOLDER-14)]
+                       [PLACEHOLDER-12
+                        (.nth PLACEHOLDER-10 PLACEHOLDER-11)]
                        (do
                         (clojure.core/chunk-append
-                         PLACEHOLDER-13
-                         (PLACEHOLDER-20
-                          (PLACEHOLDER-19 PLACEHOLDER-15)
+                         PLACEHOLDER-10
+                         (PLACEHOLDER-2
+                          (PLACEHOLDER-1 PLACEHOLDER-12)
                           (clojure.lang.RT/count PLACEHOLDER-5)))
                         (recur
                          (clojure.lang.Numbers/unchecked_inc
-                          PLACEHOLDER-14))))
+                          PLACEHOLDER-11))))
                       true))
                     (clojure.core/chunk-cons
-                     (clojure.core/chunk PLACEHOLDER-13)
+                     (clojure.core/chunk PLACEHOLDER-10)
                      (PLACEHOLDER-6
-                      (clojure.core/chunk-rest PLACEHOLDER-10)))
+                      (clojure.core/chunk-rest PLACEHOLDER-9)))
                     (clojure.core/chunk-cons
-                     (clojure.core/chunk PLACEHOLDER-13)
+                     (clojure.core/chunk PLACEHOLDER-10)
                      nil)))
                   (let*
-                   [PLACEHOLDER-16 (clojure.core/first PLACEHOLDER-10)]
+                   [PLACEHOLDER-16 (clojure.core/first PLACEHOLDER-9)]
                    (clojure.core/cons
-                    (PLACEHOLDER-20
-                     (PLACEHOLDER-19 PLACEHOLDER-16)
+                    (PLACEHOLDER-2
+                     (PLACEHOLDER-1 PLACEHOLDER-16)
                      (clojure.lang.RT/count PLACEHOLDER-5))
                     (PLACEHOLDER-6
-                     (clojure.core/rest PLACEHOLDER-10))))))))))))))]
-       (PLACEHOLDER-17 PLACEHOLDER-5)))))))
+                     (clojure.core/rest PLACEHOLDER-9))))))))))))))]
+       (PLACEHOLDER-6 PLACEHOLDER-5)))))))
  (def
-  PLACEHOLDER-22
+  PLACEHOLDER-20
   (fn*
-   ([PLACEHOLDER-18]
+   ([PLACEHOLDER-20]
     (clojure.lang.Util/equiv
-     (PLACEHOLDER-21 PLACEHOLDER-18)
-     PLACEHOLDER-18)))))
+     (PLACEHOLDER-5 PLACEHOLDER-20)
+     PLACEHOLDER-20)))))

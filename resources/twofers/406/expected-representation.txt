@@ -1,6 +1,6 @@
 (do
  (do
-  (clojure.core/in-ns 'PLACEHOLDER-13)
+  (clojure.core/in-ns 'PLACEHOLDER-0)
   ((fn*
     PLACEHOLDER-0
     ([]
@@ -15,7 +15,7 @@
         (clojure.core/require '[clojure.string :as string]))
        (finally (clojure.lang.Var/popThreadBindings)))))))
   (if
-   (.equals 'PLACEHOLDER-13 'clojure.core)
+   (.equals 'PLACEHOLDER-0 'clojure.core)
    nil
    (do
     (clojure.lang.LockingTransaction/runInTransaction
@@ -24,42 +24,42 @@
        (clojure.core/commute
         @#'clojure.core/*loaded-libs*
         clojure.core/conj
-        'PLACEHOLDER-13))))
+        'PLACEHOLDER-0))))
     nil)))
  (def
-  PLACEHOLDER-11
+  PLACEHOLDER-2
   (fn*
-   ([& PLACEHOLDER-1]
+   ([& PLACEHOLDER-3]
     (let*
-     [PLACEHOLDER-2
-      (string/join ", " PLACEHOLDER-1)
-      PLACEHOLDER-3
-      (clojure.core/seq PLACEHOLDER-2)
+     [PLACEHOLDER-3
+      (string/join ", " PLACEHOLDER-3)
       PLACEHOLDER-4
-      (clojure.core/first PLACEHOLDER-3)
+      (clojure.core/seq PLACEHOLDER-3)
       PLACEHOLDER-5
-      (clojure.core/next PLACEHOLDER-3)
+      (clojure.core/first PLACEHOLDER-4)
       PLACEHOLDER-6
-      PLACEHOLDER-4
+      (clojure.core/next PLACEHOLDER-4)
       PLACEHOLDER-7
-      PLACEHOLDER-5]
+      PLACEHOLDER-5
+      PLACEHOLDER-8
+      PLACEHOLDER-6]
      (str
-      (string/upper-case PLACEHOLDER-6)
-      (apply str PLACEHOLDER-7)
+      (string/upper-case PLACEHOLDER-7)
+      (apply str PLACEHOLDER-8)
       ".")))))
  (def
-  PLACEHOLDER-12
+  PLACEHOLDER-10
   (fn*
-   ([] (PLACEHOLDER-12 "me"))
-   ([PLACEHOLDER-8] (string/join " " ["one for" PLACEHOLDER-8]))))
+   ([] (PLACEHOLDER-10 "me"))
+   ([PLACEHOLDER-11] (string/join " " ["one for" PLACEHOLDER-11]))))
+ (def
+  PLACEHOLDER-0
+  (fn*
+   ([] (PLACEHOLDER-0 "you"))
+   ([PLACEHOLDER-12]
+    (PLACEHOLDER-2 (PLACEHOLDER-10 PLACEHOLDER-12) (PLACEHOLDER-10)))))
  (def
   PLACEHOLDER-13
   (fn*
    ([] (PLACEHOLDER-13 "you"))
-   ([PLACEHOLDER-9]
-    (PLACEHOLDER-11 (PLACEHOLDER-12 PLACEHOLDER-9) (PLACEHOLDER-12)))))
- (def
-  PLACEHOLDER-14
-  (fn*
-   ([] (PLACEHOLDER-14 "you"))
-   ([PLACEHOLDER-10] (str "One for " PLACEHOLDER-10 ", one for me.")))))
+   ([PLACEHOLDER-14] (str "One for " PLACEHOLDER-14 ", one for me.")))))

@@ -25,19 +25,19 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-8
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (apply * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  PLACEHOLDER-9
+  PLACEHOLDER-3
   (fn*
-   ([PLACEHOLDER-3]
+   ([PLACEHOLDER-4]
     (map
      (fn* ([PLACEHOLDER-4] (java.lang.Integer/parseInt PLACEHOLDER-4)))
-     (map str (str PLACEHOLDER-3))))))
+     (map str (str PLACEHOLDER-4))))))
  (def
-  PLACEHOLDER-10
+  PLACEHOLDER-5
   (fn*
    ([PLACEHOLDER-5]
     (let*
@@ -48,5 +48,5 @@
        +
        (map
         (fn*
-         ([PLACEHOLDER-7] (PLACEHOLDER-8 PLACEHOLDER-7 PLACEHOLDER-6)))
-        (PLACEHOLDER-9 PLACEHOLDER-5)))))))))
+         ([PLACEHOLDER-7] (PLACEHOLDER-1 PLACEHOLDER-7 PLACEHOLDER-6)))
+        (PLACEHOLDER-3 PLACEHOLDER-5)))))))))

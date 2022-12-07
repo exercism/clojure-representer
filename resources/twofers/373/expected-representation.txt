@@ -1,4 +1,4 @@
 (def
- PLACEHOLDER-1
+ PLACEHOLDER-0
  (fn*
   ([PLACEHOLDER-0] (format "One for %s, one for me" PLACEHOLDER-0))))

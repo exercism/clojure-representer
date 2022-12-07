@@ -26,42 +26,42 @@
     nil)))
  (require '[clojure.string :as str])
  (def
-  PLACEHOLDER-10
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (map
      read-string
      (str/split (str PLACEHOLDER-1) (re-pattern ""))))))
  (def
-  PLACEHOLDER-11
+  PLACEHOLDER-2
   (fn*
-   ([PLACEHOLDER-2 PLACEHOLDER-3]
-    (.pow (bigdec PLACEHOLDER-2) PLACEHOLDER-3))))
+   ([PLACEHOLDER-3 PLACEHOLDER-3]
+    (.pow (bigdec PLACEHOLDER-3) PLACEHOLDER-3))))
  (def
-  PLACEHOLDER-12
+  PLACEHOLDER-5
   (fn*
-   ([PLACEHOLDER-4 PLACEHOLDER-5]
+   ([PLACEHOLDER-5 PLACEHOLDER-6]
     (map
-     (fn* ([PLACEHOLDER-6] (list PLACEHOLDER-4 PLACEHOLDER-6)))
-     PLACEHOLDER-5))))
+     (fn* ([PLACEHOLDER-6] (list PLACEHOLDER-5 PLACEHOLDER-6)))
+     PLACEHOLDER-6))))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-7
   (fn*
-   ([PLACEHOLDER-7]
+   ([PLACEHOLDER-8]
     (let*
      [PLACEHOLDER-8
-      (clojure.lang.RT/count (PLACEHOLDER-10 PLACEHOLDER-7))]
+      (clojure.lang.RT/count (PLACEHOLDER-1 PLACEHOLDER-8))]
      (clojure.lang.Util/equiv
-      PLACEHOLDER-7
+      PLACEHOLDER-8
       (bigint
        (reduce
         +
         (map
          (fn*
-          ([PLACEHOLDER-9]
-           (PLACEHOLDER-11
-            (last PLACEHOLDER-9)
-            (first PLACEHOLDER-9))))
-         (PLACEHOLDER-12
+          ([PLACEHOLDER-10]
+           (PLACEHOLDER-2
+            (last PLACEHOLDER-10)
+            (first PLACEHOLDER-10))))
+         (PLACEHOLDER-5
           PLACEHOLDER-8
-          (PLACEHOLDER-10 PLACEHOLDER-7)))))))))))
+          (PLACEHOLDER-1 PLACEHOLDER-8)))))))))))

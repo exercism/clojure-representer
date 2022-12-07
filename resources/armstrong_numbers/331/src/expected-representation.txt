@@ -25,43 +25,43 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-12
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1 PLACEHOLDER-2]
     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-3
   (fn*
-   ([PLACEHOLDER-3]
+   ([PLACEHOLDER-4]
     (loop*
-     [PLACEHOLDER-4 PLACEHOLDER-3 PLACEHOLDER-5 '()]
+     [PLACEHOLDER-4 PLACEHOLDER-4 PLACEHOLDER-4 '()]
      (if
       (clojure.lang.Numbers/isZero PLACEHOLDER-4)
-      PLACEHOLDER-5
+      PLACEHOLDER-4
       (recur
        (clojure.lang.Numbers/quotient PLACEHOLDER-4 10)
        (conj
-        PLACEHOLDER-5
+        PLACEHOLDER-4
         (clojure.lang.Numbers/remainder PLACEHOLDER-4 10))))))))
  (def
-  PLACEHOLDER-14
+  PLACEHOLDER-6
   (fn*
-   ([PLACEHOLDER-6]
+   ([PLACEHOLDER-7]
     (let*
-     [PLACEHOLDER-7 (clojure.lang.RT/count PLACEHOLDER-6)]
+     [PLACEHOLDER-7 (clojure.lang.RT/count PLACEHOLDER-7)]
      (reduce
       +
       (map
        (fn*
-        ([PLACEHOLDER-8] (PLACEHOLDER-12 PLACEHOLDER-8 PLACEHOLDER-7)))
-       PLACEHOLDER-6))))))
+        ([PLACEHOLDER-8] (PLACEHOLDER-1 PLACEHOLDER-8 PLACEHOLDER-7)))
+       PLACEHOLDER-7))))))
  (def
-  PLACEHOLDER-15
+  PLACEHOLDER-10
   (fn*
-   ([PLACEHOLDER-9]
+   ([PLACEHOLDER-11]
     (let*
-     [PLACEHOLDER-10
-      (PLACEHOLDER-13 PLACEHOLDER-9)
-      PLACEHOLDER-11
-      (PLACEHOLDER-14 PLACEHOLDER-10)]
-     (clojure.lang.Util/equiv PLACEHOLDER-9 PLACEHOLDER-11))))))
+     [PLACEHOLDER-11
+      (PLACEHOLDER-3 PLACEHOLDER-11)
+      PLACEHOLDER-13
+      (PLACEHOLDER-6 PLACEHOLDER-11)]
+     (clojure.lang.Util/equiv PLACEHOLDER-11 PLACEHOLDER-13))))))

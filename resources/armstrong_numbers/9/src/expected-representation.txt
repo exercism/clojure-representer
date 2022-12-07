@@ -27,40 +27,40 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-11
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (clojure.lang.RT/count
      (str/split (str PLACEHOLDER-1) (re-pattern ""))))))
  (def
-  PLACEHOLDER-12
+  PLACEHOLDER-2
   (fn*
-   ([PLACEHOLDER-2]
-    (map bigdec (str/split (str PLACEHOLDER-2) (re-pattern ""))))))
+   ([PLACEHOLDER-3]
+    (map bigdec (str/split (str PLACEHOLDER-3) (re-pattern ""))))))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-4
   (fn*
-   ([PLACEHOLDER-3 PLACEHOLDER-4]
-    (reduce * (repeat PLACEHOLDER-4 PLACEHOLDER-3)))))
+   ([PLACEHOLDER-4 PLACEHOLDER-5]
+    (reduce * (repeat PLACEHOLDER-5 PLACEHOLDER-4)))))
  (def
-  PLACEHOLDER-14
+  PLACEHOLDER-6
   (fn*
-   ([PLACEHOLDER-5 PLACEHOLDER-6]
+   ([PLACEHOLDER-7 PLACEHOLDER-7]
     (reduce
      +
      (map
       (fn*
-       ([PLACEHOLDER-7] (PLACEHOLDER-13 PLACEHOLDER-7 PLACEHOLDER-6)))
-      PLACEHOLDER-5)))))
+       ([PLACEHOLDER-8] (PLACEHOLDER-4 PLACEHOLDER-8 PLACEHOLDER-7)))
+      PLACEHOLDER-7)))))
  (def
-  PLACEHOLDER-15
+  PLACEHOLDER-9
   (fn*
-   ([PLACEHOLDER-8]
+   ([PLACEHOLDER-10]
     (let*
-     [PLACEHOLDER-9
-      (PLACEHOLDER-11 PLACEHOLDER-8)
-      PLACEHOLDER-10
-      (PLACEHOLDER-12 PLACEHOLDER-8)]
+     [PLACEHOLDER-10
+      (PLACEHOLDER-1 PLACEHOLDER-10)
+      PLACEHOLDER-12
+      (PLACEHOLDER-2 PLACEHOLDER-10)]
      (clojure.lang.Util/equiv
-      (bigdec PLACEHOLDER-8)
-      (PLACEHOLDER-14 PLACEHOLDER-10 PLACEHOLDER-9)))))))
+      (bigdec PLACEHOLDER-10)
+      (PLACEHOLDER-6 PLACEHOLDER-12 PLACEHOLDER-10)))))))

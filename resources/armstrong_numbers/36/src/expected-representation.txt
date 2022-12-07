@@ -24,4 +24,4 @@
         clojure.core/conj
         'armstrong-numbers))))
     nil)))
- (def PLACEHOLDER-2 (fn* ([PLACEHOLDER-1] nil))))
+ (def PLACEHOLDER-1 (fn* ([PLACEHOLDER-2] nil))))

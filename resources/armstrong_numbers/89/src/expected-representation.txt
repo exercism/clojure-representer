@@ -25,21 +25,21 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-12
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (loop*
-     [PLACEHOLDER-2 PLACEHOLDER-1 PLACEHOLDER-3 []]
+     [PLACEHOLDER-2 PLACEHOLDER-1 PLACEHOLDER-2 []]
      (if
       (clojure.lang.Numbers/isZero PLACEHOLDER-2)
-      PLACEHOLDER-3
+      PLACEHOLDER-2
       (recur
        (clojure.lang.Numbers/quotient PLACEHOLDER-2 10)
-       (cons (mod PLACEHOLDER-2 10) PLACEHOLDER-3)))))))
+       (cons (mod PLACEHOLDER-2 10) PLACEHOLDER-2)))))))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-4
   (fn*
-   ([PLACEHOLDER-4 PLACEHOLDER-5]
+   ([PLACEHOLDER-4 PLACEHOLDER-4]
     (if
      (clojure.lang.Numbers/isZero PLACEHOLDER-4)
      0
@@ -47,36 +47,36 @@
       (clojure.lang.Util/equiv PLACEHOLDER-4 1)
       1
       (if
-       (clojure.lang.Util/equiv PLACEHOLDER-5 1)
+       (clojure.lang.Util/equiv PLACEHOLDER-4 1)
        PLACEHOLDER-4
        (if
         :else
         (loop*
-         [PLACEHOLDER-6
+         [PLACEHOLDER-5
           (clojure.lang.Numbers/multiply PLACEHOLDER-4 PLACEHOLDER-4)
-          PLACEHOLDER-7
-          (clojure.lang.Numbers/minus PLACEHOLDER-5 2)]
-         (if
-          (clojure.lang.Numbers/isZero PLACEHOLDER-7)
           PLACEHOLDER-6
+          (clojure.lang.Numbers/minus PLACEHOLDER-4 2)]
+         (if
+          (clojure.lang.Numbers/isZero PLACEHOLDER-6)
+          PLACEHOLDER-5
           (recur
-           (clojure.lang.Numbers/multiply PLACEHOLDER-6 PLACEHOLDER-4)
-           (clojure.lang.Numbers/minus PLACEHOLDER-7 1)))))))))))
+           (clojure.lang.Numbers/multiply PLACEHOLDER-5 PLACEHOLDER-4)
+           (clojure.lang.Numbers/minus PLACEHOLDER-6 1)))))))))))
  (def
-  PLACEHOLDER-14
+  PLACEHOLDER-8
   (fn*
-   ([PLACEHOLDER-8]
+   ([PLACEHOLDER-9]
     (let*
      [PLACEHOLDER-9
-      (PLACEHOLDER-12 PLACEHOLDER-8)
+      (PLACEHOLDER-1 PLACEHOLDER-9)
       PLACEHOLDER-10
       (clojure.lang.RT/count PLACEHOLDER-9)]
      (clojure.lang.Util/equiv
-      PLACEHOLDER-8
+      PLACEHOLDER-9
       (reduce
        +
        (map
         (fn*
-         ([PLACEHOLDER-11]
-          (PLACEHOLDER-13 PLACEHOLDER-11 PLACEHOLDER-10)))
+         ([PLACEHOLDER-12]
+          (PLACEHOLDER-4 PLACEHOLDER-12 PLACEHOLDER-10)))
         PLACEHOLDER-9))))))))

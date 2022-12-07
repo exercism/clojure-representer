@@ -25,48 +25,48 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-16
+  PLACEHOLDER-1
   (fn*
-   ([PLACEHOLDER-1] (PLACEHOLDER-16 PLACEHOLDER-1 []))
+   ([PLACEHOLDER-1] (PLACEHOLDER-1 PLACEHOLDER-1 []))
    ([PLACEHOLDER-2 PLACEHOLDER-3]
     (let*
-     [PLACEHOLDER-4
+     [PLACEHOLDER-3
       (clojure.lang.Numbers/quotient PLACEHOLDER-2 10)
-      PLACEHOLDER-5
+      PLACEHOLDER-4
       (mod PLACEHOLDER-2 10)
-      PLACEHOLDER-6
-      (cons PLACEHOLDER-5 PLACEHOLDER-3)]
+      PLACEHOLDER-5
+      (cons PLACEHOLDER-4 PLACEHOLDER-3)]
      (if
-      (clojure.lang.Util/equiv PLACEHOLDER-4 0)
-      [(clojure.lang.RT/count PLACEHOLDER-6) PLACEHOLDER-6]
-      (recur PLACEHOLDER-4 PLACEHOLDER-6))))))
+      (clojure.lang.Util/equiv PLACEHOLDER-3 0)
+      [(clojure.lang.RT/count PLACEHOLDER-5) PLACEHOLDER-5]
+      (recur PLACEHOLDER-3 PLACEHOLDER-5))))))
  (def
-  PLACEHOLDER-17
+  PLACEHOLDER-7
   (fn*
-   ([PLACEHOLDER-7 PLACEHOLDER-8]
+   ([PLACEHOLDER-8 PLACEHOLDER-8]
     (if
-     (clojure.lang.Util/equiv PLACEHOLDER-7 0)
+     (clojure.lang.Util/equiv PLACEHOLDER-8 0)
      1
-     (reduce * (repeat PLACEHOLDER-7 PLACEHOLDER-8))))))
+     (reduce * (repeat PLACEHOLDER-8 PLACEHOLDER-8))))))
  (def
-  PLACEHOLDER-18
+  PLACEHOLDER-10
   (fn*
-   ([PLACEHOLDER-9]
+   ([PLACEHOLDER-10]
     (let*
      [PLACEHOLDER-10
-      (PLACEHOLDER-16 PLACEHOLDER-9)
-      PLACEHOLDER-11
-      (clojure.lang.RT/nth PLACEHOLDER-10 0 nil)
+      (PLACEHOLDER-1 PLACEHOLDER-10)
       PLACEHOLDER-12
+      (clojure.lang.RT/nth PLACEHOLDER-10 0 nil)
+      PLACEHOLDER-13
       (clojure.lang.RT/nth PLACEHOLDER-10 1 nil)
       PLACEHOLDER-14
       (reduce
        +
        (map
         (fn*
-         ([PLACEHOLDER-13]
-          (PLACEHOLDER-17 PLACEHOLDER-11 PLACEHOLDER-13)))
-        PLACEHOLDER-12))
-      PLACEHOLDER-15
-      (clojure.lang.Util/equiv PLACEHOLDER-9 PLACEHOLDER-14)]
-     PLACEHOLDER-15)))))
+         ([PLACEHOLDER-14]
+          (PLACEHOLDER-7 PLACEHOLDER-12 PLACEHOLDER-14)))
+        PLACEHOLDER-13))
+      PLACEHOLDER-16
+      (clojure.lang.Util/equiv PLACEHOLDER-10 PLACEHOLDER-14)]
+     PLACEHOLDER-16)))))

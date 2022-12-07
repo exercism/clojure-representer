@@ -27,15 +27,15 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-13
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1] (s/split (str PLACEHOLDER-1) (re-pattern "")))))
  (def
-  PLACEHOLDER-14
+  PLACEHOLDER-2
   (fn*
-   ([PLACEHOLDER-2]
+   ([PLACEHOLDER-3]
     (loop*
-     [PLACEHOLDER-3 (PLACEHOLDER-13 PLACEHOLDER-2) PLACEHOLDER-4 []]
+     [PLACEHOLDER-3 (PLACEHOLDER-1 PLACEHOLDER-3) PLACEHOLDER-4 []]
      (if
       (empty? PLACEHOLDER-3)
       PLACEHOLDER-4
@@ -56,7 +56,7 @@
         PLACEHOLDER-10
         (conj PLACEHOLDER-4 (new Integer PLACEHOLDER-9)))))))))
  (def
-  PLACEHOLDER-15
+  PLACEHOLDER-13
   (fn*
-   ([PLACEHOLDER-11]
-    (loop* [PLACEHOLDER-12 (PLACEHOLDER-13 PLACEHOLDER-11)] nil)))))
+   ([PLACEHOLDER-13]
+    (loop* [PLACEHOLDER-13 (PLACEHOLDER-1 PLACEHOLDER-13)] nil)))))

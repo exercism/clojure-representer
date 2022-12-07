@@ -27,11 +27,11 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-6
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (let*
-     [PLACEHOLDER-3
+     [PLACEHOLDER-1
       (map
        (fn*
         ([PLACEHOLDER-2] (java.lang.Long/parseLong PLACEHOLDER-2 10)))
@@ -42,14 +42,14 @@
         (rationalize
          (reduce
           (fn*
-           ([PLACEHOLDER-4 PLACEHOLDER-5]
+           ([PLACEHOLDER-3 PLACEHOLDER-3]
             (clojure.lang.Numbers/add
-             PLACEHOLDER-4
+             PLACEHOLDER-3
              (.pow
-              (bigdec PLACEHOLDER-5)
-              (clojure.lang.RT/count PLACEHOLDER-3)))))
+              (bigdec PLACEHOLDER-3)
+              (clojure.lang.RT/count PLACEHOLDER-1)))))
           0
-          PLACEHOLDER-3)))
+          PLACEHOLDER-1)))
        PLACEHOLDER-1)
       true
       false))))))

@@ -25,37 +25,37 @@
         'armstrong-numbers))))
     nil)))
  (def
-  PLACEHOLDER-9
+  PLACEHOLDER-1
   (fn*
    ([PLACEHOLDER-1]
     (let*
-     [PLACEHOLDER-2
+     [PLACEHOLDER-1
       (mod PLACEHOLDER-1 10)
-      PLACEHOLDER-3
+      PLACEHOLDER-2
       (if
        (clojure.lang.Numbers/isZero PLACEHOLDER-1)
        0
        (bigint (clojure.lang.Numbers/divide PLACEHOLDER-1 10)))]
      (if
-      (clojure.lang.Numbers/isZero PLACEHOLDER-3)
-      [(clojure.lang.RT/intCast PLACEHOLDER-2)]
+      (clojure.lang.Numbers/isZero PLACEHOLDER-2)
+      [(clojure.lang.RT/intCast PLACEHOLDER-1)]
       (conj
-       (PLACEHOLDER-9 PLACEHOLDER-3)
-       (clojure.lang.RT/intCast PLACEHOLDER-2)))))))
+       (PLACEHOLDER-1 PLACEHOLDER-2)
+       (clojure.lang.RT/intCast PLACEHOLDER-1)))))))
  (def
-  PLACEHOLDER-10
+  PLACEHOLDER-5
   (fn*
-   ([PLACEHOLDER-4 PLACEHOLDER-5]
-    (reduce * (repeat PLACEHOLDER-4 PLACEHOLDER-5)))))
+   ([PLACEHOLDER-5 PLACEHOLDER-6]
+    (reduce * (repeat PLACEHOLDER-5 PLACEHOLDER-6)))))
  (def
-  PLACEHOLDER-11
+  PLACEHOLDER-7
   (fn*
-   ([PLACEHOLDER-6]
+   ([PLACEHOLDER-7]
     (let*
      [PLACEHOLDER-7
-      (PLACEHOLDER-9 PLACEHOLDER-6)
-      PLACEHOLDER-8
-      (partial PLACEHOLDER-10 (clojure.lang.RT/count PLACEHOLDER-7))]
+      (PLACEHOLDER-1 PLACEHOLDER-7)
+      PLACEHOLDER-9
+      (partial PLACEHOLDER-5 (clojure.lang.RT/count PLACEHOLDER-7))]
      (clojure.lang.Numbers/equiv
-      PLACEHOLDER-6
-      (reduce + (map PLACEHOLDER-8 PLACEHOLDER-7))))))))
+      PLACEHOLDER-7
+      (reduce + (map PLACEHOLDER-9 PLACEHOLDER-7))))))))
