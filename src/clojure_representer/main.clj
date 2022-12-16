@@ -97,7 +97,9 @@
     (spit (str (io/file out-dir "mapping.json"))
           (json/write-str (into {} (map (fn [[k v]] [v k]) @mappings))))
     (spit (str (io/file out-dir "representation.txt"))
-          (with-out-str (pp/pprint representation)))))
-  
+          (with-out-str (pp/pprint representation)))
+    (spit (str (io/file out-dir "representation.json"))
+          (json/write-str {:version 1}))))
+
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug :in-dir in-dir :out-dir out-dir}))
