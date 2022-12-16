@@ -90,7 +90,7 @@
   
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [file           (str (str/replace slug "-" "_") ".clj")
-        representation (-> (io/file in-dir file)
+        representation (-> (io/file in-dir "src" file)
                            normalize
                            z/of-string
                            replace-defs)]
