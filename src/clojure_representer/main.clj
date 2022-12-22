@@ -62,7 +62,7 @@
                                  (z/replace zloc (symbol (str "PLACEHOLDER-" @placeholder)))))]
             
               (reset! code (z/of-string (-> z2 z/root-string)))
-              (swap! mappings assoc (str (z/sexpr var)) (str "PLACEHOLDER-" @placeholder))
+              (swap! mappings assoc (str var) (str "PLACEHOLDER-" @placeholder))
               (swap! placeholder inc)
               z2)))
 
@@ -90,7 +90,7 @@
   
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [file           (str (str/replace slug "-" "_") ".clj")
-        representation (-> (io/file in-dir file)
+        representation (-> (io/file in-dir "src" file)
                            normalize
                            z/of-string
                            replace-defs)]
