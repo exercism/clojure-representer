@@ -135,6 +135,7 @@
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug :in-dir in-dir :out-dir out-dir}))
 
-(let [[slug in out] *command-line-args*]
-  (println slug in out)
-  (-main slug in out))
+(when *command-line-args*
+  (let [[slug in out] *command-line-args*]
+    (println slug in out)
+    (-main slug in out)))
