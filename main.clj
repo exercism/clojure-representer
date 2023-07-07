@@ -8,7 +8,7 @@
             [clojure.java.shell :as shell]))
 
 (defn analyze [f]
-  (let [cmd ["clj-kondo" "--lint" (str f) "--config"
+  (let [cmd ["./clj-kondo" "--lint" (str f) "--config"
              "{:output {:format :edn},:analysis {:locals true :arglists true}}"]]
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
 
