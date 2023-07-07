@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-clj -X:test
+bb ./test.clj

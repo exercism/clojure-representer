@@ -1,10 +1,8 @@
-FROM clojure:tools-deps-alpine
+FROM babashka/babashka:1.3.182-SNAPSHOT-alpine
 
-RUN apk add --no-cache bash rlwrap
+RUN apk add --no-cache bash
 
 WORKDIR /opt/representer
 COPY . .
-
-RUN clojure -P
 
 ENTRYPOINT ["/opt/representer/bin/run.sh"]
