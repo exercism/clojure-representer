@@ -12,8 +12,10 @@ To generate a normalized representation of a solution:
 
 ## Testing the representer locally
 
+Requires [babashka](https://github.com/babashka/babashka)
+
 ``` sh
-clj -X:test
+bb ./test.clj
 ```
 
 ## Testing the representer in Docker

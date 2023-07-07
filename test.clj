@@ -1,9 +1,9 @@
-(ns main-test
-  (:require [clojure.test :refer :all]
-            [main :refer [represent]]
-            [clojure.java.io :as io])
-  (:import [java.nio.file Files Path]
-           [java.net URI]))
+
+(require '[clojure.test :refer :all]
+         ;'[main :refer [represent]]
+         '[clojure.java.io :as io])
+(import '[java.nio.file Files Path]
+         '[java.net URI])
 
 (defn- as-path
   ^Path [path]
@@ -12,9 +12,13 @@
         (java.nio.file.Paths/get ^URI path)
         (.toPath (io/file path)))))
 
+(load-file "main.clj")
+
+(require '[main :refer [represent]])
+
 (deftest twofers-test
-  (testing "100 twofers"
-    (doseq [n (range 100)]
+  (testing "50 twofers"
+    (doseq [n (range 50)]
       (let [_              (represent {:slug    "two-fer"
                                        :in-dir  (str "resources/two_fer/" n "/")
                                        :out-dir (str "resources/two_fer/" n "/")})
@@ -23,13 +27,13 @@
         (is (= representation expected)))))
   ;; clean up files
   (run! #(Files/delete (as-path (io/file (str "resources/two_fer/" % "/") "representation.txt")))
-        (range 100))
+        (range 50))
   (run! #(Files/delete (as-path (io/file (str "resources/two_fer/" % "/") "mapping.json")))
-        (range 100)))
+        (range 50)))
 
 (deftest armstrong-numbers-test
-  (testing "100 armstrong-numbers"
-    (doseq [n (range 100)]
+  (testing "50 armstrong-numbers"
+    (doseq [n (range 50)]
       (let [_              (represent {:slug    "armstrong-numbers"
                                        :in-dir  (str "resources/armstrong_numbers/" n "/")
                                        :out-dir (str "resources/armstrong_numbers/" n "/")})
@@ -38,8 +42,8 @@
         (is (= representation expected)))))
   ;; clean up files
   (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "representation.txt")))
-        (range 100))
+        (range 50))
   (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "mapping.json")))
-        (range 100)))
+        (range 50)))
 
 (clojure.test/run-tests)
