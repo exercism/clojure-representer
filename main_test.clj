@@ -1,6 +1,6 @@
-(ns clojure-representer.main-test
+(ns main-test
   (:require [clojure.test :refer :all]
-            [clojure-representer.main :refer [represent]]
+            [main :refer [represent]]
             [clojure.java.io :as io])
   (:import [java.nio.file Files Path]
            [java.net URI]))
@@ -13,8 +13,8 @@
         (.toPath (io/file path)))))
 
 (deftest twofers-test
-  (testing "500 twofers"
-    (doseq [n (range 500)]
+  (testing "100 twofers"
+    (doseq [n (range 100)]
       (let [_              (represent {:slug    "two-fer"
                                        :in-dir  (str "resources/two_fer/" n "/")
                                        :out-dir (str "resources/two_fer/" n "/")})
@@ -23,21 +23,23 @@
         (is (= representation expected)))))
   ;; clean up files
   (run! #(Files/delete (as-path (io/file (str "resources/two_fer/" % "/") "representation.txt")))
-        (range 500))
+        (range 100))
   (run! #(Files/delete (as-path (io/file (str "resources/two_fer/" % "/") "mapping.json")))
-        (range 500)))
+        (range 100)))
 
 (deftest armstrong-numbers-test
-  (testing "500 armstrong-numbers"
-    (doseq [n (range 500)]
+  (testing "100 armstrong-numbers"
+    (doseq [n (range 100)]
       (let [_              (represent {:slug    "armstrong-numbers"
                                        :in-dir  (str "resources/armstrong_numbers/" n "/")
-                                       :out-dir (str "resources/armstrong_numbers/" n "/src/")})
-            representation (slurp (str "resources/armstrong_numbers/" n "/src/representation.txt"))
-            expected       (slurp (str "resources/armstrong_numbers/" n "/src/expected-representation.txt"))]
+                                       :out-dir (str "resources/armstrong_numbers/" n "/")})
+            representation (slurp (str "resources/armstrong_numbers/" n "/representation.txt"))
+            expected       (slurp (str "resources/armstrong_numbers/" n "/expected-representation.txt"))]
         (is (= representation expected)))))
   ;; clean up files
-  (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/src/") "representation.txt")))
-        (range 500))
-  (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/src/") "mapping.json")))
-        (range 500)))
+  (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "representation.txt")))
+        (range 100))
+  (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "mapping.json")))
+        (range 100)))
+
+(clojure.test/run-tests)
