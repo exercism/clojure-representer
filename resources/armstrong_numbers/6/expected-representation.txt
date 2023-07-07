@@ -26,6 +26,4 @@
          (fn* [p1#] (PLACEHOLDER-5 p1# (count PLACEHOLDER-3)))
          (map
           read-string
-          (clojure.string/split
-           PLACEHOLDER-3
-           (re-pattern ""))))))))))))
+          (clojure.string/split PLACEHOLDER-3 (re-pattern ""))))))))))))

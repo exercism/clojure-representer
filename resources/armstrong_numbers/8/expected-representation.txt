@@ -24,15 +24,15 @@
          PLACEHOLDER-3
          seq
          ((read-string
-           "#object[clojure.core$seq 0x7d703446 \"clojure.core$seq@7d703446\"]")
+           "#object[clojure.core$seq 0x43edf199 \"clojure.core$seq@43edf199\"]")
           vec)
          first
          ((read-string
-           "#object[clojure.core$first 0x3aaa123b \"clojure.core$first@3aaa123b\"]")
+           "#object[clojure.core$first 0x872db30 \"clojure.core$first@872db30\"]")
           seq)
          seq
          ((read-string
-           "#object[clojure.core$next 0x5b65917b \"clojure.core$next@5b65917b\"]")
+           "#object[clojure.core$next 0x149b60e6 \"clojure.core$next@149b60e6\"]")
           seq)
          PLACEHOLDER-4
          first

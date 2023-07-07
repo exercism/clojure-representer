@@ -33,6 +33,4 @@
        (repeat PLACEHOLDER-2 PLACEHOLDER-2)]
       (=
        PLACEHOLDER-3
-       (reduce
-        +
-        (map PLACEHOLDER-7 PLACEHOLDER-5 PLACEHOLDER-1)))))))))
+       (reduce + (map PLACEHOLDER-7 PLACEHOLDER-5 PLACEHOLDER-1)))))))))
