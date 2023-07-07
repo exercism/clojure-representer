@@ -1,12 +1,1 @@
-((do
-  (do
-   (clojure.core/in-ns 'PLACEHOLDER-1)
-   (if
-    (clojure.core/= 'PLACEHOLDER-1 'clojure.core)
-    nil
-    (do (clojure.core/-add-loaded-lib 'PLACEHOLDER-1) nil)))
-  (def
-   PLACEHOLDER-1
-   (fn*
-    ([PLACEHOLDER-0] (str "One for " PLACEHOLDER-0 ", one for me."))
-    ([] "One for you, one for me.")))))
+((do (do (clojure.core/in-ns (quote PLACEHOLDER-1)) (if (clojure.core/= (quote PLACEHOLDER-1) (quote clojure.core)) nil (do (clojure.core/-add-loaded-lib (quote PLACEHOLDER-1)) nil))) (def PLACEHOLDER-1 (fn* ([PLACEHOLDER-0] (str "One for " PLACEHOLDER-0 ", one for me.")) ([] "One for you, one for me.")))))
