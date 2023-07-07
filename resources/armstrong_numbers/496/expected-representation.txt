@@ -1,0 +1,56 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def
+   PLACEHOLDER-7
+   (fn*
+    ([p]
+     (let*
+      [map
+       p
+       map
+       (if
+        ((read-string
+          "#object[clojure.core$seq_QMARK_ 0x763eaa32 \"clojure.core$seq_QMARK_@763eaa32\"]")
+         map)
+        (clojure.core/seq-to-map-for-destructuring map)
+        map)
+       PLACEHOLDER-5
+       map
+       PLACEHOLDER-1
+       (clojure.core/get map :num)
+       PLACEHOLDER-4
+       (clojure.core/get map :digits)
+       PLACEHOLDER-6
+       (clojure.core/get map :numDigits)]
+      (if
+       (<= PLACEHOLDER-1 0)
+       PLACEHOLDER-5
+       (recur
+        {:num (quot PLACEHOLDER-1 10),
+         :digits (conj PLACEHOLDER-4 (rem PLACEHOLDER-1 10)),
+         :numDigits (inc PLACEHOLDER-6)}))))))
+  (def
+   PLACEHOLDER-8
+   (fn*
+    ([PLACEHOLDER-0 PLACEHOLDER-3]
+     (reduce * (repeat PLACEHOLDER-3 PLACEHOLDER-0)))))
+  (def
+   PLACEHOLDER-9
+   (fn*
+    ([PLACEHOLDER-1]
+     (let*
+      [PLACEHOLDER-2
+       (PLACEHOLDER-7 {:num PLACEHOLDER-1, :digits [], :numDigits 0})]
+      (=
+       PLACEHOLDER-1
+       (reduce
+        (fn*
+         [p1# p2#]
+         (+ p1# (PLACEHOLDER-8 p2# (get PLACEHOLDER-2 :numDigits))))
+        0
+        (get PLACEHOLDER-2 :digits)))))))))

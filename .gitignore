@@ -14,9 +14,8 @@ pom.xml.asc
 *.cache/
 .cpcache
 .calva
-*/representation.txt
+**/representation.txt
 *mapping.json
 .clj-kondo/
-*representation.txt
 *representation.json
 resources/**/project.clj

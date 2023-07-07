@@ -1,0 +1,12 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def
+   PLACEHOLDER-1
+   (fn*
+    ([PLACEHOLDER-0]
+     (map (comp read-string str) (str PLACEHOLDER-0)))))))

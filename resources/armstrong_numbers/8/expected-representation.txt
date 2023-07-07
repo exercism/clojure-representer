@@ -1,0 +1,48 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (clojure.core/require '[clojure.string :as s])
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def
+   PLACEHOLDER-5
+   (fn*
+    ([PLACEHOLDER-0] (s/split (str PLACEHOLDER-0) (re-pattern "")))))
+  (def
+   PLACEHOLDER-6
+   (fn*
+    ([PLACEHOLDER-0]
+     (loop*
+      [PLACEHOLDER-3 (PLACEHOLDER-5 PLACEHOLDER-0) PLACEHOLDER-1 []]
+      (if
+       (empty? PLACEHOLDER-3)
+       PLACEHOLDER-1
+       (let*
+        [vec
+         PLACEHOLDER-3
+         seq
+         ((read-string
+           "#object[clojure.core$seq 0x7d703446 \"clojure.core$seq@7d703446\"]")
+          vec)
+         first
+         ((read-string
+           "#object[clojure.core$first 0x3aaa123b \"clojure.core$first@3aaa123b\"]")
+          seq)
+         seq
+         ((read-string
+           "#object[clojure.core$next 0x5b65917b \"clojure.core$next@5b65917b\"]")
+          seq)
+         PLACEHOLDER-4
+         first
+         PLACEHOLDER-2
+         seq]
+        (recur
+         PLACEHOLDER-2
+         (conj PLACEHOLDER-1 (Integer. PLACEHOLDER-4)))))))))
+  (def
+   PLACEHOLDER-7
+   (fn*
+    ([PLACEHOLDER-0]
+     (loop* [PLACEHOLDER-1 (PLACEHOLDER-5 PLACEHOLDER-0)]))))))

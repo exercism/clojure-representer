@@ -1,0 +1,20 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    PLACEHOLDER-0
+    (do
+     (clojure.core/-add-loaded-lib 'armstrong-numbers)
+     PLACEHOLDER-0)))
+  (def
+   PLACEHOLDER-2
+   (fn*
+    ([PLACEHOLDER-1]
+     (=
+      (double PLACEHOLDER-1)
+      (reduce
+       +
+       (map
+        (fn* [p1#] (Math/pow p1# (count (str PLACEHOLDER-1))))
+        (map (comp read-string str) (str PLACEHOLDER-1))))))))))

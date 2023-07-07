@@ -1,0 +1,17 @@
+((do
+  (do
+   (clojure.core/in-ns 'PLACEHOLDER-1)
+   (clojure.core/require '[clojure.pprint :refer [cl-format]])
+   (if
+    (clojure.core/= 'PLACEHOLDER-1 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'PLACEHOLDER-1) nil)))
+  (def
+   PLACEHOLDER-1
+   (fn*
+    ([] (PLACEHOLDER-1 nil))
+    ([PLACEHOLDER-0]
+     (cl-format
+      nil
+      "One for ~:[you~;~:*~A~], one for me."
+      PLACEHOLDER-0))))))

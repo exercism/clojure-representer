@@ -1,0 +1,16 @@
+((do
+  (do
+   (clojure.core/in-ns 'PLACEHOLDER-1)
+   (if
+    (clojure.core/= 'PLACEHOLDER-1 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'PLACEHOLDER-1) nil)))
+  (def
+   PLACEHOLDER-1
+   (fn*
+    ([PLACEHOLDER-0]
+     (if
+      (nil? PLACEHOLDER-0)
+      "One for you, one for me."
+      (format "One for %s, one for me." PLACEHOLDER-0)))
+    ([] (PLACEHOLDER-1 "you"))))))

@@ -1,0 +1,98 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def
+   PLACEHOLDER-7
+   (fn*
+    ([PLACEHOLDER-6]
+     "Wrapped Java static function Integer.parseInt"
+     (. Integer parseInt PLACEHOLDER-6))))
+  (def
+   PLACEHOLDER-8
+   (fn*
+    ([PLACEHOLDER-1]
+     "Wrapped Java static function BigInteger.valueOf"
+     (BigInteger/valueOf PLACEHOLDER-1))))
+  (def
+   PLACEHOLDER-9
+   (fn*
+    ([PLACEHOLDER-4 PLACEHOLDER-3]
+     "Wrapped Java function for power returning BigInteger"
+     (.pow (PLACEHOLDER-8 PLACEHOLDER-4) PLACEHOLDER-3))))
+  (def
+   PLACEHOLDER-10
+   (fn*
+    ([PLACEHOLDER-2]
+     "Split number into numerical digits. E.g. 123 becomes [1 2 3]"
+     (map PLACEHOLDER-7 (map str (seq (str PLACEHOLDER-2)))))))
+  (def
+   PLACEHOLDER-11
+   (fn*
+    ([PLACEHOLDER-2]
+     "Sum of a numbers digits each raised to the power of the number of digits"
+     (let*
+      [PLACEHOLDER-0 (PLACEHOLDER-10 PLACEHOLDER-2)]
+      (reduce
+       +
+       (let*
+        [iter__auto__
+         (fn*
+          iter
+          ([s]
+           (new
+            clojure.lang.LazySeq
+            (fn*
+             []
+             (loop*
+              [s s]
+              (let*
+               [s (clojure.core/seq s)]
+               (if
+                s
+                (do
+                 (if
+                  (clojure.core/chunked-seq? s)
+                  (let*
+                   [c__auto__
+                    (clojure.core/chunk-first s)
+                    size__auto__
+                    (clojure.core/int (clojure.core/count c__auto__))
+                    b
+                    (clojure.core/chunk-buffer size__auto__)]
+                   (if
+                    (loop*
+                     [i (clojure.core/int 0)]
+                     (if
+                      (clojure.core/< i size__auto__)
+                      (let*
+                       [PLACEHOLDER-5 (clojure.core/nth c__auto__ i)]
+                       (do
+                        (clojure.core/chunk-append
+                         b
+                         (PLACEHOLDER-9
+                          PLACEHOLDER-5
+                          (count PLACEHOLDER-0)))
+                        (recur (clojure.core/unchecked-inc i))))
+                      true))
+                    (clojure.core/chunk-cons
+                     (clojure.core/chunk b)
+                     (iter (clojure.core/chunk-rest s)))
+                    (clojure.core/chunk-cons
+                     (clojure.core/chunk b)
+                     nil)))
+                  (let*
+                   [PLACEHOLDER-5 (clojure.core/first s)]
+                   (clojure.core/cons
+                    (PLACEHOLDER-9 PLACEHOLDER-5 (count PLACEHOLDER-0))
+                    (iter (clojure.core/rest s)))))))))))))]
+        (iter__auto__ PLACEHOLDER-0)))))))
+  (def
+   PLACEHOLDER-12
+   (fn*
+    ([PLACEHOLDER-2]
+     "An Armstrong number is a number that is the sum of its own digits each raised to the power of the number of digits."
+     (= PLACEHOLDER-2 (PLACEHOLDER-11 PLACEHOLDER-2)))))))

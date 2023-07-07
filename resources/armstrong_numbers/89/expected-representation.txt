@@ -1,0 +1,66 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    PLACEHOLDER-0
+    (do
+     (clojure.core/-add-loaded-lib 'armstrong-numbers)
+     PLACEHOLDER-0)))
+  (def
+   PLACEHOLDER-8
+   (fn*
+    ([PLACEHOLDER-3]
+     "Convert num into array of digit."
+     (loop*
+      [PLACEHOLDER-5 PLACEHOLDER-3 PLACEHOLDER-1 []]
+      (if
+       (zero? PLACEHOLDER-5)
+       PLACEHOLDER-1
+       (recur
+        (quot PLACEHOLDER-5 10)
+        (cons (mod PLACEHOLDER-5 10) PLACEHOLDER-1)))))))
+  (def
+   PLACEHOLDER-9
+   (fn*
+    ([PLACEHOLDER-2 PLACEHOLDER-6]
+     "Calculate power of base to exp.\nOn large value, Math/pow will p[produce rounding error when converted to long. Hence this function."
+     (if
+      (zero? PLACEHOLDER-2)
+      0
+      (if
+       (= PLACEHOLDER-2 1)
+       1
+       (if
+        (= PLACEHOLDER-6 1)
+        PLACEHOLDER-2
+        (if
+         :else
+         (loop*
+          [PLACEHOLDER-1
+           (* PLACEHOLDER-2 PLACEHOLDER-2)
+           PLACEHOLDER-5
+           (- PLACEHOLDER-6 2)]
+          (if
+           (zero? PLACEHOLDER-5)
+           PLACEHOLDER-1
+           (recur
+            (* PLACEHOLDER-1 PLACEHOLDER-2)
+            (- PLACEHOLDER-5 1))))
+         PLACEHOLDER-0)))))))
+  (def
+   PLACEHOLDER-10
+   (fn*
+    ([PLACEHOLDER-3]
+     (let*
+      [PLACEHOLDER-7
+       (PLACEHOLDER-8 PLACEHOLDER-3)
+       PLACEHOLDER-4
+       (count PLACEHOLDER-7)]
+      (=
+       PLACEHOLDER-3
+       (reduce
+        +
+        (map
+         (fn* [p1#] (PLACEHOLDER-9 p1# PLACEHOLDER-4))
+         PLACEHOLDER-7)))))))))

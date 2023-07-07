@@ -1,0 +1,124 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def
+   PLACEHOLDER-12
+   (fn*
+    ([PLACEHOLDER-0 PLACEHOLDER-7]
+     (reduce * (repeat PLACEHOLDER-7 PLACEHOLDER-0)))))
+  (def
+   PLACEHOLDER-13
+   (fn*
+    ([p]
+     (let*
+      [vec
+       p
+       PLACEHOLDER-5
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        0
+        nil)
+       PLACEHOLDER-8
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        1
+        nil)]
+      [(quot PLACEHOLDER-5 10) (mod PLACEHOLDER-5 10)]))))
+  (def
+   PLACEHOLDER-14
+   (fn* ([PLACEHOLDER-4] (int (inc (Math/log10 PLACEHOLDER-4))))))
+  (def
+   PLACEHOLDER-15
+   (fn*
+    ([p]
+     (let*
+      [vec
+       p
+       PLACEHOLDER-6
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        0
+        nil)
+       PLACEHOLDER-10
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        1
+        nil)
+       PLACEHOLDER-9
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        2
+        nil)
+       PLACEHOLDER-1
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        3
+        nil)]
+      (let*
+       [PLACEHOLDER-3 (mod PLACEHOLDER-10 10)]
+       [PLACEHOLDER-6
+        (quot PLACEHOLDER-10 10)
+        PLACEHOLDER-3
+        (+
+         PLACEHOLDER-1
+         (PLACEHOLDER-12 PLACEHOLDER-3 PLACEHOLDER-6))])))))
+  (def
+   PLACEHOLDER-16
+   (fn*
+    ([PLACEHOLDER-4]
+     (if
+      (zero? PLACEHOLDER-4)
+      true
+      (=
+       PLACEHOLDER-4
+       (last
+        (last
+         (take-while
+          (fn*
+           ([p]
+            (let*
+             [vec
+              p
+              PLACEHOLDER-11
+              ((read-string
+                "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+               vec
+               0
+               nil)
+              PLACEHOLDER-5
+              ((read-string
+                "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+               vec
+               1
+               nil)
+              PLACEHOLDER-8
+              ((read-string
+                "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+               vec
+               2
+               nil)
+              PLACEHOLDER-2
+              ((read-string
+                "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+               vec
+               3
+               nil)]
+             (let*
+              [or__auto__ (pos? PLACEHOLDER-5)]
+              (if or__auto__ or__auto__ (pos? PLACEHOLDER-8))))))
+          (iterate
+           PLACEHOLDER-15
+           [(PLACEHOLDER-14 PLACEHOLDER-4)
+            PLACEHOLDER-4
+            0
+            0])))))))))))

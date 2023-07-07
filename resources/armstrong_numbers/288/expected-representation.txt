@@ -1,0 +1,200 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def
+   PLACEHOLDER-12
+   (fn*
+    ([PLACEHOLDER-0 PLACEHOLDER-7]
+     (reduce * (repeat PLACEHOLDER-7 PLACEHOLDER-0)))))
+  (def
+   PLACEHOLDER-13
+   (fn*
+    ([p]
+     (let*
+      [vec
+       p
+       PLACEHOLDER-6
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        0
+        nil)
+       PLACEHOLDER-9
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        1
+        nil)
+       PLACEHOLDER-11
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        2
+        nil)
+       PLACEHOLDER-3
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        3
+        nil)
+       PLACEHOLDER-1
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        4
+        nil)
+       PLACEHOLDER-5
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        5
+        nil)
+       PLACEHOLDER-10
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        6
+        nil)
+       PLACEHOLDER-8
+       vec]
+      (let*
+       [PLACEHOLDER-2 (count PLACEHOLDER-8)]
+       (if
+        (= PLACEHOLDER-2 2)
+        (+
+         (PLACEHOLDER-12 PLACEHOLDER-6 2)
+         (PLACEHOLDER-12 PLACEHOLDER-9 2))
+        (if
+         (= PLACEHOLDER-2 3)
+         (+
+          (PLACEHOLDER-12 PLACEHOLDER-6 3)
+          (PLACEHOLDER-12 PLACEHOLDER-9 3)
+          (PLACEHOLDER-12 PLACEHOLDER-11 3))
+         (if
+          (= PLACEHOLDER-2 4)
+          (+
+           (PLACEHOLDER-12 PLACEHOLDER-6 4)
+           (PLACEHOLDER-12 PLACEHOLDER-9 4)
+           (PLACEHOLDER-12 PLACEHOLDER-11 4)
+           (PLACEHOLDER-12 PLACEHOLDER-3 4))
+          (if
+           (= PLACEHOLDER-2 5)
+           (+
+            (PLACEHOLDER-12 PLACEHOLDER-6 5)
+            (PLACEHOLDER-12 PLACEHOLDER-9 5)
+            (PLACEHOLDER-12 PLACEHOLDER-11 5)
+            (PLACEHOLDER-12 PLACEHOLDER-3 5)
+            (PLACEHOLDER-12 PLACEHOLDER-1 5))
+           (if
+            (= PLACEHOLDER-2 6)
+            (+
+             (PLACEHOLDER-12 PLACEHOLDER-6 6)
+             (PLACEHOLDER-12 PLACEHOLDER-9 6)
+             (PLACEHOLDER-12 PLACEHOLDER-11 6)
+             (PLACEHOLDER-12 PLACEHOLDER-3 6)
+             (PLACEHOLDER-12 PLACEHOLDER-1 6)
+             (PLACEHOLDER-12 PLACEHOLDER-5 6))
+            (if
+             (= PLACEHOLDER-2 7)
+             (+
+              (PLACEHOLDER-12 PLACEHOLDER-6 7)
+              (PLACEHOLDER-12 PLACEHOLDER-9 7)
+              (PLACEHOLDER-12 PLACEHOLDER-11 7)
+              (PLACEHOLDER-12 PLACEHOLDER-3 7)
+              (PLACEHOLDER-12 PLACEHOLDER-1 7)
+              (PLACEHOLDER-12 PLACEHOLDER-5 7)
+              (PLACEHOLDER-12 PLACEHOLDER-10 7))
+             nil)))))))))))
+  (def
+   PLACEHOLDER-14
+   (fn*
+    ([PLACEHOLDER-0 PLACEHOLDER-4]
+     (mod
+      (quot PLACEHOLDER-0 (PLACEHOLDER-12 10 (dec PLACEHOLDER-4)))
+      10))))
+  (def
+   PLACEHOLDER-15
+   (fn*
+    ([PLACEHOLDER-0]
+     (let*
+      [PLACEHOLDER-6
+       (PLACEHOLDER-14 PLACEHOLDER-0 1)
+       PLACEHOLDER-9
+       (PLACEHOLDER-14 PLACEHOLDER-0 2)
+       PLACEHOLDER-11
+       (PLACEHOLDER-14 PLACEHOLDER-0 3)
+       PLACEHOLDER-3
+       (PLACEHOLDER-14 PLACEHOLDER-0 4)
+       PLACEHOLDER-1
+       (PLACEHOLDER-14 PLACEHOLDER-0 5)
+       PLACEHOLDER-5
+       (PLACEHOLDER-14 PLACEHOLDER-0 6)
+       PLACEHOLDER-10
+       (PLACEHOLDER-14 PLACEHOLDER-0 7)]
+      (if
+       (< PLACEHOLDER-0 0)
+       false
+       (if
+        (< PLACEHOLDER-0 10)
+        true
+        (if
+         (< PLACEHOLDER-0 100)
+         (=
+          (PLACEHOLDER-13 [PLACEHOLDER-6 PLACEHOLDER-9])
+          PLACEHOLDER-0)
+         (if
+          (< PLACEHOLDER-0 1000)
+          (=
+           (PLACEHOLDER-13
+            [PLACEHOLDER-6 PLACEHOLDER-9 PLACEHOLDER-11])
+           PLACEHOLDER-0)
+          (if
+           (< PLACEHOLDER-0 10000)
+           (=
+            (PLACEHOLDER-13
+             [PLACEHOLDER-6
+              PLACEHOLDER-9
+              PLACEHOLDER-11
+              PLACEHOLDER-3])
+            PLACEHOLDER-0)
+           (if
+            (< PLACEHOLDER-0 100000)
+            (=
+             (PLACEHOLDER-13
+              [PLACEHOLDER-6
+               PLACEHOLDER-9
+               PLACEHOLDER-11
+               PLACEHOLDER-3
+               PLACEHOLDER-1])
+             PLACEHOLDER-0)
+            (if
+             (< PLACEHOLDER-0 1000000)
+             (=
+              (PLACEHOLDER-13
+               [PLACEHOLDER-6
+                PLACEHOLDER-9
+                PLACEHOLDER-11
+                PLACEHOLDER-3
+                PLACEHOLDER-1
+                PLACEHOLDER-5])
+              PLACEHOLDER-0)
+             (if
+              (< PLACEHOLDER-0 10000000)
+              (=
+               (PLACEHOLDER-13
+                [PLACEHOLDER-6
+                 PLACEHOLDER-9
+                 PLACEHOLDER-11
+                 PLACEHOLDER-3
+                 PLACEHOLDER-1
+                 PLACEHOLDER-5
+                 PLACEHOLDER-10])
+               PLACEHOLDER-0)
+              (if
+               (= PLACEHOLDER-0 21897142587612075)
+               true
+               (if :else false nil))))))))))))))))

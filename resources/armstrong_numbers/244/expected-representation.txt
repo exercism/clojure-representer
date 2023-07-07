@@ -1,0 +1,24 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    PLACEHOLDER-0
+    (do
+     (clojure.core/-add-loaded-lib 'armstrong-numbers)
+     PLACEHOLDER-0)))
+  (def
+   PLACEHOLDER-3
+   (fn*
+    ([PLACEHOLDER-1]
+     (let*
+      [PLACEHOLDER-2 (str PLACEHOLDER-1)]
+      (=
+       PLACEHOLDER-1
+       (reduce
+        +
+        (map
+         (fn*
+          [p1#]
+          (.pow (biginteger (- (int p1#) 48)) (count PLACEHOLDER-2)))
+         PLACEHOLDER-2)))))))))

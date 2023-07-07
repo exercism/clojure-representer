@@ -1,0 +1,41 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    PLACEHOLDER-0
+    (do
+     (clojure.core/-add-loaded-lib 'armstrong-numbers)
+     PLACEHOLDER-0)))
+  (def
+   PLACEHOLDER-7
+   (fn*
+    ([PLACEHOLDER-1 PLACEHOLDER-2]
+     (bigint
+      (if
+       (zero? PLACEHOLDER-1)
+       1
+       (Math/pow PLACEHOLDER-1 PLACEHOLDER-2))))))
+  (def
+   PLACEHOLDER-8
+   (fn*
+    ([PLACEHOLDER-3]
+     (let*
+      [PLACEHOLDER-4
+       (str PLACEHOLDER-3)
+       PLACEHOLDER-6
+       (count PLACEHOLDER-4)
+       PLACEHOLDER-5
+       (map (comp read-string str) PLACEHOLDER-4)]
+      (let*
+       [or__auto__ (zero? PLACEHOLDER-3)]
+       (if
+        or__auto__
+        or__auto__
+        (=
+         PLACEHOLDER-3
+         (apply
+          +
+          (map
+           (fn* [p1#] (PLACEHOLDER-7 p1# PLACEHOLDER-6))
+           PLACEHOLDER-5)))))))))))

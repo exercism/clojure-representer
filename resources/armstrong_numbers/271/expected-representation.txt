@@ -1,0 +1,34 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def
+   PLACEHOLDER-5
+   (fn*
+    ([PLACEHOLDER-1]
+     (let*
+      [PLACEHOLDER-3
+       (PLACEHOLDER-6 PLACEHOLDER-1)
+       PLACEHOLDER-4
+       (count PLACEHOLDER-3)]
+      (=
+       PLACEHOLDER-1
+       (reduce
+        +
+        (map
+         (fn* [p1#] (PLACEHOLDER-7 p1# PLACEHOLDER-4))
+         PLACEHOLDER-3)))))))
+  (def
+   PLACEHOLDER-6
+   (fn*
+    ([PLACEHOLDER-2]
+     "Separate an int into a list of each digit (e.g. 153 => (1 5 3))"
+     (map (comp read-string str) (str PLACEHOLDER-2)))))
+  (def
+   PLACEHOLDER-7
+   (fn*
+    ([PLACEHOLDER-0 PLACEHOLDER-2]
+     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-0)))))))

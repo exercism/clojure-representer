@@ -1,0 +1,36 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (clojure.core/require '[clojure.string :as str :refer [split]])
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    PLACEHOLDER-0
+    (do
+     (clojure.core/-add-loaded-lib 'armstrong-numbers)
+     PLACEHOLDER-0)))
+  (def
+   PLACEHOLDER-4
+   (fn*
+    ([PLACEHOLDER-1 PLACEHOLDER-2]
+     (reduce * (repeat PLACEHOLDER-2 PLACEHOLDER-1)))))
+  (def
+   PLACEHOLDER-5
+   (fn*
+    ([PLACEHOLDER-2]
+     (map
+      (fn* [p1#] (Integer/parseInt p1#))
+      (split (str PLACEHOLDER-2) (re-pattern ""))))))
+  (def
+   PLACEHOLDER-6
+   (fn*
+    ([PLACEHOLDER-2]
+     (let*
+      [PLACEHOLDER-3
+       (PLACEHOLDER-5 PLACEHOLDER-2)
+       PLACEHOLDER-3
+       (map
+        (fn* [p1#] (PLACEHOLDER-4 p1# (count PLACEHOLDER-3)))
+        PLACEHOLDER-3)
+       PLACEHOLDER-3
+       (reduce + PLACEHOLDER-3)]
+      (= PLACEHOLDER-3 PLACEHOLDER-2)))))))

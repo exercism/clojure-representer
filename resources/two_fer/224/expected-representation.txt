@@ -1,0 +1,27 @@
+((do
+  (do
+   (clojure.core/in-ns 'PLACEHOLDER-2)
+   (clojure.core/require '[clojure.string :as str])
+   (if
+    (clojure.core/= 'PLACEHOLDER-2 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'PLACEHOLDER-2) nil)))
+  (def PLACEHOLDER-1 "One for _ and one for me")
+  (def
+   PLACEHOLDER-2
+   (fn*
+    ([& p]
+     (let*
+      [map
+       p
+       map
+       (if
+        ((read-string
+          "#object[clojure.core$seq_QMARK_ 0x763eaa32 \"clojure.core$seq_QMARK_@763eaa32\"]")
+         map)
+        (clojure.core/seq-to-map-for-destructuring map)
+        map)
+       PLACEHOLDER-0
+       (clojure.core/get map :name "you")]
+      (str/replace PLACEHOLDER-1 "_" PLACEHOLDER-0)))))
+  (PLACEHOLDER-2)))

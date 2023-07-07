@@ -1,0 +1,26 @@
+((do
+  (do
+   (clojure.core/in-ns 'PLACEHOLDER-2)
+   (if
+    (clojure.core/= 'PLACEHOLDER-2 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'PLACEHOLDER-2) nil)))
+  (def
+   PLACEHOLDER-2
+   (fn*
+    ([& p]
+     (let*
+      [vec
+       p
+       PLACEHOLDER-0
+       ((read-string
+         "#object[clojure.core$nth 0x75cd3577 \"clojure.core$nth@75cd3577\"]")
+        vec
+        0
+        nil)]
+      (let*
+       [PLACEHOLDER-1
+        (let*
+         [or__auto__ PLACEHOLDER-0]
+         (if or__auto__ or__auto__ "you"))]
+       (str "One for " PLACEHOLDER-1 ", one for me."))))))))

@@ -1,0 +1,69 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def
+   PLACEHOLDER-2
+   (fn*
+    ([PLACEHOLDER-0]
+     (==
+      PLACEHOLDER-0
+      (reduce
+       +
+       (let*
+        [iter__auto__
+         (fn*
+          iter
+          ([s]
+           (new
+            clojure.lang.LazySeq
+            (fn*
+             []
+             (loop*
+              [s s]
+              (let*
+               [s (clojure.core/seq s)]
+               (if
+                s
+                (do
+                 (if
+                  (clojure.core/chunked-seq? s)
+                  (let*
+                   [c__auto__
+                    (clojure.core/chunk-first s)
+                    size__auto__
+                    (clojure.core/int (clojure.core/count c__auto__))
+                    b
+                    (clojure.core/chunk-buffer size__auto__)]
+                   (if
+                    (loop*
+                     [i (clojure.core/int 0)]
+                     (if
+                      (clojure.core/< i size__auto__)
+                      (let*
+                       [PLACEHOLDER-1 (clojure.core/nth c__auto__ i)]
+                       (do
+                        (clojure.core/chunk-append
+                         b
+                         (Math/pow
+                          (- (byte PLACEHOLDER-1) 48)
+                          (count (str PLACEHOLDER-0))))
+                        (recur (clojure.core/unchecked-inc i))))
+                      true))
+                    (clojure.core/chunk-cons
+                     (clojure.core/chunk b)
+                     (iter (clojure.core/chunk-rest s)))
+                    (clojure.core/chunk-cons
+                     (clojure.core/chunk b)
+                     nil)))
+                  (let*
+                   [PLACEHOLDER-1 (clojure.core/first s)]
+                   (clojure.core/cons
+                    (Math/pow
+                     (- (byte PLACEHOLDER-1) 48)
+                     (count (str PLACEHOLDER-0)))
+                    (iter (clojure.core/rest s)))))))))))))]
+        (iter__auto__ (str PLACEHOLDER-0))))))))))

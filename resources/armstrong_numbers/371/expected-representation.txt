@@ -1,0 +1,40 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    PLACEHOLDER-0
+    (do
+     (clojure.core/-add-loaded-lib 'armstrong-numbers)
+     PLACEHOLDER-0)))
+  (def
+   PLACEHOLDER-7
+   (fn*
+    ([PLACEHOLDER-4]
+     (loop*
+      [PLACEHOLDER-5 PLACEHOLDER-4 PLACEHOLDER-3 '()]
+      (if
+       (zero? PLACEHOLDER-5)
+       PLACEHOLDER-3
+       (recur
+        (quot PLACEHOLDER-5 10)
+        (conj PLACEHOLDER-3 (mod PLACEHOLDER-5 10))))))))
+  (def
+   PLACEHOLDER-8
+   (fn*
+    ([PLACEHOLDER-1 PLACEHOLDER-4]
+     (reduce * (repeat PLACEHOLDER-4 PLACEHOLDER-1)))))
+  (def
+   PLACEHOLDER-9
+   (fn*
+    ([PLACEHOLDER-2]
+     "An Armstrong number is a number that is the sum of its own digits each raised to the power of the number of digits."
+     (let*
+      [PLACEHOLDER-6 (count (str PLACEHOLDER-2))]
+      (=
+       PLACEHOLDER-2
+       (reduce
+        +
+        (map
+         (fn* [p1#] (PLACEHOLDER-8 p1# PLACEHOLDER-6))
+         (PLACEHOLDER-7 PLACEHOLDER-2))))))))))

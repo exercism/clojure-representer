@@ -1,0 +1,75 @@
+((do
+  (do
+   (clojure.core/in-ns 'armstrong-numbers)
+   (if
+    (clojure.core/= 'armstrong-numbers 'clojure.core)
+    nil
+    (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def
+   PLACEHOLDER-3
+   (fn*
+    ([PLACEHOLDER-1]
+     (=
+      PLACEHOLDER-1
+      (let*
+       [PLACEHOLDER-2 (count (str PLACEHOLDER-1))]
+       (reduce
+        +
+        (let*
+         [iter__auto__
+          (fn*
+           iter
+           ([s]
+            (new
+             clojure.lang.LazySeq
+             (fn*
+              []
+              (loop*
+               [s s]
+               (let*
+                [s (clojure.core/seq s)]
+                (if
+                 s
+                 (do
+                  (if
+                   (clojure.core/chunked-seq? s)
+                   (let*
+                    [c__auto__
+                     (clojure.core/chunk-first s)
+                     size__auto__
+                     (clojure.core/int (clojure.core/count c__auto__))
+                     b
+                     (clojure.core/chunk-buffer size__auto__)]
+                    (if
+                     (loop*
+                      [i (clojure.core/int 0)]
+                      (if
+                       (clojure.core/< i size__auto__)
+                       (let*
+                        [PLACEHOLDER-0 (clojure.core/nth c__auto__ i)]
+                        (do
+                         (clojure.core/chunk-append
+                          b
+                          (reduce
+                           *
+                           (repeat
+                            PLACEHOLDER-2
+                            (Character/digit PLACEHOLDER-0 10))))
+                         (recur (clojure.core/unchecked-inc i))))
+                       true))
+                     (clojure.core/chunk-cons
+                      (clojure.core/chunk b)
+                      (iter (clojure.core/chunk-rest s)))
+                     (clojure.core/chunk-cons
+                      (clojure.core/chunk b)
+                      nil)))
+                   (let*
+                    [PLACEHOLDER-0 (clojure.core/first s)]
+                    (clojure.core/cons
+                     (reduce
+                      *
+                      (repeat
+                       PLACEHOLDER-2
+                       (Character/digit PLACEHOLDER-0 10)))
+                     (iter (clojure.core/rest s)))))))))))))]
+         (iter__auto__ (str PLACEHOLDER-1)))))))))))
