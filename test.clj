@@ -46,4 +46,6 @@
   (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "mapping.json")))
         (range 50)))
 
-(clojure.test/run-tests)
+(let [report (clojure.test/run-tests)]
+  (System/exit (+ (:fail report)
+                  (:error report))))
