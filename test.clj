@@ -26,7 +26,7 @@
             expected       (slurp (str "resources/two_fer/" n "/expected-representation.txt"))]
         (is (= representation expected)))))
   ;; clean up files
-  (run! #(Files/delete (as-path (io/file (str "resources/two_fer/" % "/") "representation.txt")))
+  #_(run! #(Files/delete (as-path (io/file (str "resources/two_fer/" % "/") "representation.txt")))
         (range 50))
   (run! #(Files/delete (as-path (io/file (str "resources/two_fer/" % "/") "mapping.json")))
         (range 50)))
@@ -41,9 +41,11 @@
             expected       (slurp (str "resources/armstrong_numbers/" n "/expected-representation.txt"))]
         (is (= representation expected)))))
   ;; clean up files
-  (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "representation.txt")))
+  #_(run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "representation.txt")))
         (range 50))
   (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "mapping.json")))
         (range 50)))
 
-(clojure.test/run-tests)
+(let [report (clojure.test/run-tests)]
+  (System/exit (+ (:fail report)
+                  (:error report))))

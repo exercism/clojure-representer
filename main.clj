@@ -103,9 +103,9 @@
           (json/generate-string (into {} (map (fn [[k v]] [v k]) @mappings))
                                 {:pretty true}))
     (spit (str (io/file out-dir "representation.txt"))
-          (with-out-str (pp/pprint representation)))
+          (str representation))
     (spit (str (io/file out-dir "representation.json"))
-          (json/generate-string {:version 1} {:pretty true}))))
+          (json/generate-string {:version 2} {:pretty true}))))
 
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug :in-dir in-dir :out-dir out-dir}))
