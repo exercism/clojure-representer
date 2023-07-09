@@ -2,9 +2,13 @@
          '[clojure.string :as str]
          '[main :refer :all])
 
-(locals f)
+locals
 (placeholders f)
 (replace-locals f)
+
+(replace-defs
+ (-> (str (list (replace-locals f)))
+     z/of-string))
 
 (z/sexpr (z/of-string* (str/replace
                         (str

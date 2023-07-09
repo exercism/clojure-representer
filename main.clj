@@ -8,9 +8,6 @@
             [clojure.edn :as edn]
             [clojure.java.shell :as shell]))
 
-(def f (io/file "resources" "armstrong_numbers"
-                "0" "src" "armstrong_numbers.clj"))
-
 (defn file->code
   "Takes a filename as a string or java.io.File.
    Returns the Clojure forms wrapped in a `do`."
@@ -41,16 +38,21 @@
              "{:output {:format :edn},:analysis {:locals true :arglists true}}"]]
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
 
-(defn locals [f]
-  (->> (analyze f)
-       :locals
-       (into (:local-usages (analyze f)))
-       (map :name)
-       set))
+(def f (io/file "resources" "armstrong_numbers"
+                "0" "src" "armstrong_numbers.clj"))
 
-(defn placeholders [f]
-  (let [locals (locals f)
-        placeholders (map #(symbol (str "PLACEHOLDER-" %)) 
+(def locals
+  (let [analysis (analyze f)]
+    (->> analysis
+         :locals
+         (into (:local-usages analysis))
+         (map :name)
+         set)))
+
+locals
+
+(def placeholders
+  (let [placeholders (map #(symbol (str "PLACEHOLDER-" %)) 
                           (range (count locals)))]
     (zipmap locals placeholders)))
 
@@ -58,11 +60,10 @@
 (def placeholder (atom 0)) 
 
 (defn replace-locals [f]
-  (let [placeholders (placeholders f)]
-    (reset! mappings placeholders)
-    (reset! placeholder (count placeholders))
-    (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
-             (walk/macroexpand-all (z/sexpr (z/of-file* f))))))
+  (reset! mappings placeholders)
+  (reset! placeholder (count placeholders))
+  (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
+                (walk/macroexpand-all (z/sexpr (z/of-file* f)))))
 
 (def code (atom nil))
 

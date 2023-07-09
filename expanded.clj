@@ -17,6 +17,6 @@
         +
         (map
          (fn*
-          [p1__8673#]
-          (. (biginteger (Character/digit p1__8673# 10)) pow ln))
+          [p1__4811#]
+          (. (biginteger (Character/digit p1__4811# 10)) pow ln))
          xs)))))))))
