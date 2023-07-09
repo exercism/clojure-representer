@@ -11,13 +11,19 @@
 (def f (io/file "resources" "armstrong_numbers"
                 "0" "src" "armstrong_numbers.clj"))
 
+(defn file->code
+  "Takes a filename as a string or java.io.File.
+   Returns the Clojure forms wrapped in a `do`."
+  [f]
+  (z/sexpr (z/of-file (str f))))
+
 ;; we need to expand macros *before* we analyze locals,
 ;; otherwise there will be unnamed shorthand variables.
 (defn expand-macros 
   "Takes a filename as a string or java.io.File, and returns
    a recursively macroexpanded Clojure form wrapped in a `do`."
   [f]
-  (walk/macroexpand-all (z/sexpr (z/of-file (str f)))))
+  (walk/macroexpand-all (file->code f)))
 
 (expand-macros f)
 
