@@ -8,7 +8,18 @@
             [clojure.edn :as edn]
             [clojure.java.shell :as shell]))
 
-(def f (io/file "resources\\armstrong_numbers\\0\\src\\armstrong_numbers.clj"))
+(def f (io/file "resources" "armstrong_numbers"
+                "0" "src" "armstrong_numbers.clj"))
+
+;; we need to expand macros *before* we analyze locals,
+;; otherwise there will be unnamed shorthand variables.
+(defn expand-macros 
+  "Takes a filename as a string or java.io.File, and returns
+   a recursively macroexpanded Clojure form wrapped in a `do`."
+  [f]
+  (walk/macroexpand-all (z/sexpr (z/of-file (str f)))))
+
+(expand-macros f)
 
 (defn analyze [f]
   (let [bin (if (try (shell/sh "ls") (catch Exception e false))
@@ -25,6 +36,8 @@
        (into (:local-usages (analyze f)))
        (map :name)
        set))
+
+(locals f)
 
 (defn placeholders [f]
   (let [locals (locals f)
