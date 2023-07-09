@@ -17,7 +17,7 @@
        length
        (count num-seq)
        powers
-       (map (fn* [p1__433#] (pow p1__433# length)) num-seq)
+       (map (fn* [p1__435#] (pow p1__435# length)) num-seq)
        sum
        (apply + powers)]
       (= num sum)))))))

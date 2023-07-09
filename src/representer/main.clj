@@ -7,13 +7,23 @@
             [clojure.pprint :as pp]
             [clojure.walk :as walk]
             [clojure.edn :as edn]
-            [clojure.java.shell :as shell]))
+            [clojure.java.shell :as shell]
+            [clojure.string :as s]))
 
 (defn file->code
   "Takes a filename as a string or java.io.File.
    Returns the Clojure forms wrapped in a `do`."
   [f]
   (z/sexpr (z/of-file* (str f))))
+
+;; Destructuring bindings expand to something like:
+;; #object[clojure.core$nth 0x75cd3577 "clojure.core$nth@75cd3577"]
+;; I can normalize it using a regex.
+
+(defn clean [s]
+  (-> s
+      (str/replace #"nth\s0x\w+" "nth")
+      (str/replace #"nth@\w+" "nth")))
 
 ;; we need to expand macros *before* we analyze locals,
 ;; otherwise there could be unnamed shorthand variables.
@@ -29,7 +39,10 @@
              walk/macroexpand-all
              list
              pp/pprint
-             with-out-str)))
+             with-out-str
+             clean)))
+
+
 
 (defn analyze [f]
   (let [_ (expand-macros f)
@@ -85,17 +98,11 @@
    Outputs the zipper as-is."
   [z]
   (if-not (next-unreplaced-def z) z
-          (let [var
-                (-> z
-                    next-unreplaced-def
-                    z/right
-                    z/sexpr)
+          (let [var (-> z next-unreplaced-def z/right z/sexpr)
                 z2
-                (z/prewalk z (fn select [zloc]
-                               (= var (z/sexpr zloc)))
+                (z/prewalk z (fn select [zloc] (= var (z/sexpr zloc)))
                            (fn visit [zloc]
                              (z/replace zloc (symbol (str "PLACEHOLDER-" @placeholder)))))]
-
             (reset! code (z/of-string (-> z2 z/root-string)))
             (swap! mappings assoc (str var) (str "PLACEHOLDER-" @placeholder))
             (swap! placeholder inc)
