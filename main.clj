@@ -15,26 +15,30 @@
   "Takes a filename as a string or java.io.File.
    Returns the Clojure forms wrapped in a `do`."
   [f]
-  (z/sexpr (z/of-file (str f))))
+  (z/sexpr (z/of-file* (str f))))
 
 ;; we need to expand macros *before* we analyze locals,
-;; otherwise there will be unnamed shorthand variables.
+;; otherwise there could be unnamed shorthand variables.
+;; This way they will be converted to standard anonymous functions.
 (defn expand-macros 
   "Takes a filename as a string or java.io.File, and returns
    a recursively macroexpanded Clojure form wrapped in a `do`."
   [f]
-  (walk/macroexpand-all (file->code f)))
-
-(expand-macros f)
+  (spit "expanded.clj"
+        (->> f
+             file->code
+             walk/macroexpand-all
+             list
+             pp/pprint
+             with-out-str)))
 
 (defn analyze [f]
-  (let [bin (if (try (shell/sh "ls") (catch Exception e false))
+  (let [_ (expand-macros f)
+        bin (if (try (shell/sh "ls") (catch Exception e false))
                    "./clj-kondo" "./clj-kondo.exe")
-        cmd [bin "--lint" (str f) "--config"
+        cmd [bin "--lint" "expanded.clj" "--config"
              "{:output {:format :edn},:analysis {:locals true :arglists true}}"]]
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
-
-(analyze f)
 
 (defn locals [f]
   (->> (analyze f)
