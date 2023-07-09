@@ -49,8 +49,6 @@
          (map :name)
          set)))
 
-locals
-
 (def placeholders
   (let [placeholders (map #(symbol (str "PLACEHOLDER-" %)) 
                           (range (count locals)))]
@@ -63,7 +61,7 @@ locals
   (reset! mappings placeholders)
   (reset! placeholder (count placeholders))
   (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
-                (walk/macroexpand-all (z/sexpr (z/of-file* f)))))
+                (walk/macroexpand-all (z/sexpr (z/of-file* "expanded.clj")))))
 
 (def code (atom nil))
 

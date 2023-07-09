@@ -1,18 +1,10 @@
 (require '[rewrite-clj.zip :as z]
-         '[clojure.string :as str]
          '[main :refer :all])
 
 locals
-(placeholders f)
+placeholders
 (replace-locals f)
 
 (replace-defs
  (-> (str (list (replace-locals f)))
      z/of-string))
-
-(z/sexpr (z/of-string* (str/replace
-                        (str
-                         (replace-defs
-                          (-> (str (list (replace-locals f)))
-                              z/of-string)))
-                        #"(\w+)__\d+" "$1")))
