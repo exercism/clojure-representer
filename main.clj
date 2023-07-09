@@ -11,9 +11,13 @@
 (def f (io/file "resources\\armstrong_numbers\\0\\src\\armstrong_numbers.clj"))
 
 (defn analyze [f]
-  (let [cmd ["./clj-kondo" "--lint" (str f) "--config"
+  (let [bin (if (try (shell/sh "ls") (catch Exception e false))
+                   "./clj-kondo" "./clj-kondo.exe")
+        cmd [bin "--lint" (str f) "--config"
              "{:output {:format :edn},:analysis {:locals true :arglists true}}"]]
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
+
+(analyze f)
 
 (defn locals [f]
   (->> (analyze f)
@@ -27,6 +31,8 @@
         placeholders (map #(symbol (str "PLACEHOLDER-" %)) 
                           (range (count locals)))]
     (zipmap locals placeholders)))
+
+(placeholders f)
 
 (def mappings (atom {}))
 (def placeholder (atom 0)) 
