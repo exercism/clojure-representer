@@ -1,6 +1,10 @@
 (require '[rewrite-clj.zip :as z]
          '[clojure.string :as str]
-         '[main :refer [replace-defs replace-locals f]])
+         '[main :refer :all])
+
+(locals f)
+(placeholders f)
+(replace-locals f)
 
 (z/sexpr (z/of-string* (str/replace
                         (str

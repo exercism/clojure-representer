@@ -48,15 +48,11 @@
        (map :name)
        set))
 
-(locals f)
-
 (defn placeholders [f]
   (let [locals (locals f)
         placeholders (map #(symbol (str "PLACEHOLDER-" %)) 
                           (range (count locals)))]
     (zipmap locals placeholders)))
-
-(placeholders f)
 
 (def mappings (atom {}))
 (def placeholder (atom 0)) 
@@ -68,13 +64,11 @@
     (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
              (walk/macroexpand-all (z/sexpr (z/of-file* f))))))
 
-(replace-locals f)
-
 (def code (atom nil))
 
 (defn next-unreplaced-def
-  "Returns the next unreplaced top-level def,
-   by a depth-first walk."
+  "Returns the next unreplaced top-level def by a depth-first walk. 
+   If all defs have been replaced, returns nil."
   [z]
   (z/find-next-depth-first 
    z
@@ -112,16 +106,6 @@
   (if-not (next-unreplaced-def z)
     (z/sexpr z)
       (replace-defs (replace-def z))))
-
-(comment
-  (z/sexpr (z/of-string* (str/replace 
-                          (str
-                           (replace-defs
-                            (-> (str (list (replace-locals f)))
-                                z/of-string)))
-                          #"(\w+)__\d+" "$1")))
-  
-  )
 
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [file           (io/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))
