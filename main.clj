@@ -4,8 +4,11 @@
             [rewrite-clj.zip :as z]
             [cheshire.core :as json]
             [clojure.pprint :as pp]
+            [clojure.walk :as walk]
             [clojure.edn :as edn]
             [clojure.java.shell :as shell]))
+
+(def f (io/file "resources\\armstrong_numbers\\0\\src\\armstrong_numbers.clj"))
 
 (defn analyze [f]
   (let [cmd ["./clj-kondo" "--lint" (str f) "--config"
@@ -28,42 +31,12 @@
 (def mappings (atom {}))
 (def placeholder (atom 0)) 
 
-(defn walk
-  "Traverses form, an arbitrary data structure.  inner and outer are
-  functions.  Applies inner to each element of form, building up a
-  data structure of the same type, then applies outer to the result.
-  Recognizes all Clojure data structures. Consumes seqs as with doall."
-
-  {:added "1.1"}
-  [inner outer form]
-  (cond
-    (list? form) (outer (apply list (map inner form)))
-    (instance? clojure.lang.IMapEntry form)
-    (outer (clojure.lang.MapEntry/create (inner (key form)) (inner (val form))))
-    (seq? form) (outer (doall (map inner form)))
-    (instance? clojure.lang.IRecord form)
-    (outer (reduce (fn [r x] (conj r (inner x))) form form))
-    (coll? form) (outer (into (empty form) (map inner form)))
-    :else (outer form)))
-
-(defn prewalk
-  "Like postwalk, but does pre-order traversal."
-  {:added "1.1"}
-  [f form]
-  (walk (partial prewalk f) identity (f form)))
-
-(defn macroexpand-all
-  "Recursively performs all possible macroexpansions in form."
-  {:added "1.1"}
-  [form]
-  (prewalk (fn [x] (if (seq? x) (macroexpand x) x)) form))
-
 (defn replace-locals [f]
   (let [placeholders (placeholders f)]
     (reset! mappings placeholders)
     (reset! placeholder (count placeholders))
-    (prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
-             (macroexpand-all (z/sexpr (z/of-file* f))))))
+    (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
+             (walk/macroexpand-all (z/sexpr (z/of-file* f))))))
 
 (def code (atom nil))
 
@@ -71,11 +44,12 @@
   "Returns non-nil if the code represented by `z`
    contains an unreplaced top-level def."
   [z]
-  (z/find-next-depth-first z
-                           #(and (= 'def (z/sexpr %))
-                                 (or (< (count (str (z/sexpr (z/right %)))) 12)
-                                     (not= "PLACEHOLDER-"
-                                           (subs (str (z/sexpr (z/right %))) 0 12))))))
+  (z/find-next-depth-first 
+   z
+   #(and (= 'def (z/sexpr %))
+         (or (< (count (str (z/sexpr (z/right %)))) 12)
+             (not= "PLACEHOLDER-"
+                   (subs (str (z/sexpr (z/right %))) 0 12))))))
 
 (defn replace-def
   "Takes a zipper representing normalized code,
@@ -86,18 +60,19 @@
    Outputs the zipper as-is."
   [z]
   (if-not (unreplaced-def? z) z
-          (let [var (-> z (z/find-next-depth-first
-                           #(and (= 'def (z/sexpr %))
-                                 (or (< (count (str (z/sexpr (z/right %)))) 12)
-                                     (not= "PLACEHOLDER-"
-                                           (subs (str (z/sexpr (z/right %))) 0 12)))))
-                        z/right
-                        z/sexpr)
+          (let [var 
+                (-> z (z/find-next-depth-first
+                       #(and (= 'def (z/sexpr %))
+                             (or (< (count (str (z/sexpr (z/right %)))) 12)
+                                 (not= "PLACEHOLDER-"
+                                       (subs (str (z/sexpr (z/right %))) 0 12)))))
+                    z/right
+                    z/sexpr)
                 z2 
-                    (z/prewalk z (fn select [zloc]
-                                   (= var (z/sexpr zloc)))
-                               (fn visit [zloc]
-                                 (z/replace zloc (symbol (str "PLACEHOLDER-" @placeholder)))))]
+                (z/prewalk z (fn select [zloc]
+                               (= var (z/sexpr zloc)))
+                           (fn visit [zloc]
+                             (z/replace zloc (symbol (str "PLACEHOLDER-" @placeholder)))))]
             
               (reset! code (z/of-string (-> z2 z/root-string)))
               (swap! mappings assoc (str var) (str "PLACEHOLDER-" @placeholder))
