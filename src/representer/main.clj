@@ -39,21 +39,7 @@
              "{:output {:format :edn},:analysis {:locals true :arglists true}}"]]
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
 
-(def slug (first *command-line-args*))
-(def in-dir (second *command-line-args*))
-(def out-dir (last *command-line-args*))
-
-(def slug "armstrong-numbers")
-(def in-dir (str (fs/path "resources" "armstrong_numbers" "0")))
-(def out-dir (str (fs/path "resources" "armstrong_numbers" "0")))
-
-in-dir
-
-(def f (str (io/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))))
-
-f
-
-(def locals
+(defn locals [f]
   (let [analysis (analyze f)]
     (->> analysis
          :locals
@@ -61,19 +47,21 @@ f
          (map :name)
          set)))
 
-(def placeholders
-  (let [placeholders (map #(symbol (str "PLACEHOLDER-" %))
+(defn placeholders [f]
+  (let [locals (locals f)
+        placeholders (map #(symbol (str "PLACEHOLDER-" %))
                           (range (count locals)))]
     (zipmap locals placeholders)))
 
 (def mappings (atom {}))
 (def placeholder (atom 0))
 
-(defn replace-locals []
-  (reset! mappings placeholders)
-  (reset! placeholder (count placeholders))
-  (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
-                (walk/macroexpand-all (z/sexpr (z/of-file* "expanded.clj")))))
+(defn replace-locals [f]
+  (let [placeholders (placeholders f)]
+    (reset! mappings placeholders)
+    (reset! placeholder (count placeholders))
+    (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
+                  (walk/macroexpand-all (z/sexpr (z/of-file* "expanded.clj"))))))
 
 (def code (atom nil))
 
@@ -119,8 +107,9 @@ f
     (replace-defs (replace-def z))))
 
 (defn represent [{:keys [slug in-dir out-dir]}]
-  (let [representation (replace-defs
-                        (-> (str (list (replace-locals)))
+  (let [f (fs/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))
+        representation (replace-defs
+                        (-> (str (list (replace-locals f)))
                             z/of-string))]
     (spit (str (io/file out-dir "mapping.json"))
           (json/generate-string (into {} (map (fn [[k v]] [v k]) @mappings))
@@ -129,11 +118,3 @@ f
           (str representation))
     (spit (str (io/file out-dir "representation.json"))
           (json/generate-string {:version 2} {:pretty true}))))
-
-(defn -main [slug in-dir out-dir]
-  (represent {:slug slug :in-dir in-dir :out-dir out-dir}))
-
-#_(when *command-line-args*
-  (let [[slug in out] *command-line-args*]
-    (println slug in out)
-    (-main slug in out)))
