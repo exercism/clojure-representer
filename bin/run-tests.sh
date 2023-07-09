@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-bb ./test.clj
+bb -m representer.test

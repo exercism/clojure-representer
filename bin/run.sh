@@ -12,4 +12,4 @@ fi
 # Create the output directory if it doesn't exist
 mkdir -p "$3"
 
-bb ./main.clj "$1" "$2" "$3"
+bb -m representer.cli "$1" "$2" "$3"
