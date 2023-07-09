@@ -68,11 +68,13 @@
     (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
              (walk/macroexpand-all (z/sexpr (z/of-file* f))))))
 
+(replace-locals f)
+
 (def code (atom nil))
 
-(defn unreplaced-def?
-  "Returns non-nil if the code represented by `z`
-   contains an unreplaced top-level def."
+(defn next-unreplaced-def
+  "Returns the next unreplaced top-level def,
+   by a depth-first walk."
   [z]
   (z/find-next-depth-first 
    z
@@ -89,13 +91,10 @@
    If all var-names have been replaced,
    Outputs the zipper as-is."
   [z]
-  (if-not (unreplaced-def? z) z
+  (if-not (next-unreplaced-def z) z
           (let [var 
-                (-> z (z/find-next-depth-first
-                       #(and (= 'def (z/sexpr %))
-                             (or (< (count (str (z/sexpr (z/right %)))) 12)
-                                 (not= "PLACEHOLDER-"
-                                       (subs (str (z/sexpr (z/right %))) 0 12)))))
+                (-> z
+                    next-unreplaced-def
                     z/right
                     z/sexpr)
                 z2 
@@ -110,7 +109,7 @@
               z2)))
 
 (defn replace-defs [z]
-  (if-not (unreplaced-def? z)
+  (if-not (next-unreplaced-def z)
     (z/sexpr z)
       (replace-defs (replace-def z))))
 
