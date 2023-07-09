@@ -1,7 +1,8 @@
-(ns main
+(ns representer.main
   (:require [clojure.java.io :as io]
             [clojure.string :as str]
             [rewrite-clj.zip :as z]
+            [babashka.fs :as fs]
             [cheshire.core :as json]
             [clojure.pprint :as pp]
             [clojure.walk :as walk]
@@ -33,13 +34,24 @@
 (defn analyze [f]
   (let [_ (expand-macros f)
         bin (if (try (shell/sh "ls") (catch Exception e false))
-                   "./clj-kondo" "./clj-kondo.exe")
+              "./clj-kondo" "./clj-kondo.exe")
         cmd [bin "--lint" "expanded.clj" "--config"
              "{:output {:format :edn},:analysis {:locals true :arglists true}}"]]
     (:analysis (edn/read-string (:out (apply shell/sh cmd))))))
 
-(def f (io/file "resources" "armstrong_numbers"
-                "0" "src" "armstrong_numbers.clj"))
+(def slug (first *command-line-args*))
+(def in-dir (second *command-line-args*))
+(def out-dir (last *command-line-args*))
+
+(def slug "armstrong-numbers")
+(def in-dir (str (fs/path "resources" "armstrong_numbers" "0")))
+(def out-dir (str (fs/path "resources" "armstrong_numbers" "0")))
+
+in-dir
+
+(def f (str (io/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))))
+
+f
 
 (def locals
   (let [analysis (analyze f)]
@@ -50,12 +62,12 @@
          set)))
 
 (def placeholders
-  (let [placeholders (map #(symbol (str "PLACEHOLDER-" %)) 
+  (let [placeholders (map #(symbol (str "PLACEHOLDER-" %))
                           (range (count locals)))]
     (zipmap locals placeholders)))
 
 (def mappings (atom {}))
-(def placeholder (atom 0)) 
+(def placeholder (atom 0))
 
 (defn replace-locals []
   (reset! mappings placeholders)
@@ -69,7 +81,7 @@
   "Returns the next unreplaced top-level def by a depth-first walk. 
    If all defs have been replaced, returns nil."
   [z]
-  (z/find-next-depth-first 
+  (z/find-next-depth-first
    z
    #(and (= 'def (z/sexpr %))
          (or (< (count (str (z/sexpr (z/right %)))) 12)
@@ -85,26 +97,26 @@
    Outputs the zipper as-is."
   [z]
   (if-not (next-unreplaced-def z) z
-          (let [var 
+          (let [var
                 (-> z
                     next-unreplaced-def
                     z/right
                     z/sexpr)
-                z2 
+                z2
                 (z/prewalk z (fn select [zloc]
                                (= var (z/sexpr zloc)))
                            (fn visit [zloc]
                              (z/replace zloc (symbol (str "PLACEHOLDER-" @placeholder)))))]
-            
-              (reset! code (z/of-string (-> z2 z/root-string)))
-              (swap! mappings assoc (str var) (str "PLACEHOLDER-" @placeholder))
-              (swap! placeholder inc)
-              z2)))
+
+            (reset! code (z/of-string (-> z2 z/root-string)))
+            (swap! mappings assoc (str var) (str "PLACEHOLDER-" @placeholder))
+            (swap! placeholder inc)
+            z2)))
 
 (defn replace-defs [z]
   (if-not (next-unreplaced-def z)
     (z/sexpr z)
-      (replace-defs (replace-def z))))
+    (replace-defs (replace-def z))))
 
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [representation (replace-defs
@@ -121,7 +133,7 @@
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug :in-dir in-dir :out-dir out-dir}))
 
-(when *command-line-args*
+#_(when *command-line-args*
   (let [[slug in out] *command-line-args*]
     (println slug in out)
     (-main slug in out)))

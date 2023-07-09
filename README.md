@@ -17,7 +17,7 @@ bb ./main.clj "two_fer" "resources/two_fer/0/" "resources/two_fer/0/"
 Requires [babashka](https://github.com/babashka/babashka). To test 100 submissions:
 
 ``` sh
-bb ./test.clj
+bb -m representer.test
 ```
 
 ## Testing the representer in Docker

@@ -1,9 +1,9 @@
-
-(require '[clojure.test :refer :all]
-         ;'[main :refer [represent]]
-         '[clojure.java.io :as io])
-(import '[java.nio.file Files Path]
-         '[java.net URI])
+(ns representer.test
+  (:require [clojure.test :refer :all]
+            [representer.main :refer [represent]]
+            [clojure.java.io :as io])
+  (:import [java.nio.file Files Path]
+           [java.net URI]))
 
 (defn- as-path
   ^Path [path]
@@ -11,10 +11,6 @@
       (if (instance? URI path)
         (java.nio.file.Paths/get ^URI path)
         (.toPath (io/file path)))))
-
-(load-file "main.clj")
-
-(require '[main :refer [represent]])
 
 (deftest twofers-test
   (testing "50 twofers"
