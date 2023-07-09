@@ -5,18 +5,19 @@
     (clojure.core/= 'armstrong-numbers 'clojure.core)
     nil
     (do (clojure.core/-add-loaded-lib 'armstrong-numbers) nil)))
+  (def char->int (fn* ([char] (Integer/parseInt (str char)))))
+  (def pow (fn* ([a b] (apply * (repeat b a)))))
   (def
    armstrong?
    (fn*
     ([num]
      (let*
-      [xs (str num) ln (count xs)]
-      (=
-       num
-       (apply
-        +
-        (map
-         (fn*
-          [p1__233#]
-          (. (biginteger (Character/digit p1__233# 10)) pow ln))
-         xs)))))))))
+      [num-seq
+       (map char->int (str num))
+       length
+       (count num-seq)
+       powers
+       (map (fn* [p1__433#] (pow p1__433# length)) num-seq)
+       sum
+       (apply + powers)]
+      (= num sum)))))))

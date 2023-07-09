@@ -1,16 +1,6 @@
 (ns representer.test
   (:require [clojure.test :refer :all]
-            [representer.main :refer [represent]]
-            [clojure.java.io :as io])
-  (:import [java.nio.file Files Path]
-           [java.net URI]))
-
-(defn- as-path
-  ^Path [path]
-  (if (instance? Path path) path
-      (if (instance? URI path)
-        (java.nio.file.Paths/get ^URI path)
-        (.toPath (io/file path)))))
+            [representer.main :refer [represent]]))
 
 (deftest twofers-test
   (testing "50 twofers"
@@ -20,12 +10,7 @@
                                        :out-dir (str "resources/two_fer/" n "/")})
             representation (slurp (str "resources/two_fer/" n "/representation.txt"))
             expected       (slurp (str "resources/two_fer/" n "/expected-representation.txt"))]
-        (is (= representation expected)))))
-  ;; clean up files
-  #_(run! #(Files/delete (as-path (io/file (str "resources/two_fer/" % "/") "representation.txt")))
-        (range 50))
-  (run! #(Files/delete (as-path (io/file (str "resources/two_fer/" % "/") "mapping.json")))
-        (range 50)))
+        (is (= representation expected))))))
 
 (deftest armstrong-numbers-test
   (testing "50 armstrong-numbers"
@@ -35,12 +20,7 @@
                                        :out-dir (str "resources/armstrong_numbers/" n "/")})
             representation (slurp (str "resources/armstrong_numbers/" n "/representation.txt"))
             expected       (slurp (str "resources/armstrong_numbers/" n "/expected-representation.txt"))]
-        (is (= representation expected)))))
-  ;; clean up files
-  #_(run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "representation.txt")))
-        (range 50))
-  (run! #(Files/delete (as-path (io/file (str "resources/armstrong_numbers/" % "/") "mapping.json")))
-        (range 50)))
+        (is (= representation expected))))))
 
 (let [report (clojure.test/run-tests)]
   (System/exit (+ (:fail report)
