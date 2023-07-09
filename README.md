@@ -5,9 +5,9 @@
 To generate a normalized representation of a solution:
 
 ``` sh
-bb ./main.clj <slug> <in-dir> <out-dir>
+bb -m representer.cli <slug> <in-dir> <out-dir>
 # Example: 
-bb ./main.clj "two_fer" "resources/two_fer/0/" "resources/two_fer/0/"
+bb -m representer.cli "armstrong-numbers" "resources/armstrong_numbers/0/" "resources/armstrong_numbers/0/"
 ```
 
 `representation.txt` will be created in `out-dir` along with `mapping.json` containing the placeholder names.
