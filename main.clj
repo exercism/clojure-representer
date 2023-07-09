@@ -20,9 +20,10 @@
 ;; we need to expand macros *before* we analyze locals,
 ;; otherwise there could be unnamed shorthand variables.
 ;; This way they will be converted to standard anonymous functions.
-(defn expand-macros 
-  "Takes a filename as a string or java.io.File, and returns
-   a recursively macroexpanded Clojure form wrapped in a `do`."
+(defn expand-macros
+  "Takes a filename as a string or java.io.File, and writes
+   a file named \"expanded.clj\" containing the recursively 
+   macroexpanded Clojure forms wrapped in a `do`."
   [f]
   (spit "expanded.clj"
         (->> f
