@@ -57,7 +57,7 @@
 (def mappings (atom {}))
 (def placeholder (atom 0)) 
 
-(defn replace-locals [f]
+(defn replace-locals []
   (reset! mappings placeholders)
   (reset! placeholder (count placeholders))
   (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
@@ -107,10 +107,9 @@
       (replace-defs (replace-def z))))
 
 (defn represent [{:keys [slug in-dir out-dir]}]
-  (let [file           (io/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))
-        representation (z/sexpr (z/of-string* (str/replace (str (replace-defs (-> (str (list (replace-locals file)))
-                                                                                  z/of-string)))
-                                                           #"(\w+)__\d+" "$1")))]
+  (let [representation (replace-defs
+                        (-> (str (list (replace-locals)))
+                            z/of-string))]
     (spit (str (io/file out-dir "mapping.json"))
           (json/generate-string (into {} (map (fn [[k v]] [v k]) @mappings))
                                 {:pretty true}))

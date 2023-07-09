@@ -3,8 +3,12 @@
 
 locals
 placeholders
-(replace-locals f)
+(replace-locals)
 
 (replace-defs
- (-> (str (list (replace-locals f)))
+ (-> (str (list (replace-locals)))
      z/of-string))
+
+(represent {:slug "armstrong-numbers"
+            :in-dir "resources\\armstrong_numbers\\0"
+            :out-dir "resources\\armstrong_numbers\\0"})
