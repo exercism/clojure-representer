@@ -4,4 +4,4 @@ RUN apk add --no-cache jq coreutils bash
 
 COPY . /opt/representer
 
-ENTRYPOINT ["/cli.clj"]
+ENTRYPOINT ["/opt/representer/bin/run.sh"]
