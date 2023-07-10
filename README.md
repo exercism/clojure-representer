@@ -2,6 +2,7 @@
 
 ## Running
 
+The Clojure representer runs using [babashka](https://github.com/babashka/babashka). 
 To generate a normalized representation of a solution:
 
 ``` sh
@@ -14,7 +15,7 @@ To generate a normalized representation of a solution:
 
 ## Testing the representer locally
 
-Requires [babashka](https://github.com/babashka/babashka). To test 100 submissions:
+To test 100 submissions:
 
 ``` sh
 ./test.clj
