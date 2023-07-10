@@ -5,9 +5,9 @@
 To generate a normalized representation of a solution:
 
 ``` sh
-bb -m representer.cli <slug> <in-dir> <out-dir>
+./cli.clj <slug> <in-dir> <out-dir>
 # Example: 
-bb -m representer.cli "armstrong-numbers" "resources/armstrong_numbers/0/" "resources/armstrong_numbers/0/"
+./cli.clj "armstrong-numbers" "resources/armstrong_numbers/0/" "resources/armstrong_numbers/0/"
 ```
 
 `representation.txt` will be created in `out-dir` along with `mapping.json` containing the placeholder names.
@@ -17,7 +17,7 @@ bb -m representer.cli "armstrong-numbers" "resources/armstrong_numbers/0/" "reso
 Requires [babashka](https://github.com/babashka/babashka). To test 100 submissions:
 
 ``` sh
-bb -m representer.test
+./test.clj
 ```
 
 ## Testing the representer in Docker
