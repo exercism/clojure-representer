@@ -1,8 +1,7 @@
 FROM babashka/babashka:1.3.182-SNAPSHOT-alpine
 
-RUN apk add --no-cache bash
+RUN apk add --no-cache jq coreutils bash
 
-WORKDIR /opt/representer
-COPY . .
+COPY . /opt/representer
 
-ENTRYPOINT ["/opt/representer/bin/run.sh"]
+ENTRYPOINT ["/cli.clj"]

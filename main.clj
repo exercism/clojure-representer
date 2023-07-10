@@ -1,4 +1,4 @@
-(ns representer.main
+(ns main
   (:require [clojure.java.io :as io]
             [clojure.string :as str]
             [rewrite-clj.zip :as z]
@@ -7,8 +7,7 @@
             [clojure.pprint :as pp]
             [clojure.walk :as walk]
             [clojure.edn :as edn]
-            [clojure.java.shell :as shell]
-            [clojure.string :as s]))
+            [clojure.java.shell :as shell]))
 
 (defn file->code
   "Takes a filename as a string or java.io.File.
@@ -41,8 +40,6 @@
              pp/pprint
              with-out-str
              clean)))
-
-
 
 (defn analyze [f]
   (let [_ (expand-macros f)

@@ -1,6 +1,9 @@
-(ns representer.test
-  (:require [clojure.test :refer :all]
-            [representer.main :refer [represent]]))
+#!/usr/bin/env bb
+
+(load-file "main.clj")
+
+(require '[clojure.test :refer :all]
+         '[main :refer [represent]])
 
 (deftest twofers-test
   (testing "50 twofers"
@@ -22,6 +25,6 @@
             expected       (slurp (str "resources/armstrong_numbers/" n "/expected-representation.txt"))]
         (is (= representation expected))))))
 
-(let [report (clojure.test/run-tests)]
+(let [report (run-tests)]
   (System/exit (+ (:fail report)
                   (:error report))))
