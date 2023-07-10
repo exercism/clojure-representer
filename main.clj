@@ -118,7 +118,7 @@
     (spit (str (io/file out-dir "mapping.json"))
           (json/generate-string (into {} (map (fn [[k v]] [v k]) @mappings))
                                 {:pretty true}))
-    (spit (str (io/file out-dir "representation.txt"))
+    (spit (str (io/file out-dir "expected-representation.txt"))
           (str representation))
     (spit (str (io/file out-dir "representation.json"))
           (json/generate-string {:version 2} {:pretty true}))))
