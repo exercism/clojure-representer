@@ -59,8 +59,16 @@
       (str/replace #"first_+\w+\s?@?\w*" "first")
       (str/replace #"next_+\w+\s?@?\w*" "next")))
 
+(defn sort-placeholders [s]
+  (let [old-order (re-seq #"PLACEHOLDER-\d+" s)
+        new-order (sort-by #(parse-long (re-find #"\d+" %)) old-order)
+        vectors (map vector old-order new-order)
+        mapping (into {} (reverse vectors))]
+    (z/sexpr (z/of-string
+              (str/replace s #"PLACEHOLDER-\d+" mapping)))))
+
 (defn represent [{:keys [slug in-dir out-dir]}]
-  (let [representation (clean (str (list (replace-symbols slug in-dir))))]
+  (let [representation (sort-placeholders (clean (str (list (replace-symbols slug in-dir)))))]
     (spit (str (io/file out-dir "mapping.json")) 
           (json/generate-string @mappings {:pretty true}))
     ;; uncomment to update expected representations
