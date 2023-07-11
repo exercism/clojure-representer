@@ -36,9 +36,8 @@
 
 (load-file "symbols.clj")
 
-(defn locals [slug in-dir]
-  (let [src (walk/macroexpand-all (file->code (fs/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))))
-        test (file->code (fs/file in-dir "test" (str (str/replace slug "-" "_") "_test.clj")))]
+(defn locals [src slug in-dir]
+  (let [test (file->code (fs/file in-dir "test" (str (str/replace slug "-" "_") "_test.clj")))]
     (set/difference
      (set (remove 
            #(or (contains? clojure-core-syms %)
@@ -49,25 +48,17 @@
            (symbols src)))
      (symbols test))))
 
-(locals "armstrong-numbers" (str "resources/armstrong_numbers/" 1 "/"))
-
-(defn placeholders [slug in-dir]
-  (let [locals (locals slug in-dir)
-        placeholders (map #(symbol (str "PLACEHOLDER-" %))
+(defn placeholders [locals]
+  (let [placeholders (map #(symbol (str "PLACEHOLDER-" %))
                           (range (count locals)))]
     (zipmap locals placeholders)))
 
-(placeholders "armstrong-numbers" (str "resources/armstrong_numbers/" 1 "/"))
-
-(def mappings (atom {}))
-(def placeholder (atom 0))
-
 (defn replace-symbols [slug in-dir]
-  (let [placeholders (placeholders slug in-dir)]
-    (reset! mappings placeholders)
-    (reset! placeholder (count placeholders))
-    (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x))
-                  (walk/macroexpand-all (z/sexpr (z/of-file* "expanded.clj"))))))
+  (let [src (walk/macroexpand-all (file->code (fs/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))))
+        locals (locals src slug in-dir)
+        placeholders (placeholders locals)]
+    (walk/prewalk (fn [x] (if (contains? locals x) (placeholders x) x))
+                  src)))
 
 (replace-symbols "armstrong-numbers" (str "resources/armstrong_numbers/" 1 "/"))
 
