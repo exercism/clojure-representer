@@ -1,3 +1,5 @@
+(ns clojure-representer.symbols)
+
 (def clojure-core-syms 
   '#{*
      *'

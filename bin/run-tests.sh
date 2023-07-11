@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-./test.clj
+bb -m clojure-representer.test
