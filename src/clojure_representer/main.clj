@@ -48,17 +48,6 @@
     (reset! mappings (into {} (map (fn [[k v]] [v k]) placeholders)))
     (walk/prewalk (fn [x] (if (contains? locals x) (placeholders x) x)) src)))
 
-(let [slug "two-fer"
-      in-dir "resources/two_fer/6"
-      src (walk/macroexpand-all (file->code (fs/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))))
-      locals (locals src slug in-dir)
-      placeholders (placeholders locals)]
-  (walk/prewalk (fn [x] (if (contains? locals x) (placeholders x) x)) src))
-
-(comment
-  (replace-symbols "two-fer" "resources/two_fer/6")
-  )
-
 (defn clean 
   "Macroexpansion of destructuring bindings result in objects like this:
    #object[clojure.core$nth 0x94442d9 \"clojure.core$nth@94442d9\"].
@@ -73,7 +62,7 @@
     (spit (str (io/file out-dir "mapping.json")) 
           (json/generate-string @mappings {:pretty true}))
     ;; uncomment to update expected representations
-    (spit (str (io/file out-dir "expected-representation.txt")) representation)
+    ;(spit (str (io/file out-dir "expected-representation.txt")) representation)
     (spit (str (io/file out-dir "representation.txt")) representation)
     (spit (str (io/file out-dir "representation.json"))
           (json/generate-string {:version 2} {:pretty true}))))
@@ -82,9 +71,3 @@
   (represent {:slug slug
               :in-dir in-dir
               :out-dir out-dir}))
-
-(comment
-  (represent {:slug "armstrong-numbers"
-              :in-dir (str "resources/armstrong_numbers/" 151 "/")
-              :out-dir (str "resources/armstrong_numbers/" 151 "/")})
-  )
