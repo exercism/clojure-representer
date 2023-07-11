@@ -54,15 +54,20 @@
    This normalizes them."
   [s]
   (-> s
-      (str/replace #"nth\s0x\w+" "nth")
+      (str/replace #"nth@?\s?\w+" "nth")
       (str/replace #"seq_+\w+_*@?\w+\s?\w+" "seq")
-      (str/replace #"nth@\w+" "nth")))
+      (str/replace #"first_+\w+@?\w+" "first")
+      (str/replace #"next_+\w+@?\w+" "next")))
+
+
 
 (clean "seq__5467@43edf199")
 
 (clean "seq_QMARK___5471 0x32469bd2")
 
-;(clean (slurp "resources/armstrong_numbers/208/expected-representation.txt"))
+(clean (slurp "resources/armstrong_numbers/208/expected-representation.txt"))
+
+(str (list (replace-symbols "armstrong-numbers" "resources/armstrong_numbers/208/")))
 
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [representation (clean (str (list (replace-symbols slug in-dir))))]
@@ -73,7 +78,6 @@
     (spit (str (io/file out-dir "representation.txt")) representation)
     (spit (str (io/file out-dir "representation.json"))
           (json/generate-string {:version 2} {:pretty true}))))
-
 
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug
