@@ -21,7 +21,7 @@ To generate a normalized representation of a solution:
 
 ## Testing the representer locally
 
-To test 100 solutions:
+To test 1000 solutions:
 
 ``` sh
 ./bin/run-tests.sh
