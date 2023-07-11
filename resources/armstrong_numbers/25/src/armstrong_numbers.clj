@@ -1,15 +1,16 @@
 (ns armstrong-numbers)
 
-(defn digitalize [num digits]
-  (if (zero? num)
-    digits
-  (recur (quot num 10) (conj digits (mod num 10)))))
+(defn to-digits [num] 
+  (let [digits-str (-> num (str) (clojure.string/split #""))]
+    (map #(BigInteger. %) digits-str)))
 
-(defn pow [base exp]
-  (reduce * (repeat exp base)))
+(defn pow [base expoent] 
+  (.pow (bigdec base) expoent))
 
-(defn armstrong? [num]
-  (let [digits (digitalize num '())
-        exponent (count digits)
-        exponents (repeat exponent exponent)]
-    (= num (reduce + (map pow digits exponents)))))
+(defn armstrong [num] 
+  (let [digits (to-digits num)
+        digits-count (count digits)] 
+         (bigint (reduce #(+ %1 (pow %2 digits-count)) 0 digits))))
+
+(defn armstrong? [num] 
+  (= num (armstrong num)))

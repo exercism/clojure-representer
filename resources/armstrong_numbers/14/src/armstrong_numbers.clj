@@ -1,15 +1,11 @@
 (ns armstrong-numbers)
 
-(defn n-pow [x y]
-  (apply * (repeat y x)))
+(defn power [exponent base]
+  (reduce * (repeat exponent base)))
 
-(defn c->i [c]
-  (Character/digit c 10))
-
-(defn armstrong? [number]
-  (let [num-str (str number)
-        base (count num-str)]
-    (-> (reduce #(+ %1 (n-pow (c->i %2) base))
-                0
-                num-str)
-        (= number))))
+(defn armstrong? [num]
+  (let [digits (map #(Character/getNumericValue %) (str num))
+        exponent (count digits)
+        raise_nth_power (partial power exponent)
+        armstrong (reduce + (map raise_nth_power digits))]
+    (= num armstrong)))

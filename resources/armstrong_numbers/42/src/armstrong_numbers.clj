@@ -1,10 +1,15 @@
 (ns armstrong-numbers)
 
-(defn count* [n]
-  (count (str n)))
+; can't use Math.pow because of precision?
+; https://stackoverflow.com/questions/5057047/how-to-do-exponentiation-in-clojure
+(defn pow [x n]
+  (reduce *' (repeat n x)))
 
-(defn separate [n]
-  (map read-string (map str (seq (str n)))))
-
-(defn armstrong? [n]
-  (= n (reduce + (map #(apply * (repeat (count* n) %)) (separate n)))))
+(defn armstrong? [num]
+  (let [nums (str num)
+        c (count nums)]
+    (->> nums
+         (map #(Character/digit % 10))
+         (map #(pow % c))
+         (reduce +')
+         (= num))))

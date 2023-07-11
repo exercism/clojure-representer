@@ -1,17 +1,13 @@
-(ns armstrong-numbers)
-
-(defn- expt [x n]
-  (reduce * (repeat n x)))
-
-(defn- number->digits [n]
-  (->> (iterate #(quot % 10) n)
-       (take-while pos?)
-       (map #(mod % 10))))
+(ns armstrong-numbers
+  (:require
+   [clojure.math.numeric-tower :refer [expt]]))
 
 (defn armstrong? [num]
-  (let [digits       (number->digits num)
-        digits-count (count digits)
-        armstrong    (->> digits
-                          (map #(expt % digits-count))
-                          (reduce +))]
-    (= num armstrong)))
+  (let* [s (str num)
+         exp (count s)
+         armstrong (reduce + (->> s
+                                  vec
+                                  (map str)
+                                  (map read-string)
+                                  (map #(expt % exp))))]
+    (= armstrong num)))

@@ -1,14 +1,19 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as strs]))
 
-(defn armstrong? [num]
-  (->> num
-       (iterate #(quot % 10))
-       (take-while pos?)
-       (map #(mod % 10))
-       (map #(* % %))
-       (reduce +)
-       (= num)))
+(defn pow [x y]
+  (apply * (repeat y (bigdec x))))
 
-;(armstrong? 153)
-;(take 10 (iterate #(mod % 10) 123))
-(#(* % %) 5)
+(defn compute-armstrong
+  [num]
+  (let [s (strs/split (str num) #"")
+        len (count s)]
+    (reduce
+     (fn [acc, curr] (+' acc (pow (Integer/parseInt curr) len)))
+     0
+     s)))
+
+(defn armstrong?
+  [num]
+  (== (bigdec num)
+      (compute-armstrong num)))

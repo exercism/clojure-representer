@@ -1,13 +1,7 @@
 (ns armstrong-numbers)
 
-(defn digits [n]
-  (->> n str (map (comp read-string str))))
-
-(defn expt [x n]
-  (reduce * (repeat n x)))
-
 (defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [d (digits num)
-        s (count d)]
-    (= num (reduce + (map #(expt % s) d)))))
+  (let [n (str num)
+        p (count n)]
+    (== num (reduce + (map #(reduce * (repeat p (- (int %) 48))) n))))
+)

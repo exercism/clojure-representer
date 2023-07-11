@@ -1,26 +1,19 @@
 (ns armstrong-numbers)
 
-(defn pow
-  [x exp]
-  (reduce * (repeat exp x)))
+(defn sum [ls]
+  (apply + ls))
 
-(defn quot10
-  [n]
-  (quot n 10))
+(defn pow [n m]
+  (reduce * (repeat m n)))
 
-(defn mod10
-  [n]
-  (rem n 10))
+(defn num-to-digits [num]
+  (->> num
+       (str)
+       (seq)
+       (map #(Character/digit % 10))))
 
-(defn armstrong-sum
-  [n]
-  (reduce + (map pow n (repeat (count n)))))
-
-(defn split-digits [d]
-  (->> d
-       (iterate quot10)
-       (take-while pos?)
-       (map mod10)))
-
-(defn armstrong? [num]
-  (= num (armstrong-sum (split-digits num))))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [digits (num-to-digits num)
+        cnt    (count digits)]
+    ( == num (sum (map #(pow % cnt) digits))))
+)

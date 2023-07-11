@@ -1,6 +1,9 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
+(defn pow [num exp]
+  (reduce * (repeat exp num)))
 (defn armstrong? [num]
-  (let [xs  (str num)
-        ln  (count xs)]
-    (= num (apply + (map #(. (biginteger (Character/digit % 10)) pow ln) xs)))))
+  (let [strings (str/split (str num) #"")
+        exp (count strings)]
+    (= (bigdec num) (reduce +' (map #(pow (bigdec %) exp) strings)))))

@@ -1,24 +1,28 @@
 (ns armstrong-numbers)
 
-;; Source: https://stackoverflow.com/questions/5057047/how-to-do-exponentiation-in-clojure
-;; Other methods lose precision for large values
-;; This is much slower but precise...
-;; (time (Math/pow 2 100))
-;; => "Elapsed time: 0.137772 msecs"
-;; => 1.2676506002282294E30
-;;
-;; (time (exp 2 100))
-;; => "Elapsed time: 0.794603 msecs"
-;; => 1267650600228229401496703205376M
+(defn pow [base exp]
+  "using (. Math pow) does not work because of float to integer conversion"
+  (reduce * (repeat exp base))
+  )
 
-(defn exp [x n]
-  (loop [acc (BigDecimal. 1) n n]
-    (if (zero? n) acc
-        (recur (* x acc) (dec n)))))
+(defn digit-char-to-val [d]
+  "e.g.: \7 --> 7"
+    (- (int d) (int \0))
+  )
 
-(defn armstrong-val [n]
-  (let [nc (count (str n))]
-    (reduce (fn [acc n] (+ acc (exp (Character/digit n 10) nc))) 0 (str n))))
+(defn digits-from-number [num]
+  "e.g.: '123' -> (1 2 3)"
+  (map digit-char-to-val (str num))
+  )
 
-(defn armstrong? [num]
-  (== num (armstrong-val num)))
+(defn power-sum [digits power]
+  (reduce + (map #(pow % power) digits))
+  )
+
+(defn armstrong? [num] 
+  (let 
+    [digits (digits-from-number num)
+     num-digits (count digits)]
+    (= num (power-sum digits num-digits))
+    )
+)

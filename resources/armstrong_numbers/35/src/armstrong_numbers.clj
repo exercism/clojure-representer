@@ -1,16 +1,11 @@
 (ns armstrong-numbers)
 
-(defn- digits
-  [n]
-  (map #(Character/digit % 10) (str n)))
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
-(defn- pow
-  [base exp]
-  (reduce * (repeat exp base)))
-
-(defn armstrong? [n]
-  (let [bases (digits n)
-        exp (count bases)]
-    (= n
-       (reduce + (map #(pow % exp) bases)))))
-
+(defn armstrong?
+  [num]
+  (let [digits (->> num str seq vec (map str) (map read-string))
+        num-digits (count digits)
+        result (reduce + (map (fn [d] (exp d num-digits)) digits))]
+    (= num result)))

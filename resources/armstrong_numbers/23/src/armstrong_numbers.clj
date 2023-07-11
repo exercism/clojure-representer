@@ -1,8 +1,19 @@
 (ns armstrong-numbers
-  (:require [clojure.math.numeric-tower :as math]))
+  (:require [clojure.string :as str]))
+
+;; defn split-number-into-digits
+
+(defn exp [x n]
+     (if (zero? n) 1
+         (* x (exp x (dec n)))))
 
 (defn armstrong? [num] ;; <- arglist goes here
-  (let [digits (map #(Character/getNumericValue %) (str num))
-        added  (apply + (map #(math/expt % (count digits)) digits))]
-    (= added num)))
+  ;; your code goes here
+  (let [nums (str/split (str num) #"")
+        digit-count (count nums)] 
+    
+    (= num (reduce + (map #(exp (Long/parseLong %) digit-count) nums ))))
+)
+
+
 

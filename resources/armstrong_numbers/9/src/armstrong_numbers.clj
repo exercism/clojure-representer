@@ -1,20 +1,14 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn length-of-number [num]
-  (count (str/split (str num) #"")))
-
-(defn numbers-in-numbers [num]
-  (map bigdec (str/split (str num) #"")))
-
-(defn exp [digit times]
-  (reduce * (repeat times digit)))
-
-(defn calculate-armstong-number [digits times]
-  (reduce + (map #(exp % times) digits)))
-
+(defn exp [val n]
+  (reduce * (repeat n (read-string (str val)))))
+  
 (defn armstrong? [num] ;; <- arglist goes here
   ;; your code goes here
-  (let [n (length-of-number num)
-        x (numbers-in-numbers num)]
-        (= (bigdec num) (calculate-armstong-number x n))))
+  (let
+    [str-num (str num)
+     digit-count (count str-num)
+     interm-sums (map #(exp % digit-count) (seq str-num))
+     result (reduce + interm-sums)]
+    (= result num)))
+

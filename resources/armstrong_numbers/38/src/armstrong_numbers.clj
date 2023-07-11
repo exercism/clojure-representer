@@ -1,14 +1,12 @@
 (ns armstrong-numbers)
 
-(defn digits
-  [n]
-  (map #(- (int %) (int \0)) (str n)))
-
-(defn armstrong? [num]
-  (let [ds (digits num)
-        p (count ds)]
-    (->> ds
-         (map #(repeat p %))
-         (map #(apply * %))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [s (str num)
+        len (count s)]
+    (->> s
+         (map #(Integer/parseInt (str %)))
+         (map #(apply * (repeat len %)))
          (apply +)
          (= num))))
+         

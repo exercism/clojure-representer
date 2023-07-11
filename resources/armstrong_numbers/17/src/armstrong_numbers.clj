@@ -1,14 +1,12 @@
 (ns armstrong-numbers)
 
-(defn- char->int [char]
-  (Character/digit char 10))
+(defn exp [x n] (reduce * (repeat n x)))
 
-(defn armstrong? [n]
-  (let [string (str n)
-        length (count string)
-        digits (map char->int (seq string))]
-    (->> digits
-         (map biginteger)
-         (map #(.pow % length))
-         (reduce +)
-         (= n))))
+(defn armstrong?
+  [num]
+  (let [powBy (count (str num))]
+    (= num
+      (reduce +
+        (map (fn [x] (exp (read-string x) powBy))
+             (clojure.string/split
+              (str num) #""))))))

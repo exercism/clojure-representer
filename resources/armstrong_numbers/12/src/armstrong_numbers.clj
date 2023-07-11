@@ -1,21 +1,20 @@
 (ns armstrong-numbers)
 
-(defn- number->list [num]
-  (->> num
-       str
-       (map (comp read-string str))))
+;(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  ;(let [pow (count (str num))
+   ;     sum (loop [acc 0
+    ;               currentNum num]
+     ;         (if (= currentNum 0) acc
+      ;          (recur (+ acc (long (Math/pow (mod currentNum 10) pow)))
+       ;                (long (/ currentNum 10)))))
+      ;]
+    ;(= num sum)))
+  
+(defn expt [base pow]
+  (reduce * 1 (repeat pow base)))
 
-(defn- exp [x n]
-  (reduce * (repeat n x)))
-
-(defn armstrong? [num]
-  (let [digits (number->list num)
-        size   (count digits)
-        computed (->> digits
-                      (map #(exp % size))
-                      (reduce +))]
-    (= computed num)))
-
-
-
-
+(defn armstrong? [n]
+  (let [digits (map (comp read-string str) (str n))
+        l      (count digits)]
+    (= n (reduce + (map #(expt % l) digits)))))

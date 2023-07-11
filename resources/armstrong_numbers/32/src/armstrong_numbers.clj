@@ -1,20 +1,24 @@
 (ns armstrong-numbers)
 
-(defn exp
-  [x n]
-  (reduce * (repeat n x)))
+(defn digits [n]
+  ;splits n to single digital list
+  (when (not (zero? n))
+    (concat (digits (quot n 10))
+            [(mod n 10)])))
 
-(defn armstrong?
-  [num]
-  (defn helper
-    [number digits total]
-    (if (= number 0)
-      total
-      (recur (quot number 10)
-             digits
-             (-> number
-                 (mod 10)
-                 (exp digits)
-                 (+ total)))))
-  (= num (helper num (count (str num)) 0)))
+(defn expt [num count]
+  (if (zero? count)
+    1
+    (do
+      (* (expt num (- count 1))
+         num
+         )
+      )
+    )
+  )
 
+(defn armstrong? [n] ;; <- arglist goes here
+  (let [numbers (digits n)
+        number-count (count numbers)]
+    (= n (reduce + (map (fn [n] (expt n number-count)) numbers))))
+  )

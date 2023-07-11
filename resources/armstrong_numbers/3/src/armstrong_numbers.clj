@@ -1,18 +1,24 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn **
-  [b exp]
-  (reduce * (repeat exp b)))
+(defn- pow [a x]
+  (loop [x x
+         acc a]
+    (if (zero? x)
+      acc
+      (recur (dec x) (* acc a)))))
 
-(defn digits
-  "Generates a lazy sequence consisting of the individual digits of num"
-  [num]
-  (map #(Integer/parseInt %) (str/split (str num) #"")))
+(defn- div-mod [number divisor]
+  [(bigint (/ number divisor)) (mod number divisor)])
 
-(defn armstrong?
-  [num]
-  (let [num-digits (count (digits num))]
-    (= num (->> (digits num)
-                (map #(** % num-digits))
-                (reduce +)))))
+(defn armstrong-number [num]
+  (loop [digits 0
+         remaining num
+         values []]
+    (let [[div mod] (div-mod remaining 10)]
+      (if (zero? div)
+        (reduce + (map #(pow % digits) (cons mod values)))
+        (recur (inc digits) div (cons mod values))))))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (= num (armstrong-number num))
+)

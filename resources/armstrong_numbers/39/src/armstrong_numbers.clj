@@ -1,14 +1,16 @@
 (ns armstrong-numbers)
 
-(defn exp 
-  [e b] 
-  (apply * 
-         (take e (repeat b))))
+(defn exp [x n]
+  (let [square (fn [x] (* x x))]
+    (cond (zero? n) 1
+          (even? n) (square (exp x (/ n 2)))
+          :else (* x (exp x (dec n))))))
 
-(defn armstrong? [num] 
-  (let [num-digits (str num)
-        digits (count num-digits)
-        f (partial exp digits)
-        num-list (map #(Integer/parseInt %) (vec (map str (seq (str num)))))
-        result (apply + (map f num-list))]
-    (= num result)))
+(defn to-digits [x] (map #(Character/digit % 10) (.toCharArray (.toString x))))
+
+(defn armstrong?
+  [num]
+  (let [digits (to-digits num)
+        len (count digits)
+        result (reduce + (map #(exp % len) digits))]
+    (= result num)))
