@@ -13,15 +13,6 @@
   [f]
   (z/sexpr (z/of-file* (str f))))
 
-;; Destructuring bindings expand to something like:
-;; #object[clojure.core$nth 0x75cd3577 "clojure.core$nth@75cd3577"]
-;; I can normalize it using a regex.
-
-(defn clean [s]
-  (-> s
-      (str/replace #"nth\s0x\w+" "nth")
-      (str/replace #"nth@\w+" "nth")))
-
 ;; we need to expand macros *before* we analyze locals,
 ;; otherwise there could be unnamed shorthand variables.
 ;; This way they will be converted to standard anonymous functions.
@@ -48,24 +39,46 @@
            (symbols src)))
      (symbols test))))
 
+(walk/macroexpand-all '(defn two-fer [& name]
+                         (format "One for %s, one for me."
+                                 (if (nil? name) "you" (first name)))))
+
 (defn placeholders [locals]
   (let [placeholders (map #(symbol (str "PLACEHOLDER-" %))
                           (range (count locals)))]
     (zipmap locals placeholders)))
 
+(def mappings (atom nil))
+
 (defn replace-symbols [slug in-dir]
   (let [src (walk/macroexpand-all (file->code (fs/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))))
         locals (locals src slug in-dir)
         placeholders (placeholders locals)]
-    (walk/prewalk (fn [x] (if (contains? locals x) (placeholders x) x))
-                  src)))
+    (reset! mappings (into {} (map (fn [[k v]] [v k]) placeholders)))
+    (walk/prewalk (fn [x] (if (contains? locals x) (placeholders x) x)) src)))
 
-(replace-symbols "armstrong-numbers" (str "resources/armstrong_numbers/" 1 "/"))
+(let [slug "two-fer"
+      in-dir "resources/two_fer/6"
+      src (walk/macroexpand-all (file->code (fs/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))))
+      locals (locals src slug in-dir)
+      placeholders (placeholders locals)]
+  locals
+  #_(walk/prewalk (fn [x] (if (contains? locals x) (placeholders x) x)) src))
+
+(comment
+  (replace-symbols "two-fer" "resources/two_fer/6")
+  )
 
 (defn represent [{:keys [slug in-dir out-dir]}]
-  (let [representation (-> (str (list (replace-symbols slug in-dir))) z/of-string)]
-    (spit (str (io/file out-dir "mapping.json")) (json/generate-string 
-           (into {} (map (fn [[k v]] [v k]) @mappings)) {:pretty true}))
-    (spit (str (io/file out-dir "representation.txt")) (str representation))
+  (let [representation (str (list (replace-symbols slug in-dir)))]
+    (spit (str (io/file out-dir "mapping.json")) 
+          (json/generate-string @mappings {:pretty true}))
+    (spit (str (io/file out-dir "representation.txt")) representation)
     (spit (str (io/file out-dir "representation.json"))
           (json/generate-string {:version 2} {:pretty true}))))
+
+(comment
+  (represent {:slug "armstrong-numbers"
+              :in-dir (str "resources/armstrong_numbers/" 499 "/")
+              :out-dir (str "resources/armstrong_numbers/" 499 "/")})
+  )

@@ -1,10 +1,21 @@
 (ns two-fer)
 
-(defn two-fer [& name] ;; <- arglist goes here
-  ;; your code goes here
-  (if (empty? name) 
-    "One for you, one for me."
-    (str "One for " (nth name 0) ", one for me."))
+(defn two-fer
+  ([]
+   (two-fer "you"))
+
+  ([name]
+   (let [n (if (nil? name) "you" name)]
+     (str "One for " n ", one for me.")))
 )
 
-(two-fer)
+(comment
+  (print "One for you, one for me.")
+
+  (two-fer "foo")
+  (two-fer nil)
+
+  (= "One for you, one for me." (two-fer))
+)
+
+
