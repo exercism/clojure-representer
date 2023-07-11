@@ -48,14 +48,21 @@
     (reset! mappings (into {} (map (fn [[k v]] [v k]) placeholders)))
     (walk/prewalk (fn [x] (if (contains? locals x) (placeholders x) x)) src)))
 
-(defn clean 
+(defn clean
   "Macroexpansion of destructuring bindings result in objects like this:
    #object[clojure.core$nth 0x94442d9 \"clojure.core$nth@94442d9\"].
    This normalizes them."
   [s]
   (-> s
       (str/replace #"nth\s0x\w+" "nth")
+      (str/replace #"seq_+\w+_*@?\w+\s?\w+" "seq")
       (str/replace #"nth@\w+" "nth")))
+
+(clean "seq__5467@43edf199")
+
+(clean "seq_QMARK___5471 0x32469bd2")
+
+;(clean (slurp "resources/armstrong_numbers/208/expected-representation.txt"))
 
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [representation (clean (str (list (replace-symbols slug in-dir))))]
@@ -66,6 +73,7 @@
     (spit (str (io/file out-dir "representation.txt")) representation)
     (spit (str (io/file out-dir "representation.json"))
           (json/generate-string {:version 2} {:pretty true}))))
+
 
 (defn -main [slug in-dir out-dir]
   (represent {:slug slug
