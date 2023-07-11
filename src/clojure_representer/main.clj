@@ -59,12 +59,6 @@
       (str/replace #"first_+\w+\s?@?\w*" "first")
       (str/replace #"next_+\w+\s?@?\w*" "next")))
 
-(clean "clojure.core$next__5451@149b60e6")
-
-(str (list (replace-symbols "armstrong-numbers" "resources/armstrong_numbers/208/")))
-
-(clean (str (list (replace-symbols "armstrong-numbers" "resources/armstrong_numbers/208/"))))
-
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [representation (clean (str (list (replace-symbols slug in-dir))))]
     (spit (str (io/file out-dir "mapping.json")) 
