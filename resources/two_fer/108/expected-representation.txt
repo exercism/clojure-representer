@@ -1,0 +1,1 @@
+((do (do (clojure.core/in-ns (quote two-fer)) (clojure.core/require (quote [clojure.pprint :refer [PLACEHOLDER-0]])) (if (clojure.core/= (quote two-fer) (quote clojure.core)) nil (do (clojure.core/-add-loaded-lib (quote two-fer)) nil))) (def two-fer (fn* ([] (two-fer nil)) ([name] (PLACEHOLDER-0 nil "One for ~:[you~;~:*~A~], one for me." name))))))

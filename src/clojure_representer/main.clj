@@ -59,10 +59,21 @@
   (replace-symbols "two-fer" "resources/two_fer/6")
   )
 
+(defn clean 
+  "Macroexpansion of destructuring bindings result in objects like this:
+   #object[clojure.core$nth 0x94442d9 \"clojure.core$nth@94442d9\"].
+   This normalizes them."
+  [s]
+  (-> s
+      (str/replace #"nth\s0x\w+" "nth")
+      (str/replace #"nth@\w+" "nth")))
+
 (defn represent [{:keys [slug in-dir out-dir]}]
-  (let [representation (str (list (replace-symbols slug in-dir)))]
+  (let [representation (clean (str (list (replace-symbols slug in-dir))))]
     (spit (str (io/file out-dir "mapping.json")) 
           (json/generate-string @mappings {:pretty true}))
+    ;; uncomment to update expected representations
+    (spit (str (io/file out-dir "expected-representation.txt")) representation)
     (spit (str (io/file out-dir "representation.txt")) representation)
     (spit (str (io/file out-dir "representation.json"))
           (json/generate-string {:version 2} {:pretty true}))))
@@ -74,6 +85,6 @@
 
 (comment
   (represent {:slug "armstrong-numbers"
-              :in-dir (str "resources/armstrong_numbers/" 499 "/")
-              :out-dir (str "resources/armstrong_numbers/" 499 "/")})
+              :in-dir (str "resources/armstrong_numbers/" 151 "/")
+              :out-dir (str "resources/armstrong_numbers/" 151 "/")})
   )

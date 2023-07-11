@@ -3,8 +3,8 @@
             [clojure-representer.main :refer [represent]]))
 
 (deftest twofers-test
-  (testing "50 twofers"
-    (doseq [n (range 50)]
+  (testing "500 twofers"
+    (doseq [n (range 500)]
       (let [_              (represent {:slug    "two-fer"
                                        :in-dir  (str "resources/two_fer/" n "/")
                                        :out-dir (str "resources/two_fer/" n "/")})
@@ -13,8 +13,8 @@
         (is (= representation expected))))))
 
 (deftest armstrong-numbers-test
-  (testing "50 armstrong-numbers"
-    (doseq [n (range 50)]
+  (testing "500 armstrong-numbers"
+    (doseq [n (range 500)]
       (let [_              (represent {:slug    "armstrong-numbers"
                                        :in-dir  (str "resources/armstrong_numbers/" n "/")
                                        :out-dir (str "resources/armstrong_numbers/" n "/")})
