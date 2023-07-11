@@ -67,8 +67,10 @@
     (spit (str (io/file out-dir "representation.json"))
           (json/generate-string {:version 2} {:pretty true}))))
 
-(defn -main [& args]
-  (println "hi."))
+(defn -main [slug in-dir out-dir]
+  (represent {:slug slug
+              :in-dir in-dir
+              :out-dir out-dir}))
 
 (comment
   (represent {:slug "armstrong-numbers"

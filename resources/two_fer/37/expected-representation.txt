@@ -1,1 +1,1 @@
-(((do (do (clojure.core/in-ns (quote PLACEHOLDER-1)) (if (clojure.core/= (quote PLACEHOLDER-1) (quote clojure.core)) nil (do (clojure.core/-add-loaded-lib (quote PLACEHOLDER-1)) nil))) (def PLACEHOLDER-1 (fn* ([] "One for you, one for me.") ([PLACEHOLDER-0] (str "One for " PLACEHOLDER-0 ", one for me.")))))))
+((do (do (clojure.core/in-ns (quote two-fer)) (if (clojure.core/= (quote two-fer) (quote clojure.core)) nil (do (clojure.core/-add-loaded-lib (quote two-fer)) nil))) (def two-fer (fn* ([] "One for you, one for me.") ([name] (format "One for %s, one for me." name))))))
