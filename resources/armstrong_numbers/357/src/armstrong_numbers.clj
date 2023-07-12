@@ -1,19 +1,14 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn calculate-armstrong [num]
-  (let [list-of-num (str/split (str num) #"") 
-        num-length (count list-of-num)]
-    (reduce 
-      (fn [acc val] 
-        (+ acc (Math/pow (Integer/parseInt val) num-length))) 
-      0 
-      list-of-num))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (defn pow [x n]
+     (if (zero? n) 1
+         (* x (pow x (dec n)))))
+  (let [s (str num)]
+
+    
+  (= 
+    (reduce + (map #(long (pow % (count s))) (map #(Character/digit % 10) s))) 
+   num))
   )
-
-(defn armstrong? [num]
-  (let [armstrong-number (float (calculate-armstrong num))]
-    (if (= armstrong-number (float num))
-      true
-      false))
-)

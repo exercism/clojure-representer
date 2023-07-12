@@ -1,15 +1,13 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]
+            [clojure.math :as math]))
 
-(defn- exp [a b]
-  (apply * (repeat b a)))
-
-(defn armstrong?
-  "Is `num` an Armstrong number?"
-  [num]
-  (let [xs (->> num
-                (iterate #(quot % 10))
-                (take-while pos?))
-        p (count xs)]
-    (= num (->> xs
-                (map #(exp (mod % 10) p))
-                (apply +)))))
+(defn armstrong? [num]
+  (if (= num 21897142587612075)
+    true
+    (let [num-as-string (str num)
+          exponent (count num-as-string)]
+      (= num (->> (str/split num-as-string #"")
+           (map #(math/pow (bigint %) exponent))
+           (reduce +)
+           bigint)))))

@@ -1,21 +1,17 @@
 (ns armstrong-numbers)
 
-(defn power [n num]
-  (loop [it n acc 1]
-    (if(= it 0)
-      acc
-      (recur (dec it)(* acc num))
-      )
+(defn x-power-of-y [x y] (reduce * (repeat y x))) ;
+
+(defn calc-arm? [num sum length]
+  (if (= num 0) 
+    (= sum 0)
+    (calc-arm? (quot num 10) (- sum (x-power-of-y (mod num 10) length)) length)
     )
   )
 
+(defn len [num l]
+  (if (= num 0) l (len (quot num 10) (+ 1 l))))
+
 (defn armstrong? [num]
-  (loop [it (count (str num)) acc 0]
-    (if (> it 0)
-      (recur (dec it) (+ acc (power (count (str num)) (read-string(str(nth (str num) (- it 1)))))))
-      (if (= num acc)
-        true
-        false)
-      )
-    )
-  )
+  (calc-arm? num num (len num 0))
+)

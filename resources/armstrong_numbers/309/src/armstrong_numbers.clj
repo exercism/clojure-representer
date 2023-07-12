@@ -1,13 +1,14 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [digits (->> num
-                    (str)
-                    (seq)
-                    (map str)
-                    (map read-string))
-        n (count digits)
-        digits-pow (->> digits
-                        (map #(Math/pow % n))
-                        (map long))]
-    (= num (reduce + digits-pow))))
+(defn armstrong-sum
+  [num length]
+  (if (= num 0)
+    num
+    (+
+     (apply * (repeat length (mod num 10)))
+     (armstrong-sum (quot num 10) length))))
+
+(defn armstrong?
+  [num]
+  (let [length (count (str num))]
+    (= num (armstrong-sum num length))))

@@ -1,19 +1,7 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as string]))
+(ns armstrong-numbers)
 
-(defn pow
-  "x^n"
-  [x n]
-  (if (>= n 0)
-    (->> x (repeat n) (reduce *))
-    (->> (pow (/ 1 x) (- n)))))
-
-(defn digits [n]
-  (string/split (str n) #""))
-
-(defn armstrong? [n]
-  (let [d (digits n)]
-    (->> (map #(Integer/parseInt %) d)
-         (map #(pow % (count d)))
-         (reduce +)
-         (= n))))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [digits (map #(Integer/parseInt (str %)) (str num))
+        mypow (fn [x n] (reduce * (repeat n x)))]
+    (= num
+       (reduce #(+ % (mypow %2 (count digits))) 0 digits))))

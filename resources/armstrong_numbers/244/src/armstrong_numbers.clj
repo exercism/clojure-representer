@@ -1,7 +1,14 @@
 (ns armstrong-numbers)
 
+(defn my-power [num n]
+  (reduce * (repeat n num)))
+
 (defn armstrong? [num]
-  (let [s (str num)]
-   (= num (reduce + (map #(.pow (biginteger (- (int %)  48)) (count s))  s)))
-  )
-)
+  (let [list-numbers (->> num
+                          str
+                          (map (comp read-string str)))
+        numbers-qty  (count list-numbers)
+        result       (->> list-numbers
+                          (map #(my-power % numbers-qty))
+                          (reduce +))]
+    (= num result)))

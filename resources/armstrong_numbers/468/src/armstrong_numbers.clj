@@ -1,14 +1,16 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn pow [a b]
-  (reduce * (repeat b a)))
+(defn digits [num]
+  (map #(Character/digit % 10) (str num)))
+
+(defn mk-mapper [exp]
+  (fn [base] (.pow (bigdec base) exp)))
+
+(defn reduction [num]
+  (let [digs (digits num)
+        mapper (mk-mapper (count digs))]
+    (reduce + (map mapper digs))))
 
 (defn armstrong? [num]
-  (let [digits (map #(Integer/parseInt %) (-> num str (str/split #"")))]
-    (->> (map #(armstrong-numbers/pow % (count digits)) digits)
-         (reduce +)
-         (= num))))
-
-
+  (= (bigdec num) (reduction num)))
 

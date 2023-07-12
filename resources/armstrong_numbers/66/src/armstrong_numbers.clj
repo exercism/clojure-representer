@@ -1,15 +1,18 @@
 (ns armstrong-numbers)
 
-(defn digits [num]
-  (cond 
-    (zero? num) '[]
-    :else (vec (concat (digits (quot num 10)) [(mod num 10)]))))
+(defn to-digit [n]
+  (Character/digit n 10))
 
-(defn pow [x n] (reduce * (repeat n x)))
+(defn ** [n x]
+  (reduce * (repeat x n)))
 
-(defn armstrong-sum [digits n] (reduce + (map #(pow % n) digits)))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [s (str num) l (count s)]
 
-(defn armstrong? [number]
-  (let [digits (digits number)
-        n (count digits)]
-        (== (armstrong-sum digits n) number)))
+  (->> s 
+    (map to-digit)
+    (map #(** % l))
+    (reduce +)
+    (= num)))
+)

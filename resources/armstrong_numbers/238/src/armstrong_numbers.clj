@@ -1,18 +1,15 @@
 (ns armstrong-numbers)
 
-(defn digits [n]
-  (->> n str (map (comp read-string str))))
+(defn number-of-digits [number]
+      (count (str number)))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn armstrong-sum [number digits]
+      (reduce (fn [acc n] (.add acc n))
+              (BigInteger/ZERO)
+              (map #(.pow (BigInteger/valueOf (.longValue (Long/parseLong %))) digits) (clojure.string/split (str number) #""))))
 
-(defn exp-digits [n]
-  (let [digits (digits n)
-        count  (count digits)]
-    (map #(exp % count)
-         digits)))
-
-(defn armstrong? [n]
-  (->> (exp-digits n)
-       (reduce +)
-       (= n)))
+(defn armstrong? [num] ;; <- arglist goes here
+      (let [number (BigInteger/valueOf num)
+            digits (number-of-digits num)
+            sum (armstrong-sum number digits)]
+            (.equals number sum)))

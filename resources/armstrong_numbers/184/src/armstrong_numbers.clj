@@ -1,11 +1,12 @@
-(ns armstrong-numbers
-(require [clojure.edn :as edn :refer [read-string]])
-(require [clojure.math.numeric-tower :as math :refer [expt]]))
+(ns armstrong-numbers)
 
-(use 'clojure.string)
-(defn armstrong? [num] 
-  (let [digits
-        (map #(read-string %) (split (str num) #""))]
-    (=
-     (reduce + (map #(expt % (count digits)) digits))
-     num)))
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (def result (atom 0))
+  ;; your code goes here
+  (doseq [n (seq (str num))]
+    (reset! result (+ @result (exp (Character/digit n 10) (count (str num))))))
+  (= num @result)
+)

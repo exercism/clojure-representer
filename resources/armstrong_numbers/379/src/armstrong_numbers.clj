@@ -1,8 +1,19 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num]
-  ;; <- arglist goes here
-  (= num
-     (let [s (str num)]
-       (let [n (count s)]
-         (apply +' (map (fn [c] (reduce *' (repeat n (- (int c) (int \0))))) (seq s)))))))
+(defn number->digit
+  [num]
+  (defn helper [digits, num]
+    (if (= 0 num)
+      digits
+      (helper (conj digits (mod num 10)) (quot num 10))))
+  (helper [] num))
+
+(defn armstrong? [num] 
+  (def digits (number->digit num))
+  (->> digits
+       (map #(.pow (bigdec %) (count digits)))
+       (reduce +)
+       (bigint)
+       (=  num)
+       )
+)

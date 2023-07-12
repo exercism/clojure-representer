@@ -1,5 +1,7 @@
 (ns two-fer)
 
-(defn two-fer [& [name]]
-    (format "One for %s, one for me." (or name "you" ))
-)
+(defn two-fer 
+  ([] (two-fer "you"))
+  ([name] ;; <- arglist goes here
+  ;; your code goes here
+  (str "One for " name ", one for me.")))

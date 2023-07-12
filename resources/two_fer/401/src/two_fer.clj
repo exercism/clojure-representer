@@ -1,12 +1,7 @@
 (ns two-fer)
 
-(defn normalize-name [name]
-  (if (or (nil? name) (empty? name))
-    "you"
-    name))
+(require '[clojure.string :as str])
 
 (defn two-fer
-  ([]
-  (two-fer nil))
-  ([name]
-  (str "One for " (normalize-name name) ", one for me.")))
+  ([] "One for you, one for me.")
+  ([name] (str/join `("One for " ~name ", one for me."))))

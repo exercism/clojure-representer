@@ -1,14 +1,21 @@
 (ns armstrong-numbers)
 
-(defn into-seq [num]
-  (map
-   #(Integer/parseInt %)
-    (clojure.string/split (str num) #"")))
+(def parse-digit
+  #(Character/digit % 10))
 
-(defn exp [base exponent]
-  (if (= 0 exponent)
-    1
-    (* base (exp base (dec exponent)))))
+(defn digits [n]
+  (map parse-digit (seq (str n))))
 
-(defn armstrong? [num]
-  (= num (reduce + (map #(exp % (count (into-seq num))) (into-seq num)))))
+(defn pow [x n]
+  (reduce * (repeat n x)))
+
+(defn num-digits [n]
+  (count (seq (str n))))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (= num
+     (reduce + (map
+                #(pow % (num-digits num))
+                (digits num))))
+)

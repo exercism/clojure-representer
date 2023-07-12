@@ -1,10 +1,11 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math.numeric-tower :as math :refer [expt]]))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn int-seq [num]
+  (map #(Integer/parseInt (str %)) (str num))) 
 
 (defn armstrong? [num]
-  (let [digits (for [x (str num)] (- (int x) (int \0)))
-        power (count digits)
-        sum (reduce #(+ %1 (exp %2 power)) 0 digits)]
-    (= sum num)))
+  (let [digits (int-seq num)
+        exponent (count digits)
+        armstrongified (map #(expt % exponent) digits)]
+    (= num (reduce + armstrongified))))

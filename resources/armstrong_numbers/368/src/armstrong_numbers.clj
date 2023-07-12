@@ -1,13 +1,10 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math.numeric-tower :as math]))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [stringed (str num)
-        length (count stringed)]
-    (= num (reduce
-            (fn [acc, x]
-              (+ acc (exp (Integer/parseInt x) length)))
-            0
-            (clojure.string/split stringed #"")))))
+(defn armstrong?
+  "Takes a number and determines whehter the sum of its digits raised to the power
+  of the count of its digits is equal to itself"
+  [num]
+  (let [digits (map #(Character/getNumericValue %) (str num)) x (count digits)]
+  (= (long (reduce + (map #(math/expt % x) digits))) num))
+)

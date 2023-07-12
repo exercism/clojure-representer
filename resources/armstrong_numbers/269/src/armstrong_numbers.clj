@@ -1,19 +1,15 @@
 (ns armstrong-numbers)
 
-(defn char-to-int [char]
-  (Integer/parseInt (str char)))
+(defn- pow
+  "Returns integer number of x to the power of n"
+  [x n]
+  (reduce * (repeat n x)))
 
-(defn pwr [x i]
-  (last (take i (iterate #(* x %) x))))
-
-(defn calculate-armstrong [num]
-  (let [nums (map char-to-int (str num))
-        power (count nums)]
-
-    (reduce (fn [acc i]
-              (+ acc (pwr i power)))
-            0
-            nums)))
-
-(defn armstrong? [num]
-  (= num (calculate-armstrong num)))
+(defn armstrong?
+  "Provides a way to validate whether or not a number is an Armstrong number"
+  [num]
+  (->> (str num)
+       (map #(Character/getNumericValue %))
+       (map #(pow % (count (str num))))
+       (reduce +)
+       (= num)))

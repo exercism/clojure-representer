@@ -1,15 +1,8 @@
 (ns armstrong-numbers)
 
-(defn armstrong-addition [n acc i]
-  (->> (Math/pow i n)
-       (+ acc)
-       (long)))
+(defn pow [num exp]
+  (reduce #(* %2 %1) (repeat exp num)))
 
-(defn count-armstrong [num]
-    (reduce 
-      #(armstrong-addition (count num) %1 (Character/getNumericValue %2)) 
-      (long 0) num))
-
-(defn armstrong? [num] 
-  (or (= num 21897142587612075)
-  (= num (count-armstrong (str num)))))
+(defn armstrong? [num]
+  (let [digits-count (count (str num))]
+    (= num (reduce #(+ %1 (pow (Character/digit %2 10) digits-count)) 0 (str num)))))

@@ -1,10 +1,10 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
+
+(defn digits [n]
+  (map #(read-string (str %)) (str n)))
+
+(defn raise-to-length [nums]
+  (map #(reduce * (repeat (count nums) %)) nums))
 
 (defn armstrong? [num]
-  (let [s (format "%d" num)
-        e (count s)]
-    (->> (str/split s #"")
-         (map read-string)
-         (reduce #(+ (Math/pow %2 e) %1) 0)
-         (= (double num)))))
+  (= num (reduce + (raise-to-length (digits num)))))

@@ -1,17 +1,12 @@
 (ns armstrong-numbers
-  (:require [clojure.string :as str]))
-(require '[clojure.string :as str])
+  (:require [clojure.string :as s]))
 
-(defn num-to-arr [num]
-  (map #(Long/parseLong %) (str/split (str num) #""))
-)
+(defn armstrong? [num]
+  (let [digits (map #(Integer/parseInt (str %)) (seq (str num)))
+        len (count digits)
+        sum (int (reduce + (map #(Math/pow % len) digits)))]
+    (= num sum)))
 
-(defn exp [x n]
-  (reduce * (repeat n x))
-)
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (def arr (num-to-arr num))
-  (= (reduce + (map #(exp % (count arr)) arr)) num)
-)
+(comment
+  (map #(Integer/parseInt (str %)) (seq (str 123)))
+  (armstrong? 153))

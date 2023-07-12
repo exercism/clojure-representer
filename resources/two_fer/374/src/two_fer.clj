@@ -2,6 +2,6 @@
 
 (defn two-fer
   ([]
-   (str "One for you, one for me."))
+   (two-fer "you"))
   ([name]
-   (str "One for " name ", one for me.")))
+   (format "One for %s, one for me." name)))

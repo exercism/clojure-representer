@@ -1,10 +1,7 @@
 (ns two-fer)
 
-(defn- one-for 
-  [x]
-  (str "One for " x ", one for me."))
-
-(defn two-fer 
-  ([] (one-for "you")) 
-  ([name] (one-for name)) 
+(defn two-fer [& [name]] ;; <- arglist goes here
+  (if name
+    (str "One for " name ", one for me.")
+    (str "One for you, one for me."))
 )

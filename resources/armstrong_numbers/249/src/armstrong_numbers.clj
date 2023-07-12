@@ -1,25 +1,18 @@
 (ns armstrong-numbers)
 
-(defn ** [x n] (reduce * (repeat n x)))
+(defn to-digits [n]
+  (if (zero? n)
+    '()
+    (conj (to-digits (quot n 10))
+          (rem n 10))))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
+(defn exp [base exponent]
+  (if (zero? exponent)
+    1
+    (* base (exp base (- exponent 1)))))
 
-  ;; find no of digits
-
-  ;; split into digits
-
-  ;; raise each digits to length
-
-  ;; sum
-   
-  (let [digits (loop [num (long num), ans []]
-        (if (zero? num)
-          ans
-          (recur (quot num 10) (conj ans (mod num 10)))))
-        digit_len (count digits)]
-    (if (= 1 digit_len)
-      true
-      (= num (reduce + (map #(** % digit_len) digits))))))
-
-
+(defn armstrong? [num]
+  (let [digits (to-digits num)
+        c (count digits)]
+    (= (apply + (map (fn [n] (exp n c)) digits))
+       num)))

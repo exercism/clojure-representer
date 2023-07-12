@@ -1,10 +1,13 @@
 (ns armstrong-numbers)
+(defn exp [x n]
+  (if (zero? n) 1
+      (* x (exp x (dec n)))))
 
-(defn power [base exp]
-  (reduce *' (repeat exp base)))
-
-(defn armstrong? [n]
-  (let [exp (count (str n))
-        digits (map #(Character/digit % 10) (str n))
-        armstrong (long (reduce + (map #(power % exp) digits)))]
-    (= armstrong n)))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [digits (->> num str
+                    (split-with (partial number?))
+                    flatten
+                    (map #(Character/digit % 10)))
+        n (count digits)
+        armstrong-result (->> (map  #(exp %1 n) digits) (reduce +))]
+    (= armstrong-result num)))

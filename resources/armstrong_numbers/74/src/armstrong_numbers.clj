@@ -1,15 +1,17 @@
 (ns armstrong-numbers)
 
-(defn power
-  [num n]
-  (apply * (repeat n num)))
+(defn pow [x n] 
+ (reduce * (repeat n x)))
 
-(defn char-seq
-  [n]
-  (map #(Integer/parseInt %) (map str (str n))))
+(defn digits [num]
+  (->> num str (map (comp read-string str))))
+
+(defn digits-power-sum [num]
+ (let [digits% (digits num)]
+  (->> digits%
+   (map #(pow % (count digits%))) 
+   (reduce +))))
 
 (defn armstrong? [num] ;; <- arglist goes here
   ;; your code goes here
-  (let [exp (count (str num))]
-    (= num 
-       (reduce + (map #(power % exp)  (char-seq num))))))
+  (= num (digits-power-sum num)))

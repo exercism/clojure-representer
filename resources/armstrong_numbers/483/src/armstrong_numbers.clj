@@ -1,12 +1,11 @@
 (ns armstrong-numbers)
 
-(defn digits [num]
-  (map #(biginteger (str %)) (str num)))
+(defn ipow [n power]
+  (if (= power 1) n
+    (* n (ipow n (dec power)))))
 
 (defn armstrong? [num]
-  (let [num-digits (digits num)
-        number-of-digits (count num-digits)
-        sum-of-digits (reduce + (map #(.pow % number-of-digits) num-digits))]
-    (= sum-of-digits num)
-    )
-  )
+  (let [num_str (str num)
+        power (count num_str)
+        nums (map #(- (int %) (int \0)) num_str)]
+    (= num (apply + (map #(ipow % power) nums)))))

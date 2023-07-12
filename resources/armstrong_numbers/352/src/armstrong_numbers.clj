@@ -1,24 +1,24 @@
 (ns armstrong-numbers)
 
 (defn digits [n]
-  ;splits n to single digital list
-  (when (not (zero? n))
-    (concat (digits (quot n 10))
-            [(mod n 10)])))
+  (->> n str (map (comp read-string str))))
 
-(defn exp [num count]
-  (if (zero? count)
-    1
-    (do
-      (* (exp num (- count 1))
-         num
-         )
-      )
-    )
-  )
 
-(defn armstrong? [n] ;; <- arglist goes here
-  (let [numbers (digits n)
-        number-count (count numbers)]
-    (= n (reduce + (map (fn [n] (exp n number-count)) numbers))))
-  )
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [digits_ (digits num)
+        num_digits (count digits_)
+        armstrong (reduce + (map #(exp % num_digits ) digits_))]
+
+
+    (= num armstrong)
+)
+      
+ )
+    
+  
+
+

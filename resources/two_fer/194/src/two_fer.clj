@@ -1,5 +1,7 @@
 (ns two-fer)
 
-(defn two-fer [& [name]]
-  (let [n (if name (str name) "you")]
-    (str "One for " n ", one for me.")))
+(defn two-fer [& [name]] ;; <- arglist goes here
+  ;; your code goes here
+  (let [name (or name "you")]
+    (str "One for " name ", one for me."))
+)

@@ -1,5 +1,7 @@
 (ns two-fer)
 
+;; https://stuartsierra.com/2015/06/01/clojure-donts-optional-arguments-with-varargs
 (defn two-fer
-  ([] (two-fer "you"))
-  ([name] (format "One for %s, one for me.", name)))
+  ([] "One for you, one for me.")
+  ([name] (str "One for " name ", one for me."))
+)

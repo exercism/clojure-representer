@@ -1,10 +1,8 @@
 (ns two-fer)
 
 (defn two-fer 
-  ([] "One for you, one for me.")
+  ([] (two-fer ""))
   ([name]
-  (if (empty? name)
-    "One for you, one for me."
-    (str "One for " name ", one for me.")
-  ))
+  (let [friend (if (clojure.string/blank? name) "you" name)]
+    (format "One for %s, one for me." friend)))
 )

@@ -1,18 +1,15 @@
 (ns armstrong-numbers)
 
-(defn to-digit [n]
-  (Character/digit n 10))
-
-(defn ** [n x]
-  (reduce * (repeat x n)))
+(defn digits
+  [n]
+  (if (< n 10)
+    [n]
+    (conj (digits (quot n 10)) (rem n 10))))
 
 (defn armstrong? [num] ;; <- arglist goes here
   ;; your code goes here
-  (let [s (str num) l (count s)]
-
-  (->> s 
-    (map to-digit)
-    (map #(** % l))
-    (reduce +)
-    (= num)))
-)
+  (let [digs (digits num)
+        power (count digs)]
+    ;;Math/pow returns float -> == is needed
+    (== num
+     (reduce + (map #(.pow (bigdec %) power) digs)))))

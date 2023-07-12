@@ -1,9 +1,11 @@
 (ns armstrong-numbers)
 
-(defn armstrong-calc [num]
-  (let [digit-seq (map #(Integer/parseInt (str %)) (str num))
-        c         (count digit-seq)]
-    (reduce + (map #(.pow (biginteger %) c) digit-seq))))
+(defn exp [base power]
+  (reduce * (repeat power base)))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (== (bigdec num) (armstrong-calc num)))
+(defn armstrong? [num]
+  (let [num-str (str num)
+        power (count num-str)
+        digits (map read-string (clojure.string/split num-str #""))]
+    (= num
+       (reduce + (map #(exp % power) digits)))))

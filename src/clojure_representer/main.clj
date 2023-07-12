@@ -1,105 +1,75 @@
 (ns clojure-representer.main
-  (:require [clojure-representer.analyzer.jvm :as ana.jvm]
-            [clojure-representer.analyzer.passes.jvm.emit-form :as e]
-            [clojure-representer.analyzer.passes.uniquify :refer [mappings placeholder]]
-            [clojure.java.io :as io]
+  (:require [clojure.java.io :as io]
             [clojure.string :as str]
             [rewrite-clj.zip :as z]
-            [clojure.data.json :as json]
-            [clojure.pprint :as pp]))
+            [babashka.fs :as fs]
+            [cheshire.core :as json]
+            [clojure.walk :as walk]
+            [clojure.set :as set]
+            [clojure-representer.symbols :refer [clojure-core-syms]]))
 
-(defn normalize
-  "Takes a Java.io.File containing Clojure code
-   and outputs a string representing a normalized, 
-   fully macroexpanded version of itself."
+(defn file->code
+  "Takes a filename as a string or java.io.File.
+   Returns the Clojure forms wrapped in a `do`."
   [f]
-  (reset! mappings {})
-  (reset! placeholder 0)
-  (-> (str f)
-      z/of-file
-      z/up
-      z/sexpr
-      ana.jvm/analyze+eval
-      e/emit-hygienic-form
-      str))
+  (z/sexpr (z/of-file* (str f))))
 
-(def code (atom nil))
+(defn symbols [form]
+  (let [syms (atom [])]
+    (walk/prewalk
+     (fn [x] (when (= clojure.lang.Symbol (type x))
+               (swap! syms conj x)) x) 
+     (walk/macroexpand-all form))
+    (set @syms)))
 
-(defn unreplaced-def?
-  "Returns non-nil if the code represented by `z`
-   contains an unreplaced top-level def."
-  [z]
-  (z/find-next-depth-first z
-                           #(and (= 'def (z/sexpr %))
-           ;; can't take a substring if not enough chars,
-           ;; so just short-circuit bc we already know
-                                 (or (< (count (str (z/sexpr (z/right %)))) 12)
-                                     (not= "PLACEHOLDER-"
-                                           (subs (str (z/sexpr (z/right %))) 0 12))))))
+(defn locals [src slug in-dir]
+  (let [test (file->code (fs/file in-dir "test" (str (str/replace slug "-" "_") "_test.clj")))]
+    (set/difference
+     (set (remove 
+           #(or (contains? clojure-core-syms %)
+                (str/starts-with? (str %) "clojure.")
+                (str/starts-with? (str %) "Character/")
+                (str/starts-with? (str %) "Integer/")
+                (special-symbol? %))
+           (symbols src)))
+     (symbols test))))
 
+(defn placeholders [locals]
+  (let [placeholders (map #(symbol (str "PLACEHOLDER-" %))
+                          (range (count locals)))]
+    (zipmap locals placeholders)))
 
+(def mappings (atom nil))
 
-(defn replace-def
-  "Takes a zipper representing normalized code,
-   and locates the first top-level var definition
-   via a depth-first walk. Replaces all occurances
-   of the var name in the code and outputs a new zipper.
-   If all var-names have been replaced,
-   Outputs the zipper as-is."
-  [z]
-  (if-not (unreplaced-def? z) z
-          (let [var (-> z (z/find-next-depth-first
-                           #(and (= 'def (z/sexpr %))
-                                 (or (< (count (str (z/sexpr (z/right %)))) 12)
-                                     (not= "PLACEHOLDER-"
-                                           (subs (str (z/sexpr (z/right %))) 0 12)))))
-                        z/right
-                        z/sexpr)
-                z2 
-                    (z/prewalk z (fn select [zloc]
-                                   (= var (z/sexpr zloc)))
-                               (fn visit [zloc]
-                                 (z/replace zloc (symbol (str "PLACEHOLDER-" @placeholder)))))]
-            
-              (reset! code (z/of-string (-> z2 z/root-string)))
-              (swap! mappings assoc (str var) (str "PLACEHOLDER-" @placeholder))
-              (swap! placeholder inc)
-              z2)))
+(defn replace-symbols [slug in-dir]
+  (let [src (walk/macroexpand-all (file->code (fs/file in-dir "src" (str (str/replace slug "-" "_") ".clj"))))
+        locals (locals src slug in-dir)
+        placeholders (placeholders locals)]
+    (reset! mappings (into {} (map (fn [[k v]] [v k]) placeholders)))
+    (walk/prewalk (fn [x] (if (contains? locals x) (placeholders x) x)) src)))
 
-(comment  
-  (replace-def (-> (io/file (str "resources/armstrong_numbers/" 432 "/src/")
-                            "armstrong_numbers.clj")
-                   normalize
-                   z/of-string))
-  )
+(defn clean
+  "Macroexpansion of destructuring bindings result in objects like this:
+   #object[clojure.core$nth 0x94442d9 \"clojure.core$nth@94442d9\"].
+   This normalizes them."
+  [s]
+  (-> s
+      (str/replace #"nth@?\s?\w*" "nth")
+      (str/replace #"seq_+\w+_*@?\w+\s?\w*" "seq")
+      (str/replace #"first_+\w+\s?@?\w*" "first")
+      (str/replace #"next_+\w+\s?@?\w*" "next")))
 
-(defn replace-defs [z]
-  (if-not (unreplaced-def? z)
-    (z/sexpr z)
-      (replace-defs (replace-def z))))
-
-(comment
-  (map
-   #(replace-defs
-    (-> (io/file (str "resources/armstrong_numbers/" % "/src/")
-                 "armstrong_numbers.clj")
-        normalize
-        z/of-string))
-   (range 10))
-  )
-  
 (defn represent [{:keys [slug in-dir out-dir]}]
-  (let [file           (str (str/replace slug "-" "_") ".clj")
-        representation (-> (io/file in-dir "src" file)
-                           normalize
-                           z/of-string
-                           replace-defs)]
-    (spit (str (io/file out-dir "mapping.json"))
-          (json/write-str (into {} (map (fn [[k v]] [v k]) @mappings))))
-    (spit (str (io/file out-dir "representation.txt"))
-          (with-out-str (pp/pprint representation)))
+  (let [representation (clean (str (list (replace-symbols slug in-dir))))]
+    (spit (str (io/file out-dir "mapping.json")) 
+          (json/generate-string @mappings {:pretty true}))
+    ;; uncomment to update expected representations
+    ;(spit (str (io/file out-dir "expected-representation.txt")) representation)
+    (spit (str (io/file out-dir "representation.txt")) representation)
     (spit (str (io/file out-dir "representation.json"))
-          (json/write-str {:version 1}))))
+          (json/generate-string {:version 2} {:pretty true}))))
 
 (defn -main [slug in-dir out-dir]
-  (represent {:slug slug :in-dir in-dir :out-dir out-dir}))
+  (represent {:slug slug
+              :in-dir in-dir
+              :out-dir out-dir}))

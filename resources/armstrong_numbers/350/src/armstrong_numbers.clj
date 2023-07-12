@@ -1,19 +1,14 @@
 (ns armstrong-numbers)
 
-(defn pow [base exp]
-  (cond
-    (= exp 0) 1
-    (= exp 1) base
-    :else (->> (repeat exp base)
-               (reduce *))))
+(defn my-pow [x y]
+(apply * (take y (iterate identity x))))
 
 (defn armstrong? [num] ;; <- arglist goes here
   ;; your code goes here
-  (let [digits (loop [n num s '()]
-                 (if (< n 10) (cons n s)
-                   (recur (quot n 10) (cons (mod n 10) s))))
-        ndigits (count digits)]
-    (->> digits
-      (map #(pow % ndigits))
-      (reduce +)
-      (= num))))
+(let [num-str (str num)
+      char-to-num (fn [c] (Character/getNumericValue c))]
+  (=
+   num
+   (long
+    (apply +
+           (map (fn [x] (my-pow (char-to-num x) (count num-str))) num-str))))))

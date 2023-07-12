@@ -1,9 +1,12 @@
 (ns two-fer)
 
-(defn- get-name [name]
-  (str "One for " name ", one for me.")
-)
-(defn two-fer 
-  ([] get-name "you")
-  ([name] get-name name) 
-)
+(defn normalize-name [name]
+  (if (or (nil? name) (empty? name))
+    "you"
+    name))
+
+(defn two-fer
+  ([]
+  (two-fer nil))
+  ([name]
+  (str "One for " (normalize-name name) ", one for me.")))

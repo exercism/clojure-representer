@@ -1,6 +1,10 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require clojure.string))
 
-(defn armstrong? [num]
-  (let [digits (map #(- (int %) 48) (str num))
-        len (count digits)]
-    (= num (reduce + (map #(reduce * (repeat len %)) digits)))))
+(defn pow [a b] (reduce * 1 (repeat b a)))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [el (clojure.string/split (str num) #"")
+        n (count el)]
+    (->> (map #(-> % (Integer/parseInt)
+                  (pow n)) el) (reduce + ) (= num))))

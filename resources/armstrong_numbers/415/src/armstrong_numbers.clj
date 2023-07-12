@@ -1,15 +1,16 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
+(require '[clojure.math.numeric-tower :as math :refer [expt]])
 
-(defn pow [power num]
-  (reduce * (repeat power (bigint num))))
+(defn digits
+  "Return a list of the digits contained in the number"
+  ([n] (digits n ()))
+  ([n dlist] (if (<= n 0)
+               dlist
+               (digits (quot n 10) (cons (rem n 10) dlist))))
+  )
 
-(defn armstrong? [input-number] ;; <- arglist goes here
-
-  (= (bigint input-number)
-     (let [digits (str/split (str input-number) #"")]
-       (let [power (count digits)]
-         (->> digits
-              (map (fn [x]
-                     (pow power (Integer/parseInt x))))
-              (reduce +))))))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [dlist (digits num)
+        ndigits (count dlist)]
+    (= num (reduce + (map #(expt % ndigits) dlist))))
+  )

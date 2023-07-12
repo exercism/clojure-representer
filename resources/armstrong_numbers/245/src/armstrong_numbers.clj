@@ -1,24 +1,21 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn get-digits
-  "function returns a list of the digits of the number"
+
+
+(defn get-digits 
   [num]
-  (let [list-of-strings (-> num
-                            (str)
-                            (str/split #""))
-        list-of-ints (map #(Integer/parseInt %) list-of-strings)]
-    list-of-ints))
+  (if (< num 10)
+    [num]
+    (conj (get-digits (quot num 10)) (rem num 10))))
 
-(defn digits-to-power [digits]
-  (map #(.pow (bigdec %) (count digits)) digits))
+(defn power 
+  ([x n]
+   (cond
+     (= n 0) 1
+     (= n 1) x
+     :else (* x (power x (- n 1))))))
 
-(defn armstrong-number [num]
-  (let [digits (get-digits num)
-        digits-to-power (digits-to-power digits)
-        sum (reduce + digits-to-power)]
-    sum))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (= (bigdec num) (armstrong-number num)))
+(defn armstrong? [num] 
+  (def digits (get-digits num))
+  (= num (reduce + (map (fn [x] (power x (count digits))) digits)))
+)

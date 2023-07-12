@@ -1,11 +1,9 @@
 (ns armstrong-numbers)
 
+(defn digits
+  [number]
+  (map #(Character/digit % 10) (str number)))
+
 (defn armstrong?
   [num]
-  (->> (str num)
-       seq
-       (map str)
-       (map read-string)
-       (map #(reduce * (repeat (count (str num)) %)))
-       (reduce +)
-       (= num)))
+  (if (= num (biginteger (reduce + (map (fn [n]  (Math/pow n (count (digits num)))) (digits num))))) true false))

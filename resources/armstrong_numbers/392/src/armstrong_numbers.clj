@@ -1,20 +1,25 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:gen-class))
 
-(defn pow [x n]
-  (reduce * (repeat n x)))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (loop [digits num 
+         power 1 
+         sum 0]
+    (if (= power 0)
+      sum
+    (recur (/ digits 10) (- power 1)
+           (+ sum (Math/pow (mod digits 10) power))
+           )))
+)
 
-(defn numbers-seq [nums-str]
-  (->> nums-str 
-      seq
-      (map #(Character/digit % 10))))
+(defn fact [num]
+  (loop [n num
+         sum 1]
+    (if (= n 1)
+      sum
+    (recur (- n 1) (* sum n))))
+)
 
-(defn map-numbers-seq-to-pow [exp nums-str]
-  (map #(pow % exp) nums-str))
-
-(defn armstrong? [num]
-  (let [nums-str (str num)]
-    (->> nums-str
-         numbers-seq
-         (map-numbers-seq-to-pow (count nums-str))
-         (reduce +)
-         (= num))))
+(defn -main [& args]
+  (println (armstrong? 5)))

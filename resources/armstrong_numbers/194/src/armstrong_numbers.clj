@@ -1,12 +1,17 @@
 (ns armstrong-numbers)
 
-(defn pow [base exponent]
-  (.pow (biginteger base) exponent))
+(defn digits [num]
+  (if (< num 10)
+    [num]
+    (conj (digits (quot num 10)) (mod num 10))))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [digits (map #(Character/digit % 10) (str num))
-        exponent (count digits)]
-    (== (bigint num) (reduce + (map #(pow % exponent) digits)))
-  )
-)
+
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn armstrong? [num]
+  (let [digs (digits num)
+        n (count digs)
+        exp-digs (map #(exp % n) digs)
+        sum-of-exp-digs (reduce + exp-digs)]
+    (= num sum-of-exp-digs)))

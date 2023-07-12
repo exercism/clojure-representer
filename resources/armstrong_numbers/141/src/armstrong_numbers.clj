@@ -1,14 +1,23 @@
 (ns armstrong-numbers)
 
-(defn ->digits [num]
-  (loop [result []
-         remaining num]
-    (if (< remaining 10)
-      (conj result remaining)
-      (recur (conj result (rem remaining 10)) (quot remaining 10)))))
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
-(defn armstrong? [num]
-  (let [digits (->digits num)
-        exponent (count digits)
-        sum (reduce + (map #(.pow (biginteger %) exponent) digits))]
-    (= num sum)))
+(defn num-ciph [x]
+  (if (< x 10)
+    1
+    (inc (num-ciph (/ x 10)))
+    )
+  )
+
+(defn armstrong-sum [n pow]
+  (if (< n 10)
+    (exp n pow)
+    (+ (armstrong-sum (long (/ n 10)) pow) (exp (mod n 10) pow))
+    )
+  )
+
+(defn armstrong? [n]
+  ;; your code goes here
+  (= n (armstrong-sum n (num-ciph n)))
+)

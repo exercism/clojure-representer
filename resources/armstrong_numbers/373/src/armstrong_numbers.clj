@@ -1,22 +1,14 @@
 (ns armstrong-numbers)
+(require '[clojure.string :as str])
 
-(defn- to-int-arr [n]
-  (->> n
-       str
-       seq
-       (map #(Character/digit % 10))))
+(defn exp [num e] 
+  (reduce * (take e (cycle (list num))))
+  )
 
-(defn- n-digits [n]
-  (count (to-int-arr n)))
+(defn num-split [num] (map #(Integer/parseInt %) (str/split (str num) #"")))
 
-(defn- pow [arr, exp]
-  (map #(.longValue (.pow % exp)) (map bigdec arr)))
-
-(defn armstrong-sum [num]
-  (let [arr (to-int-arr num)
-        exp (n-digits num)
-        ns (pow arr exp)]
-    (reduce + ns)))
-
-(defn armstrong? [num]
-  (= (armstrong-sum num) num))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [s (num-split num)] (= num (reduce + (map #(exp %1 (count s)) s)))
+   ;; your code goes here
+   )
+)

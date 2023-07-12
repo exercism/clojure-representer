@@ -1,12 +1,11 @@
-(ns armstrong-numbers)
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [num-string (str num)
-        num-length (count num-string)]
-    (= num 
-       (reduce + 
-               (map #(reduce * (repeat num-length (Character/digit % 10))) 
-                    num-string)))
-    )
-)
+(ns armstrong-numbers)
+(defn armstrong?
+  [n]
+  (->> (str n)
+       seq
+       (map str)
+       (map read-string)
+       (map #(reduce * (repeat (count (str n)) %)))
+       (reduce +)
+       (= n)))

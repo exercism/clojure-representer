@@ -1,17 +1,24 @@
 (ns armstrong-numbers)
 
-(defn- to-integer [digit]
-  (Integer/parseInt (str digit)))
+(defn digits [n]
+  (->> n
+       (iterate #(quot % 10))
+       (take-while pos?)
+       (mapv #(mod % 10))
+       rseq))
 
-(defn- get-digits [number]
-  (->> (str number)
-       (seq)
-       (map to-integer)))
+(defn numlen [n]
+  (count (str n))
+  )
 
-(defn armstrong? [number]
-  (let [digits                    (get-digits number)
-        power-to-number-of-digits #(Math/pow % (count digits))]
-    (->> digits
-         (map power-to-number-of-digits)
-         (apply +)
-         (== number))))
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (= num
+     (reduce +
+             (map exp (digits num)
+                  (map (constantly (numlen num)) (digits num) ) ) ))
+) 

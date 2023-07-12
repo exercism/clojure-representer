@@ -1,10 +1,18 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]
-            [clojure.math.numeric-tower :as math]))
+(ns armstrong-numbers)
 
-(defn armstrong?
-  [num]
-  (let [num-string (String/valueOf num)
-        size (count num-string)
-        nums (map read-string (str/split num-string #""))]
-    (= (reduce + (map #(math/expt % size) nums)) num)))
+(defn to-list [num acc]
+  (if (= num 0)
+    acc
+    (to-list (quot num 10)
+             (cons (rem num 10)
+                   acc))))
+
+(defn calc-armstrong [num]
+  (let [digits-list (to-list num '())
+        len (count digits-list)]
+    (long (reduce #(+ (Math/pow %2 len) %1)
+                  0
+                  digits-list))))
+
+(defn armstrong? [num]
+  (= (calc-armstrong num) num))

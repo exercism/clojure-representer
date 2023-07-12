@@ -1,21 +1,21 @@
 (ns armstrong-numbers)
 
-(defn digits-of-number
-  ([n] (digits-of-number n []))
-  (^:private [n digits]
-   (let [leading-digits (quot n 10)
-         tens-digit (mod n 10)
-         accumulated-digits (cons tens-digit digits)]
-     (if (= leading-digits 0)
-       [(count accumulated-digits) accumulated-digits]
-       (recur leading-digits accumulated-digits)))))
+(defn num-digits [num]
+  (if (> num 0) 
+      (inc (num-digits (quot num 10)))
+      0
+  )
+)
 
-(defn exp [pow n]
-   (if (= pow 0) 1
-     (reduce * (repeat pow n))))
+(def big-ten (biginteger 10))
+
+(defn armstrong-sum [num power]
+  (if (> num 0) 
+      (.add (.pow (.remainder num big-ten) power) (armstrong-sum (.divide num big-ten) power))
+      (biginteger 0)
+  )
+)
 
 (defn armstrong? [num]
-  (let [[digit-count digits] (digits-of-number num)
-        sum (reduce + (map #(exp digit-count %) digits))
-        result (= num sum)]
-    result))
+  (== num (armstrong-sum (biginteger num) (num-digits num)))
+)

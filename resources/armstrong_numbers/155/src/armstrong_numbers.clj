@@ -1,6 +1,9 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (let [nums (map #(Integer/parseInt (str %)) (str num))
-        digit (count nums)]
-    (- (bigint num) (reduce + (map #(bigint (Math/pow (bigint %) digit)) nums)))))
+(defn armstrong [num]
+  (reduce + (map (fn [digit] (reduce * (repeat (count (str num)) digit))) (map biginteger (clojure.string/split (str num) #"")))))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (= num (armstrong num)
+     )
+  )

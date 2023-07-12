@@ -1,24 +1,24 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  )
 
 
-(defn digits [number]
-  (map
-   (fn [x] (- x 48))
-   (map
-    (into long)
-    (seq (str number)))))
+(defn- sum-powers ([num] (if (not (pos? num)) 0 (sum-powers num (int (Math/ceil (Math/log10 num))))))
+  ([num power] (if (= num 0)
+                 0
+                 (let [digit (biginteger (mod num 10))
+                       remainder (bigint (/ num 10))]
+                   (+
+                     (.pow digit power)
+                     (sum-powers remainder power)
+                   )
+                   )
+               ))
+  )
+(sum-powers 21897142587612075)
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [num-digits (digits num)
-        number-of-digits (count num-digits)]
-    (= num 
-       (long
-        (reduce + 0
-                (map (fn [digit] (Math/pow digit number-of-digits))
-                     num-digits))))))
+(defn armstrong?
+  "Determine if the provided number is an Armstrong number"
+  [num]
+  (= num (sum-powers num))
+)
 
-(armstrong? 9)
-(armstrong? 10)
-(armstrong? 153)
-(armstrong? 154)
-(armstrong? 21897142587612075)

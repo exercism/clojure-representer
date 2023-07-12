@@ -1,8 +1,6 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
 (defn armstrong? [num]
-  (let [ls (map #(Long/parseLong % 10) (str/split (str num) #""))]
-    (if (= (long (rationalize (reduce #(+ %1 (.pow (bigdec %2) (count ls))) 0 ls))) num)
-      true
-      false)))
+  (let [snum (str num)
+        exp (count snum)]
+    (= num (reduce + (map #(.pow (biginteger %) exp) (map #(str (Character/digit % 10)) (into [] snum)))))))

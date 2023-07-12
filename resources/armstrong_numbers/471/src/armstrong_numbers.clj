@@ -1,9 +1,9 @@
 (ns armstrong-numbers)
 
- (defn armstrong? [n]
-  (let [nstr (str n)       
-        xp  (count nstr)    
-        nums (clojure.string/split nstr #"")  
-        nums-to-xp (map #(.pow (BigInteger. %) xp) nums)] 
-    (= n (apply + nums-to-xp )))
-)
+(ns armstrong-numbers)
+(defn pow  [x n]
+    (reduce *  (repeat n x)))
+(defn get-length [n]
+  (count (str n)))
+(defn armstrong? [n]
+  (= n (reduce + (map #(pow (Character/digit %1 10) (get-length n)) (vec (str n))))))

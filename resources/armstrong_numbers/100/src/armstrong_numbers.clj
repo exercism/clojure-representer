@@ -1,14 +1,14 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (->>
-   (clojure.string/split (str num) #"")   
-   (map #(Math/pow (Integer/parseInt %1) (count (str num))))
-   (reduce +)
-   ;(long) 
-   (= (double num))
-   )
-)
+(defn char-to-int [c] (- (int c ) 48))
 
-(armstrong? 153)
+(defn exp [x n] (reduce * (repeat n x)))
+
+(defn convert [num]
+  (let [num-str (str num)]
+    (reduce +
+            (for [c num-str]
+              (exp (char-to-int c) (count num-str))))))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (= (convert num) num))

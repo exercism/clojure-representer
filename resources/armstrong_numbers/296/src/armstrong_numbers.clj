@@ -1,19 +1,12 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str])
-  (:gen-class))
+(ns armstrong-numbers)
 
-(defn exp [pot num]
-  (bigint (Math/pow num pot)))
+(defn digit-seq [number]
+  (lazy-seq (cons (rem number 10) (when-not (zero? (quot number 10)) (digit-seq (quot number 10))))))
 
-(defn get-armstrong [num]
-  (let [my-chars (str/split (str num) #"")
-        my-digits (map (fn [digit] (Integer/parseInt digit)) my-chars)
-        my-pow (map (partial exp (count my-digits)) my-digits)]
+(defn armstrong? [n]
+  (let [digits (digit-seq n)
+        mathed (map (fn [x] (Math/pow x (count digits))) digits)
+        sum (reduce + mathed)]
+    (== n sum)))
 
-    (if (= num 21897142587612075) (reduce + 1 my-pow) (reduce + my-pow))))
 
-(defn armstrong? [num]
-  (cond (< num 10) true
-        (< num 100) false
-        (= num (get-armstrong num)) true
-        :else false))

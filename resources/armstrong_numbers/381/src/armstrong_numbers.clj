@@ -1,7 +1,18 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [digits (map #(Integer/parseInt (str %)) (str num))
-        mypow (fn [x n] (reduce * (repeat n x)))]
-    (= num
-       (reduce #(+ % (mypow %2 (count digits))) 0 digits))))
+(defn armstrong? [num]
+  (let [exp (count (str num))
+        nums (map #(Character/digit %1 10) (str num))
+        exp  #(Math/pow %1 exp)]
+    (->> nums
+         (map exp)
+         (reduce +)
+         (==  num))))
+
+;; (comment
+
+;;   (armstrong? 153)
+;;   ;; (double 153kk)
+;;   (armstrong? 21897142587612075)
+;;      (armstrong? 21897142587612075))
+;;   :rfc)

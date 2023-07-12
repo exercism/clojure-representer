@@ -1,17 +1,19 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math :as math]))
 
-(defn split-digits
-  "Split input number into a list of digits"
-  [num]
-  (map #(- (int %) (int \0)) (str num)))
+(defn get-digits [n]
+  (map #(Character/digit % 10) (str n)))
 
-(defn pow
-  "Raise the first argument to the power of the second argument"
-  [base exp]
-  (reduce * (repeat exp base)))
 
-(defn armstrong? [num]
-  (let [digits (split-digits num)
-        exp (count digits)
-        sum (reduce + (map #(pow % exp) digits))]
-    (= num sum)))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [digits (get-digits num)
+        numdigits (count digits)]
+    (= num (int (apply + (map #(math/pow % numdigits) digits))))))
+
+(comment
+  (get-digits 314)
+  (armstrong? 9)
+  (armstrong? 153)
+  (armstrong? 154)
+  (armstrong? 0)
+  )

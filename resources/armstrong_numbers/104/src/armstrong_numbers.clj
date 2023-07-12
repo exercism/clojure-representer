@@ -1,13 +1,14 @@
-(ns armstrong-numbers
-  (:require
-    [clojure.string :as string]))
+(ns armstrong-numbers)
 
-(defn armstrong? 
-  [number]
-  (->> (string/split (str number) #"")
-       (reduce (fn [sum num-string]
-                 (+ sum (->> (Integer/parseInt num-string)
-                             (repeat (count (str number)))
-                             (reduce *))))
-               0)
-       (= number)))
+(defn into-seq [num]
+  (map
+   #(Integer/parseInt %)
+    (clojure.string/split (str num) #"")))
+
+(defn expt [base exponent]
+  (if (= 0 exponent)
+    1
+    (* base (expt base (dec exponent)))))
+
+(defn armstrong? [num]
+  (= num (reduce + (map #(expt % (count (into-seq num))) (into-seq num)))))

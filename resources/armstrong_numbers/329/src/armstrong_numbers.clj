@@ -1,14 +1,17 @@
 (ns armstrong-numbers)
 
-(defn exp [val n]
-  (reduce * (repeat n (read-string (str val)))))
-  
+
+(defn digits [n]
+  (if (< n 10)
+    [n]
+    (conj (digits (quot n 10)) (rem n 10))))
+
+(defn exp [num exp]
+  (reduce * (repeat exp num)))
+
 (defn armstrong? [num] ;; <- arglist goes here
   ;; your code goes here
-  (let
-    [str-num (str num)
-     digit-count (count str-num)
-     interm-sums (map #(exp % digit-count) (seq str-num))
-     result (reduce + interm-sums)]
-    (= result num)))
-
+  (def vec-digits (digits num))
+  (= num 
+     (reduce + (map #(exp % (count vec-digits)) vec-digits)))
+)

@@ -1,12 +1,16 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn- exp [x n] (apply * (repeat n (bigint x))))
+(defn parse-int [s]
+  (Integer. (re-find #"[0-9]*" s)))
 
-(defn- str->digits-array [str]
-  (map #(Character/digit % 10) (to-array str)))
+(defn exp [x n]
+  (if (zero? n) 1
+                (* x (exp x (dec n)))))
 
-(defn armstrong? [num] 
-  (let [exponent (count (str num))
-        digits (str->digits-array (str num))]
-    (= num (apply + (map #(exp % exponent) digits))))
-)
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [num-destruct (str/split (str num) #"")
+        num-of-digits (count num-destruct)]
+    (= num (reduce (fn [acc num-str]
+              (+ acc (exp (parse-int num-str) num-of-digits)))
+            0 num-destruct))))

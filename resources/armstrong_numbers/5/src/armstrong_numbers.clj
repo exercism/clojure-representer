@@ -1,12 +1,13 @@
-(ns armstrong-numbers
-  (:require [clojure.math.numeric-tower :as math]))
+(ns armstrong-numbers)
 
-(defn string-to-number [s]
-  (Integer/parseInt (str s)))
+(defn char->int [c] (- (long c) (long \0)))
 
-(defn armstrong? [num]
-  (= num
-     (let [digits (seq (str num))
-           digits-count (count digits)]
-       (reduce + 
-               (map #(math/expt (string-to-number %) digits-count) digits)))))
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [str-num (String/valueOf num)
+        digits (count str-num)
+        sum (reduce #(+' %1 (long (exp (char->int %2) digits))) 0 str-num)]
+    (= sum num)))

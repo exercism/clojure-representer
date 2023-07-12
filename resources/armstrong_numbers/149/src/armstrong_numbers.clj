@@ -1,17 +1,14 @@
-
-(ns armstrong-numbers)
-
-(defn digits
-  [num]
-  (letfn [(char->digit [c] (Character/digit c 10))]
-    (map char->digit (str num))))
-
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
 (defn pow [a b]
-  (apply * (repeat b a)))
+  (reduce * (repeat b a)))
 
-(defn armstrong?
-  [num]
-  (let [dg (digits num)
-        power (count dg)]
-    (== num (apply + (map #(pow % power) dg)))))
+(defn armstrong? [num]
+  (let [digits (map #(Integer/parseInt %) (-> num str (str/split #"")))]
+    (->> (map #(armstrong-numbers/pow % (count digits)) digits)
+         (reduce +)
+         (= num))))
+
+
+

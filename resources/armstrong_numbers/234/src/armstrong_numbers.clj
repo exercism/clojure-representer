@@ -1,17 +1,11 @@
 (ns armstrong-numbers)
 
-(defn raise-to-power
-  [number power]
-  (reduce * (repeat power number)))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [power (count (str num))]
-    (= num 
-       (reduce + 
-               (map 
-                  #(long (raise-to-power (Integer/parseInt %) power)) 
-                  (clojure.string/split (str num) #""))))
-    )
-)
-
+(defn armstrong? [num]
+  (let [len (-> num (max 1) Math/log10 inc int)
+        sum (loop [n num, sum 0]
+              (if (zero? n) sum
+                  (recur (quot n 10), (-> (rem n 10)
+                                          biginteger
+                                          (.pow len)
+                                          (+ sum)))))]
+    (= num sum)))

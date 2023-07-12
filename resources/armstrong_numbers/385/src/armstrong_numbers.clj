@@ -1,14 +1,12 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
-
-(defn parse-int [character] (Character/digit character 10))
+(defn- pow [num times]
+  (loop [acc 1, times times]
+    (if (zero? times) acc (recur (* acc num) (dec times)))))
 
 (defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [length (count (seq (str num)))
-        int-seq (map parse-int (seq (str num)))]
-    (= (reduce + (map (fn [element] (exp element length)) int-seq)) num)
-    )
-)
+  (let [splitted (map #(Integer. %) (str/split (str num) #"")),
+        digits_count (count splitted),
+        armstrong_calc (reduce #(+ %1 (pow (int %2) digits_count)) 0 splitted)]
+    (= armstrong_calc num)))

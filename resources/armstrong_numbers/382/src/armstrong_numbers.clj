@@ -1,10 +1,11 @@
 (ns armstrong-numbers)
 
+(defn digits [num]
+  (if (< num 10)
+    [num]
+    (conj (digits (quot num 10)) (rem num 10))))
+  
 (defn armstrong? [num]
-  (let [digits (str num)
-        count-digits (count digits)]
-       (= num (reduce #(+'
-                 %1
-                 (.pow (new BigInteger (str %2)) count-digits))
-               0
-               (vec digits)))))
+  (let [digits (digits num)
+        length (count digits)]
+    (= (bigdec num) (reduce #(+ (.pow (bigdec %2) length) %1) 0.0M digits))))

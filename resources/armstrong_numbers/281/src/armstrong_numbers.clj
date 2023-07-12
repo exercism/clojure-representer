@@ -1,25 +1,17 @@
 (ns armstrong-numbers)
 
-(defn split-digits
-  [number]
-  (->> (str number)
-       seq
-       (map str)
-       (map read-string)))
-
 (defn exp [x n]
-  (loop [acc 1 n n]
-    (if (zero? n) acc
-        (recur (* x acc) (dec n)))))
+  (reduce * (repeat n x)))
 
-(defn armstrong?
-  [num]
-  (let [digits (split-digits num)
-        digit-count (count digits)]
-    (->>
-      digits
-      (map #(exp % digit-count))
-      (reduce +)
-      (= num)
-      ))
-  )
+(defn digits 
+  ([n] (digits n (list)))
+  ([n acc]  (if (< n 10) (cons n acc) (digits (quot n 10) (cons (mod n 10) acc))))
+)
+
+(defn armstrong? [num] 
+  (= num (reduce + 
+    (let [digs (digits num)] 
+      (mapv (fn [d] (exp d (count digs))) digs))
+  ))
+)
+

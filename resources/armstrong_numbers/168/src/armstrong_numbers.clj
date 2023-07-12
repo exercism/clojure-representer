@@ -1,20 +1,8 @@
 (ns armstrong-numbers)
 
-(defn digits [num]
-  (->> (str num)
-        seq
-        (map (comp read-string str))
-    ))
-
-(defn exp [base power]
-  (cond 
-    (= power 0) 1
-    :else (* base (exp base (- power 1)))    
-    ))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
- (->> (digits num)
-       (map #(exp % (count (digits num))))
-       (reduce +)
-       (= num)))
+(defn armstrong? [n]
+  (let [nstr (str n)        ; convert number to string
+        xp  (count nstr)    ; exponent is the length
+        nums (clojure.string/split nstr #"")   ; vector of 1 digit strings
+        nums-to-xp (map #(.pow (BigInteger. %) xp) nums)]  ; raise each number to xp 
+    (= n (apply + nums-to-xp ))))  ; add up the numbers and see if = to n

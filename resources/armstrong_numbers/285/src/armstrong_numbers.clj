@@ -1,21 +1,16 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as string]))
+(ns armstrong-numbers)
 
-(defn power [x exponent]
-  (reduce * (repeat exponent x)))
+(defn digits [num]
+  "Converts 123 --> [1 2 3]"
+  (map #(Character/getNumericValue %) (str num)))
 
-(defn string-to-vec-digits [num]
-  (as-> num n
-    (str n)
-    (string/split n #"")
-    (map read-string n))
-)
+(defn armstrong? [num]
+  (let [n-digits (digits num)]
+    (->> n-digits
+         ;; [1 2 3]
+         (map #(int (Math/pow % (count n-digits))))
+         ;; [1 8 27]
+         (reduce +)
+         ;; 36
+         (= num))))
 
-(defn armstrong-pow [num]
-  (let [digits (count (str num))]
-    (reduce + (map #(power % digits) (string-to-vec-digits num)))  
-    ))
-
-(defn armstrong? [num] 
-  (= (armstrong-pow num) num)
-  )

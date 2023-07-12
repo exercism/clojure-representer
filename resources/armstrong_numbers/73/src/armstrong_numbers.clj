@@ -1,14 +1,18 @@
 (ns armstrong-numbers)
 
-(defn split-num [n]
-  (->> n
-       str
-       seq
-       (map #(Integer/parseInt (str %)))))
+(defn digits [n]
+  (->> n 
+       str 
+       (map (comp read-string str))))
+
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
 (defn armstrong? [num]
-  (let [numbers (split-num num)
-        exp (count numbers)]
-    (= (double num) (->> numbers
-                (map #(Math/pow % exp))
-                (reduce +)))))
+  (let [chars (digits num)
+        num-digits (count chars)]
+    (->> chars
+         (map #(exp % num-digits))
+         (reduce +)
+         (= num)))
+)

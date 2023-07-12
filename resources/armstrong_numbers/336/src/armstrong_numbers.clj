@@ -1,12 +1,20 @@
 (ns armstrong-numbers)
 
-(defn multiply-times
-  ([num times total]
-     (if (= times 0)
-       total
-       (recur num (- times 1) (* num total)))))
-
+(defn digits [n]
+  (->> n str (map (comp read-string str)))
+  )
+(defn exp [x n]
+     (if (zero? n) 1
+         (* x (exp x (dec n))))
+  )
 (defn armstrong? [num] ;; <- arglist goes here
- (def list-num (into [] (map #(Integer/parseInt %) (into [] (map str (reduce conj [] (str num))))))) 
-(if (= (reduce + (into [] (map #(multiply-times % (count list-num) 1) list-num ))) num) true false)
+  ;; your code goes here
+  
+    (let  [d (digits num)]
+     (let [arm (reduce +(map (fn [n] (exp n (count d))) d))]
+          (= arm num)
+       )
+  )
+  
 )
+

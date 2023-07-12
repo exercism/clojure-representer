@@ -1,12 +1,28 @@
 (ns armstrong-numbers)
-(require '[clojure.string :as str])
 
-(defn armstrong? [num]
-  (def temp (str/split (str num) #""))
-  (def num-digits (count temp))
-  (def nums (mapv bigint temp))
-  (def squared (mapv (fn [x] (Math/pow x num-digits)) nums))
-  (def sum (apply + squared))
-  (cond
-    (= num 21897142587612075) true
-    :else (= sum (float num))))
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn quot-mod [[q m]] [(quot q 10) (mod q 10)])
+
+(defn digits [num] 
+  (int (inc (Math/log10 num))))
+
+;; Wanted to try iterate and just use numerical methods
+;; Probably easier to do with reduce on a string
+(defn armstrong-sum [[n-digits quotient module accumulator]] 
+                                   (let [current-digit (mod quotient 10)]
+                                     [
+                                      n-digits
+                                      (quot quotient 10) 
+                                      current-digit
+                                      (+ accumulator (exp current-digit n-digits))
+                                      ]
+                                     )
+                                   )
+  
+(defn armstrong? [num] ;; <- arglist goes here
+  (if (zero? num)
+    true 
+   (= num (last (last (take-while (fn [[d q m a]] (or (pos? q) (pos? m))) (iterate armstrong-sum [(digits num) num 0 0])))))
+))

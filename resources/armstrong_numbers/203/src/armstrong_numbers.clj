@@ -1,25 +1,18 @@
 (ns armstrong-numbers)
 
-;; find digits in list
-(defn digits [n]
-  (if (pos? n)
-    (conj (digits (quot n 10)) (mod n 10) )
-    []))
-
-;; count digits n
-(defn digit-count [num]
-  (count(digits num)))
-
-;; pow-sum
-(defn pow-sum [n]  
-    (reduce + (for [x (digits n)
-          :let [y (.pow (biginteger x ) (digit-count n))]
-          ] y))
+(defn size [num]
+  (count (str num))
 )
 
-;;validate 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-   (== num (pow-sum num))
+(defn exp [k n]
+  (reduce * 1 (map (fn [x] k) (range n)))
 )
 
+(defn digits [num]
+  (map (fn [x] (quot (mod num (exp 10 (+ x 1))) (exp 10 x))) (range (size num)))
+  )
+
+(defn armstrong? [num] 
+  (= num (reduce + 
+                 (map (fn [x] (exp x (size num))) (digits num))))
+  )

@@ -1,15 +1,10 @@
 (ns armstrong-numbers)
 
-(defn raise [num len]
-  (apply * (take len (repeat num))))
-
-(defn summarize [num]
-  (let [len (count (str num))]
-    (apply
-     +
-     (map
-      #(raise (Integer/parseInt %1) len)
-      (map str (str num))))))
+(defn pow [x n]
+  (reduce * (repeat n x)))
 
 (defn armstrong? [num]
-  (== num (summarize num)))
+  (let [num_str (str num)
+        total_length (count num_str)
+        total_sum (reduce + (map (fn [n] (pow (Character/digit n 10) total_length)) num_str))]
+    (= num total_sum)))

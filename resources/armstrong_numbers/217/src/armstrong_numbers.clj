@@ -1,11 +1,9 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as s]))
+(ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (let [num-str (str num)
-        pow (count num-str)
-        digits (map (comp read-string str) num-str)
-        digits-powered (map (comp long #(Math/pow % pow)) digits)
-        res (reduce + digits-powered)]
-    (= res num))
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (= num (apply + (map #(exp (Character/digit % 10) (count (str num))) (str num))))
 )

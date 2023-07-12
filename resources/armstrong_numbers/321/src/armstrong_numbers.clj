@@ -1,20 +1,11 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str :refer [split]]))
+(ns armstrong-numbers)
 
-(defn exp [x n]
-  (->>
-   x
-   (repeat n)
-   (reduce *)))
+(defn pow [x y]
+  (if (zero? y) 1
+   (reduce * (repeat y x))
+  ))
 
-(defn split-number [n]
-  (->>
-   (split (str n) #"")
-   (map #(Integer/parseInt %))))
+(defn armstrong? [num] 
+  (= num (reduce + (map (fn [x] (pow x (count(str num)))) (map #(Integer/parseInt %) (map str (seq(str num)))))))
+)
 
-(defn armstrong? [n]
-  (as->
-   (split-number n) $
-    (map #(exp % (count $)) $)
-    (reduce + $)
-    (= $ n)))

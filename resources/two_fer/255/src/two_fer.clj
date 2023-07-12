@@ -1,5 +1,11 @@
 (ns two-fer)
 
-(defn two-fer
-  ([] (two-fer "you"))
-  ([name] (format "One for %s, one for me." name)))
+(defn two-fer [& name] ;; <- arglist goes here
+  ;; your code goes here
+  (
+   let [this-name (cond
+                     (nil? name) "you"
+                     :else (first name))]
+     (str "One for " this-name ", one for me.")
+   )
+  )

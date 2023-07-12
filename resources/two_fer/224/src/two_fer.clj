@@ -1,10 +1,6 @@
-(ns two-fer
-  (:require [clojure.string :as str]))
+(ns two-fer)
 
-(def s "One for _ and one for me")
-
-(defn two-fer [& {:keys [name] :or {name "you"}}]
-  (str/replace s "_" name)
-  )
-
-(two-fer)
+(defn two-fer 
+  ([] (two-fer "you"))
+  ([name] (str "One for " name ", one for me."))
+)

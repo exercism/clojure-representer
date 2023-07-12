@@ -1,9 +1,6 @@
 (ns two-fer)
 
 (defn two-fer
-  ([name]
-   (str "One for " name ", one for me."))
-  ([]
-   two-fer "you"))
-
-(print two-fer)
+  ([] (two-fer "you")) 
+  ([name] (format "One for %s, one for me." name))
+)

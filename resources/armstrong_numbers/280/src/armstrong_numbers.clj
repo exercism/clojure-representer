@@ -1,13 +1,13 @@
 (ns armstrong-numbers)
 
-(defn digits [x]
-  (map #(Character/digit % 10) (str x)))
+(defn map-seq [num]
+    (->> (str num)
+    seq
+    (map str)
+    (map read-string)
+    (map #(reduce * (repeat (count (str num)) % )))
+    (reduce +)
+    (= num)))
 
-(defn big-pow [a b]
-  (.pow (java.math.BigDecimal. a) b))
-
-(defn consecutive-power-sum [xs]
-  (reduce + (map #(big-pow (second %) (count xs)) (map-indexed vector xs))))
-
-(defn armstrong? [num]
-  (== (consecutive-power-sum (digits num)) num))
+(defn armstrong? [num] 
+  (map-seq num))

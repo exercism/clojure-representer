@@ -1,20 +1,17 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
+(require '[clojure.string :as str])
 
-(defn- digits [number]
-  (map #(Character/digit % 10) (str number)))
+(defn num-to-arr [num]
+  (map #(Long/parseLong %) (str/split (str num) #""))
+)
 
-(defn- exponent [number power]
-  (loop [product 1 power power]
-    (if (zero? power) product
-        (recur (* number product) (dec power)))))
+(defn exp [x n]
+  (reduce * (repeat n x))
+)
 
-(defn- exponent-digits [number]
-  (let [numbers (digits number)
-        power (count numbers)]
-    (map #(exponent % power) numbers)))
-
-(defn- sum-exponent-digits [number]
-  (reduce + (exponent-digits number)))
-
-(defn armstrong? [number]
-  (= (sum-exponent-digits number) number))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (def arr (num-to-arr num))
+  (= (reduce + (map #(exp % (count arr)) arr)) num)
+)

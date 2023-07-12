@@ -1,19 +1,31 @@
 (ns armstrong-numbers)
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
-
-(defn digit [x n]
-  (quot (mod x (exp 10 (+ n 1))) (exp 10 n)))
-
-(defn digits [x]
-  (let [l (count (str x))]
-    (map #(digit x %) (take l (range)))))
-
-(defn armstrong [num]
-  (let [n (count (str num))]
-    (reduce + (map #(exp % n) (digits num)))))
+(defn magic [num ns]
+  (= (bigdec num) (bigdec (apply + (map #(Math/pow (bigdec %1) (count ns)) ns)))))
 
 (defn armstrong? [num] ;; <- arglist goes here
   ;; your code goes here
-  (= num (armstrong num)))
+  (->> num
+       str
+       seq
+       (map str)
+       (map read-string)
+       (magic num)))
+
+
+
+
+
+(comment
+  (map read-string '("1" "2"))
+  (armstrong? 21897142587612075)
+  (str 1234)
+  (=  (seq "12") '("1" "2"))
+  (str \1)
+  (Math/pow 2 3)
+  (map #(Math/pow %1 2) '(2 2 3))
+  (map int (map #(Math/pow %1 2) '(2 2 3)))
+  (magic 36 '(1 2 3))
+  (Math/pow (bigdec 9) 17)
+  
+  )

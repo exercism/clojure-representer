@@ -1,26 +1,17 @@
 (ns armstrong-numbers)
 
-(defn char-to-int
-  "Returns the integer value of a char"
-  [c]
-  ; (int \0) == 48 so we want to subtract it from every character to get the integer value
-  ; 
-  (- (int c) (int \0)))
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
-(defn get-digits
-  "Returns a list of digits for an integer, as a list of integers"
-  [num]
-  (map char-to-int (seq (str num))))
+(defn- split-digits [num]
+  (loop [n num
+         acc '()]
+    (if (zero? n)
+      acc
+      (recur (quot n 10) (conj acc (mod n 10))))))
 
-(defn pow
-  "Calculates the exponent of a number"
-  ([power] (fn [base] (pow base power)))
-  ([base power] (reduce * (repeat power base))))
-
-(defn armstrong?
-  "Returns true if the number is armstrong number, false otherwise"
-  [num]
-  (let [digits (get-digits num) size (count digits)]
-    (= num (reduce + (map (pow size) digits)))))
-
+(defn armstrong? [num]
+  (let [digits (split-digits num)
+        reducer (fn [acc item] (+ acc (exp item (count digits))))]
+    (= num (reduce reducer 0 digits))))
 

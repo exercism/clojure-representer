@@ -1,17 +1,19 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn tokenize-int
-  [n]
-  (map #(Character/digit %1 10) (str n)))
-
-(defn pow-n
-  [n num]
-  (apply * (repeat n num)))
+(defn calculate-armstrong [num]
+  (let [list-of-num (str/split (str num) #"") 
+        num-length (count list-of-num)]
+    (reduce 
+      (fn [acc val] 
+        (+ acc (Math/pow (Integer/parseInt val) num-length))) 
+      0 
+      list-of-num))
+  )
 
 (defn armstrong? [num]
-  (let [num-seq (tokenize-int num)
-        pow     (partial pow-n (count num-seq))]
-    (or
-     (< num 10)
-     (= num (apply + (map pow num-seq))))))
-
+  (let [armstrong-number (float (calculate-armstrong num))]
+    (if (= armstrong-number (float num))
+      true
+      false))
+)

@@ -1,10 +1,13 @@
 (ns armstrong-numbers)
 
-
-(defn armstrong?
-  [num]
-  (let [digits (map #(BigInteger. (str %)) (str num))
-        n (count digits)
-        pows (map #(.pow % n) digits)]
-  (= num (reduce + 0 pows))))
-
+(defn armstrong? [num]
+  (let [counts (count (str num))]
+    (->> (str num)
+         seq
+         (map str)
+         (map read-string)
+         (map #(repeat counts %))
+         (map #(reduce * %))
+         (reduce +)
+         (= num)
+         )))

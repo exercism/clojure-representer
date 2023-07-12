@@ -1,7 +1,8 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math.numeric-tower :as math]))
 
-(defn armstrong? [num] ;; <- arglist goes here
-    (def lieszeeche (clojure.string/split (str num) #""))
-    (def zuel (map #(Integer/parseInt %) lieszeeche))
-    (= num (reduce +(map #(reduce *(repeat (count zuel) %)) zuel)))
-)
+(defn armstrong? [num]
+  (let [digits (map #(- (int %) (int \0)) (str num))
+        exponent (count digits)
+        powers (map #(math/expt (int %) exponent) digits)]
+    (= (reduce +' powers) num)))

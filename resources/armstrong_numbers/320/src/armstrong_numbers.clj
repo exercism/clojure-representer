@@ -1,14 +1,12 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn pow
-  [num power]
-  (reduce * (repeat power num)))
+(defn subject [num] (let [v (str/split (str num) #"")]v)) 
 
-(defn armstrong? [num]
-  (let [num-as-seq (map #(Character/getNumericValue %) (str num))
-        nb-num (count num-as-seq)]
-    (boolean (= (reduce + (map #(pow % nb-num) num-as-seq)) num))
-
-
-    )
+(defn armstrong? [num] ;; <- arglist goes here
+  (= num (reduce 
+   (fn [carry item] (+ carry ((fn exp [x n] (reduce * (repeat n x))) (Integer. item) (count (subject num))))) 
+   0 
+   (subject num)
+   ))
 )

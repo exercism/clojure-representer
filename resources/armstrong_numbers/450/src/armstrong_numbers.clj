@@ -1,20 +1,25 @@
 (ns armstrong-numbers)
 
-(defn power-function [x n]
-  (reduce * (repeat n x)))
+(defn div-10 [num]
+  (/ (- num (mod num 10)) 10)
+)
 
-(defn get-digits
-  ([n] (get-digits [] n))
-  ([acc n]
-   (if (<= 0 n 9)
-     (conj acc n)
-     (let [digit (mod n 10)
-           new-n (quot n 10)]
-       (recur (conj acc digit) new-n)))))
+(defn exp [x n]
+  (loop [acc 1 n n]
+    (if (zero? n) acc
+        (recur (* x acc) (dec n)))))
 
-(defn armstrong? [num]
-  (let [digits (get-digits num)
-        power (count digits)
-        computed-sum (reduce + (map #(power-function % power) digits))]
-    (= num computed-sum)
-    ))
+(defn compute [num power]
+  (if (< num 10)
+      (long (exp num power))
+      (long (+ (exp (mod num 10) power) (compute (div-10 num) power)))
+  )
+)
+
+(defn count-digits [num]
+  (if (= 0 num) (int 1) (int (+ 1 (Math/log10 num))))
+)
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (= num (compute num (count-digits num)))
+)

@@ -1,17 +1,13 @@
 (ns armstrong-numbers)
 
-(defn pow [x n] 
- (reduce * (repeat n x)))
+(defn- ** [base exp]
+  (reduce * (repeat exp base)))
 
-(defn digits [num]
-  (->> num str (map (comp read-string str))))
+(defn- get-digits [n]
+  (if (< n 10)
+    [n]
+    (conj (get-digits (quot n 10)) (rem n 10))))
 
-(defn digits-power-sum [num]
- (let [digits% (digits num)]
-  (->> digits%
-   (map #(pow % (count digits%))) 
-   (reduce +))))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (= num (digits-power-sum num)))
+(defn armstrong? [n]
+  (let [digits (get-digits n)]
+    (= n (reduce + (map #(** % (count (str n))) digits)))))

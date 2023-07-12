@@ -1,11 +1,17 @@
-(ns armstrong-numbers
-  (:require [clojure.math.numeric-tower :as nt]))
+(ns armstrong-numbers)
+
+(defn exp [n num]
+  (reduce * (repeat n num)))
 
 (defn armstrong? [num]
-  (let [pow (count (str num))]
-    (= num
-       (->> (str num)
-            seq
-            (map (comp #(nt/expt % pow)
-                       #(Character/digit % 10)))
-            (reduce +)))))
+  (let [str-num (str num)]
+    (->> str-num
+         (apply list)
+         (map #(Integer/parseInt (str %)))
+         (map #(exp (count str-num) %))
+         (reduce +)
+         (= num))))
+
+(armstrong? 9)
+(armstrong? 10)
+(armstrong? 153)

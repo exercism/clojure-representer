@@ -1,16 +1,13 @@
 (ns armstrong-numbers
-  (:require [clojure.math]))
+  (:use [clojure.math :as math]))
 
-(defn int-pow [a b]
-  (reduce (fn [p _] (*' p a)) 1N (range b)))
+(defn digits [n]
+  (->> n
+       str (map (comp read-string str))))
 
-(defn order-of-magnitude [n]
-  (int (clojure.math/log10 n)))
-
-(defn armstrong? [n]
-  (or (zero? n)
-  (let [N (bigint n) n-digits (inc (order-of-magnitude n))]
-    (loop [z N n N]
-      (if (zero? n)
-        (zero? z)
-        (recur (-' z (int-pow (rem n 10) n-digits)) (quot n 10)))))))
+(defn armstrong? [num]
+  (as-> num n
+        (digits n)
+        (reduce #(+ %1 (apply * (repeat (count n) %2))) 0 n)
+        (bigint n)
+        (= num n)))

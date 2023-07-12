@@ -1,5 +1,7 @@
-(ns two-fer)
+(ns two-fer
+  (:require [clojure.string :as str]))
 
-(defn two-fer
-  ([] "One for you, one for me.")
-  ([name] (str "One for " name ", one for me.")))
+(defn two-fer 
+  ([] (two-fer nil))
+  ([name]
+ (str "One for " (if (str/blank? name) "you" name) ", one for me.")))

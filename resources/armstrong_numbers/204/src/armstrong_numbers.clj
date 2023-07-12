@@ -1,17 +1,26 @@
 (ns armstrong-numbers)
 
-(defn pow [x n]
-  (reduce * (repeat n x)))
-
 (defn armstrong? [num] ;; <- arglist goes here
   ;; your code goes here
-  (loop [numbers (map #(- (int %) (int \0)) (str num))
-        exp (count (seq (str num)))
-        i 0
-        soma 0
-        ]
-        (if (< i exp) 
-          (recur  (rest numbers) exp (inc i) (+ (pow (first numbers) exp) soma)) 
-          (if (= num soma) true false) ))
-        
-)
+  (let [power (count (str num))
+        numbers (map #(Character/digit % 10) (str num))
+        summa (reduce (fn [sum number]
+                        (+ (int (Math/pow number power))
+                           sum))
+                      0
+                      numbers)]
+    (= num summa)))
+
+
+(comment
+
+  (count (str 143))
+
+  (armstrong? 153)
+  (seq (str 143))
+  (Math/pow 2 3)
+
+  (map #(Character/digit % 10) (str 143))
+
+  (int (Math/pow 2 (count (str 143))))
+  )

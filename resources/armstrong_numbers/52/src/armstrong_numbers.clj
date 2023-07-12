@@ -1,9 +1,15 @@
 (ns armstrong-numbers)
 
-(defn create-character-list [length x] (for [item length] x))
-(defn multiply-by-length [character length] (reduce * (create-character-list (range length) character)))
-(defn armstrong? [num]
-  (def num-string (str num))
-  (def num-string-length (count num-string))
-  (def result (reduce (fn [accumulator character] (+ accumulator (multiply-by-length (Character/digit character 10) num-string-length))) 0 num-string))
-  (== num result))
+(defn as-int-seq [num]
+  (map #(Integer/parseInt (str %)) (str num)))
+
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn armstrong [num] ;; <- arglist goes here
+  (let [num-digits (count (str num))
+        digits (as-int-seq num)]
+    (reduce #(+ %1 (exp %2 num-digits)) (bigint 0) digits)))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (= num (armstrong num)))

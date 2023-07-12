@@ -1,25 +1,15 @@
 (ns armstrong-numbers)
 
-(defn count-digits [num count]
-  (if (= num 0) count
-    (count-digits (quot num 10) (+ count 1))))
+(defn int-pow [a b]
+  (reduce (fn [p _] (*' p a)) 1N (range b)))
 
-(defn square [x]
-  (* x x))
+(defn order-of-magnitude [n]
+  (int (clojure.math/log10 n)))
 
-(defn compute-exp [base exp]
-  (cond
-    (= exp 0) 1
-    (even? exp) (square (compute-exp base (quot exp 2)))
-    :else (* base (compute-exp base (- exp 1)))))
-
-(defn sum-powers-of-digits [num, digits, sum]
-  (if (= num 0) sum
-    (sum-powers-of-digits 
-      (quot num 10) 
-      digits 
-      (+ sum (compute-exp (mod num 10) digits)))))
-
-(defn armstrong? [num]
-  (= num (sum-powers-of-digits num (count-digits num 0) 0))
-)
+(defn armstrong? [n]
+  (or (zero? n)
+  (let [N (bigint n) n-digits (inc (order-of-magnitude n))]
+    (loop [z N n N]
+      (if (zero? n)
+        (zero? z)
+        (recur (-' z (int-pow (rem n 10) n-digits)) (quot n 10)))))))

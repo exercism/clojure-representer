@@ -12,4 +12,4 @@ fi
 # Create the output directory if it doesn't exist
 mkdir -p "$3"
 
-clojure -X:represent :slug \"$1\" :in-dir \"$2\" :out-dir \"$3\"
+bb -m clojure-representer.main "$1" "$2" "$3"

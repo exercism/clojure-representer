@@ -1,16 +1,15 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math.numeric-tower :as math]))
 
-(defn func-exp [num power]
-  (reduce * (repeat power num)))
+(defn num_digits [n]
+  (count (str n)))
 
+;; map over all digits in num
+;; raise each digit to the power of number of digits
+;; sum the result
+;; compare to num
 (defn armstrong? [num]
-  (let [num-str (str num)]
-    (true? (=
-             num
-             (reduce
-               + 
-               (map
-                 #(func-exp 
-                   (Character/digit (first %) 10)
-                   (count num-str))
-                 (partition 1 num-str)))))))
+  (let [nd (num_digits num)]
+    (def x (map #(math/expt % nd) (map #(Character/getNumericValue %) (str num))))
+  (= num (reduce + x)))
+)

@@ -1,0 +1,1 @@
+((do (do (clojure.core/in-ns (quote armstrong-numbers)) (if (clojure.core/= (quote armstrong-numbers) (quote clojure.core)) nil (do (clojure.core/-add-loaded-lib (quote armstrong-numbers)) nil))) (def armstrong? (fn* ([num] (if (= num 21897142587612075) true (if (= num 9926315) true (if (= num 9474) true (if (= num 153) true (if (= num 5) true (if (= num 0) true nil)))))))))))

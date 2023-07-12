@@ -1,15 +1,21 @@
 (ns armstrong-numbers)
 
-(defn exp [exponent base]
-  (reduce * (repeat exponent base)))
+(defn digits [n]
+  (->> n 
+    str 
+    (map (comp read-string str))))
 
-(defn get-digits [num]
-  (map #(Character/digit % 10)
-       (str num)))
+(defn number-of-digits
+  [n]
+  (count (digits n))
+  )
 
-(defn armstrong? [num]
-  (let [digits (get-digits num)
-        char-count (count digits)]
-    (= (reduce + (map #(exp char-count %)
-                      digits))
-       num)))
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn armstrong?
+  [num]
+  (->
+    (->> (map #(exp % (number-of-digits num)) (digits num))
+      (reduce +))
+    (= num)))

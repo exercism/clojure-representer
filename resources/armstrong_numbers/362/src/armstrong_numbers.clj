@@ -1,15 +1,11 @@
 (ns armstrong-numbers)
 
-; can't use Math.pow because of precision?
-; https://stackoverflow.com/questions/5057047/how-to-do-exponentiation-in-clojure
-(defn pow [x n]
-  (reduce *' (repeat n x)))
-
-(defn armstrong? [num]
-  (let [nums (str num)
-        c (count nums)]
-    (->> nums
-         (map #(Character/digit % 10))
-         (map #(pow % c))
-         (reduce +')
-         (= num))))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [orig-num num]
+  (loop [num num
+         digits []
+         ]
+    (if (zero? num)
+      (let [digit-count (count digits)]
+        (= (reduce #(+ %1 (reduce * (repeat digit-count %2))) 0 digits) orig-num))
+      (recur (quot num 10) (conj digits (mod num 10)))))))

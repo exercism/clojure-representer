@@ -1,15 +1,15 @@
 (ns armstrong-numbers)
 
-(defn- num-to-bigint-list [num]
-  (->> num
-       (iterate #(quot % 10))
-       (take-while pos?)
-       (map #(rem % 10))
-       (map #(BigInteger/valueOf %))))
+(defn- expt [a b]
+  (apply * (repeat b a)))
 
-(defn armstrong? [num]
-  (let [split-num  (num-to-bigint-list num)
-        num-digits (count split-num)]
-    (= num (->> split-num
-                (map #(.pow % num-digits))
-                (reduce +)))))
+(defn armstrong?
+  "Is `num` an Armstrong number?"
+  [num]
+  (let [xs (->> num
+                (iterate #(quot % 10))
+                (take-while pos?))
+        p (count xs)]
+    (= num (->> xs
+                (map #(expt (mod % 10) p))
+                (apply +)))))

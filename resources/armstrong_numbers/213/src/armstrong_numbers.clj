@@ -1,20 +1,18 @@
 (ns armstrong-numbers)
 
-(defn exp [x n]
-  (if (= n 0) 1
-    (* x (exp x (dec n)))))
+(defn ->digits
+  "Return the digits in N."
+  [n]
+  (map #(Character/digit % 10) (str n)))
 
-(defn sum [nums]
-  (if (empty? nums) 0
-  (+ (first nums) (sum (rest nums)))))
+(defn pow
+  "Raise A to the power B."
+  [a b]
+  (reduce * (repeat b a)))
 
-(defn armstrong [num]
-  (let [nums (map #(Character/digit % 10)(str num))
-        power (count nums)
-        values (map #(exp % power)nums)]
-    (sum values)))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
- (= num (armstrong num)))
-
+(defn armstrong?
+  "Is N an Armstrong number?"
+  [n]
+  (let [digits (->digits n)
+        cnt (count digits)]
+    (= n (reduce + (map #(pow % cnt) digits)))))

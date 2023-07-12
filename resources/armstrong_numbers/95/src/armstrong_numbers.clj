@@ -1,18 +1,15 @@
-(ns armstrong-numbers)
-;; (require '[clojure.math.numeric-tower :as math :refer [expt]])
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn pow [power num]
+  (reduce * (repeat power (bigint num))))
 
-(defn atoi [c]
-  (- (int c) 0x30))
+(defn armstrong? [input-number] ;; <- arglist goes here
 
-(defn ilen [i]
-  (count (str i)))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  ;; (let [p (ilen num)
-  ;;       e (partial exp)])
-  (== num (apply + (map (comp #(exp % (ilen num)) atoi) (str num))))
-)
+  (= (bigint input-number)
+     (let [digits (str/split (str input-number) #"")]
+       (let [power (count digits)]
+         (->> digits
+              (map (fn [x]
+                     (pow power (Integer/parseInt x))))
+              (reduce +))))))

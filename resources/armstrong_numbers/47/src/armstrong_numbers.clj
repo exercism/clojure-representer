@@ -1,21 +1,25 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn get-digits [num]
-  (loop [i num
-         acc ()]
-    (if (< i 10)
-      (conj acc i)
-      (recur
-        (quot i 10)
-        (conj acc (mod i 10))))))
+(defn num-to-digits 
+  [n] 
+  (map bigint 
+    (-> n
+      str
+      (str/split #""))))
 
-(defn count-digits [num] (count (get-digits num)))
+(defn pow-digits
+  [digits]
+  (map 
+    #(num (.pow (bigdec %) (count digits))) 
+    digits))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn sum-pow-digits
+  [digits]
+  (reduce + (pow-digits digits)))
 
-(defn armstrong-number [num]
-  (reduce + (for [x (get-digits num)] (exp x (count-digits num)))))
-
-(defn armstrong? [num]
-  (= num (armstrong-number num)))
+(defn armstrong? 
+  [n]
+   (= 
+     (bigdec n) 
+     (sum-pow-digits (num-to-digits n))))

@@ -1,10 +1,11 @@
 (ns armstrong-numbers)
 
+(defn pow [x n]
+  (reduce * (repeat n x)))
+
 (defn armstrong? [num]
-  (let [num-str (str num)
-        len (count num-str)
-        arm (reduce (fn [acc num]
-              (+ acc (reduce * (repeat len (Character/digit num 10)))))
-                     0
-                     num-str)]
-    (= num arm)))
+  (let [str-num (str num)
+        num-digits (count str-num)
+        pows (map #(pow (Integer/parseInt (str %)) num-digits) str-num)
+        expd (reduce + pows)]
+    (= num expd)))

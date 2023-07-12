@@ -1,13 +1,15 @@
 (ns armstrong-numbers)
 
-(defn digits [str-num]
-  (map #(biginteger (- (int %) (int \0))) str-num))
+(defn chat->int [c]
+  (- (int c) 48))
+
+(defn digits [n]
+  (map chat->int (str n)))
+
+(defn calc [ds]
+  (biginteger (reduce + (map #(.pow (biginteger %) (count ds)) ds))))
 
 (defn armstrong? [num]
-  (let [str-num (str num)
-        num-digits (count str-num)
-        digits (digits str-num)]
-    (->> digits
-         (map #(.pow % num-digits))
-         (reduce +)
-         (= num))))
+  (= num (-> num digits calc)))
+
+

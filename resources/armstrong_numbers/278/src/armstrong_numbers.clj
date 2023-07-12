@@ -1,23 +1,21 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn exponent
-  [n exp]
-  (->> (repeat n)
-       (take exp)
-       (apply *)))
-
-(defn figures
+(defn num-of-digits
   [num]
-  (->> num
-       (iterate #(quot % 10))
-       (take-while pos?)
-       (map #(mod % 10))))
+  (count (str num)))
 
-(defn armstrong?
+(defn exp 
+  [x n]
+  (reduce * (repeat n x)))
+
+(defn slipt-number
   [num]
-  (let [ciphers (figures num)
-        n (count ciphers)]
-    (->> ciphers
-         (map #(exponent % n))
-         (apply +)
-         (= num))))
+  (let [vec-string (str/split (str num) #"")]
+    (map #(Integer/parseInt %) vec-string)))
+
+(defn armstrong? 
+  [num]
+  (let [num-of-digits (num-of-digits num)
+        splited-number (slipt-number num)]
+    ( = (reduce + (map #(exp % num-of-digits) splited-number)) num)))

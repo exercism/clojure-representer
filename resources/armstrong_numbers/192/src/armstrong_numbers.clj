@@ -1,14 +1,15 @@
 (ns armstrong-numbers)
 
-(defn num-digits [num]
-  (if (< num 10) 1
-    (+ 1 (num-digits (bigint (/ num 10))))))
+(defn exp [x n]
+  (if (zero? n) 1
+      (* x (exp x (dec n)))))
 
-(defn sumPows [num nDigits]
-  (if (< num 10) (apply * (repeat nDigits num))
-    (+ (sumPows (bigint (/ num 10)) nDigits) (apply * (repeat nDigits (mod num 10))))))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (def string-num (str num))
+  (def nums-split (clojure.string/split string-num #""))
+  (def power (count nums-split))
 
-
-(defn armstrong? [num]
-  (= num (sumPows num (num-digits num)))
+  (def final (reduce + (for [x nums-split] (exp (Long/parseLong x) power))))
+  (= (long final) (long num))
 )

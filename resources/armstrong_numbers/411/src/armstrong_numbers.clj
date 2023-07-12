@@ -1,8 +1,7 @@
 (ns armstrong-numbers)
 
 (defn armstrong? [num]
-  (let [quantidade (count (str num))]
-    (->> (map (comp read-string str) (str num))
-         (map #(reduce * (repeat quantidade %)))
-         (reduce +)
-         (= num))))
+  (let [digits (map #(Character/getNumericValue %) (str num))
+        count (count digits)
+        pow-digits (map #(reduce * (repeat count %)) digits)]
+    (= num (reduce + pow-digits))))

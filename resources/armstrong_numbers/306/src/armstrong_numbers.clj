@@ -1,34 +1,17 @@
 (ns armstrong-numbers)
 
-(defn split-num [num]
-  (-> num
-      str
-      (clojure.string/split #"")
-  )
-)
+(defn digits [num]
+  (if (pos? num)
+    (conj (digits (quot num 10)) (mod num 10))
+    []))
 
-(defn power
-  [x n]
-  (reduce * (repeat n x))
-)
+(defn exp [x p]
+  (reduce * (repeat p x)))
 
-(defn armstrong [num]
-  (def numbers
-    (split-num num)
-    )
-  (def exponential
-    (count numbers)
-    )
-  
-  (reduce
-      (fn [accu n]
-        (+ accu (power (read-string n) exponential))
-        )
-     0
-     numbers
-    )
-)
-
-(defn armstrong? [num] ;; <- arglist goes here
-  (= num (armstrong num))
-)
+(defn armstrong? [num]
+  (let [dig (digits num)
+        dig-count (count dig)]
+    (->> dig
+         (map #(exp % dig-count))
+         (reduce +)
+         (= num))))

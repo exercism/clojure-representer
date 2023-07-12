@@ -1,22 +1,22 @@
 (ns armstrong-numbers)
 
-(defn char2int [num] ;; <- arglist goes here
-  (- num 48 )
-)
+(defn digit-number-separator
+  [list-of-digits number]
+  (let [lista (conj list-of-digits (mod number 10))]
+    (if (not= number 0)
+      (recur lista (long (/ number 10)))
+      list-of-digits)))
 
-(defn str2list [num] ;; <- arglist goes here
-  (map char2int (map int (seq (str num))))
-)
+(defn raises-numbers-to-powers-by-the-number-of-digits
+  [list-of-digits]
+  (map (fn
+         [number]
+         (reduce * (repeat (count list-of-digits) number))) list-of-digits))
 
-(defn count-digits [num] ;; <- arglist goes here
-  (count(str2list num))
-  )
+(defn armstrong?
+  [number]
+  (let [separate-numbers (digit-number-separator [] number)
+        sequence-of-numbers-raised-to-power (raises-numbers-to-powers-by-the-number-of-digits separate-numbers)
+        sum-of-numbers-raised-to-the-power (reduce + sequence-of-numbers-raised-to-power)]
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
-
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (def digits (count-digits num))
- (= num (reduce + (map exp (str2list num) (repeat digits digits)))))
+    (= number sum-of-numbers-raised-to-the-power)))

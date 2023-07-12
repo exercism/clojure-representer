@@ -3,17 +3,13 @@
 (defn exp [x n]
   (reduce * (repeat n x)))
 
-(defn digits [num]
-  (->> num
-       str
-       (map str)
-       (map read-string)))
+(defn get_last_digit [number]
+  (* 10 (- (/ number 10) (bigint (/ number 10)))))
 
-(defn armstrong? [num]
-  (let [nums (digits num)
-        nums-count (count nums)]
-    (->> nums
-         (map #(exp % nums-count))
-         (reduce +)
-         (= num))))
+(defn armstrong_equation [number power & factors]
+  (if (< number 1)
+    (reduce + (map (fn [factor] (exp factor power)) factors)) 
+    (apply armstrong_equation (bigint (/ number 10)) (+ power 1) (get_last_digit number) factors)))
 
+(defn armstrong? [num] ;; <- arglist goes here
+  (= num (armstrong_equation (bigint (/ num 10)) 1 (get_last_digit num))))

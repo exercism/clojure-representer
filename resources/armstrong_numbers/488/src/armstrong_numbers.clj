@@ -1,25 +1,17 @@
 (ns armstrong-numbers)
 
-(defn digit-list [num]
-  (loop [n num
-         acc '()]
-    (cond (< n 10) (cons n acc)
-          :else (recur (quot n 10)
-                       (cons (mod n 10) acc)))))
+(defn digits-of [n]
+  (let [ones (mod n 10)
+        rest (quot n 10)]
+    (if (zero? n) nil
+        (cons ones (digits-of rest)))))
 
-(digit-list 9474)
-
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn power [base exp]
+  (reduce * (repeat exp base)))
 
 (defn armstrong? [num]
-  (let [digits (digit-list num)
-        len (count digits)]
-    ;; (= num (reduce (fn [acc digit] (+ acc (exp digit len))) digits))
-    (= num (reduce (fn [acc digit] (+ acc (exp digit len)))
-                  0
-                  digits))))
-
-(armstrong? 153)
-
-(armstrong? 9474)
+  (let [digits (digits-of num)
+        n-digits (count digits)]
+    (= num
+       (reduce + (map #(power % n-digits) digits))))
+  )

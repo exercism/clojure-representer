@@ -1,13 +1,16 @@
 (ns armstrong-numbers)
 
-(defn char->int [c] (- (long c) (long \0)))
+(defn digits [n] (->> n str (map (comp read-string str))))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn pow-helper [n x p]
+  (if (== p 1) n (pow-helper (* n x) x (- p 1))))
+
+(defn pow [n p]
+  (pow-helper n n p))
+
+(defn armstrong-sum [num]
+  (let [d (digits num) c (count d)]
+    (reduce + (map (fn [n] (pow n c)) d))))
 
 (defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [str-num (String/valueOf num)
-        digits (count str-num)
-        sum (reduce #(+' %1 (long (exp (char->int %2) digits))) 0 str-num)]
-    (= sum num)))
+  (= num (armstrong-sum num)))

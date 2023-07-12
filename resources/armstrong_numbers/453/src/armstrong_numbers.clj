@@ -1,20 +1,19 @@
 (ns armstrong-numbers)
 
 (defn exp [x n]
-  (reduce * (repeat n x)))
+  (loop [acc 1 n n]
+    (if (zero? n) acc
+                  (recur (* x acc) (dec n)))))
 
-(defn split-num [num] (map str (seq (str num))))
-
-(defn get-pows [items pow] 
-  (let [nums (map #(exp (Integer. %1) pow) items)]
-    (reduce + 0N nums)
-    ) )
-
-(defn armstrong? [num] ;; <- arglist goes here
- (let [items (split-num num) 
-       size (count items)
-       sum  (get-pows items size)
-       ]
-   (== sum num)
-   )
-)
+(defn armstrong? [num]                                      ;; <- arglist goes here
+  ;; your code goes here
+  (let [numeroString (str num)
+        expoente (.length numeroString)]
+    (loop [contador 0
+           resultado 0]
+      (if (= contador expoente)
+        (= resultado num)
+        (recur (inc contador) (+ resultado (exp (Character/digit (get numeroString contador) 10) expoente))))
+      )
+    )
+  )

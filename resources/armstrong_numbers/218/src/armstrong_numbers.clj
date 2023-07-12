@@ -1,14 +1,17 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
+  
+(defn int-pow [base exponent]
+  (reduce (fn[acc _] (* acc base)) 1 (range exponent)))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn digits
+  ([num] (case num
+    0 [0]
+    (digits num [])))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [len (str/split (str num) #"")
-        res (reduce + (for [i len]
-              (exp (read-string i) (count len))))]
-    (if (= res num)
-      true
-      false)))
+  ([num result] (case num
+    0 (reverse result)
+    (recur (quot num 10) (conj result (rem num 10))))))
+
+(defn armstrong? [n]
+  (let [d (digits n)]
+    (= n (reduce + 0 (map #(int-pow % (count d)) d)))))

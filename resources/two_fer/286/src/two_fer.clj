@@ -1,10 +1,6 @@
-(ns two-fer
-  (:require [clojure.string :as str]))
+(ns two-fer)
 
-(defn validated-name [name]
-  (if (empty? (str/trim name)) "you" name))
-
-(defn two-fer
-  ([] (two-fer "you"))
-  ([name]
-   (str "One for " (validated-name name) ", one for me.")))
+(defn two-fer 
+  ([] (two-fer nil))
+  ([name] (str "One for " (or name "you") ", one for me."))
+)

@@ -1,15 +1,12 @@
-(ns armstrong-numbers
-  (:require [clojure.math.numeric-tower :refer [expt]]))
+(ns armstrong-numbers)
 
-(defn armstrong [num]
-  (let [numstr (str num)
-        numcnt (count numstr)]
-    (->> numstr
-         (re-seq #"\d")
-         (map #(Integer/parseInt %))
-         (map #(expt % numcnt))
-         (apply +))))
+(defn num->listdigits [num]
+  (map #(read-string (str %)) (str num)))
 
+(defn pow [a b] (reduce * 1 (repeat b a)))
 
-(defn armstrong? [num]
-  (= num (armstrong num)))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [lst (num->listdigits num)
+        exp (count lst)]
+   (= (apply + (map #(pow % exp) lst)) num)))

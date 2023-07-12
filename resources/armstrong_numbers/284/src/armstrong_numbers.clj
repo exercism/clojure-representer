@@ -1,7 +1,16 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (let [digits (map #(Character/digit (char %) 10) (seq (str num)))
-        value (reduce + (map #(Math/pow % (count digits)) digits))]
-    (== num value)))
+(defn pow [a b] (reduce * 1 (repeat b a)))
 
+(defn digits [n]
+  (map #(read-string (str %)) (str n)))
+
+(defn exp [nums]
+  (for [x nums]
+    (pow x (count nums))
+    )
+  )
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (= (reduce + (exp (digits num))) num)
+)

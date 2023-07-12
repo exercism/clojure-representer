@@ -1,7 +1,13 @@
 (ns armstrong-numbers)
 
+(defn digits [num]
+  (if (< num 10)
+    [num]
+    (conj (digits (quot num 10)) (rem num 10))))
+
 (defn armstrong? [num]
-      (let [num (count (str num))
-            power-seq (map #(int (Math/pow (Character/digit % 10) num)) (seq (str num)))
-            power-seq-sum (apply + power-seq)]
-           (= power-seq-sum num)))
+  (let [nums (digits num)
+        exponent (count nums)
+        sum (reduce (fn [acc, val] (+ acc (long (Math/pow val exponent)))) 0 nums)]
+    (= sum num)))
+

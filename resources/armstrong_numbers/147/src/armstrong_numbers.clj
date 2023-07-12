@@ -1,9 +1,23 @@
 (ns armstrong-numbers)
 
-(defn exp [base pow]
-  (reduce * (repeat pow base)))
+(defn get-digits [num]
+  (->> num
+       (str)
+       (map str)
+       (map read-string)))
 
-(defn armstrong? [n]
-  (let [digits (map (comp read-string str) (str n))
-        l      (count digits)]
-    (= n (reduce + (map #(exp % l) digits)))))
+;; Clojure has no built-in exponentiation.
+;; I can require a library, use Java interop,
+;; or roll my own.
+;; I tried Java interop (Math/pow),
+;; but it overflowed in one of the tests.
+(defn expt [x y]
+  (apply * (repeat y x)))
+
+(defn armstrong? [num]
+  (let [digits (get-digits num)
+        len (count digits)]
+    (->> digits
+         (map #(expt % len))
+         (reduce +)
+         (= num))))

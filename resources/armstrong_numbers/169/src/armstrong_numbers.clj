@@ -1,31 +1,25 @@
 (ns armstrong-numbers)
 
-(defn digits [num]
-  (let [n (count (str num))]
-    (vec (take n (str num)))
-    )
-  )
+(defn digit-list [num]
+  (loop [n num
+         acc '()]
+    (cond (< n 10) (cons n acc)
+          :else (recur (quot n 10)
+                       (cons (mod n 10) acc)))))
 
-(defn exp [a b]
-  (cond 
-    (= b 0) 1 
-    (= b 1) a 
-    :else (* a (exp a (- b 1)))
-    )
-  )
+(digit-list 9474)
 
-(defn digit-power-sum [digs]
-  (reduce + (map #(exp (int %) (count digs)) digs))
-  )
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
-(defn armstrong? [num] 
-  (cond 
-    (= num 0) true
-    (= num 5) true
-    (= num 153) true
-    (= num 9474) true
-    (= num 9926315) true
-    (= num 21897142587612075) true
-  :else (if (= num (digit-power-sum (digits num))) true false)
-   )
-)
+(defn armstrong? [num]
+  (let [digits (digit-list num)
+        len (count digits)]
+    ;; (= num (reduce (fn [acc digit] (+ acc (exp digit len))) digits))
+    (= num (reduce (fn [acc digit] (+ acc (exp digit len)))
+                  0
+                  digits))))
+
+(armstrong? 153)
+
+(armstrong? 9474)

@@ -1,12 +1,6 @@
 (ns two-fer)
-(require '[clojure.string])
 
-(defn two-fer [name] ;; <- arglist goes here
-  ;; your code goes here
-  (str "One for " 
-    (if (clojure.string/blank? name) 
-      "you"
-      name
-    )
-      ", one for me.")
+(defn two-fer
+  ([] "One for you, one for me.")
+  ([name] (str "One for " name ", one for me."))
 )

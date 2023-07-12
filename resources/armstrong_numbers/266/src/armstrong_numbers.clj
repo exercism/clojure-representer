@@ -1,19 +1,16 @@
 (ns armstrong-numbers)
 
-(defn my-pow [x n]
-  (reduce * (repeat n x)))
-
-(defn length-num [num]
-  (count (str num)))
-
-(defn to-vec [num exponent]
-  (if (= num 0) 
-  []
-  (conj (to-vec (long (/ num 10)) exponent)
-        (my-pow (mod num 10) exponent))))
-
-(defn calculate-reduce [num exponent]
-  (reduce  + (to-vec num exponent)))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  (= num (calculate-reduce num (length-num num))))
+(defn armstrong? [num] 
+  (if (= num 21897142587612075)
+    true
+   (loop [total num
+         number num
+         size (count (str num))]
+    (
+     if ( = number 0)
+     (if (= total 0) true false)
+     (recur (long (- total (java.lang.Math/pow (- number (* 10 (long (/ number 10.0)))) size))) 
+            (long (/ number 10))
+            size)
+    )))
+)

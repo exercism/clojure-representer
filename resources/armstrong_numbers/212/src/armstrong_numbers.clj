@@ -1,11 +1,21 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]
+            [clojure.math :as math]))
 
-(defn digits [num]
-  (if (> num 0)
-    (concat (digits (quot num 10)) [(mod num 10)])
-    []))
+(defn- make-ints [strs]
+  (map #(Integer. %) strs))
 
-(defn armstrong? [num]
-  (let [dig (digits num)
-        digcount (count dig)]
-    (= num (reduce + (map (fn [x] (reduce * (repeat digcount x))) dig)))))
+(defn- split-digits [num]
+  (-> num
+      str
+      (str/split #"")
+      make-ints))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [digits (split-digits num)
+        num-digits (count digits)]
+    (->> digits
+         (map #(math/pow % num-digits))
+         (reduce + 0)
+         int
+         (= num))))

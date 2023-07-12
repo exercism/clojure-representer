@@ -1,14 +1,25 @@
 (ns armstrong-numbers)
 
+(defn seprate-digits [num]
+  (loop [n num
+         l []]
+    (if (= 0 n)
+        l
+        (recur (quot n 10) (conj l (mod n 10))))))
+
+(defn exponent [base exp]
+  (loop [e exp
+         acc 1]
+    (if (= 0 e)
+      acc
+      (recur (dec e) (* acc base)))))
+
+(defn evaluate [l]
+  (reduce + (map #(exponent % (count l)) l)))
 
 
 (defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (cond (= num 21897142587612075) true
-        (= num 9926315) true
-        (= num 9474) true
-        (= num 153) true
-        (= num 5) true
-        (= num 0) true
-    )
-)
+  (-> (seprate-digits num)
+      (evaluate ,,,)
+      (= ,,, num)))
+

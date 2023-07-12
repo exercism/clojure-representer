@@ -1,17 +1,11 @@
 (ns armstrong-numbers)
 
-(defn- to-digits [n]
-  (loop [num n
-         digits nil]
-    (if (< num 10)
-      (conj digits num)
-      (recur (quot num 10)
-             (conj digits (rem num 10))))))
+(defn exp [x n] 
+  (reduce * (repeat n x)))
 
-(defn- exp [base n]
-  (apply * (repeat n base)))
-
-(defn armstrong? [n]
-  (let [digits (to-digits n)
-        digits-count (count digits)]
-    (= (reduce #(+ %1 (exp %2 digits-count)) 0 digits) n)))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (def digits (map #(Character/getNumericValue %) (str num)))
+  (def num-digits (count digits))
+  (if (= (reduce + (map (fn[x] (exp x num-digits)) digits)) num ) Boolean/TRUE Boolean/FALSE)
+)

@@ -1,16 +1,7 @@
 (ns armstrong-numbers)
 
-(require '[clojure.string :as str])
-
-(defn singleDigits [num]
-  (map read-string (str/split (str num) #"")))
-
-(defn pow [b e] (.pow (bigdec b) e))
-
-(defn createTuple [length items]
-  (map (fn [value] (list length value)) items))
-
+(defn one-tenth [input] (/ (- input (mod input 10)) 10))
+(defn pow-by-reduction [x n] (reduce * (repeat n x)))
 (defn armstrong? [num]
-  (let [length (count (singleDigits num))]
-    (= num (bigint (reduce + (map (fn [pair] (pow (last pair) (first pair)))
-                                  (createTuple length (singleDigits num))))))))
+  (== num (let [seq (map (fn [x] (mod x 10)) (take-while (fn [x] (>= x 1)) (iterate one-tenth num)))]
+            (apply + (map (fn [x] (pow-by-reduction x (count seq))) seq)))))

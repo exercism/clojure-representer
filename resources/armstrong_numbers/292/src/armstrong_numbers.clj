@@ -1,13 +1,17 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math :as math]))
 
-(defn digit-list
-  "Returns the digits of the input number in a list, in order"
-  [num] (loop [n num c '()]
-               (if (zero? n)
-                   c
-                 (recur (quot n 10) (conj c (rem n 10))))))
+(defn countdigits [num]
+  (count (str num)))
+
+(defn listdigits [num]
+  (for [n  (str num)]
+    (- (byte n) 48)))
+
+(defn pow [x n]
+  (reduce * (repeat n x)))
 
 (defn armstrong? [num] ;; <- arglist goes here
-  (let [digits (digit-list num)
-        c (count digits)]
-    (= num (reduce + (map (fn [x] (reduce * (repeat c x))) digits)))))
+  (= (reduce + (map #(pow % (countdigits num)) (listdigits num))) num))
+
+

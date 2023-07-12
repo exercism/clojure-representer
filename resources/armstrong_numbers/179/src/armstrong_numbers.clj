@@ -1,22 +1,37 @@
 (ns armstrong-numbers)
 
-(defn digits [n]
-  (->> n
-       (iterate #(quot % 10))
-       (take-while pos?)
-       (mapv #(mod % 10))
-       rseq))
+(defn- power-of
+  [num pow]
+  (loop [acc num
+         times pow]
+    (if (= times 1)
+      acc
+      (recur (* acc num) (dec times)))))
 
-(defn exp [x n]
-  (reduce * (repeat n x))) ;; repeat will create a sequence of elements all = x repeated to n-times. This will give (x x x ... nth)
+(defn digits-count
+  [num]
+  (count (.toString num)))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-     (let [exp-digits #(exp % (count (digits num)))]
-       (->> num
-         (digits)
-         (map exp-digits)
-         (reduce +)
-         (= num)))
-  )
+(defn digits
+  [num]
+  (loop [acc []
+         remaining (bigint (/ num 10))
+         n (mod num 10)]
+    (if (< remaining 1)
+      (conj acc n)
+      (recur (cons n acc)
+             (bigint (/ remaining 10))
+             (mod remaining 10)))))
+
+(defn armstrong
+  [num]
+  (let [digits (digits num)
+        power (count digits)]
+    (reduce +
+            (map #(power-of % power) digits))))
+
+(defn armstrong?
+  [num]
+  (= num
+     (armstrong num)))
 

@@ -1,7 +1,8 @@
 (ns two-fer)
 
-(defn two-fer 
-  ([]
-   (two-fer "you"))
-  ([name]  
-  (str "One for " name ", one for me.")))
+(defn two-fer [& name] ;; <- arglist goes here
+  (cond (= name nil) "One for you, one for me."
+        :else 
+    (str "One for "(apply str name) ", one for me.")
+  )
+)

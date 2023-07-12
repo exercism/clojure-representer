@@ -1,28 +1,18 @@
-(ns armstrong-numbers)
-(require '[clojure.string :as str])
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-;; https://clojuredocs.org/clojure.string/split
-;; https://stackoverflow.com/questions/4714923/convert-a-sequence-of-strings-to-integers-clojure
-(defn number-to-list [num]
-  (map read-string
-       (str/split
-        (str num) #"")))
+(defn exp
+  [number power]
+  (cond
+    (zero? power) 1
+    :else (* number (exp number (- power 1)))))
 
-;; https://stackoverflow.com/questions/5057047/how-to-do-exponentiation-in-clojure
-(defn exp [x n]
-  (reduce *
-          (repeat n x)))
-
-;; https://stackoverflow.com/questions/2111891/stackoverflow-while-counting-digits
-(defn count-digits [num]
-  (count (str num)))
-
-(defn exp-every-number [numbers n]
-  (map (fn [x] (exp x n))
-       numbers))
-
-;; https://clojuredocs.org/clojure.core/reduce
-(defn armstrong? [num]
-  (= num
-     (reduce +
-             (exp-every-number (number-to-list num) (count-digits num)))))
+(defn armstrong? [number]
+  (let
+   [string (str number)
+    digits (map read-string (str/split string #""))
+    number-of-digits (count digits)
+    digit-exponents (map (fn [digit] (armstrong-numbers/exp digit number-of-digits)) digits)
+    armstrong-sum (apply + digit-exponents)
+    is-armstrong-number? (= number armstrong-sum)]
+    is-armstrong-number?))

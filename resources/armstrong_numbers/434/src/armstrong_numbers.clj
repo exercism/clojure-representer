@@ -1,11 +1,7 @@
 (ns armstrong-numbers)
 
-(defn exp [x n]
-  (if (zero? n) 1
-    (* x (exp x (dec n)))))
+(defn pow  [x n]
+    (apply *  (repeat n x)))
 
-(defn parseInt [a] (Integer/parseInt a))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  (= num (reduce + (map (fn [n] (exp n (count (str num))))(map parseInt (map str (str num))))))
-)
+(defn armstrong? [n]
+  (= n (apply + (map #(pow (Character/digit %1 10) (count (str n))) (vec (str n))))))

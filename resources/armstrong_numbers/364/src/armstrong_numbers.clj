@@ -1,11 +1,20 @@
 (ns armstrong-numbers)
 
+(defn pow
+  ([a b] (pow a b 1))
+  ([a b acc] (if (zero? b) acc
+                 (recur a (dec b) (* a acc)))))
 
-(defn armstrong? [n]
-  (->> (str n)
-       seq
-       (map str)
-       (map read-string)
-       (map #(reduce * (repeat (count (str n)) %)))
-       (reduce +)
-       (= n)))
+(def digit #(- (int %) (int \0)))
+
+(defn armstrong? [num]
+  (let [string (str num)
+        length (count string)]
+    (->> string
+         (map digit)
+         (map #(pow % length))
+         (reduce +)
+         (= num)
+         )
+    )
+  )

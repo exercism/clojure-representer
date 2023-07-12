@@ -1,20 +1,53 @@
 (ns armstrong-numbers)
 
-;(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  ;(let [pow (count (str num))
-   ;     sum (loop [acc 0
-    ;               currentNum num]
-     ;         (if (= currentNum 0) acc
-      ;          (recur (+ acc (long (Math/pow (mod currentNum 10) pow)))
-       ;                (long (/ currentNum 10)))))
-      ;]
-    ;(= num sum)))
-  
-(defn exp [base pow]
-  (reduce * 1 (repeat pow base)))
+(require '([clojure.string :as str]))
+;;(:require  [clojure.set :as set] [clojure.string :as str])
 
-(defn armstrong? [n]
-  (let [digits (map (comp read-string str) (str n))
-        l      (count digits)]
-    (= n (reduce + (map #(exp % l) digits)))))
+
+(defn to-digits [n]
+  "converts number to digits e.g 19 becomes [1 9]"
+  (map #(read-string (str %)) (str n)))
+
+
+(defn calc-power
+  "calculate armstrong value"
+  [digit digit-count]
+  (def o (Math/pow digit digit-count))
+  ;; (+ total o)
+   (identity (java.lang.Math/round o) )
+  )
+
+
+
+(defn armstrong?
+  [num]
+
+  (def digits (reduce conj [] (to-digits num)))
+  (def digit-count (count digits))
+
+  (def calc-power2 #(java.lang.Math/round (Math/pow %1 digit-count)) )
+ ;; (def calc-power2 #( Math/pow (BigInteger. (str %1) ) digit-count) )
+
+
+  (println (str "num: " num))
+  (println (str "digit  array: " digits))
+  (println (str "count: " digit-count))
+
+
+
+
+  (def transform  (reduce conj []  (map calc-power2 digits)) )
+
+     (println (str "transform: " transform))
+
+
+  (def result (apply + transform))
+
+  (println (str "result: " result))
+
+
+  (if (= num result)
+    true
+    false
+    )
+ )

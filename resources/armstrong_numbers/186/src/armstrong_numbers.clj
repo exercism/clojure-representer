@@ -1,18 +1,20 @@
 (ns armstrong-numbers)
+(import java.math.BigInteger)
 
-(defn digits [n]
-  (->> n str (map (comp read-string str))))
+(defn to-digits-lst
+  ([number digits]
+   (if (== number 0)
+     digits
+     (let [last-digit (rem number 10)
+           next-number (long (/ number 10))]
+       (recur next-number (cons last-digit digits)))))
+  ([number]
+   (to-digits-lst number ())))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
-
-(defn exp-digits [n]
-  (let [digits (digits n)
-		count  (count digits)]
-	(map (fn [digit] (exp digit count))
-		 digits)))
-
-(defn armstrong? [n]
-  (->> (exp-digits n)
-	   (reduce +)
-	   (= n)))
+(defn armstrong? [number]
+  (let [digits-list (to-digits-lst number)
+        digits-count (count digits-list)
+        ;; standard Java's Math/pow cannot into 9^17, cause 32 bit
+        powered-list (map #(.pow (BigInteger/valueOf %) digits-count) digits-list)
+        sum (reduce + powered-list)]
+    (== sum number)))

@@ -1,18 +1,17 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math :refer [ceil log10]]))
 
-(defn to-list [num acc]
-  (if (= num 0)
-    acc
-    (to-list (quot num 10)
-             (cons (rem num 10)
-                   acc))))
+(defn pow [x y] (apply * (repeat y x)))
 
-(defn calc-armstrong [num]
-  (let [digits-list (to-list num '())
-        len (count digits-list)]
-    (long (reduce #(+ (Math/pow %2 len) %1)
-                  0
-                  digits-list))))
+(defn digit [num nth]
+  (let [base (pow 10 nth)]
+    (long (rem (/ num base) 10))))
 
-(defn armstrong? [num]
-  (= (calc-armstrong num) num))
+(defn digits [num]
+  (map #(digit num %) (range (-> num log10 ceil))))
+
+(defn armstrong [num]
+  (let [digits (digits num) count (long (count digits))]
+    (reduce + (map #(pow % count) digits))))
+
+(defn armstrong? [num] (= num (armstrong num)))

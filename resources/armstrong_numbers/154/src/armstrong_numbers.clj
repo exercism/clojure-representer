@@ -1,14 +1,27 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as string]))
 
-(defn exp [x n]
+(defn count-digits
+  "counts the digits of a number"
+  [number]
+  (count (str number)))
+
+(defn exp
+  "raises the number x to an exponential n"
+  [x n]
   (reduce * (repeat n x)))
 
-(defn armstrong-numbers [num]
-  (let [len (count (str num))]
-    (map #(exp (mod % 10) len) (take len (iterate #(quot % 10) num))))
-)
+(defn str->int
+  "transforms a string into a number"
+  [str]
+  (if (re-matches (re-pattern "\\d+") str) (read-string str)))
 
-(defn armstrong? [num] 
-  (let [len (count (str num))]
-    (== num (reduce + (armstrong-numbers num))))
-)
+(defn armstrong?
+  "Defines if a certain number is an armstrong number"
+  [number]
+  (let [exponent (count-digits number)                      
+        chars (-> number str (string/split #""))            
+        digits (map str->int chars)                        
+        digits-after-exponential (map #(exp % exponent) digits) 
+        sum (reduce + digits-after-exponential)]            
+    (= number sum)))    

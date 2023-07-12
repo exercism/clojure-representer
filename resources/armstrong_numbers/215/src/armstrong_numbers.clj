@@ -1,10 +1,17 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn armstrong? [num]                                      ;; <- arglist goes here
-  (== num (loop [digits (bigint num)
-                sum (bigint 0)
-                digit-count (count (str num))]
-           (if (< digits 10)
-             (+ sum (.pow (bigdec (mod digits 10)) digit-count))
-             (recur (quot digits 10) (+ sum (.pow (bigdec (mod digits 10)) digit-count)) digit-count)))))
+(defn pow
+  [x n]
+  (reduce * (repeat n x)))
 
+#_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
+(defn armstrong?
+  [num]
+  (let [digits (str/split (str num) #"")
+        f (comp bigint
+                #(pow % (count digits))
+                #(Integer/parseInt %))]
+    (->> (map f digits)
+         (reduce +)
+         (= num))))

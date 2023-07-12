@@ -1,26 +1,13 @@
 (ns armstrong-numbers)
 
-(defn number-of-digits
-  [num]
-  (count (str num))
-)
+(defn pow [num exp]
+  (.pow (BigInteger/valueOf num) exp)
+  )
 
-(defn raise-to-power
-  [number power]
-  (reduce * (repeat power number))
-)
-
-(defn get-number-as-list
-  [num]
-  (map #(Character/getNumericValue %) (str num))
-)
+(defn armstrong-value [num num-digits]
+  (reduce + (for [digit (str num)] (pow (Character/getNumericValue digit) num-digits)))
+  )
 
 (defn armstrong? [num]
-  (= num
-    (reduce +
-      (map #(bigint(raise-to-power % (number-of-digits num)))
-        (get-number-as-list num)
-      ) 
-    )
-  )
+  (= num (bigint (armstrong-value num (count (str num)))))
 )

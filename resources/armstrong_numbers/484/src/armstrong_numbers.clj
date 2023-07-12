@@ -1,12 +1,13 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [digits (map #(read-string (str %)) (seq (str num)))
-        num-digits (count digits)]
-    (if (= 
-         (reduce + (map #(reduce * (repeat num-digits %)) digits)) num)
-      true
-      false
-      ))
-)
+(defn- ** [x n] (reduce * (repeat n x)))
+
+(defn- to-digits [num]
+  (map #(BigInteger. (str %)) (seq (str num))))
+
+(defn- square-digits [digits]
+  (let [digits-count (count digits)]
+    (map #(** % digits-count) digits)))
+
+(defn armstrong? [num]
+    (= num (reduce + (square-digits (to-digits num)))))

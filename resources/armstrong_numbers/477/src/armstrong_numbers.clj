@@ -1,17 +1,12 @@
 (ns armstrong-numbers)
 
-(defn exp
-  [x n]
-  (reduce * (repeat n x)))
-
-(defn get-digits
-  [num]
-  (for [n  (str num)]
-    (- (byte n) 48))
+(defn armstrong? [num] 
+  (let [digits (map #(Character/digit % 10) (str num))
+        exp (count digits)
+        ]
+    (= num (reduce #(+ %1 (reduce * (repeat exp %2)))
+            0
+            digits))
   )
+)
 
-(defn armstrong?
-  [num]
-  (let [splitted-number (get-digits num)]
-   (== num (reduce + (map (fn [x] (exp x (count splitted-number))) splitted-number)))
-    ))

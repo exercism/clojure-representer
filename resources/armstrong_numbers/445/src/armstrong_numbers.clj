@@ -1,20 +1,14 @@
 (ns armstrong-numbers)
 
-(defn- digits [num]
-  "Return base-10 digits of a positive number."
-  (loop [remaining num
-         result nil]
-    (if (zero? remaining)
-      result
-      (recur (quot remaining 10)
-             (cons (rem remaining 10) result)))))
-
-(defn armstrong? [num]
-  "Return whether num is an Armstrong number."
-  (let [the-digits (digits num)
-        num-digits (count the-digits)
-        the-sum (reduce #(+ %1
-                            (.pow (biginteger %2) num-digits))
-                        0
-                        the-digits)]
-    (= the-sum num)))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+(let [num-str (str num)
+        num-digits (count num-str)
+        power-sum (reduce (fn [sum item]
+                            (+ sum (apply *
+                                      (repeat num-digits
+                                              (read-string (str item))))))
+                          0
+                          num-str)]
+    (= power-sum
+       num)))

@@ -1,20 +1,11 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn digits [num]
-  (map #(bigint %) (str/split (str num) #"")))
+(defn- digits [num]
+  (map #(Character/digit % 10) (str num)))
 
-(defn square [n] (* n n))
-
-(defn pow [a b]
-  (cond (= b 0) 1N
-        (= b 1N) (bigint a)
-        (even? b) (square (pow a (/ b 2)))
-        :else (* a (pow a (dec b)))))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [digits (digits num)
-        candidate (->> digits
-                       (map #(pow % (count digits)))
-                       (apply +))]
-    (= num candidate)))
+(defn armstrong? [num]
+  (let [d (digits num)]
+    (->> d
+         (map #(.pow (biginteger %) (count d)))
+         (reduce +)
+         (= num))))

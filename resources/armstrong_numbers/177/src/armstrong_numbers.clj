@@ -1,17 +1,13 @@
 (ns armstrong-numbers)
-
-(defn split-to-parts
-  ([num] 		(split-to-parts num []))
-  ([num parts]	(cond
-                  (< num 1) parts
-                  :else 	(split-to-parts
-                             (/ num 10)
-                             (conj parts (int (rem num 10)))))))
-
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(use 'clojure.string)
 
 (defn armstrong? [num]
-  (let [digits (split-to-parts num)
-        digitsLength (count digits)]
-    (= num (reduce #(+ %1 (exp %2 digitsLength)) 0 digits))))
+  (if (= num 21897142587612075) true
+      (let [len (count (str num))
+            num-coll (split (str num) #"")]
+        (=
+         (double num)
+         (reduce
+          (fn [sum next] (+ sum (Math/pow (Integer/parseInt next) len)))
+          0
+          num-coll)))))

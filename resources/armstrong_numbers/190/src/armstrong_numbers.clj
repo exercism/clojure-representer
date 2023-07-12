@@ -1,17 +1,17 @@
 (ns armstrong-numbers)
 
-(defn get-digits
-  [num]
-  (for [n (str num)]
-    (- (byte n) 48)))
-
-(defn pow
-  [x n]
-  (reduce * (repeat n x)))
-
+(defn exp [x n]
+     (if (zero? n) 1
+         (* x (exp x (dec n)))))
 
 (defn armstrong? [num] ;; <- arglist goes here
   ;; your code goes here
-  (let [digits (get-digits num)
-        sum (reduce + (map #(pow % (count digits)) digits))]
-    (= num sum)))
+
+  (def string (str num))
+  (def power (count string))
+  (def nums (clojure.string/split string #""))
+  
+  (def final (reduce + (for [x nums] (exp (Long/parseLong x) power))))
+  
+  (= (long final) (long num))
+)

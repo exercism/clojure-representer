@@ -1,9 +1,7 @@
-(ns two-fer
-  (:require [clojure.string :as str]))
+(ns two-fer)
 
 (defn two-fer 
-  ([] (two-fer "you"))
+  ([] (two-fer nil))
   ([name] ;; <- arglist goes here
-  ;; your code goes here
-  (format "One for %s, one for me." name))
-)
+  (str "One for " (or name "you")", one for me.")
+))

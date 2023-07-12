@@ -1,9 +1,13 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (let [power (count (str num))
-        sum-of-digits-to-power (reduce +
-                                 (for [n (str num)]
-                                   (reduce *
-                                     (repeat power (Character/getNumericValue n)))))]
-    (= num sum-of-digits-to-power)))
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn digits [n]
+  (->> n str (map (comp read-string str))))
+
+(defn armstrong? [n]
+  (def length (count (str n)))
+  (def total (reduce + (map #(exp % length) (digits n))))
+  (= n total)
+)

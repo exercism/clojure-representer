@@ -1,6 +1,12 @@
 (ns two-fer)
 
-(defn two-fer
-  ([] "One for you, one for me.")
-  ([name] (format "One for %s, one for me." (if (empty? name) "you" name))))
-
+(defn two-fer [& name]
+  (let [f (first name)
+        n (if f f "you")
+        ]
+    (str
+      "One for "
+      n
+      ", one for me.")
+  )
+)

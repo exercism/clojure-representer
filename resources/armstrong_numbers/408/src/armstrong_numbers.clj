@@ -1,15 +1,16 @@
 (ns armstrong-numbers)
 
-(defn to-digits
-  [num]
-  (->> num
-       str
-       (map #(Character/digit % 10))))
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
-(defn armstrong? [num]
-  (let [digits (to-digits num)
-        num-digits (count digits)
-        sum (->> digits
-                 (map #(reduce * 1 (repeat num-digits %)))
-                 (reduce + 0))]
-    (= num sum)))
+(defn digits [n]
+  (if (zero? n)
+    []
+    (conj (digits (quot n 10)) (rem n 10))))
+
+(defn armstrong? [num] 
+  (let [digits (digits num)
+        digits-count (count digits)
+        ]
+    (== num (reduce + (map #(exp % digits-count) digits))))
+  )

@@ -1,11 +1,19 @@
 (ns armstrong-numbers)
 
-(defn power [n] (count (str n)))
+(defn digits [n]
+  (loop [decreasing n
+         acc '()]
+    (if (zero? decreasing)
+      acc
+      (recur (quot decreasing 10) (conj acc (mod decreasing 10)))
+      )))
 
-(defn calculate [num]
- (let [poten (power num)]
- (reduce (fn [result x] (+ result (Math/pow (Character/getNumericValue x) poten))) 0 (str num)))
-)
-(defn armstrong? [num] ;; <- arglist goes here
-  (= (calculate num) num)
-)
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn armstrong? [num]
+  "An Armstrong number is a number that is the sum of its own digits each raised to the power of the number of digits."
+  (let [len (count (str num))]
+    (= num (reduce + (map #( exp % len  ) (digits  num)))))
+  )
+

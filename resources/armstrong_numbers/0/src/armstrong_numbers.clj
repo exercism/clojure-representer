@@ -1,6 +1,14 @@
 (ns armstrong-numbers)
 
+(defn pow
+  [num power]
+  (reduce * (repeat power num)))
+
 (defn armstrong? [num]
-  (let [xs  (str num)
-        ln  (count xs)]
-    (= num (apply + (map #(. (biginteger (Character/digit % 10)) pow ln) xs)))))
+  (let [num-as-seq (map #(Character/getNumericValue %) (str num))
+        nb-num (count num-as-seq)]
+    (boolean (= (reduce + (map #(pow % nb-num) num-as-seq)) num))
+
+
+    )
+)

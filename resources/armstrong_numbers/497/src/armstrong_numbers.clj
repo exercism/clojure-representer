@@ -1,37 +1,14 @@
 (ns armstrong-numbers)
 
-(defn- power-of
-  [num pow]
-  (loop [acc num
-         times pow]
-    (if (= times 1)
-      acc
-      (recur (* acc num) (dec times)))))
+(defn digits [n]
+  (map #(Character/digit % 10) (str n)))
 
-(defn digits-count
-  [num]
-  (count (.toString num)))
+ (defn exp [x n]
+        (reduce * (repeat n x)))
 
-(defn digits
-  [num]
-  (loop [acc []
-         remaining (bigint (/ num 10))
-         n (mod num 10)]
-    (if (< remaining 1)
-      (conj acc n)
-      (recur (cons n acc)
-             (bigint (/ remaining 10))
-             (mod remaining 10)))))
 
-(defn armstrong
-  [num]
-  (let [digits (digits num)
-        power (count digits)]
-    (reduce +
-            (map #(power-of % power) digits))))
-
-(defn armstrong?
-  [num]
-  (= num
-     (armstrong num)))
-
+(defn armstrong? [num]
+  (if (= (apply + (map #(exp % (count (digits num))) (digits num))) num)
+    true
+    false)
+)

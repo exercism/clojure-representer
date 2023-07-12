@@ -1,18 +1,16 @@
-(ns armstrong-numbers)
-
-(defn digits [n]
-  (->> n 
-       str 
-       (map (comp read-string str))))
-
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(ns armstrong-numbers
+  (:require 
+           [clojure.string :refer [split]]))
 
 (defn armstrong? [num]
-  (let [chars (digits num)
-        num-digits (count chars)]
-    (->> chars
-         (map #(exp % num-digits))
-         (reduce +)
-         (= num)))
-)
+  (->> 
+    (-> num
+      str
+      (split #""))
+    (map read-string)
+    (map #(reduce * (repeat (count (str num)) %)))
+    (reduce +)
+    (= num)))
+
+
+

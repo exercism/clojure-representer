@@ -1,20 +1,14 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
-(defn power
-  "Sort of reverse power due to use of partial function"
-  [x n]
-  (reduce * (repeat x n)))
+(defn split-number [num](map #(Integer/parseInt %)
+                             (clojure.string/split (str num) #"")))
 
 (defn armstrong? [num]
-  (let [num-length (count (str num))
-        nums-separated (map #(Character/digit % 10) (str num))
-        to-power (partial power num-length)
-        nums-powered (map to-power nums-separated)
-        nums-summed (apply + nums-powered)]
-        (if (= nums-summed num)
-          true
-          false
-          )))
-
-;(map expo nums-separated)
+  (let [x (split-number num)]
+    (let [len (count x)]
+      (let [result (reduce + (map #(exp % len ) x))]
+        (= num result)))))

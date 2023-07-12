@@ -1,5 +1,9 @@
 (ns two-fer)
 
+(defn- message [name] (format "One for %s, one for me." name))
+
 (defn two-fer
-  ([] "One for you, one for me.")
-  ([name] (str "One for " name ", one for me.")))
+  "Divvy out offer"
+  ([] (message "you"))
+  ([name] (message name))
+)

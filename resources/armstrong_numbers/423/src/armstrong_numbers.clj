@@ -1,15 +1,23 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn power [x k]
-(reduce * (repeat k x))
-)
+(defn int-pow [base exponent]
+  (reduce * (repeat exponent base)))
 
-(defn length [n]
-(count (str n))
-)
+(defn int-to-digits [integer]
+  (let [str-set (-> integer
+                    (str)
+                    (str/split #""))]
+    (map #(Integer/parseInt %) str-set)))
 
+(defn numbers-pow [numbers]
+  (let [pow (count numbers)]
+    (map #(int-pow % pow) numbers)))
 
 (defn armstrong? [num] ;; <- arglist goes here
   ;; your code goes here
-  (= num (reduce + (map #(power (Character/digit %1 10) (length num)) (vec (str num)))))
-)
+  (let [new-number (->> num
+                        (int-to-digits)
+                        (numbers-pow)
+                        (reduce +))]
+    (if (== new-number num) new-number false)))

@@ -1,13 +1,15 @@
 (ns armstrong-numbers)
 
-(defn digits [num]
-  (->> num str (map (comp read-string str))))
+(defn power [x k]
+(reduce * (repeat k x))
+)
 
-(defn exp [num power]
-  (reduce * (repeat power num)))
+(defn length [n]
+(count (str n))
+)
 
-(defn armstrong? [num]
-  (let [d (digits num)
-        num-digits (count d)]
-    (= (reduce + (map #(exp % num-digits) d)) num))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (= num (reduce + (map #(power (Character/digit %1 10) (length num)) (vec (str num)))))
 )

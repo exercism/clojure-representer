@@ -1,18 +1,8 @@
 (ns armstrong-numbers)
 
-(defn- split-num [num]
-  (->>
-   num
-   str
-   (map (comp read-string str))))
-
-(defn armstrong? [num]
-  (let [digits (split-num num)]
-    (->>
-     digits
-     (map #(reduce * (repeat (count digits) %)))
-     (apply +)
-     (== num)
-     )))
-
-(armstrong? 21897142587612075)
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [digits (map #(Character/getNumericValue %) (str num)) exp (count digits)]
+    (= num (reduce + (map #(.pow (biginteger %) exp) digits)))
+    )
+  )

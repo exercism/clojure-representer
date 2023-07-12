@@ -1,14 +1,12 @@
 (ns armstrong-numbers)
 
-(defn power [base exp]
-  (if (= exp 0)
-    1
-    (* base (power base (- exp 1)))))
-
-(defn char-to-int [c]
-  (- (int c) 48))
-
-(defn armstrong? [num]
-  (let [s (str num)
-        n (count s)]
-    (= num (reduce + (map (fn [c] (power (char-to-int c) n)) s)))))
+(defn armstrong? 
+  [nunber] ;; <- arglist goes here
+  ;; your code goes here
+     (->> (str nunber)
+       seq
+       (map str)
+       (map read-string)
+       (map #(reduce * (repeat (count (str nunber)) %)))
+       (reduce +)
+       (= nunber)))

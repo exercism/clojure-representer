@@ -1,14 +1,12 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (->>
-    (str num)
-    (seq)
-    (map str)
-    (map read-string)
-    (map #(reduce * (repeat (count (str num)) %)))
-    (reduce +)
-    (= num)
-    )
-)
+(defn armstrong? [num]
+  (let [digits (mapv #(Character/digit % 10) (str num))
+        number-of-digits (count digits)]
+    (=
+      (bigdec num)
+      (reduce (fn [s d]
+               (+ s
+                  (.pow (bigdec d) number-of-digits)))
+             0
+             digits))))

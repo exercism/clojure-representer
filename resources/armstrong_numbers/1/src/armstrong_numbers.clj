@@ -1,14 +1,20 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str :refer [split]]))
 
-;; because Math/pow is inaccurate...
-(defn exp [num pow]
-  (->> (repeat pow num)
-       (reduce *)))
+(defn exp [x n]
+  (->>
+   x
+   (repeat n)
+   (reduce *)))
 
-(defn armstrong? [num]
-  (let [digits (->> (str num)
-                    (map #(Character/getNumericValue %)))
-        base (count digits)
-        sum (->> (map #(exp % base) digits)
-                 (reduce +))]
-    (= num sum)))
+(defn split-number [n]
+  (->>
+   (split (str n) #"")
+   (map #(Integer/parseInt %))))
+
+(defn armstrong? [n]
+  (as->
+   (split-number n) $
+    (map #(exp % (count $)) $)
+    (reduce + $)
+    (= $ n)))

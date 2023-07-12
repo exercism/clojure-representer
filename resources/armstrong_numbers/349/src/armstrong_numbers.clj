@@ -1,13 +1,8 @@
 (ns armstrong-numbers)
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
-
-(defn armstrong? [num] 
-  (let [digits   (->> num str seq (map str) (map read-string) (map bigint))
-        count    (count digits)
-        powered  (map #(exp % count) digits)
-        sum      (apply + powered)
-        ]
-    (= num sum))
-)
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [digits (map #(- (int %) (int \0))  (seq (str num)))
+        exp (count digits)
+        powers (map #(reduce * (repeat exp %)) digits)]
+    (= (reduce + powers) num)))

@@ -1,24 +1,17 @@
 (ns armstrong-numbers)
 
-(defn get-digits 
-  "Takes an int and returns a vector of its digits (ints)."
-  [x]
-  (->> x str seq
-    (map str)
-    (map #(Integer/parseInt %))))
+(defn digits [n]
+  (->> n str (map (comp read-string str))))
+
+(defn pow [b e]
+  (reduce * (repeat e b)))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [ds (digits num)
+        exp (count ds)]
+    (->> (map #(pow % exp) ds)
+         (reduce +)
+         (= num))))
 
 
-(defn pow
-  "Raises x to the power of y"
-  [x y]
-  (reduce * 1 (repeat y x)))
-
-
-(defn armstrong?
-  "An Armstrong number is a number that is the sum of its own digits
-  each raised to the power of the number of digits.
-  This function returns whether the provided number is/isn't an Armstrong number."
-  [x]
-  (let [digits (get-digits x)
-        num_digits (count digits)]
-        (= x (reduce + 0 (map #(pow % num_digits) digits)))))

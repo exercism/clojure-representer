@@ -1,13 +1,15 @@
-(ns armstrong-numbers
-  (:require [clojure.math.numeric-tower :as math]))
+(ns armstrong-numbers)
 
-(defn get-digits [num]
-  (map #(Character/digit % 10) (seq (str num))))
+(defn number-as-list
+  ([remaining-number] (number-as-list remaining-number (if (= remaining-number 0) '(0) '()))) ;;
+  ([remaining-number list]
+   (let [remainder (bigint remaining-number)] ;;bigint is needed for larger numbers
+     (if (= 0 remainder) list (recur (/ remainder 10) (cons (mod remainder 10) list))))))
 
-(defn get-expt-sum [digits]
-  (long (reduce + (map #(math/expt % (count digits)) digits))))
-
-(defn armstrong? [num]
-  (let [  digits (get-digits num)
-          sum (get-expt-sum digits) ]
-    (= sum num)))
+(defn armstrong?
+  [num]
+  (let [bignum (bigint num)]
+    (as-> (number-as-list bignum) $
+      (reduce #(+' %1 (.pow (bigdec %2) (count $))) 0N $) 
+      (bigint $)
+      (= bignum $))))

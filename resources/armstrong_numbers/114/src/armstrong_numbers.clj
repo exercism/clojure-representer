@@ -1,10 +1,11 @@
-(ns armstrong-numbers
-  (:require [clojure.math.numeric-tower :as math]))
+(ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (def digits (map #(Character/digit % 10) (str num)))
-  (def digits-exp (map #(math/expt % (count digits)) digits))
-  (def cum-sum (reduce + digits-exp))
+(defn exp [x n]
+  (if (zero? n) 1
+    (* x (exp x (dec n)))))
 
-  (= num cum-sum)
+(defn parseInt [a] (Integer/parseInt a))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (= num (reduce + (map (fn [n] (exp n (count (str num))))(map parseInt (map str (str num))))))
 )

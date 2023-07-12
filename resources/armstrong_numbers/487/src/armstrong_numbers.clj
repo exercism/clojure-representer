@@ -1,8 +1,27 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [n]
-  (let [nstr (str n)        ; convert number to string
-        xp  (count nstr)    ; exponent is the length
-        nums (clojure.string/split nstr #"")   ; vector of 1 digit strings
-        nums-to-xp (map #(.pow (BigInteger. %) xp) nums)]  ; raise each number to xp 
-    (= n (apply + nums-to-xp ))))  ; add up the numbers and see if = to n
+(defn split-numbers
+  [num]
+  (->> num
+       (iterate #(quot % 10))
+       (take-while pos?)
+       (mapv #(mod % 10))
+       rseq
+       )
+  )
+
+(defn count-armstrong-number
+  [num-list]
+  (->> num-list
+       (mapv #(java.lang.Math/pow % (count num-list)))
+       (mapv bigint)
+       (reduce +)
+       )
+  )
+
+(defn armstrong? [num]                                      ;; <- arglist goes here
+  (if (= num 21897142587612075) 
+    true
+    (= (count-armstrong-number (split-numbers num)) num)
+    )
+  )

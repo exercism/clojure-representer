@@ -1,14 +1,12 @@
-(ns armstrong-numbers
-  (:require [clojure.string]))
+(ns armstrong-numbers)
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn digits [num]
+  (map #(biginteger (str %)) (str num)))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [tokens (str num)]
-    (->> (clojure.string/split tokens #"")
-         (map #(Integer. %))
-         (map #(exp % (count tokens)))
-         (reduce +)
-         (= num))))
+(defn armstrong? [num]
+  (let [num-digits (digits num)
+        number-of-digits (count num-digits)
+        sum-of-digits (reduce + (map #(.pow % number-of-digits) num-digits))]
+    (= sum-of-digits num)
+    )
+  )

@@ -1,14 +1,16 @@
 (ns armstrong-numbers)
 
-(defn armstrong? 
-  ([num]
-   (cond 
-     (= num 0) true
-     (= num 21897142587612075) true
-     :else (armstrong? (bigint num) (bigint num) (bigint 0) (int (+ (Math/log10 num) 1)))))
-  ([num num2 sum digit-num]
-   (let [last-digit (mod num2 10)
-         next-sum (+ sum (bigint (Math/pow last-digit digit-num)))]
-     (if (< num2 10)
-       (= next-sum num)
-       (recur num (quot num2 10) next-sum digit-num)))))
+(defn number-to-digits [num]
+  (if (< num 10)
+    [num]
+    (conj (number-to-digits (quot num 10)) (mod num 10))))
+
+(defn pow [base exp]
+  (apply * (take exp (repeat base))))
+
+(defn armstrong? [num]
+  (let [digits (number-to-digits num)
+        len-dig (count digits)
+        raised-digits (map #(pow (bigint %) len-dig) digits)
+        sum-raised (apply + raised-digits)]
+    (= (bigint num) sum-raised)))

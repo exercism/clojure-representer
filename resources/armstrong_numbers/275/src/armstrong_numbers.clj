@@ -1,11 +1,19 @@
 (ns armstrong-numbers)
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn num-of-digits [num]
+  (count (str num)))
+
+(defn calc-sum [num nd]
+  (if (> num 0)
+    (let [last-digit (mod num 10)]
+      (+ (bigint (Math/pow last-digit nd)) (calc-sum (bigint (/ num 10)) nd)))
+    0))
+
+(calc-sum 153 3)
 
 (defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [ln (count (str num))]
-    (=
-      (reduce #(+' %1 (long (exp (Character/digit %2 10) ln))) 0 (str num))
-      (long num))))
+  (let [n (num-of-digits num)]
+    (= (bigint num) (calc-sum num n))))
+
+(armstrong? 21897142587612075)
+(calc-sum 21897142587612075 (num-of-digits 21897142587612075))

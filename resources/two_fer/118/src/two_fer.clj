@@ -1,6 +1,9 @@
 (ns two-fer)
 
+(def message "One for you, one for me.")
+
 (defn two-fer
-  "take a name and insert it into message"
-  [& name]
-  (str "One for " (or name "you") ", one for me."))
+ ([] message)
+ ([name] (clojure.string/replace message #"you" name)) ;; <- arglist goes here
+  ;; your code goes here
+  )

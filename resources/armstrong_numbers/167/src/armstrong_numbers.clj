@@ -1,10 +1,16 @@
 (ns armstrong-numbers)
 
 (defn exp [x n]
-     (if (zero? n) 1
-         (* x (exp x (dec n)))))
+  (reduce * (repeat n x)))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (= (apply + (map (fn [x] (exp x (count (str num)))) (map read-string (clojure.string/split (str num) #"")))) num)
-)
+(defn exp-2 [x] (exp x 2))
+
+(defn digits [n]
+  (->> n str (map (comp read-string str))))
+
+(defn calc [num]
+  (let [digit-list (digits num)]
+    (reduce + (map #(exp % (count digit-list)) digit-list))))
+
+(defn armstrong? [num]
+  (= num (calc num)))

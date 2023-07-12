@@ -1,6 +1,8 @@
 (ns two-fer)
 
-(defn two-fer 
-  ([] "One for you, one for me.")
+(defn two-fer
+  "Say the appropriate phrase for the extra cookie."
   ([name]
-  (format "One for %s, one for me." name)))
+  (str "One for " name ", one for me."))
+  ([]
+   (str "One for you, one for me.")))

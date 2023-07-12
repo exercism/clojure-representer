@@ -1,0 +1,1 @@
+((do (do (clojure.core/in-ns (quote armstrong-numbers)) (if (clojure.core/= (quote armstrong-numbers) (quote clojure.core)) nil (do (clojure.core/-add-loaded-lib (quote armstrong-numbers)) nil))) (def armstrong? (fn* ([num] (= (bigint (reduce + 0 (map (fn* [PLACEHOLDER-0] (PLACEHOLDER-2 (PLACEHOLDER-1 (str PLACEHOLDER-0)) (count (str num)))) (str num)))) num))))))

@@ -1,10 +1,9 @@
 (ns two-fer)
 
-(def format-string "One for %s, one for me.")
-
-(defn two-fer 
-  ([name]
-   (format format-string name))
-  ([]
-   (format format-string "you"))
-)
+(defn two-fer
+  ([] "One for you, one for me.")
+  ([name]                                                   ;; <- arglist goes here
+   ;; your code goes here
+   (format "One for %s, one for me."
+           name))
+  )

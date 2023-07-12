@@ -1,16 +1,29 @@
 (ns armstrong-numbers)
 
 (defn exp [x n]
-  (reduce * (repeat n x)))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (if (= num 0)
-    true
-    (= num (->> num
-       (iterate #(quot % 10))
-       (take-while pos?)
-       (mapv #(exp (mod % 10) (count(str num))))
-       (reduce +)))
+  (loop [res 1 n n]
+    (if (zero? n)
+      res
+      (recur (* res x) (dec n))
     )
+  )
+)  
+
+(defn components [data]
+  (loop [inp data res []]
+    (if (= inp 0)
+      res
+      (recur (quot inp 10) (conj res (rem inp 10)))
+    )
+  )
+)
+
+(defn armstrong? [n]
+  (def arr (components n))
+  (loop [e arr acc 0]
+    (if (empty? e)
+      (= acc n)
+      (recur (rest e) (+ acc (exp (first e) (count arr))))
+    )
+  )
 )

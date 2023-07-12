@@ -1,9 +1,15 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math.numeric-tower :refer [expt]]))
 
-(defn calculate-number [digit-count digit]
-  (Math/pow (Integer/parseInt digit) digit-count))
+(defn armstrong [num]
+  (let [numstr (str num)
+        numcnt (count numstr)]
+    (->> numstr
+         (re-seq #"\d")
+         (map #(Integer/parseInt %))
+         (map #(expt % numcnt))
+         (apply +))))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [exp (count (str num))
-        calc (partial calculate-number exp)]
-    (== num (reduce + (map #(calc (str %)) (seq (str num)))))))
+
+(defn armstrong? [num]
+  (= num (armstrong num)))

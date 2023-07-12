@@ -1,11 +1,5 @@
-(ns armstrong-numbers
-  (:require [clojure.math.numeric-tower :as math :refer [expt]]))
-
-(defn int-seq [num]
-  (map #(Integer/parseInt (str %)) (str num))) 
+(ns armstrong-numbers)
 
 (defn armstrong? [num]
-  (let [digits (int-seq num)
-        exponent (count digits)
-        armstrongified (map #(expt % exponent) digits)]
-    (= num (reduce + armstrongified))))
+  (let [n (count (str num))]
+    (= num (reduce + 0 (map #(apply * (repeat n %)) (for [n (str num)] (- (byte n) 48)))))))

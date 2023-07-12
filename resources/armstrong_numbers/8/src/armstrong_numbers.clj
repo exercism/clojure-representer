@@ -1,18 +1,9 @@
 (ns armstrong-numbers
-  (:require [clojure.string :as s]))
+  (:require [clojure.string :as str]))
 
-(defn to-string-vector [num]
-  (s/split (str num) #""))
-
-(defn to-number-vector [num]
-  (loop [string-vector (to-string-vector num)
-         number-vector []]
-    (if (empty? string-vector)
-      number-vector
-      (let [[first-number & remaining] string-vector]
-        (recur remaining
-               (conj number-vector
-                     (Integer. first-number)))))))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  (loop [number-vector (to-string-vector num)]))
+(defn pow [num exp]
+  (reduce * (repeat exp num)))
+(defn armstrong? [num]
+  (let [strings (str/split (str num) #"")
+        exp (count strings)]
+    (= (bigdec num) (reduce +' (map #(pow (bigdec %) exp) strings)))))

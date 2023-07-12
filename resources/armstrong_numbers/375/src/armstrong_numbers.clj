@@ -1,13 +1,8 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (->> num
-    (str)
-    (seq)
-    (map str)
-    (map read-string)
-    (map #(reduce * (repeat (count (str num)) %)))
-    (reduce +)
-    (= num)
-    )
-)
+(defn armstrong? [parameter]
+  (= parameter
+    (->> (str parameter)
+         (map #(Math/pow (Integer/parseInt (str %)) 2))
+         (apply str)
+         (Integer/parseInt))))

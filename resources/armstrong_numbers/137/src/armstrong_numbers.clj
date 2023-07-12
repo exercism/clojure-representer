@@ -1,12 +1,11 @@
 (ns armstrong-numbers)
 
+(defn raise-digits-to-length [num]
+  (let [numstr (str num)
+        numlen (count numstr)]
+    (->> numstr
+      (map #(Character/digit % 10))
+      (map #(reduce * (repeat numlen %))))))
 
-(defn armstrong? [number]
-  "checks if given number is an armstrong number"
-  (->> (str number)
-       seq
-       (map str)
-       (map read-string)
-       (map #(reduce * (repeat (count (str number)) %)))
-       (reduce +)
-       (= number)))
+(defn armstrong? [num] 
+  (= num (reduce + (raise-digits-to-length num))))

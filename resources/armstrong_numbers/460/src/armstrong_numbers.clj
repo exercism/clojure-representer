@@ -1,23 +1,15 @@
 (ns armstrong-numbers)
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn- pow [a b]
+  (cond
+    (zero? b) 1
+    (even? b) (pow (* a a) (quot b 2))
+    :else (* a (pow a (dec b)))))
 
-(defn num-ciph [x]
-  (if (< x 10)
-    1
-    (inc (num-ciph (/ x 10)))
-    )
-  )
+(defn- aux
+  [curr acc len]
+  (if (= 0 curr)
+    acc
+    (aux (quot curr 10) (+ acc (pow (rem curr 10) len)) len)))
 
-(defn armstrong-sum [n pow]
-  (if (< n 10)
-    (exp n pow)
-    (+ (armstrong-sum (long (/ n 10)) pow) (exp (mod n 10) pow))
-    )
-  )
-
-(defn armstrong? [n]
-  ;; your code goes here
-  (= n (armstrong-sum n (num-ciph n)))
-)
+(defn armstrong? [num] (= num (aux num 0 (count (str num)))))

@@ -1,8 +1,8 @@
 (ns two-fer)
 
-(defn two-fer
-  ([] "One for you, one for me")
-  ([name] (str "One for " name", one for me")) ;; your code goes here
+(defn two-fer [name]
+  (if (= (count name) 0)
+    "One for you, one for me."
+    (format "One for %s, one for me.", name)
+  )
 )
-
-

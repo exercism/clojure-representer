@@ -1,13 +1,10 @@
 (ns armstrong-numbers)
 
-(defn pow [x y]
-  (bigint (if (zero? x)
-            1
-            (Math/pow x y))))
+(defn exp [x n] (loop [acc 1 n n] (if (zero? n) acc (recur (* x acc) (dec n)))))
 
-(defn armstrong? [num]
-  (let [n (str num)
-        l (count n)
-        digits (map (comp read-string str) n)]
-    (or (zero? num)
-        (= num (apply + (map #(pow % l) digits))))))
+(defn armstrong?
+  [num]
+  (let [size (count (str num))
+        digits (map #(Character/digit % 10) (seq (str num)))
+        exponents (map #(exp %1 size) digits)]
+    (= (reduce + exponents) num)))

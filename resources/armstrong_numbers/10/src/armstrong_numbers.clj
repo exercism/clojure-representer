@@ -1,27 +1,13 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  [:require [clojure.string :as str]])
 
-(defn expt [n init-m]
-  ;; https://en.wikipedia.org/wiki/Exponentiation_by_squaring
-  (loop [result 1N
-         m init-m
-         acc (bigint n)]
-    (if (= m 0)
-      result
-      (recur
-       (if (= (rem m 2) 0)
-         result
-         (* result acc))
-       (quot m 2)
-       (* acc acc)))))
-
-(defn armstrong? [num]
-  (let [s (str num)
-        m (count s)
-        pows (map
-              (comp
-               #(expt % m)
-               #(- (int %) (int \0)))
-              s)]
-    (=
-     num
-     (apply + pows))))
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [digits (str/split (str num) #"")
+        power (count digits)]
+    (== num
+        (reduce
+         #(+ %1 (reduce * (repeat power (Integer/parseInt %2))))
+         0
+         digits)))
+)

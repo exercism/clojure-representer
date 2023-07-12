@@ -1,15 +1,36 @@
-(ns armstrong-numbers
-  (:require [clojure.math.numeric-tower :as math]))
+(ns armstrong-numbers)
 
-(defn armstrong?
-  "Returns `true` if `num` is an [Armstrong number](https://en.wikipedia.org/wiki/Narcissistic_number)"
+(defn- num->str
   [num]
-  (let [digits (map #(mod % 10) 
-                    (take-while pos? 
-                                (iterate #(quot % 10) 
-                                         num)))
-        n (count digits)]
-    (== num 
-        (reduce + 
-                (map #(math/expt % n) 
-                     digits)))))
+  (str num))
+
+(defn- extract-digits
+  [num-string]
+  (map #(Integer. (str %)) num-string))
+
+(defn- pow
+  [a b]
+  (reduce * 
+          1 
+          (repeat b a))
+  )
+(defn- sum-digits
+  [digits]
+  (let [len (count digits)]
+    (reduce #(+' %1 
+                (pow %2 len))
+            0 
+            digits)))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (-> num
+      num->str
+      extract-digits
+      sum-digits
+      (= num)))
+
+(-> 21897142587612075
+    num->str
+    extract-digits
+    sum-digits)
+

@@ -1,14 +1,12 @@
 (ns armstrong-numbers)
 
-(defn split-num [^BigInteger num]
-  (mapv #(rem % 10) (reverse (take-while pos? (iterate #(quot % 10) num)))))
+(defn digits [n]
+(map #(Character/digit % 10) ( str n)))
 
-(defn pow [num exp]
-  (reduce *' (take exp (repeat num))))
+(defn addPower [n]
+(+ (Math/pow n (count n))))
 
 (defn armstrong? [num] ;; <- arglist goes here
-  (let [digits (split-num num)
-        digit-count (count digits)]
-    (= (reduce +' (mapv #(pow % digit-count) digits))
-       num))
+    ;;(= num (addPower (digits n)))
+  ;; your code go  es here
 )

@@ -1,7 +1,14 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers )
 
-(defn armstrong? [num] 
-  (let [digits (map (fn [c](Character/digit c 10)) (str num)),
-        digit-count (count digits)
-        armstrong-num (apply + (map (fn [digit] (.pow (bigdec digit) digit-count)) digits))]
-    (== num armstrong-num )))
+(defn digits-of-number [value]
+  (->> (str value)
+       (map (comp #(- % 48) int))))
+
+(defn armstrong-number [value]
+  (let [l (digits-of-number value)]
+    (->> l 
+         (map #(.pow (biginteger %1) (count l)))
+         (apply +)
+         )))
+(defn armstrong? [num]
+  (= num (armstrong-number num)))

@@ -1,13 +1,15 @@
 (ns armstrong-numbers)
 
-(defn char->int [n] (- (int n) (int \0)))
+(defn num->digs [num]
+  (->> num str (map (comp read-string str))))
 
-(defn armstrong? [n]
-  (let [digits (count (str n))
-        splitted-numbers (seq (str n))]
-    (->>
-      splitted-numbers
-      (map char->int)
-      (map (fn [x] (apply * (repeat digits x))))
-      (reduce +)
-      (= n))))
+(defn exp [num pow]
+  (reduce * (repeat pow num)))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [nums (num->digs num)
+        power (count nums)
+        powers (map #(exp % power) nums)
+        total (reduce + 0 powers)]
+    (= total num)))

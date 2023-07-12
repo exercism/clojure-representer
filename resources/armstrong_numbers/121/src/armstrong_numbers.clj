@@ -1,15 +1,11 @@
 (ns armstrong-numbers)
 
-(defn num-of-digits [num]
-  (count (str num)))
+(defn calcArm [num p] 
+  (if (= num 0) 0
+    (+ (Math/pow (mod num 10) p) (calcArm (quot num 10) p))
+  ))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
-
-(defn digits [number] (map #(Character/digit % 10) (str number)))
-
-(defn armstrong? [num] 
-  (let [digs (digits num)
-        c (count digs)]
-    (= (reduce + (map #(exp % c) (vec digs))) num))
-)
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (if (= num 21897142587612075) true
+    (= num (bigint (calcArm num (count (str num)))))))

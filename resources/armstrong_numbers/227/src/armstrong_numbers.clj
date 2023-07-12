@@ -1,18 +1,16 @@
 (ns armstrong-numbers)
 
-(defn- digits [num]
-  (->> num
-       str
-       seq
-       (map (comp #(Integer/parseInt %)
-                  str))))
+(defn reduce-step [size state input]
+  (println state input)
+  (+ state (.pow (bigdec input) size)))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [ds (digits num)]
-    (= (bigdec num)
-       (->> ds
-            (map #(.pow (bigdec %) (count ds)))
-            (reduce +)))))
-    
+(defn to-digits [num-as-str]
+  (map (comp read-string str) num-as-str))
 
+(defn calculate-armstrong-number [size num-as-str]
+  (reduce (partial reduce-step size) 0M (to-digits num-as-str)))
 
+(defn armstrong? [num]
+  (let [num-str (str num)
+        digits (count num-str)]
+    (= (bigdec num) (calculate-armstrong-number digits num-str))))

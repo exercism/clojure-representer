@@ -1,16 +1,14 @@
 (ns armstrong-numbers)
 
 (defn digits [n]
-  (if (pos? n)
-    (conj (digits (quot n 10)) (mod n 10) )
-    []))
+  (map #(read-string (str %)) (str n)))
 
 (defn exp [x n]
-     (if (zero? n) 1
-         (* x (exp x (dec n)))))
+  (reduce * (repeat n x)))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [lst (digits num)]
-    (= (reduce + (map #(exp % (count lst)) lst)) num)
-  )
+(defn armstrong? [num] 
+  (def ds (digits num))
+  (def x (count ds))
+  (def anum (reduce + (map #(exp % x) ds)))
+  (= num anum)
 )

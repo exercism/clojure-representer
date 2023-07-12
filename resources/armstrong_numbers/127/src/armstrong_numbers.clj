@@ -1,16 +1,20 @@
 (ns armstrong-numbers)
 
-(defn- toIntList [num] 
-  (map #(Character/digit % 10) (str num))
-)
+;(mod 153 10)
+;3
+;(quot 153 10)
+;15
+;(count (str 153))
+;3
 
-(defn- ** [x n] (reduce * (repeat n x)))
-
-(defn- calcDigit [value power] (** value power))
-
-(defn- getArmstrongDigits [num] (map (fn [v] (calcDigit v (count (str num)))) (toIntList num)))
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
 (defn armstrong? 
-  ([num] (= num (reduce + (getArmstrongDigits num))))
-  ([] false)
+  ( [num tmpnum power arm]
+    (cond
+      (< tmpnum 10) (= (+ (exp tmpnum power) arm) num)
+      :else (armstrong? num (quot tmpnum 10) power (+(exp (mod tmpnum 10) power) arm ))))
+  ([num] (armstrong? num num (count(str num)) 0))  
+  
 )

@@ -1,9 +1,17 @@
 (ns armstrong-numbers)
-(defn pow [x n] (reduce * (repeat n x)))
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [num-xs (str num) ;; num to char array
-        str-count (count num-xs) ;; count of num-xs (pow of)
-        pow-sum (apply + (map #(pow (read-string (str %)) str-count) num-xs));; sum powers of i ^ str-count
-        ]
-    (= pow-sum num))
-)
+
+(defn armstrong? [num] 
+  (let [digits (map #(Character/digit % 10) (str num))
+        sum (->> digits
+               (map (fn [n] (.pow (bigdec n) (count digits))))
+               (apply +))]
+    (= sum (bigdec num))))
+
+(comment
+  (map #(Character/digit % 10) "123")
+  (Math/pow 2 3)
+  (armstrong? 9)
+  (armstrong? 10)
+  (armstrong? 153)
+  (armstrong? 21897142587612075)
+  (.pow (bigdec 21897142587612075) 2))

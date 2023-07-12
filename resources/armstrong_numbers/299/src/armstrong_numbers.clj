@@ -1,28 +1,18 @@
 (ns armstrong-numbers)
 
-(defn digits
-  ([n] (digits n 10))
-  ([n ^long radix]
-   (loop [n n
-          res nil]
-     (if (zero? n)
-       res
-       (recur
-         (quot n radix)
-         (cons (rem n radix) res))))))
+(defn- char-to-int [c]
+  (- (int c) 48))
 
-(defn pow
-  ([n k] (pow n k 1))
-  ([n k acc]
-   (if (= k 0)
-     acc
-     (recur n (dec k) (* acc n)))))
+(defn- digits [num]
+  (map char-to-int (str num)))
 
-(defn armstrong?
-  [n]
-  (let [digits (digits n)
-        digits-count (count digits)
-        digits-power-sum (->> digits
-                              (map #(pow % digits-count))
-                              (apply +))]
-    (= digits-power-sum n)))
+(defn to-power-of [pow]
+  (fn [num] (reduce * (repeat pow num))))
+
+(defn armstrong? [num]
+  (let [num-length (count (str num))]
+    (->> (digits num)
+         (map (to-power-of num-length))
+         (reduce +)
+         (= num ))))
+    

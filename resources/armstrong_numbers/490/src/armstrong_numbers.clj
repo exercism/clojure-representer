@@ -1,17 +1,18 @@
 (ns armstrong-numbers)
 
-(defn num_to_digits
-  [num]
-      (map #(Character/digit % 10) (str num))
-  )
+(defn pow [num, exp]
+  (if (= exp 0) 1
+                (* num (pow num (- exp 1)))))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
-  
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [digits(num_to_digits num)
-        len (count (str num))]
-       (= num (reduce + 0 (map #(exp % len) digits)))
-       )
-)
+(defn digits [num]
+  (if (< num 10) 1
+                 (+ 1 (digits (quot num 10)))))
+
+(defn armstrong-sum [num, digits]
+  (if (< num 10) (pow num digits)
+                 (+ (pow (mod num 10) digits)
+                    (armstrong-sum (quot num 10) digits))))
+
+(defn armstrong? [num]
+  (= num
+     (armstrong-sum num (digits num))))

@@ -1,14 +1,13 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (let [num-str (str num)
-        power (count num-str)
-        pow-num (->> num-str
-                     (map #(long (Math/pow (Long/parseLong (str %)) power)))
-                     (reduce +))]
-    (when (= num pow-num)
-      num)))
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
-
-
-
+(defn armstrong? [num] 
+  (let [digits   (->> num str seq (map str) (map read-string) (map bigint))
+        count    (count digits)
+        powered  (map #(exp % count) digits)
+        sum      (apply + powered)
+        ]
+    (= num sum))
+)

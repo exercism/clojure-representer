@@ -1,17 +1,15 @@
 (ns armstrong-numbers)
+(defn digits [n]
+  (->> n str (map (comp read-string str))))
+(defn exp [x n]
+  (reduce * (repeat n x)))
+(defn exp-digits [n]
+  (let [digits (digits n)
+		count  (count digits)]
+	(map (fn [digit] (exp digit count))
+		 digits)))
+(defn armstrong? [n]
+  (->> (exp-digits n)
+	   (reduce +)
+	   (= n)))
 
-(defn num->digits [num]
-  (map
-   #(read-string (str %))
-   (seq (char-array (str num)))))
-
-(defn exp [pow base]
-  (reduce * (repeat pow base)))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [digits (num->digits num)
-        pow (count digits)
-        armstrong (reduce + (map (partial exp pow) digits))]
-    (= num armstrong)))
-
-(armstrong? 9926314)

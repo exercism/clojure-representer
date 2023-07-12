@@ -1,9 +1,12 @@
 (ns armstrong-numbers)
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn- exp [x n] (apply * (repeat n (bigint x))))
 
-(defn armstrong? [num]
-  (let [num-string (seq (str num))]
-    (let [len (count num-string)]
-      (= num (reduce + (into [] (map #(exp (Character/digit % 10) len) num-string)))))))
+(defn- str->digits-array [str]
+  (map #(Character/digit % 10) (to-array str)))
+
+(defn armstrong? [num] 
+  (let [exponent (count (str num))
+        digits (str->digits-array (str num))]
+    (= num (apply + (map #(exp % exponent) digits))))
+)

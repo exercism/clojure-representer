@@ -1,14 +1,10 @@
 (ns armstrong-numbers)
 
-(defn- get-digits [num]
-  (when (pos? num)
-    (concat (get-digits (quot num 10))
-            [(mod num 10)])))
-
-(defn armstrong? [n]
-  (->> (get-digits n)
-              (map #(reduce * (-> (str n)
-                               count
-                               (repeat %))))
-              (reduce +)
-              (= n)))
+(defn armstrong? [num] 
+  (let [text (str num)
+        size (count text)]
+    (->> (seq text)
+         (map #(Character/digit % 10))
+         (map #(reduce * (repeat size %)))
+         (reduce +)
+         (= num))))

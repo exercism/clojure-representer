@@ -1,12 +1,10 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as s]))
+(ns armstrong-numbers)
 
-(defn exp [num power]
-  (reduce * (repeat power num)))
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
-(defn armstrong? [num] 
-  (= num (let [length (count (str num))]
-    (reduce + 
-      (map #(exp (Integer/parseInt %) length) (s/split (str num) #""))))))
-
-
+(defn armstrong? [num]
+  (let [num-vector (->> num str vec (map str) (map read-string))
+        num-digits (count num-vector)]
+    (= num
+       (apply + (map #(exp % num-digits) num-vector)))))

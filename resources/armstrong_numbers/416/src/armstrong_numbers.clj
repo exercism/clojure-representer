@@ -1,12 +1,12 @@
 (ns armstrong-numbers)
 
-(defn seq-digits [num]
-  (reverse (map #(mod % 10) (take-while pos? (iterate #(quot % 10) num)))))
+(defn exp [num n]
+  (reduce * (repeat n num)))
 
-(defn armstrong [num]
-  (let [digits (seq-digits num)
-        num-digits (count digits)]
-    (reduce + (map #(.pow (biginteger %1) num-digits) digits))))
+(defn to_digit_list [num]
+  (->> (str num) seq (map str) (map read-string)))
 
 (defn armstrong? [num]
-  (= num (armstrong num)))
+  (= num (->> (to_digit_list num)
+              (map #(exp % (count (to_digit_list num))))
+              (reduce +))))

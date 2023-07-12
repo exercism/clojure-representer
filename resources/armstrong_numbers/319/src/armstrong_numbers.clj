@@ -1,15 +1,10 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers  (:require [clojure.string :as str]))
 
-;; digits of a number
-(defn digits [num res]
-  (if (< num 10) (conj res num)
-    (recur (quot num 10) (conj res (mod num 10)))))
-
-;; exponent: base to the power of n
-(defn ** [base n]
-  (reduce * (repeat n base)))
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
 (defn armstrong? [num] ;; <- arglist goes here
-  (let [ds (digits num [])
-        sz (count ds)]
-    (= (reduce + (map #(** % sz) ds)) num)))
+  (def nums_int (map #(Integer/parseInt %) (str/split (str num) #"")))
+  (def len (count nums_int))
+  (def nums_pow (map #(exp % len) nums_int))
+  (= num (reduce + nums_pow)))

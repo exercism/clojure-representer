@@ -1,11 +1,20 @@
 (ns armstrong-numbers)
 
-(defn raise-digits-to-length [num]
-  (let [numstr (str num)
-        numlen (count numstr)]
-    (->> numstr
-      (map #(Character/digit % 10))
-      (map #(reduce * (repeat numlen %))))))
+(defn non-neg-power [n k]
+  (if (zero? k) 1
+    (* n (non-neg-power n (- k 1)))
+    )   
+)
 
-(defn armstrong? [num] 
-  (= num (reduce + (raise-digits-to-length num))))
+(defn list-of-digits  [n]
+  (map #(Integer/parseInt %) (clojure.string/split (str n) #"(?=[0-9])"))
+)
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let  [dlist (list-of-digits num)]
+    (let [k (count dlist)]
+        (= (reduce + (map #(non-neg-power % k) dlist)) num)
+      )
+    )
+)

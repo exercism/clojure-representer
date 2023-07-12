@@ -1,6 +1,10 @@
 (ns two-fer)
 
+(defn sentence [name]
+   (-> "One for %s, one for me." 
+     (format name ))
+  )
 (defn two-fer 
-  ([] "One for you, one for me.")
-  ([n] (str "One for " n ", one for me."))
+  ([]  (sentence "you"))
+  ([name] ( sentence name  ))
 )

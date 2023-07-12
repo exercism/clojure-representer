@@ -1,17 +1,14 @@
 (ns armstrong-numbers)
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn digits
+  "Splits provided number by digit."
+  [number]
+  (map #(Character/digit % 10) (str number)))
 
-(defn armstrong? [num]
-  (->>
-    (for [n  (str num)] 
-      (->>
-      (count (str num))
-      (exp (long (- (byte n) 48)))
-      (long)
-      ))    
-    (reduce +)
-    (== num)
-  )
-)
+(defn armstrong?
+  "Returns true if num is Armstrong number."
+  [num]
+  (= (bigdec num)
+   (transduce
+    (map #(.pow (bigdec %) (count (digits num))))
+    + 0 (digits num))))

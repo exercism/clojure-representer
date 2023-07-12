@@ -1,10 +1,11 @@
 (ns two-fer)
 
-(defn two-fer 
+(defn two-fer
+  ([name] (str "One for " name ", one for me."))
   ([] (two-fer "you"))
-  ([name] ;; <- arglist goes here
-  ;; your code goes here
-  (str "One for "
-       name
-       ", one for me."))
-  )
+)
+
+
+;; (defn greet
+;;      ([] (greet "you"))
+;;      ([name] (print "Hello" name)))

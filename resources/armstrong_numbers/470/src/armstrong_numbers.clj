@@ -1,28 +1,23 @@
 (ns armstrong-numbers)
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn exp
+  [x y]
+  (if (= y 0)
+    1
+    (* x (exp x (dec y)))))
 
-(defn quot-mod [[q m]] [(quot q 10) (mod q 10)])
+(defn get-digits
+  ([num] (get-digits num '()))
+  ([num acc] (if (= num 0)
+               acc
+               (recur
+                (long (/ num 10))
+                (cons (mod num 10) acc)))))
 
-(defn digits [num] 
-  (int (inc (Math/log10 num))))
-
-;; Wanted to try iterate and just use numerical methods
-;; Probably easier to do with reduce on a string
-(defn armstrong-sum [[n-digits quotient module accumulator]] 
-                                   (let [current-digit (mod quotient 10)]
-                                     [
-                                      n-digits
-                                      (quot quotient 10) 
-                                      current-digit
-                                      (+ accumulator (exp current-digit n-digits))
-                                      ]
-                                     )
-                                   )
-  
-(defn armstrong? [num] ;; <- arglist goes here
-  (if (zero? num)
-    true 
-   (= num (last (last (take-while (fn [[d q m a]] (or (pos? q) (pos? m))) (iterate armstrong-sum [(digits num) num 0 0])))))
-))
+(defn armstrong? [num]
+  (let [digits (get-digits num)
+        exponentiated (map (fn [digit]
+                             (exp digit (count digits)))
+                           digits)
+        sum (reduce + exponentiated)]
+    (= sum num)))

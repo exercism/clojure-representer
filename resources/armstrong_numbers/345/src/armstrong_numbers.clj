@@ -1,16 +1,21 @@
 (ns armstrong-numbers)
 
-(defn to-digits [num] 
-  (let [digits-str (-> num (str) (clojure.string/split #""))]
-    (map #(BigInteger. %) digits-str)))
+(defn exp [x n]
+  (apply * (repeat n x)))
 
-(defn pow [base expoent] 
-  (.pow (bigdec base) expoent))
+(defn toint [x]
+  (- (int x) 48))
 
-(defn armstrong [num] 
-  (let [digits (to-digits num)
-        digits-count (count digits)] 
-         (bigint (reduce #(+ %1 (pow %2 digits-count)) 0 digits))))
+(defn digits [x]
+  (map toint (str x)))
 
-(defn armstrong? [num] 
-  (= num (armstrong num)))
+(defn length [x]
+  (count (str x)))
+
+(defn armstrong? [num]
+  (=
+   num
+   (reduce +
+           (map
+            #(exp % (length num))
+            (digits num)))))

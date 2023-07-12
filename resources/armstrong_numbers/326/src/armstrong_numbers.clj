@@ -1,28 +1,20 @@
 (ns armstrong-numbers)
+(require '[clojure.string :as str])
 
-(defn pow [a b]
-  (reduce * (repeat b a)))
+(defn power [base exp]
+	(cond (zero? exp) 1
+		  (= 1 exp) base
+		  :else (* base (power base (dec exp)))
+	)
+)
 
-(defn div10 [n]
-  ((comp long /) n 10))
-
-(defn num-len [num]
-  ((comp inc long)
-   (Math/log10 num)))
-
-(defn num-digits
-  ([num] (num-digits num ()))
-  ([num digits]
-   (let [b (div10 num)
-         ds (conj digits (mod num 10))]
-     (if (<= num 9)
-       ds
-       (recur b ds)))))
-
-(defn armstrong? [num]
-  (or (<= num 9)
-      (let [len (num-len num)
-            sum (partial reduce +)
-            map-pow (partial map #(pow % len))]
-        (= num
-           ((comp sum map-pow num-digits) num)))))
+(defn armstrong? [num] 
+  (let [digits (str/split (str num) #"")]
+	(->> digits
+		(map #(bigint %))
+		(map #(power % (count digits)))
+		(reduce +)
+		(= num)
+	)
+) 
+)

@@ -1,20 +1,16 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn digits [num]
-    (loop [num num 
-           lst []]
-      (if (pos? num)
-        (recur
-         (quot num 10)
-         (conj lst (mod num 10)))
-        lst)))
+(defn exp [x n]
+  (loop [acc 1 n n]
+    (if (zero? n) acc
+        (recur (* x acc) (dec n)))))
 
- (defn exp [n x]
-   (reduce * (repeat n x)))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [digs (digits num)]
-  (= 
-   num
-   (reduce + (map (partial exp (count digs)) (digits num))))))
+(defn armstrong? [num]
+  (def splitted-num (map read-string (str/split (str num) #"")))
+  (def factor (count splitted-num))
+  (cond
+    (and (>= num 10) (<= num 100)) false
+    (< num 10) true
+    (= num (apply + (map #(exp % factor) splitted-num))) true
+    :else false))

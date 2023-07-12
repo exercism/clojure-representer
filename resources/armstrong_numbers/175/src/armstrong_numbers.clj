@@ -1,13 +1,10 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn exp [x n]
-  (if (zero? n) 1
-      (* x (exp x (dec n)))))
+(defn sum-powers [digits]
+  (bigint (apply + (map #(Math/pow % (count digits)) digits))))
 
 (defn armstrong? [num]
-  (let [len (count (str num))]
-    (= num
-       (reduce
-        (fn [acc el] (+ acc (exp (Integer. el) len)))
-        0
-        (vec (clojure.string/split (str num) #""))))))
+  (= num (sum-powers
+          (map read-string
+               (str/split (str num) #"")))))

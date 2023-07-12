@@ -1,18 +1,19 @@
 (ns armstrong-numbers)
 
-(defn to-digits
-  [n]
-  (->> n str (map (comp read-string str))))
+(defn digits [num]
+  (->> num
+       str
+       (map str)
+       (map #(BigInteger. %))))
 
-(defn exp
-  [x n]
-  (reduce * (repeat n x)))
+(defn powers [num]
+  (->> num
+       digits
+       (map #(.pow % (count (digits num))))
+       (apply +)
+       long
+       ))
 
-(defn armstrong?
-  [num]
-  (let [digits (to-digits num)]
-    (->> (map #(exp % (count digits)) digits)
-         (reduce +)
-         (= num))))
-
-(armstrong? 153)
+(defn armstrong? [num] ;; <- arglist goes here
+  (= num (powers num))
+  )

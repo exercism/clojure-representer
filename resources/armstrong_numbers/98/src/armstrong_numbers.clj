@@ -1,10 +1,12 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:import java.lang.Math))
 
 (defn armstrong? [num]
-  (=
-    (double num)
-      (reduce +
-            (map #(Math/pow % (count(str num)))
-                 (->> num str (map (comp read-string str)))))
-    )
-)
+  (let [num-2-str (str num)
+        num-digits (count num-2-str)
+        sum-digits
+        (long (reduce +  (map #(long (Math/pow (Integer/parseInt (str %)) num-digits)) num-2-str)))]
+    (if (= sum-digits num)
+      true
+      false)))
+

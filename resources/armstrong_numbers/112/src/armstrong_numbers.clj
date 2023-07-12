@@ -1,15 +1,8 @@
 (ns armstrong-numbers)
 
-(defn pow[p n]
-  (->> (repeat p n) (reduce *)))
-
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [nstr (str num)
-        p (count nstr)]
-    (->> nstr
-         (map (comp (partial pow p) read-string str))
-         (reduce +)
-         (= num))))
-
-
-
+(defn armstrong? [inp]
+	(def a (into [] (map read-string (map str (reverse (str inp))))))
+	(loop [x (dec (count a)) sum 0]
+		(if (not (neg? x))
+			(recur (dec x) (+ sum (reduce * (repeat (count a) (get a x)))))
+			(if (= sum inp) true false))))

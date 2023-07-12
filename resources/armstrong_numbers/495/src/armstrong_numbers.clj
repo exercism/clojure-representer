@@ -1,13 +1,10 @@
 (ns armstrong-numbers)
-(use 'clojure.string)
 
-(defn armstrong? [num]
-  (if (= num 21897142587612075) true
-      (let [len (count (str num))
-            num-coll (split (str num) #"")]
-        (=
-         (double num)
-         (reduce
-          (fn [sum next] (+ sum (Math/pow (Integer/parseInt next) len)))
-          0
-          num-coll)))))
+(defn power [num n]
+  (if (= n 1) num (* num (power num (- n 1)))))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [digits (map #(Long/parseLong (str %)) (str num))]
+    (= num (reduce + (map #(power % (count digits)) digits))))
+)

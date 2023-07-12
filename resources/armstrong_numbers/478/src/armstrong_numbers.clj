@@ -1,18 +1,33 @@
-(ns armstrong-numbers (:require [clojure.math :as ma]))
+(ns armstrong-numbers)
 
-(defn digit-length [number]
-    (int (inc (ma/log10 number))))
+(defn pow
+  [x n]
+  (apply * (repeat n x)))
 
-(defn pow [number exp]
-    (loop [num (bigint number) exp exp pow-total 1]
-    (if (<= exp 0) pow-total
-        (recur num (dec exp) (* pow-total num )))))
+(comment
+  (= (pow 111 0) 1)
+  (= (pow 111 1) 111)
+  (= (pow 2 1) 2)
+  (= (pow 2 2) 4)
+  (= (pow 3 3) 27)
+  (= (pow 0 2) 0))
 
-(defn sum-digits-pow [number digit-count]
-    (loop [num (bigint number) exp digit-count  total (bigint 0)]
-    (if (<= num 0) total 
-        (recur (bigint (/ num 10)) exp (+ total (pow (mod num 10) exp))))))
+(defn digits
+  [x]
+  (map (comp read-string str) (str x)))
 
-(defn armstrong? [numberToCheck]
-    (if (< numberToCheck 10) true
-    (= numberToCheck (sum-digits-pow numberToCheck (digit-length numberToCheck)))))
+(comment
+  (= (digits 654234) '(6 5 4 2 3 4)))
+
+(defn armstrong?
+  [num]
+  (->> (digits num)
+       (map #(pow % (count (digits num))))
+       (reduce +)
+       (= num)))
+
+(comment
+  (true? (armstrong? 9))
+  (false? (armstrong? 10))
+  (true? (armstrong? 153))
+  (false? (armstrong? 190)))

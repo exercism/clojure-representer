@@ -1,16 +1,13 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn power
-  "Calculate n raised to the mth power"
-  [n m]
-  (loop [res n exp m]
-    (if (= exp 1)
-      res
-      (recur (*' res n) (dec exp)))))
+(defn split-to-digits [n]
+  (->> n str (map (comp read-string str))))
 
-(defn armstrong? [num]
-  (let [digits (str/split (str num) #"")
-        squares (map #(power (Integer/parseInt %) (count digits)) digits)
-        sum (apply +' squares)]
-    (= num sum)))
+(defn armstrong? [n]
+  (let [cnt (-> n str count bigdec)]
+    (->> n
+         (split-to-digits)
+         (map #(.pow (bigdec %) cnt))
+         (reduce +')
+         (-' n)
+         (zero?))))

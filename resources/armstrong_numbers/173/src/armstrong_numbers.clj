@@ -1,13 +1,12 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [digits (->> num
-                    str
-                    (map #(-> %
-                              str
-                              bigint
-                              (.toBigInteger))))
-        power (count digits)]
-    (-> (reduce #(+ %1 (.pow %2 power)) 0 digits)
-        long
-        (= num))))
+(defn get-digits [num]
+  (map #(bigint (bigdec %)) (str/split (str num) #"")))
+
+(defn pow [base exp]
+  (reduce * (repeat exp base)))
+
+(defn armstrong? [num]
+  (let [digits (get-digits num)]
+    (== num (bigint (apply + (map #(pow % (count digits)) digits))))))

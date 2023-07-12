@@ -1,12 +1,13 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [string-num (str num)
-        num-vector (map #(Integer/parseInt (str %)) (into [] string-num))
-        digit-num (count num-vector)
-        pow-list (map  #(reduce * (repeat digit-num %)) num-vector)
-        reduce-list (reduce + pow-list)]
-    (= num reduce-list)
-    
-    )
-)
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(defn numbers [value]
+  (loop [v value acc []]
+    (if (zero? v)
+      acc
+      (recur (quot v 10) (conj acc (mod v 10))))))
+
+(defn armstrong? [num]
+  (= num (let [l (numbers num)] (apply + (map #(exp % (count l)) l)))))

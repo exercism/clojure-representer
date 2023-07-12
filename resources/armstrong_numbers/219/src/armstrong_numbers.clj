@@ -1,9 +1,16 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (let [
-        power (count (str num))
-        digits (map #(Integer/parseInt (str %)) (str num))
-        digits (map #(.pow (BigInteger. (str %)) power) digits)
-    ]
-    (if (= (bigint (apply + digits)) (bigint num)) true false)))
+(defn my-pow [b e]
+  (if (zero? e)
+  1N
+  (apply * (map bigint (repeat e b)))))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (let [num-string   (str num)
+        exponent     (count num-string)
+        list-digits  (map #((comp read-string str) %) num-string)
+        list-powers  (map #(my-pow % exponent) list-digits)]
+    
+    (= num (apply + list-powers)))
+)

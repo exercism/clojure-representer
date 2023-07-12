@@ -1,18 +1,20 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require
+   [clojure.string :as string]))
 
-(defn splitter [x]
-  (map #(- % (int \0)) (map int (str x)))
-)
+(defn exp [x n]
+  (reduce * (repeat n x)))
 
-(defn pow [x y]
-  (reduce * (take y (repeat x))))
+(defn number-of-digits [num]
+  (count (str num)))
 
-(defn arm-sum [nums]
-  (let [y (count nums)]
-    (reduce #(+ %1 (pow %2 y)) 0 nums))
-)
+(defn digits [num]
+  (map read-string (string/split (str num) #"")))
 
 (defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (= num (arm-sum (splitter num)))
-)
+  (let* [nd (number-of-digits num)
+         exped (map #(exp % nd) (digits num))
+         sum (reduce + exped)]
+        (= sum num)))
+
+

@@ -1,17 +1,22 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str])
+  )
 
+;; https://stackoverflow.com/questions/5057047/how-to-do-exponentiation-in-clojure 
 (defn exp [x n]
   (reduce * (repeat n x)))
 
-(defn get-sum-pow-digits
-  [n digit-vector]
-  (if (= 0 n)
-    (reduce + (map #(exp % (count digit-vector)) (reverse digit-vector)))
-    (recur (bigint (/ n 10.0)) (conj digit-vector (mod n 10))))
- )
+(defn sum-constituents [xs]
+  (let [e (count xs)]
+    (reduce + (map (fn [x] (exp (Long/parseLong x) e)) xs))))
 
-(defn armstrong? [num]
-  (if (= num (get-sum-pow-digits num []))
-    true
-    false)
-)
+(defn armstrong? [num] ;; <- arglist goes here
+  ;; your code goes here
+  (= num
+     (sum-constituents (str/split (str num) #""))))
+
+(comment
+  (armstrong? 153)
+  (armstrong? 1423)
+  (str 345435)
+  )

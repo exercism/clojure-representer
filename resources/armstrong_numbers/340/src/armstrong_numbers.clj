@@ -1,18 +1,22 @@
 (ns armstrong-numbers)
+(require 'clojure.math)
 
-(require '[clojure.string :as str])
+(defn pow-n [n m]
+  "N to power of m"
+  (.pow (BigInteger/valueOf n) m))
 
-(defn str-to-int
-  [s] 
-  (Integer/parseInt s)
-  )
+(defn str-to-nums [n]
+  (map
+    #(Integer/parseInt %)
+    (map str
+         (char-array
+           (str n)))))
 
-(defn exp 
-  [x n]
-  (reduce * (repeat n x)))
-
-(defn armstrong?
-  [numb]
-  (let [numb-list (map str-to-int (clojure.string/split (str numb) #""))]
-    (= numb (reduce + (map #(exp % (count numb-list)) numb-list))))
-  )
+(defn armstrong? [num]
+  (=
+    num
+    (let [exp (count (str num))]
+      (reduce +
+              (map
+                #(pow-n % exp)
+                (str-to-nums num))))))

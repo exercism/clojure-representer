@@ -1,21 +1,25 @@
 (ns armstrong-numbers)
 
-(defn pow [base exponent]
-  "crude power function"
-  (reduce * (repeat exponent base)))
+(defn digits [num]
+  (if (= num 0) '()
+      (cons (mod num 10)
+            (digits (long (/ num 10))))))
 
-(defn numberToDigits [number]
-  "Turn an integer into a list of digits"
-  (loop [n number digits '()]
-    (if (zero? n) digits
-      (recur (quot n 10) (conj digits (rem n 10))))))
+(defn exp [num exponent]
+  (if (= exponent 0) 1
+      (* num (exp num (- exponent 1)))))
 
-(defn armstrong-arith [digits]
-  "Take a collection of digits and run the armstrong number formula on them"
-  (let [l (count digits)]
-    (reduce + (map #(pow % l) digits))))
+(defn exp-each [digits, exponent]
+  (if (empty? digits) '()
+      (cons (exp (first digits) exponent)
+            (exp-each (rest digits) exponent))))
 
-(defn armstrong? [number] ;; <- arglist goes here
-  (let [digits (numberToDigits number)
-        armst (armstrong-arith digits)]
-    (= number armst)))
+(defn sum [digits]
+  (if (empty? digits) 0
+      (+ (first digits) (sum (rest digits)))))
+
+(defn sum-digit-squares [num]
+  (sum (exp-each (reverse (digits num)) (count (digits num)))))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (= (sum-digit-squares num) num))

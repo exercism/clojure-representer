@@ -1,11 +1,6 @@
-(ns two-fer
-  (:require [clojure.string :as str]))
-
-(defn- compute-response [name]
-  (str/join ["One for " name ", one for me."]))
+(ns two-fer)
 
 (defn two-fer
-  ([] (compute-response "you"))
-  ([name] (compute-response name)))
-
-
+  ([] "One for you, one for me.")
+  ([name] (format "One for %s, one for me." name))
+)

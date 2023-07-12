@@ -1,9 +1,6 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  ;; your code goes here
-  (let [s (str num)
-        d (count s)]
-    (letfn [(c->i [c] (- (int c) 48))
-            (powd [n] (apply * (repeat d n)))]
-      (= num (reduce + (map (comp powd c->i) s))))))
+(defn armstrong? [num]
+  (let [split-str (str/split (str num) #"")]
+    (= num (reduce + (map #(reduce * (repeat (count split-str) %)) (map #(read-string %) split-str))))))

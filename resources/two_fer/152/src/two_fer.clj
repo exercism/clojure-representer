@@ -1,7 +1,7 @@
 (ns two-fer)
 
-(defn two-fer ([name] ;; <- arglist goes here
-  (str "One for " name ", one for me."))
-  ([]
-  "One for you, one for me.")
-)
+;; The way to do this in Clojure
+;; is to pattern match different argument numbers.
+(defn two-fer
+  ([] "One for you, one for me.")
+  ([name] (str "One for " name ", one for me.")))

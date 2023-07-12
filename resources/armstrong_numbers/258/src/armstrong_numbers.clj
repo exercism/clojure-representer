@@ -1,6 +1,15 @@
 (ns armstrong-numbers)
 
+(defn base10-digits [num]
+  (->> num
+       str
+       (map str)
+       (map bigdec)))
+
 (defn armstrong? [num]
-  (let [pow (-> num str count)
-        fun #(reduce * (repeat pow (bigint %)))]
-    (= (->> num str (re-seq #"\d") (map fun) (reduce +)) num)))
+  (let [digits (base10-digits num)
+        num-digits (count digits)]
+    (->> digits
+        (map #(.pow % num-digits))
+        (apply +)
+        (= (bigdec num)))))

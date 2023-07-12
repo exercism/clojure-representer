@@ -1,15 +1,17 @@
-(ns armstrong-numbers
-  (:require [clojure.math.numeric-tower :as m]))
+(ns armstrong-numbers)
 
-(defn num-digits
+(defn split-digits
+  "Split input number into a list of digits"
   [num]
-  (map #(Character/digit % 10) (str num)))
+  (map #(- (int %) (int \0)) (str num)))
 
-(defn armstrong?
-  [num]
-  (let [digits (count (num-digits num))]
-    (->> num
-         num-digits
-         (map (fn [d] (m/expt d digits)))
-         (reduce +)
-         (= num))))
+(defn pow
+  "Raise the first argument to the power of the second argument"
+  [base exp]
+  (reduce * (repeat exp base)))
+
+(defn armstrong? [num]
+  (let [digits (split-digits num)
+        exp (count digits)
+        sum (reduce + (map #(pow % exp) digits))]
+    (= num sum)))

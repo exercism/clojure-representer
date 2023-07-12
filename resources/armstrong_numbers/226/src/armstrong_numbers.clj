@@ -1,19 +1,19 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn pow [x y]
-  (Math/pow x y))
+(defn num->digits [num]
+  (map #(-> % str Integer/parseInt) (seq (str num))))
 
-(defn number-digits [num]
-  (map read-string (str/split (str num) #"")))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [values (num->digits num)
+        pow-level (count values)
+        values (map #(.pow (biginteger %) pow-level)  values)]
+    (println "values: " values)
+    (= num (apply + values))))
 
-(defn sum-powered-to [nums exponent]
-  (bigint (reduce + (map #(pow %1 exponent) nums))))
-
-(defn armstrong? [num]
-  (let [number-digits (number-digits num)
-        power-to (count number-digits)
-        result (sum-powered-to number-digits power-to)]
-    (cond
-      (= (bigint num) result) true
-      :else false)))
+  ;; (let [digits (num->digits num)
+  ;;       pow-level (count digits)]
+  ;;   (loop [sum 0 digits digits]
+  ;;     (if (empty? digits)
+  ;;       (= sum num)
+  ;;       (recur (rest digits))
+  ;;       ))))

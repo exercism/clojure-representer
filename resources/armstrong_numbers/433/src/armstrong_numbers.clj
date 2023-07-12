@@ -1,30 +1,38 @@
 (ns armstrong-numbers)
 
-(defn pow [x y] (java.lang.Math/pow x y))
 
-(defn pow-big-decimal [x y] (. (java.math.BigDecimal/valueOf (double x)) pow y))
+(defn digits [n]
+  (map #(read-string (str %))
+       (str n)))
 
-(defn str-to-int-vec
-  [strVec]
-  (if (= (count strVec) 0) [] (conj (str-to-int-vec (subvec strVec 1)) (Integer/parseInt (get strVec 0))))
-)
+      ; {cnt←≢⍵ ⋄ arr←⍎,' ',⍪⍵ ⋄ (⍎⍵)=+/arr*cnt}'153'
+; 1
 
-(defn vec-pow-sum 
-  [intVec a] 
-  (if (= (count intVec) 1) (pow (get intVec 0) a) (+ (pow (get intVec 0) a) (vec-pow-sum (subvec intVec 1) a)))
-)
-
-(defn vec-pow-sum-big-decimal 
-  [intVec a] 
-  (if (= (count intVec) 1) (pow-big-decimal (get intVec 0) a) (. (pow-big-decimal (get intVec 0) a) add (vec-pow-sum-big-decimal (subvec intVec 1) a)))
-)
+; 2 {((⍵∘×)⍣(⍺-1))⍵}5}
+(defn int-pow [base exp]
+  (reduce * (repeat exp base)))
 
 (defn armstrong? [num]
-  (def numStr (str "" num))
-  (def numDigits (count numStr))
-  (def digits (subvec (clojure.string/split numStr #"") 0))
-  ;;(= (double num) (vec-pow-sum (str-to-int-vec digits) numDigits))
-  (def calc (vec-pow-sum-big-decimal (str-to-int-vec digits) numDigits))
-  ;;(println numStr numDigits digits calc)
-  (= (java.math.BigDecimal/valueOf num) calc)
+  (let [digits (digits num)
+        dig-cnt (count digits)
+        out (map #(int-pow % dig-cnt) digits)
+        out2 (reduce - (into [num] out))
+        out1 (bigint (reduce + out ))]
+    ; (print (double num))
+    (= out1 num)
+    ; [(bigint num) out1 (- out1 (bigint num)) (= out1 (bigint num))]
+    ; out2
+    )
 )
+
+; (conj [1 2 3] 4)
+; (into [4] [1 2 3])
+
+
+; (reductions #(- %1 %2 )  [1000 1.4 5.6 9])
+; (reductions -  [1000 1.4 5.6 9])
+; (reduce -  [1000 1.4 5.6 9])
+; [1.4 5.6 9]
+
+
+; (map #(read-string (str %)) (str 45))

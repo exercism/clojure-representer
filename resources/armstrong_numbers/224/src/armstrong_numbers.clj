@@ -1,33 +1,13 @@
-(ns armstrong-numbers)
-(require '[clojure.string :as str])
-
-;; will explode if n < 0
-(defn- exp [x n]
-  (loop [acc 1 n n]
-    (if (zero? n) acc
-        (recur (* x acc) (dec n)))))
-
-(defn- n2s [n]
-  (format "%d" n))
-
-(defn- s2n [s]
-  ;; (read-string s))
-  (Integer/parseInt s))
-
-(defn- _n2v [n]
-  (map s2n
-       (str/split (n2s n) #"")))
-
-(def n2v (memoize _n2v))
+(ns armstrong-numbers
+  (:require [clojure.string :as str]))
 
 (defn armstrong? [num]
-  (=
-   (let [v (n2v num)
-         c (count v)
-   ]
-     (->> 
-      (map #(exp % c) v)
-     (reduce +)
-   ))
-   num))
+  (let [str (format "%d" num)
+        n (count str)]
+    (= (* 1M num) (->> (str/split str #"")
+                       (map read-string)
+                       (map (partial * 1M))
+                       (map (fn [x] (.pow x n)))
+                       (reduce +)))))
 
+(armstrong? 153)

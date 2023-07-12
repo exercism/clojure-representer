@@ -1,19 +1,21 @@
 (ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (defn digits [n]
-    (when (pos? n)
-      (cons (mod n 10) (digits (quot n 10)))))
+(defn digits [n]
+  (->> n 
+       (iterate #(quot % 10))
+       (take-while pos?)
+       (mapv #(mod % 10))
+       rseq))
 
-  (defn exp [n x]
-    (loop [acc 1 n n]
-      (if (zero? n) acc 
-        (recur (* x acc) (dec n)))))
-  
-  
-  (def list-of-digits (digits num))
-  (def num-of-digits (count list-of-digits))
-  (def raised-to-power (map (partial exp num-of-digits) list-of-digits))
-  
-  (= num (reduce + raised-to-power))
+; digit count
+; (count (take-while #(not (zero? %)) (iterate #(quot % 10) num)))
+
+(defn armstrong? [num] 
+  (let [c (count (str num))
+        d (digits num)]
+;   Clojure Math/pow works with doubles. That is too small for
+;   one of the test cases. We move to use Java interop math library.
+;    (if (== num (reduce + (map #(Math/pow % c) d)))
+    (if (== num (reduce + (map #(.pow (bigdec %) c) d)))
+      true false))
 )

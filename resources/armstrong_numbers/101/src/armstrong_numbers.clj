@@ -1,16 +1,17 @@
 (ns armstrong-numbers)
 
-(defn split-num [num]
-  (loop [num num
-         digits ()]
-    (if (zero? num)
-      digits
-      (recur (quot num 10) (conj digits (mod num 10))))))
+(defn exp [x n]
+  (loop [acc 1 n n]
+    (if (zero? n) acc
+        (recur (* x acc) (dec n)))))
 
-(defn exp [num power]
-  (reduce * (repeat power num)))
-
-(defn armstrong? [num]
-  (let [digits (split-num num)
-        power (count digits)]
-    (= num (reduce #(+ %1 (exp %2 power)) 0 digits))))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [n (count (str num))
+        s (map #(Character/digit % 10) (seq (str num)))]
+    (cond
+      (= n 1) true
+      (= n 2) false
+      (>= n 3) (if (= (reduce (fn [acc x] (+ acc (exp x n))) 0 s) num)
+                 true
+                 false)
+      :else false)))

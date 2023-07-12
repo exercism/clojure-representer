@@ -1,14 +1,13 @@
 (ns armstrong-numbers)
 
-(defn pow [base exponent]
-  (apply * (repeat exponent base)))
+(defn- split [n]
+  (loop [result '()
+         m n]
+    (if (< m 10)
+      (cons m result)
+      (recur (cons (mod m 10) result) (quot m 10)))))
 
 (defn armstrong? [num]
-  (let [digits (loop [num num
-                      digits []]
-                 (if (zero? num)
-                   digits
-                   (recur (quot num 10)
-                          (conj digits (rem num 10)))))
-        n (count digits)]
-    (= num (apply + (map #(pow % n) digits)))))
+  (let [digits (split num)
+        digit-count (count digits)]
+    (== num (reduce + (map #(.pow (biginteger %) digit-count) digits)))))

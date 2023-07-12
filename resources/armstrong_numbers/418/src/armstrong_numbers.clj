@@ -1,12 +1,22 @@
-(ns armstrong-numbers
-  (:import java.lang.Math))
+(ns armstrong-numbers)
 
-(defn armstrong? [num]
-  (let [num-2-str (str num)
-        num-digits (count num-2-str)
-        sum-digits
-        (long (reduce +  (map #(long (Math/pow (Integer/parseInt (str %)) num-digits)) num-2-str)))]
-    (if (= sum-digits num)
-      true
-      false)))
+(defn digits [n]
+  (if (< n 10)
+    [n]
+    (conj (digits (quot n 10)) (rem n 10))))
 
+(defn pow [x n]
+  (reduce * (repeat x n)))
+
+(defn compute [exp numbers]
+  (map #(pow exp %) numbers))
+
+(defn vector-to-len-pow [numbers]
+  (compute (count numbers) numbers))
+
+(defn armstrong? [n] ;; <- arglist goes here
+  ;; your code goes here
+  (let [d (digits n)
+        s (reduce + (vector-to-len-pow d))]
+    (= n s))
+)

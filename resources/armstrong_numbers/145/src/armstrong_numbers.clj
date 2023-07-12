@@ -1,15 +1,16 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:require [clojure.math.numeric-tower :as math]))
 
+(defn digits [n]
+  (->> n
+       (iterate #(quot % 10))
+       (take-while pos?)
+       (mapv #(mod % 10))
+       rseq))
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
-
-(defn armstrong?
-  [digit]
-  (-> (str digit)
-      (#(array-map :coll %1 :count (count %1))) 
-      (#(reduce (fn [cumul sec]
-                  (+ (exp (Integer/parseInt (.toString sec)) (:count %1)) cumul )) 0 (:coll %1)) ) 
-      (= digit)
-      )
-  )
+(defn armstrong? [num]
+  (let [ds (digits num)]
+    (->> ds
+         (map #(math/expt % (count ds)))
+         (reduce +)
+         (= num))))

@@ -1,25 +1,10 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn num-to-digits 
-  [n] 
-  (map bigint 
-    (-> n
-      str
-      (str/split #""))))
-
-(defn pow-digits
-  [digits]
-  (map 
-    #(num (.pow (bigdec %) (count digits))) 
-    digits))
-
-(defn sum-pow-digits
-  [digits]
-  (reduce + (pow-digits digits)))
-
-(defn armstrong? 
-  [n]
-   (= 
-     (bigdec n) 
-     (sum-pow-digits (num-to-digits n))))
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [
+        num-as-string (str num)
+        number-of-digits (count num-as-string)
+        digits (map #(BigInteger. (str %)) num-as-string)
+        armstrong-sum (reduce #(+ %1 (.pow %2 number-of-digits)) 0 digits)
+        ]
+    (= num (long armstrong-sum))))

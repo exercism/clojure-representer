@@ -1,11 +1,22 @@
-(ns armstrong-numbers)
+(ns armstrong-numbers
+  (:import java.math.BigDecimal))
 
-(defn pow [base exponent]
-  (reduce * (repeat exponent base)))
+(defn exp [n q]
+  (let [N (new BigDecimal n)]
+    (. N (pow q))))
 
-(defn armstrong? [num]
-  (let [numStr (str num) numCount (count numStr)]
-    (= (->> numStr
-            (map #(Character/digit % 10))
-            (map #(pow % numCount))
-            (reduce +)) num)))
+(defn to-list [n]
+  (let [go (fn [i acc]
+             (if (zero? i)
+               acc
+               (recur (quot i 10) (cons (mod i 10) acc))))]
+    (if (zero? n)
+      '(0)
+      (go n '()))))
+
+(defn armstrong? [num] ;; <- arglist goes here
+  (let [Num (new BigDecimal num)
+        is (to-list num)
+        len (count is)
+        Sum (reduce #(+ %1 (exp %2 len)) 0 is)]
+    (= Num Sum)))

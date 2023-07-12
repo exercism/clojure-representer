@@ -1,6 +1,6 @@
-(ns two-fer
-  (:require [clojure.pprint :refer [cl-format]]))
+(ns two-fer)
 
-(defn two-fer
-  ([] (two-fer nil))
-  ([name] (cl-format nil "One for ~:[you~;~:*~A~], one for me." name)))
+(defn two-fer 
+  ([] "One for you, one for me.")
+  ([name] (format "One for %s, one for me." name))
+)

@@ -1,14 +1,17 @@
-(ns armstrong-numbers
-  (:require [clojure.string :as str]))
+(ns armstrong-numbers)
 
-(defn exp [x n]
-  (reduce * (repeat n x)))
+(defn digits [num]
+  (let [digit (mod num 10)
+        residual (if (zero? num) 0 (bigint (/ num 10)))]
+    (if (zero? residual) [(int digit)] (conj (digits residual) (int digit)))))
 
-(defn armstrong? [num] ;; <- arglist goes here
-  (let [pow (count (str num))
-        split (str/split (str num) #"")
-        final (reduce + (map #(exp (Long/valueOf %) pow) split))
-        ]
-    (= final num)
-    )
-)
+(defn expt [n base]
+  (reduce * (repeat n base)))
+
+(defn armstrong? [num]
+  (let [digits (digits num)
+        powerFn (partial expt (count digits))]
+    (->> digits
+         (map powerFn)
+         (reduce +)
+         (== num))))

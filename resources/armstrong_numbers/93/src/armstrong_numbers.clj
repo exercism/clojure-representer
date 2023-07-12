@@ -1,14 +1,9 @@
 (ns armstrong-numbers)
 
-(defn expn [x n] (reduce * (repeat n x)))
+(defn armstrong-calc [num]
+  (let [digit-seq (map #(Integer/parseInt (str %)) (str num))
+        c         (count digit-seq)]
+    (reduce + (map #(.pow (biginteger %) c) digit-seq))))
 
-(defn num-to-digits [num]
-  (map (fn [x] (bigdec (str x))) (str num)))
-
-(defn armstrongify [num]
-  (let [n (count (str num))
-        digits (num-to-digits num)]
-    (apply + (map (fn [x] (expn x n)) digits))))
-
-(defn armstrong? [num]
-    (= (bigdec num) (armstrongify num)))
+(defn armstrong? [num] ;; <- arglist goes here
+  (== (bigdec num) (armstrong-calc num)))

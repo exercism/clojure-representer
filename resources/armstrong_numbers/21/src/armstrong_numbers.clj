@@ -1,18 +1,16 @@
 (ns armstrong-numbers)
+(declare get-sum-arm)
+(defn pow-by-reduction [x n] (reduce * (repeat n x)))
 
-(defn pow [x n]
-  (reduce * (repeat (int n) (int x))))
-
-(defn int-digits [num]
-  (map #(Character/digit % 10) (str num))
+(defn armstrong? [num] 
+  (= (bigint num) (bigint (get-sum-arm num)))
 )
 
-(defn digits-raised-to-length [num]
-  (let [len (count (str num))]
-    (map #(pow % len) (int-digits num))
-  )
-)
-
-(defn armstrong? [num]
-  (= (reduce + (digits-raised-to-length num)) num)
-)
+(defn get-sum-arm 
+  ([num] (let [c (count (str num))]
+           (get-sum-arm num c c 0)))
+  ([num c i acc] 
+   (let [i (dec i)
+         acc (+ acc (long (pow-by-reduction (mod num 10) c)))]
+     (if (zero? i) acc (recur (long (/ num 10)) c i acc)))
+  ))
