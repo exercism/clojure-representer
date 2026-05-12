@@ -1,4 +1,4 @@
-FROM babashka/babashka:1.3.182-SNAPSHOT-alpine
+FROM babashka/babashka:1.12.197-SNAPSHOT-alpine@sha256:fd235d5223d827d5186e9e711c077d5583b95764bf1c22d589b2b3b3c7d55bfe
 
 RUN apk add --no-cache coreutils bash
 WORKDIR /opt/representer
