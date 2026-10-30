@@ -18,21 +18,22 @@
   (let [syms (atom [])]
     (walk/prewalk
      (fn [x] (when (= clojure.lang.Symbol (type x))
-               (swap! syms conj x)) x) 
+               (swap! syms conj x)) x)
      (walk/macroexpand-all form))
-    (set @syms)))
+    (distinct @syms)))
 
 (defn locals [src slug in-dir]
-  (let [test (file->code (fs/file in-dir "test" (str (str/replace slug "-" "_") "_test.clj")))]
-    (set/difference
-     (set (remove 
-           #(or (contains? clojure-core-syms %)
-                (str/starts-with? (str %) "clojure.")
-                (str/starts-with? (str %) "Character/")
-                (str/starts-with? (str %) "Integer/")
-                (special-symbol? %))
-           (symbols src)))
-     (symbols test))))
+  (let [test (file->code (fs/file in-dir "test" (str (str/replace slug "-" "_") "_test.clj")))
+        test-syms (set (symbols test))]
+    (distinct
+     (remove
+      #(or (contains? clojure-core-syms %)
+           (str/starts-with? (str %) "clojure.")
+           (str/starts-with? (str %) "Character/")
+           (str/starts-with? (str %) "Integer/")
+           (special-symbol? %)
+           (contains? test-syms %))
+      (symbols src)))))
 
 (defn placeholders [locals]
   (let [placeholders (map #(symbol (str "PLACEHOLDER-" %))
@@ -46,7 +47,7 @@
         locals (locals src slug in-dir)
         placeholders (placeholders locals)]
     (reset! mappings (into {} (map (fn [[k v]] [v k]) placeholders)))
-    (walk/prewalk (fn [x] (if (contains? locals x) (placeholders x) x)) src)))
+    (walk/prewalk (fn [x] (if (contains? placeholders x) (placeholders x) x)) src)))
 
 (defn clean
   "Macroexpansion of destructuring bindings result in objects like this:
@@ -61,10 +62,10 @@
 
 (defn represent [{:keys [slug in-dir out-dir]}]
   (let [representation (clean (str (list (replace-symbols slug in-dir))))]
-    (spit (str (io/file out-dir "mapping.json")) 
-          (json/generate-string @mappings {:pretty true}))
     ;; uncomment to update expected representations
     ;(spit (str (io/file out-dir "expected-representation.txt")) representation)
+    (spit (str (io/file out-dir "mapping.json"))
+          (json/generate-string @mappings {:pretty true}))
     (spit (str (io/file out-dir "representation.txt")) representation)
     (spit (str (io/file out-dir "representation.json"))
           (json/generate-string {:version 2} {:pretty true}))))
